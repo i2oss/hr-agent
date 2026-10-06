@@ -20,6 +20,8 @@ The language of this project. Glossary only: no implementation decisions (those 
 
 **Persona** — an Employee deliberately designed to exercise one demo, edge or eval case, and selectable as the Employee the chat user speaks as. Other Employees exist only to make reporting lines realistic.
 
+**Requester** — the Employee the chat user is speaking as. Distinct from the Employee a request is *about*; the two differ when, say, a manager asks about a direct report.
+
 **Employment Type** — one of full-time exempt, full-time non-exempt, part-time, intern, contractor. Decides which policies (PTO accrual, benefits) apply. Contractors are outside most HR policies.
 
 **Work Arrangement** — an Employee's standing place of work: **office-hybrid** (default, anchor days in office), **remote-approved**, or **field/site-based** (not eligible for remote work).
@@ -31,6 +33,8 @@ The language of this project. Glossary only: no implementation decisions (those 
 **Tool** — a capability the agent may invoke, exposed only through an MCP server. A direct function call that bypasses MCP is not a Tool call.
 
 **Mock Action** — a Tool call that would change the world in a real system (create an HR ticket, draft a manager message, update a case). Always simulated, and only performed after explicit user **Confirmation**.
+
+**Compliance Check** — a deterministic test of a concrete request (PTO dates, a Temporary Remote Work trip, an expense item) against the Company's rules, reporting each rule's outcome with the Citation where that rule is written. It applies policy; it never invents it.
 
 **Workflow** — a multi-step task the agent completes by combining retrieval and Tool calls. The two demo Workflows are **PTO Request Guidance** and **Remote-Work Eligibility**.
 

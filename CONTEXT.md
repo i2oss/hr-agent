@@ -40,8 +40,8 @@ The language of this project. Glossary only: no implementation decisions (those 
 
 **Trace** — the concise, operational record of a run: Tools selected, arguments, outputs, retrieved sources, answer basis, and any Escalation. Not hidden chain-of-thought.
 
-**Clarification** — the agent asking the user for missing or ambiguous input (e.g. no employee ID) instead of guessing.
+**Clarification** — the agent asking the user for missing or ambiguous input (e.g. no employee ID) instead of guessing. Asked only when the missing piece would change the outcome; otherwise the agent answers and states its assumption.
 
-**Escalation** — the agent deciding a request should go to a human (HR) rather than be answered directly.
+**Escalation** — the agent deciding a request should go to a human (HR) rather than be answered directly. It recommends HR and offers a Mock Action (a ticket); it never creates one without Confirmation, and on sensitive matters it does not adjudicate.
 
 **Refusal** — the agent declining an out-of-corpus or out-of-scope question rather than inventing policy.

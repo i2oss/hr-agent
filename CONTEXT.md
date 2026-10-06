@@ -18,6 +18,8 @@ The language of this project. Glossary only: no implementation decisions (those 
 
 **Employee** — a person in the Mock Data, identified by an employee ID. The user of the chat speaks *as* an Employee.
 
+**Persona** — an Employee deliberately designed to exercise one demo, edge or eval case, and selectable as the Employee the chat user speaks as. Other Employees exist only to make reporting lines realistic.
+
 **Employment Type** — one of full-time exempt, full-time non-exempt, part-time, intern, contractor. Decides which policies (PTO accrual, benefits) apply. Contractors are outside most HR policies.
 
 **Work Arrangement** — an Employee's standing place of work: **office-hybrid** (default, anchor days in office), **remote-approved**, or **field/site-based** (not eligible for remote work).

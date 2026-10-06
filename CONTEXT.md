@@ -26,6 +26,8 @@ The language of this project. Glossary only: no implementation decisions (those 
 
 **Temporary Remote Work** — working away from one's usual location for a bounded period (another state or country). Distinct from a Work Arrangement, which is standing.
 
+**Demo Date** — the fixed "today" of the Company's world. Balances, tenure, notice periods and "next week" are all reckoned from it, never from the real calendar.
+
 **Tool** — a capability the agent may invoke, exposed only through an MCP server. A direct function call that bypasses MCP is not a Tool call.
 
 **Mock Action** — a Tool call that would change the world in a real system (create an HR ticket, draft a manager message, update a case). Always simulated, and only performed after explicit user **Confirmation**.

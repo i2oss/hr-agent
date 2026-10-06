@@ -2,7 +2,7 @@
 
 The language of this project. Glossary only: no implementation decisions (those live in SPEC.md and the map's tickets).
 
-**Company** — the fictional mid-size engineering firm whose policies and employees the system serves. Entirely synthetic.
+**Company** — Ridgeline Structural Engineering, Inc.: the fictional mid-size (~450-person) civil/structural engineering firm whose policies and employees the system serves. Entirely synthetic; HQ Denver, offices in Austin, Seattle and Toronto.
 
 **Policy Corpus** — the set of the Company's policy and procedure documents (5–20 files, 30–120 pages, at least two source formats). The only source of policy truth.
 
@@ -17,6 +17,12 @@ The language of this project. Glossary only: no implementation decisions (those 
 **Mock Data** — clearly synthetic structured records (employee profiles, PTO balances, benefits elections, manager relationships, locations, employment types, tickets). Never real personal data.
 
 **Employee** — a person in the Mock Data, identified by an employee ID. The user of the chat speaks *as* an Employee.
+
+**Employment Type** — one of full-time exempt, full-time non-exempt, part-time, intern, contractor. Decides which policies (PTO accrual, benefits) apply. Contractors are outside most HR policies.
+
+**Work Arrangement** — an Employee's standing place of work: **office-hybrid** (default, anchor days in office), **remote-approved**, or **field/site-based** (not eligible for remote work).
+
+**Temporary Remote Work** — working away from one's usual location for a bounded period (another state or country). Distinct from a Work Arrangement, which is standing.
 
 **Tool** — a capability the agent may invoke, exposed only through an MCP server. A direct function call that bypasses MCP is not a Tool call.
 

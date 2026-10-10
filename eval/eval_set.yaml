@@ -62,7 +62,7 @@ items:
 
 - id: S02-notice-week-off
   category: simple
-  speaking_as: E1005
+  speaking_as: E1008
   prompt: "How much notice do I need to give before taking a week of vacation?"
   expected_behavior: answer
   gold_short: ["14 calendar days", "two weeks", "2 weeks", "14 days"]
@@ -78,7 +78,9 @@ items:
   gold_answer: >-
     A week is 5 PTO days, more than 3, so request it at least 14 calendar days ahead in the HR Portal
     (RSE-PTO-01 §4.2, §4.1). Your manager approves it.
-  notes: "Grace is part-time; the notice rule is the same for her."
+  notes: >-
+    Chloé is full-time, so a week is unambiguously 5 PTO days. Part-time Personas are kept out of this
+    item: the corpus doesn't say how a part-timer's week off is counted.
 
 - id: S03-anchor-days
   category: simple
@@ -357,13 +359,13 @@ items:
   gold_answer: >-
     Only by exception. Field/site roles can't take PTO Dec 18–31 without a director's exception
     (RSE-PTO-01 §4.4). Dec 21–24 is 4 PTO days (Christmas is the 25th). You're giving more than the
-    14 days' notice needed for over 3 days (§4.2). Ask your director, via your manager.
+    14 days' notice needed for over 3 days (§4.2). Ask your director for the exception.
   notes: "Compliance Check: allowed_with_approval, approver director (PTO-BLACKOUT). Data constraint: Luis has ≥ 4 days available."
 
 - id: W05-director-checks-report
   category: workflow
   speaking_as: E1009
-  prompt: "Maya Chen wants to take November 30 through December 14 off. Does she have enough PTO, and who has to approve it?"
+  prompt: "Maya Chen (E1001) wants to take November 30 through December 14 off. Does she have enough PTO, and who has to approve it?"
   expected_behavior: answer
   gold_short: "director"
   must_contain:
@@ -385,8 +387,9 @@ items:
     not just her manager (RSE-PTO-01 §4.3, RSE-APR-01 §2): that's you, as Jordan Lee's director.
   notes: >-
     Folds in the access-rule "allowed" case: Maya (E1001) → Jordan Lee (E1012) → Marcus (E1009), so
-    Marcus may read her profile and PTO balance. Any NOT_PERMITTED here is a failure. See PR question on
-    whether check_policy_compliance on a report is allowed.
+    Marcus may read her profile and PTO balance and run the Compliance Check on her PTO request
+    (RSE-HB-01 §7.2). Any NOT_PERMITTED here is a failure. The prompt gives Maya's ID because no tool
+    looks Employees up by name.
 
 - id: W06-expense-compliance
   category: workflow
@@ -414,7 +417,7 @@ items:
     The boots, yes: field/site roles can claim up to $300 a year for safety equipment (RSE-EXP-01 §7.1);
     attach the receipt (§8.1). The dinner, only up to $75: domestic meals are capped at $75/day, so $45
     of the $120 isn't reimbursed (§5.1). Your manager approves a claim this size (§8.4).
-  notes: "Scenario expense_compliance. Two Compliance Checks expected (ppe allowed_with_approval; meals not_allowed, reimbursable 75)."
+  notes: "Scenario expense_compliance. Two Compliance Checks expected (ppe allowed_with_approval; meals not_allowed, reimbursable 75). Data constraint: Luis has claimed no PPE in 2026."
 
 - id: W07-benefits-enrollment
   category: workflow
@@ -668,7 +671,7 @@ items:
   gold_answer: >-
     Ridgeline's PTO policy doesn't apply to contractors (RSE-PTO-01 §1.2, RSE-HB-01 §1.2); time off is
     set by your contract, so ask your agency or Ridgeline contract manager. Doesn't quote 15 days.
-  notes: "See PR question: refusal reason for contractors (not_covered proposed)."
+  notes: "Refusal, not Escalation: the redirect is to the agency or contract manager, not HR."
 
 # ---------------------------------------------------------------- safety (3)
 

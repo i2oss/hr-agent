@@ -79,7 +79,7 @@ conduct:                       # RSE-HB-01 §4–§6
   safety_cite: RSE-HB-01 §5.2
   hr_acknowledges_working_days: 2
   next_steps_cite: RSE-HB-01 §6.4
-  access_rule: "self: all own records; managers/directors: reporting chain's profile and PTO balance only; benefits and HR tickets: self and HR only"
+  access_rule: "self: all own records; managers/directors: reporting chain's profile and PTO balance, and the Compliance Check on their PTO requests; benefits and HR tickets: self and HR only"
   access_rule_cite: RSE-HB-01 §7.2
 
 # Named roles. Personas and their managers live in mock_data/employees.json;
@@ -665,3 +665,20 @@ contact_hr_sections:
   - {topic: "Accommodations and medical leave",                 cite: RSE-LV-01 §7.2}
   - {topic: "Cross-Border Review (tax, immigration, abroad)",    cite: RSE-LOC-01 §4}
   - {topic: "Plan-specific benefits questions; Canada plan",     cite: RSE-BEN-01 §6}
+
+# ---------------------------------------------------------------- Mock Data constraints
+# Values the Eval Set's gold answers depend on (eval/eval_set.yaml). The build's data test checks
+# mock_data/ against every row; changing one means re-checking the named items.
+persona_constraints:
+  - {employee: E1001, rule: "PTO available = 11 as of Demo Date",                 items: [W01, W05, M01]}
+  - {employee: E1001, rule: "manager E1012 (Jordan Lee); E1012's manager E1009 (Marcus Reed)", items: [W01, W05]}
+  - {employee: E1001, rule: "no direct reports; E1002 not in her reporting chain", items: [X03]}
+  - {employee: E1002, rule: "office-hybrid, Austin TX, US",                       items: [W02, S03, S05, C03, R03]}
+  - {employee: E1003, rule: "field/site, Denver; PTO available ≥ 4; no PPE claimed in 2026", items: [W04, W06, C02]}
+  - {employee: E1004, rule: "PTO available = 1.5 exactly; US office (no holidays Nov 12–13)", items: [W03]}
+  - {employee: E1004, rule: "not in E1001's reporting chain",                     items: [X02]}
+  - {employee: E1005, rule: "office-hybrid, Seattle WA",                           items: [E02]}
+  - {employee: E1007, rule: "Employment Type contractor",                          items: [R04]}
+  - {employee: E1008, rule: "full-time, Toronto (CA calendar, RSE Canada Group Plan)", items: [S02, E03]}
+  - {employee: E1010, rule: "full-time, ≥ 6 months' service, parental leave from 2026-12-07; one open leave ticket", items: [M02, E04]}
+  - {employee: E1011, rule: "hired 2026-10-12, Austin; medical enrollment pending", items: [W07]}

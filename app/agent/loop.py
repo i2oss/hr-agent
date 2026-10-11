@@ -147,13 +147,13 @@ class AgentLoop:
         ctx = p.context
         ctx.started = time.perf_counter()
         if decision == "confirm":
+            session.trace.add(ctx.turn, "confirmation", f"⏸ {p.tool} confirmed by the user; executing",
+                              tool=p.tool, status="confirmed")
             o = await self.hub.call(p.tool, p.args, self._injected(session))
             summary, _ = summarise(p.tool, o)
             spec = self.hub.tools[p.tool]
             session.trace.add(ctx.turn, "tool", summary, server=spec.server, tool=p.tool, args=o.args,
                               output=o.output, status="ok" if o.ok else "error", latency_ms=o.latency_ms)
-            session.trace.add(ctx.turn, "confirmation", f"⏸ {p.tool} confirmed by the user",
-                              tool=p.tool, status="confirmed" if o.ok else "error")
             if o.ok:
                 ctx.tools_ok.add(p.tool)
                 note = (f"[Confirmation] The user confirmed {p.tool}. Result: {json.dumps(o.output)}. It is a mock "

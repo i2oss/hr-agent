@@ -1,0 +1,862 @@
+{
+  "_synthetic": true,
+  "_note": "FICTIONAL mock data for the Ridgeline HR agent demo. No real people.",
+  "benefits_elections": [
+    {
+      "employee_id": "E1001",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2021-10-01",
+      "enrollment_window_end": "2021-10-13"
+    },
+    {
+      "employee_id": "E1001",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2021-10-01",
+      "enrollment_window_end": "2021-10-13"
+    },
+    {
+      "employee_id": "E1001",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2021-10-01",
+      "enrollment_window_end": "2021-10-13"
+    },
+    {
+      "employee_id": "E1001",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2021-10-01",
+      "enrollment_window_end": "2021-10-13"
+    },
+    {
+      "employee_id": "E1001",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2021-10-01",
+      "enrollment_window_end": "2021-10-13"
+    },
+    {
+      "employee_id": "E1002",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-04-01",
+      "enrollment_window_end": "2023-04-05"
+    },
+    {
+      "employee_id": "E1002",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-04-01",
+      "enrollment_window_end": "2023-04-05"
+    },
+    {
+      "employee_id": "E1002",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-04-01",
+      "enrollment_window_end": "2023-04-05"
+    },
+    {
+      "employee_id": "E1002",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-04-01",
+      "enrollment_window_end": "2023-04-05"
+    },
+    {
+      "employee_id": "E1002",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-04-01",
+      "enrollment_window_end": "2023-04-05"
+    },
+    {
+      "employee_id": "E1003",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-05-01",
+      "enrollment_window_end": "2022-05-18"
+    },
+    {
+      "employee_id": "E1003",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-05-01",
+      "enrollment_window_end": "2022-05-18"
+    },
+    {
+      "employee_id": "E1003",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-05-01",
+      "enrollment_window_end": "2022-05-18"
+    },
+    {
+      "employee_id": "E1003",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-05-01",
+      "enrollment_window_end": "2022-05-18"
+    },
+    {
+      "employee_id": "E1003",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-05-01",
+      "enrollment_window_end": "2022-05-18"
+    },
+    {
+      "employee_id": "E1004",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2024-03-01",
+      "enrollment_window_end": "2024-03-13"
+    },
+    {
+      "employee_id": "E1004",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2024-03-01",
+      "enrollment_window_end": "2024-03-13"
+    },
+    {
+      "employee_id": "E1004",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2024-03-01",
+      "enrollment_window_end": "2024-03-13"
+    },
+    {
+      "employee_id": "E1004",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2024-03-01",
+      "enrollment_window_end": "2024-03-13"
+    },
+    {
+      "employee_id": "E1004",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2024-03-01",
+      "enrollment_window_end": "2024-03-13"
+    },
+    {
+      "employee_id": "E1005",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-02-01",
+      "enrollment_window_end": "2025-02-05"
+    },
+    {
+      "employee_id": "E1005",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-02-01",
+      "enrollment_window_end": "2025-02-05"
+    },
+    {
+      "employee_id": "E1005",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "waived",
+      "effective_date": "2025-02-01",
+      "enrollment_window_end": "2025-02-05"
+    },
+    {
+      "employee_id": "E1005",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-02-01",
+      "enrollment_window_end": "2025-02-05"
+    },
+    {
+      "employee_id": "E1006",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2026-07-01",
+      "enrollment_window_end": "2026-07-01"
+    },
+    {
+      "employee_id": "E1008",
+      "plan": "RSE Canada Group Plan",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-06-01",
+      "enrollment_window_end": "2020-06-03"
+    },
+    {
+      "employee_id": "E1009",
+      "plan": "Medical PPO",
+      "coverage_level": "employee_spouse",
+      "status": "enrolled",
+      "effective_date": "2015-09-01",
+      "enrollment_window_end": "2015-09-23"
+    },
+    {
+      "employee_id": "E1009",
+      "plan": "Dental",
+      "coverage_level": "employee_spouse",
+      "status": "enrolled",
+      "effective_date": "2015-09-01",
+      "enrollment_window_end": "2015-09-23"
+    },
+    {
+      "employee_id": "E1009",
+      "plan": "Vision",
+      "coverage_level": "employee_spouse",
+      "status": "enrolled",
+      "effective_date": "2015-09-01",
+      "enrollment_window_end": "2015-09-23"
+    },
+    {
+      "employee_id": "E1009",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2015-09-01",
+      "enrollment_window_end": "2015-09-23"
+    },
+    {
+      "employee_id": "E1009",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2015-09-01",
+      "enrollment_window_end": "2015-09-23"
+    },
+    {
+      "employee_id": "E1010",
+      "plan": "Medical HDHP",
+      "coverage_level": "family",
+      "status": "enrolled",
+      "effective_date": "2019-12-01",
+      "enrollment_window_end": "2019-12-04"
+    },
+    {
+      "employee_id": "E1010",
+      "plan": "Dental",
+      "coverage_level": "family",
+      "status": "enrolled",
+      "effective_date": "2019-12-01",
+      "enrollment_window_end": "2019-12-04"
+    },
+    {
+      "employee_id": "E1010",
+      "plan": "Vision",
+      "coverage_level": "family",
+      "status": "enrolled",
+      "effective_date": "2019-12-01",
+      "enrollment_window_end": "2019-12-04"
+    },
+    {
+      "employee_id": "E1010",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-12-01",
+      "enrollment_window_end": "2019-12-04"
+    },
+    {
+      "employee_id": "E1010",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-12-01",
+      "enrollment_window_end": "2019-12-04"
+    },
+    {
+      "employee_id": "E1011",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "pending",
+      "effective_date": "2026-11-01",
+      "enrollment_window_end": "2026-11-11"
+    },
+    {
+      "employee_id": "E1011",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "pending",
+      "effective_date": "2026-11-01",
+      "enrollment_window_end": "2026-11-11"
+    },
+    {
+      "employee_id": "E1011",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "pending",
+      "effective_date": "2026-11-01",
+      "enrollment_window_end": "2026-11-11"
+    },
+    {
+      "employee_id": "E1011",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "pending",
+      "effective_date": "2026-11-01",
+      "enrollment_window_end": "2026-11-11"
+    },
+    {
+      "employee_id": "E1011",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2026-11-01",
+      "enrollment_window_end": "2026-11-11"
+    },
+    {
+      "employee_id": "E1012",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-03-01",
+      "enrollment_window_end": "2017-03-15"
+    },
+    {
+      "employee_id": "E1012",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-03-01",
+      "enrollment_window_end": "2017-03-15"
+    },
+    {
+      "employee_id": "E1012",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-03-01",
+      "enrollment_window_end": "2017-03-15"
+    },
+    {
+      "employee_id": "E1012",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-03-01",
+      "enrollment_window_end": "2017-03-15"
+    },
+    {
+      "employee_id": "E1012",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-03-01",
+      "enrollment_window_end": "2017-03-15"
+    },
+    {
+      "employee_id": "E1013",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2016-07-01",
+      "enrollment_window_end": "2016-07-06"
+    },
+    {
+      "employee_id": "E1013",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2016-07-01",
+      "enrollment_window_end": "2016-07-06"
+    },
+    {
+      "employee_id": "E1013",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2016-07-01",
+      "enrollment_window_end": "2016-07-06"
+    },
+    {
+      "employee_id": "E1013",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2016-07-01",
+      "enrollment_window_end": "2016-07-06"
+    },
+    {
+      "employee_id": "E1013",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2016-07-01",
+      "enrollment_window_end": "2016-07-06"
+    },
+    {
+      "employee_id": "E1014",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-02-01",
+      "enrollment_window_end": "2018-02-07"
+    },
+    {
+      "employee_id": "E1014",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-02-01",
+      "enrollment_window_end": "2018-02-07"
+    },
+    {
+      "employee_id": "E1014",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-02-01",
+      "enrollment_window_end": "2018-02-07"
+    },
+    {
+      "employee_id": "E1014",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-02-01",
+      "enrollment_window_end": "2018-02-07"
+    },
+    {
+      "employee_id": "E1014",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-02-01",
+      "enrollment_window_end": "2018-02-07"
+    },
+    {
+      "employee_id": "E1015",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-10-01",
+      "enrollment_window_end": "2017-10-18"
+    },
+    {
+      "employee_id": "E1015",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-10-01",
+      "enrollment_window_end": "2017-10-18"
+    },
+    {
+      "employee_id": "E1015",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-10-01",
+      "enrollment_window_end": "2017-10-18"
+    },
+    {
+      "employee_id": "E1015",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-10-01",
+      "enrollment_window_end": "2017-10-18"
+    },
+    {
+      "employee_id": "E1015",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2017-10-01",
+      "enrollment_window_end": "2017-10-18"
+    },
+    {
+      "employee_id": "E1016",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2012-04-01",
+      "enrollment_window_end": "2012-04-04"
+    },
+    {
+      "employee_id": "E1016",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2012-04-01",
+      "enrollment_window_end": "2012-04-04"
+    },
+    {
+      "employee_id": "E1016",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2012-04-01",
+      "enrollment_window_end": "2012-04-04"
+    },
+    {
+      "employee_id": "E1016",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2012-04-01",
+      "enrollment_window_end": "2012-04-04"
+    },
+    {
+      "employee_id": "E1016",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2012-04-01",
+      "enrollment_window_end": "2012-04-04"
+    },
+    {
+      "employee_id": "E1017",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-08-01",
+      "enrollment_window_end": "2019-08-14"
+    },
+    {
+      "employee_id": "E1017",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-08-01",
+      "enrollment_window_end": "2019-08-14"
+    },
+    {
+      "employee_id": "E1017",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-08-01",
+      "enrollment_window_end": "2019-08-14"
+    },
+    {
+      "employee_id": "E1017",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-08-01",
+      "enrollment_window_end": "2019-08-14"
+    },
+    {
+      "employee_id": "E1017",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2019-08-01",
+      "enrollment_window_end": "2019-08-14"
+    },
+    {
+      "employee_id": "E1018",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2014-11-01",
+      "enrollment_window_end": "2014-11-05"
+    },
+    {
+      "employee_id": "E1018",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2014-11-01",
+      "enrollment_window_end": "2014-11-05"
+    },
+    {
+      "employee_id": "E1018",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2014-11-01",
+      "enrollment_window_end": "2014-11-05"
+    },
+    {
+      "employee_id": "E1018",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2014-11-01",
+      "enrollment_window_end": "2014-11-05"
+    },
+    {
+      "employee_id": "E1018",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2014-11-01",
+      "enrollment_window_end": "2014-11-05"
+    },
+    {
+      "employee_id": "E1019",
+      "plan": "RSE Canada Group Plan",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2018-10-01",
+      "enrollment_window_end": "2018-10-10"
+    },
+    {
+      "employee_id": "E1020",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2011-02-01",
+      "enrollment_window_end": "2011-02-09"
+    },
+    {
+      "employee_id": "E1020",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2011-02-01",
+      "enrollment_window_end": "2011-02-09"
+    },
+    {
+      "employee_id": "E1020",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2011-02-01",
+      "enrollment_window_end": "2011-02-09"
+    },
+    {
+      "employee_id": "E1020",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2011-02-01",
+      "enrollment_window_end": "2011-02-09"
+    },
+    {
+      "employee_id": "E1020",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2011-02-01",
+      "enrollment_window_end": "2011-02-09"
+    },
+    {
+      "employee_id": "E1021",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2013-06-01",
+      "enrollment_window_end": "2013-06-19"
+    },
+    {
+      "employee_id": "E1021",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2013-06-01",
+      "enrollment_window_end": "2013-06-19"
+    },
+    {
+      "employee_id": "E1021",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2013-06-01",
+      "enrollment_window_end": "2013-06-19"
+    },
+    {
+      "employee_id": "E1021",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2013-06-01",
+      "enrollment_window_end": "2013-06-19"
+    },
+    {
+      "employee_id": "E1021",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2013-06-01",
+      "enrollment_window_end": "2013-06-19"
+    },
+    {
+      "employee_id": "E1022",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-03-01",
+      "enrollment_window_end": "2020-03-04"
+    },
+    {
+      "employee_id": "E1022",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-03-01",
+      "enrollment_window_end": "2020-03-04"
+    },
+    {
+      "employee_id": "E1022",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-03-01",
+      "enrollment_window_end": "2020-03-04"
+    },
+    {
+      "employee_id": "E1022",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-03-01",
+      "enrollment_window_end": "2020-03-04"
+    },
+    {
+      "employee_id": "E1022",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2020-03-01",
+      "enrollment_window_end": "2020-03-04"
+    },
+    {
+      "employee_id": "E1023",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-08-01",
+      "enrollment_window_end": "2025-08-06"
+    },
+    {
+      "employee_id": "E1023",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-08-01",
+      "enrollment_window_end": "2025-08-06"
+    },
+    {
+      "employee_id": "E1023",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-08-01",
+      "enrollment_window_end": "2025-08-06"
+    },
+    {
+      "employee_id": "E1023",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-08-01",
+      "enrollment_window_end": "2025-08-06"
+    },
+    {
+      "employee_id": "E1023",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2025-08-01",
+      "enrollment_window_end": "2025-08-06"
+    },
+    {
+      "employee_id": "E1024",
+      "plan": "Medical HDHP",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-12-01",
+      "enrollment_window_end": "2022-12-14"
+    },
+    {
+      "employee_id": "E1024",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-12-01",
+      "enrollment_window_end": "2022-12-14"
+    },
+    {
+      "employee_id": "E1024",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-12-01",
+      "enrollment_window_end": "2022-12-14"
+    },
+    {
+      "employee_id": "E1024",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-12-01",
+      "enrollment_window_end": "2022-12-14"
+    },
+    {
+      "employee_id": "E1024",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2022-12-01",
+      "enrollment_window_end": "2022-12-14"
+    },
+    {
+      "employee_id": "E1025",
+      "plan": "Medical PPO",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-09-01",
+      "enrollment_window_end": "2023-09-20"
+    },
+    {
+      "employee_id": "E1025",
+      "plan": "Dental",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-09-01",
+      "enrollment_window_end": "2023-09-20"
+    },
+    {
+      "employee_id": "E1025",
+      "plan": "Vision",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-09-01",
+      "enrollment_window_end": "2023-09-20"
+    },
+    {
+      "employee_id": "E1025",
+      "plan": "401(k)",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-09-01",
+      "enrollment_window_end": "2023-09-20"
+    },
+    {
+      "employee_id": "E1025",
+      "plan": "Life",
+      "coverage_level": "employee",
+      "status": "enrolled",
+      "effective_date": "2023-09-01",
+      "enrollment_window_end": "2023-09-20"
+    }
+  ]
+}

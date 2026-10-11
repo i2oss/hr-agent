@@ -1,0 +1,206 @@
+{
+  "_synthetic": true,
+  "_note": "FICTIONAL mock data for the Ridgeline HR agent demo. No real people.",
+  "pto_balances": [
+    {
+      "employee_id": "E1001",
+      "accrued": 16.67,
+      "used": 7.67,
+      "pending": 0,
+      "carryover": 2,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1002",
+      "accrued": 12.5,
+      "used": 6.0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1003",
+      "accrued": 16.67,
+      "used": 8.5,
+      "pending": 0,
+      "carryover": 1,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1004",
+      "accrued": 12.5,
+      "used": 10.0,
+      "pending": 1.0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1005",
+      "accrued": 7.5,
+      "used": 4.0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1006",
+      "accrued": 4.17,
+      "used": 2.0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1007",
+      "accrued": 0.0,
+      "used": 0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1008",
+      "accrued": 16.67,
+      "used": 8.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1009",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1010",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1011",
+      "accrued": 1.25,
+      "used": 0.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1012",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1013",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1014",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1015",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1016",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1017",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1018",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1019",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1020",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1021",
+      "accrued": 20.83,
+      "used": 10.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1022",
+      "accrued": 16.67,
+      "used": 8.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1023",
+      "accrued": 12.5,
+      "used": 6.0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1024",
+      "accrued": 16.67,
+      "used": 8.5,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    },
+    {
+      "employee_id": "E1025",
+      "accrued": 12.5,
+      "used": 6.0,
+      "pending": 0,
+      "carryover": 0,
+      "as_of": "2026-11-02"
+    }
+  ]
+}

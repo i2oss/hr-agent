@@ -1,0 +1,339 @@
+<title>Ridgeline HR Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: banner, toolbar, then chat column + Trace panel (side) or Trace folded under each answer (inline). */
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --sunk:#f6f8fa; --ink:#18212b; --muted:#5a6775; --line:#d6dce3;
+  --accent:#1f5d8a; --accent-soft:#e3eef7;
+  --hr:#6a4380; --hr-soft:#f1e9f5;
+  --warn:#8a5300; --warn-soft:#fbf0dc;
+  --ok:#2c6a3c; --ok-soft:#e4f2e7;
+  --bad:#9e3326; --bad-soft:#f8e5e1;
+  --banner:#18212b; --banner-ink:#f2f4f6;
+  --f-ui:"IBM Plex Sans",system-ui,sans-serif;
+  --f-label:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1318; --surface:#161d25; --sunk:#111820; --ink:#e2e7ec; --muted:#93a0ae; --line:#2a3542;
+  --accent:#86b8de; --accent-soft:#1a2c3b; --hr:#c7a2dc; --hr-soft:#2a2033;
+  --warn:#e6b45e; --warn-soft:#2e2414; --ok:#8fcf9d; --ok-soft:#16281b; --bad:#ec9a8c; --bad-soft:#331b17;
+  --banner:#e2e7ec; --banner-ink:#0e1318; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1318; --surface:#161d25; --sunk:#111820; --ink:#e2e7ec; --muted:#93a0ae; --line:#2a3542;
+  --accent:#86b8de; --accent-soft:#1a2c3b; --hr:#c7a2dc; --hr-soft:#2a2033;
+  --warn:#e6b45e; --warn-soft:#2e2414; --ok:#8fcf9d; --ok-soft:#16281b; --bad:#ec9a8c; --bad-soft:#331b17;
+  --banner:#e2e7ec; --banner-ink:#0e1318; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-ui)}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.banner{background:var(--banner);color:var(--banner-ink);font:500 13px/1.4 var(--f-label);letter-spacing:.04em;padding:8px 16px;text-align:center;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.banner b{letter-spacing:.1em}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:16px 40px;display:grid;gap:16px}
+.bar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;justify-content:space-between}
+.brand h1{margin:0;font:600 20px/1.2 var(--f-ui)}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.field{display:grid;gap:4px}
+.lbl{font:600 11px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+select{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 10px;min-width:0;max-width:100%}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:none;padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.proto{font:500 12px/1.4 var(--f-label);letter-spacing:.03em;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:6px 10px}
+
+.main{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,420px);align-items:start}
+.main.inline{grid-template-columns:minmax(0,1fr)}
+.main.inline .side{display:none}
+@media (max-width:900px){.main{grid-template-columns:minmax(0,1fr)}}
+
+.chat{display:grid;gap:14px;min-width:0}
+.msg{max-width:720px;min-width:0}
+.user{justify-self:end;background:var(--accent);color:var(--surface);padding:10px 14px;border-radius:14px 14px 4px 14px}
+.user .who{font:500 11px/1 var(--f-label);letter-spacing:.06em;opacity:.8;margin-bottom:4px;text-transform:uppercase}
+.bot{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:14px}
+.bot h3{margin:0;font:600 11px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lead{margin:0;font-weight:500}
+.facts,.recs{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.facts li{padding-left:12px;border-left:2px solid var(--accent)}
+.recs li{padding-left:12px;border-left:2px dashed var(--muted);color:var(--ink)}
+.chip{display:inline-block;font:500 12px/1 var(--f-mono);background:var(--accent-soft);color:var(--accent);border:1px solid transparent;border-radius:4px;padding:3px 6px;margin-left:4px;cursor:pointer;white-space:nowrap}
+.chip:hover,.chip[aria-expanded="true"]{border-color:var(--accent)}
+.cite{margin-top:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:13px}
+.cite .src{font:500 12px/1.3 var(--f-label);color:var(--muted);letter-spacing:.02em;margin-bottom:4px}
+.cite q{font-style:italic}
+.note{border-radius:6px;padding:10px 12px;font-size:14px;display:grid;gap:2px}
+.note .lbl{color:inherit}
+.n-esc{background:var(--warn-soft);color:var(--warn)}
+.n-clar{background:var(--accent-soft);color:var(--accent)}
+.n-unv{background:var(--bad-soft);color:var(--bad)}
+.n-ok{background:var(--ok-soft);color:var(--ok)}
+.n-esc p,.n-clar p,.n-unv p,.n-ok p{margin:0;color:var(--ink)}
+
+.confirm{border:1.5px solid var(--hr);border-radius:10px;background:var(--surface);padding:16px;display:grid;gap:12px;max-width:720px}
+.confirm .head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pause{font:600 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--hr);background:var(--hr-soft);padding:5px 8px;border-radius:4px}
+.confirm .tool{font:500 13px var(--f-mono);color:var(--muted)}
+.preview{background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:12px;display:grid;gap:6px;font-size:14px;min-width:0}
+.preview dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.preview dt{font:600 11px/1.6 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.preview dd{margin:0;overflow-wrap:anywhere}
+.preview .body{white-space:pre-wrap;border-top:1px solid var(--line);padding-top:8px;margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 16px;cursor:pointer;font-weight:500}
+.btn.primary{background:var(--hr);border-color:var(--hr);color:var(--surface)}
+.btn:disabled{opacity:.5;cursor:default}
+.hint{font-size:13px;color:var(--muted)}
+.result{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.mockid{font:600 14px var(--f-mono);background:var(--hr-soft);color:var(--hr);padding:4px 8px;border-radius:4px}
+.tag{font:600 11px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:3px 5px;color:var(--hr)}
+
+/* Trace */
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 48px);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:10px;max-height:calc(100vh - 72px);overflow:auto;min-width:0}
+@media (max-width:900px){.side{position:static;max-height:none}}
+.side header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.side h2{margin:0;font:600 15px var(--f-ui)}
+.trace{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:step}
+.step{border:1px solid var(--line);border-radius:6px;background:var(--sunk);font-size:13px;min-width:0}
+.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:22px auto minmax(0,1fr) auto;gap:8px;align-items:center;padding:7px 10px}
+.step summary::-webkit-details-marker{display:none}
+.num{font:500 11px var(--f-mono);color:var(--muted);text-align:right}
+.srv{font:600 10px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:3px 5px;border-radius:3px}
+.srv.policy{background:var(--accent-soft);color:var(--accent)}
+.srv.hr{background:var(--hr-soft);color:var(--hr)}
+.srv.loop{background:var(--line);color:var(--ink)}
+.srv.esc{background:var(--warn-soft);color:var(--warn)}
+.srv.cut{background:var(--bad-soft);color:var(--bad)}
+.call{font:500 12.5px var(--f-mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.ms{font:400 11px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.sum{padding:0 10px 8px 40px;color:var(--muted);font-size:12.5px}
+.sum b{color:var(--ink);font-weight:500}
+.step pre{margin:0 10px 10px 40px;font:12px/1.45 var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:8px;overflow-x:auto;white-space:pre}
+.step.err{border-color:var(--bad)}
+.step.pause{border-color:var(--hr)}
+.srcs{display:flex;flex-wrap:wrap;gap:4px;padding:0 10px 8px 40px}
+.srcs span{font:500 11px var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:2px 5px}
+.tfoot{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;display:flex;gap:12px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.inline-trace{border-top:1px solid var(--line);padding-top:10px}
+.inline-trace>summary{cursor:pointer;font:600 12px var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.inline-trace .trace{margin-top:8px}
+.composer{display:flex;gap:8px;max-width:720px}
+.composer input{flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 12px;font:inherit;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.fade{animation:fade .25s ease-out}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+<div class="banner" role="note"><b>FICTIONAL</b> · Ridgeline is fictional. Demo only; not HR or legal advice.</div>
+
+<div class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <h1>Ridgeline HR Assistant</h1>
+      <p>Policy answers with citations · Mock Actions only after you confirm · Demo date Mon 2 Nov 2026</p>
+    </div>
+    <div class="controls">
+      <div class="field"><label class="lbl" for="who">Speaking as</label>
+        <select id="who"></select></div>
+      <div class="field"><label class="lbl" for="scn">Prototype scenario</label>
+        <select id="scn"></select></div>
+      <div class="field"><span class="lbl" id="layout-l">Trace layout</span>
+        <div class="seg" role="group" aria-labelledby="layout-l">
+          <button id="lay-side" aria-pressed="true">Side panel</button>
+          <button id="lay-inline" aria-pressed="false">Inline</button>
+        </div></div>
+    </div>
+  </div>
+  <div class="proto">Prototype: a scripted replay with no backend. Snippets are placeholders until the corpus prose is written.</div>
+
+  <div class="main" id="main">
+    <section class="chat" id="chat" aria-label="Conversation"></section>
+    <aside class="side" id="side" aria-label="Trace">
+      <header><h2>Trace</h2><span class="hint" id="side-meta"></span></header>
+      <ol class="trace" id="side-trace"></ol>
+      <div class="tfoot" id="side-foot"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const PERSONAS=[["","(not set)"],["E1001","Maya Chen · Structural Engineer II · Denver"],["E1002","Daniel Okafor · Project Engineer · Austin"],["E1003","Luis Ortega · Site Engineer · Denver"],["E1004","Priya Raman · CAD Technician · Seattle"],["E1005","Grace Liu · Drafter (part-time) · Seattle"],["E1006","Owen Brooks · Engineering Intern · Denver"],["E1007","Sam Rivera · Contract Inspector · Austin"],["E1008","Chloé Tremblay · Bridge Engineer · Toronto"],["E1009","Marcus Reed · Engineering Director · Colorado"],["E1010","Aisha Bello · Senior Engineer · Denver"],["E1011","Noah Fischer · Geotechnical Engineer · Austin"]];
+
+const DOCS={"RSE-PTO-01":"Paid Time Off Policy","RSE-HOL-01":"Holiday Calendar & Observance","RSE-APR-01":"Approval Matrix","RSE-RW-01":"Remote & Hybrid Work Policy","RSE-LOC-01":"Work Location, Travel & Cross-Border Work Guidelines","RSE-SEC-01":"Information Security & Acceptable Use"};
+// Citation: [doc, §, heading, snippet]
+const C={
+ hol2:["RSE-HOL-01","2","2026 US company holidays","Wednesday, November 11, 2026 — Veterans Day (US offices)."],
+ pto32:["RSE-PTO-01","3.2","Company holidays during PTO","A company holiday that falls within approved PTO is not charged against your PTO balance."],
+ pto42:["RSE-PTO-01","4.2","Notice","Requests of more than 3 PTO days require at least two weeks' notice; shorter requests should be made as early as practical."],
+ pto43:["RSE-PTO-01","4.3","Approvers","Your manager approves PTO requests of up to 10 consecutive days."],
+ pto51:["RSE-PTO-01","5.1","Carryover cap","Up to 5 unused PTO days carry over into the next calendar year."],
+ pto51b:["RSE-PTO-01","5.1","Carryover cap","Unused days above the cap are forfeited on December 31."],
+ loc31:["RSE-LOC-01","3.1","Cross-Border Review","Any work performed from a country other than your country of employment requires HR review before it begins."],
+ loc32:["RSE-LOC-01","3.2","Annual limit","Temporary work from abroad is limited to 20 working days per calendar year unless HR grants an exception."],
+ loc33:["RSE-LOC-01","3.3","Notice","Submit cross-border requests at least 28 calendar days before the first day abroad."],
+ sec54:["RSE-SEC-01","5.4","Working abroad","Notify IT Security at least 5 working days before working from outside your country of employment."],
+ sec51:["RSE-SEC-01","5.1","Remote access","Connect through the company VPN at all times when working outside a Ridgeline office."],
+ loc42:["RSE-LOC-01","4.2","How to request","Open an HR ticket with your dates, destination country and a short work plan."]
+};
+
+const SCENARIOS={
+ W01:{label:"W01 · PTO Request Guidance",who:"E1001",prompt:"Can I take Wednesday to Friday off next week?",
+  turn:{
+   lead:"Yes. Wed–Fri, Nov 11–13 uses 2 PTO days, and your manager approves it.",
+   facts:[["Wednesday, November 11 is Veterans Day, a company holiday, so it isn't charged to your balance.",["hol2","pto32"]],
+          ["You have 11 PTO days available as of Nov 2.",[],"check_pto_balance"],
+          ["At 2 days, the two-week notice rule doesn't apply; request as early as practical.",["pto42"]],
+          ["Your manager, Jordan Lee, approves requests of up to 10 consecutive days.",["pto43"]]],
+   recs:["Submit the request in the HR Portal before Nov 11.","I can draft a message to Jordan Lee with the dates and the policy references. It is only sent after you confirm."],
+   trace:[
+    ["hr","lookup_employee_profile",{employee_id:"E1001"},"<b>Maya Chen</b>, FT exempt, office-hybrid, Denver · manager <b>E1020 Jordan Lee</b>",{employee_id:"E1001",name:"Maya Chen",employment_type:"full_time_exempt",work_arrangement:"office_hybrid",office_id:"DEN",manager_id:"E1020",hire_date:"2022-08-15"},212],
+    ["hr","check_pto_balance",{employee_id:"E1001"},"accrued 20 · used 9 · pending 0 · <b>available 11</b>",{accrued:20,used:9,pending:0,carryover:0,available:11,as_of:"2026-11-02"},188],
+    ["policy","search_policy",{query:"PTO request notice and approval",doc_ids:["RSE-PTO-01","RSE-HOL-01","RSE-APR-01"]},"5 passages · top score 0.82",null,341,["RSE-PTO-01 §4.2","RSE-PTO-01 §4.3","RSE-HOL-01 §2","RSE-PTO-01 §3.2","RSE-APR-01 §2"]],
+    ["hr","check_policy_compliance",{employee_id:"E1001",request_type:"pto_request",details:{start_date:"2026-11-11",end_date:"2026-11-13"}},"<b>allowed_with_approval</b> · approver manager · 2 working days (Nov 11 holiday excluded)",{outcome:"allowed_with_approval",approver:"manager",computed:{working_days:2,holidays_excluded:["2026-11-11"]},checks:[{rule:"PTO-BALANCE",passed:true,citation:"RSE-PTO-01 §3.3"},{rule:"PTO-NOTICE",passed:true,detail:"2 days ≤ 3-day threshold",citation:"RSE-PTO-01 §4.2"},{rule:"PTO-APPROVER",passed:true,detail:"≤ 10 consecutive days",citation:"RSE-PTO-01 §4.3"}]},96],
+    ["loop","citation check",null,"5 Policy Facts · <b>all citations match passages returned this turn</b>",null,1]
+   ],
+   pending:{tool:"draft_manager_message",kind:"Manager message (draft)",
+    fields:[["To","Jordan Lee (E1020)"],["From","Maya Chen (E1001)"],["Subject","PTO request: Wed Nov 11 – Fri Nov 13"],["Citations","RSE-PTO-01 §4.2, §4.3 · RSE-HOL-01 §2"]],
+    body:"Hi Jordan,\n\nI'd like to take PTO from Thursday Nov 12 to Friday Nov 13 (Wednesday Nov 11 is Veterans Day). That's 2 PTO days; I have 11 available. I'll submit the request in the HR Portal today.\n\nThanks,\nMaya",
+    result:["MSG-MOCK-0007","Draft saved for this session. Nothing was sent to Jordan."],
+    resultOut:{message_id:"MSG-MOCK-0007",status:"drafted",mock:true}}
+  }},
+ W02:{label:"W02 · Remote-Work Eligibility",who:"E1002",prompt:"Can I work from Lisbon for 6 weeks starting January 4?",
+  turn:{
+   lead:"Not on your manager's approval alone. This needs an HR review.",
+   facts:[["Working from another country is always reviewed by HR before it starts.",["loc31"]],
+          ["Jan 4 – Feb 12 is 30 working days, over the 20-working-day annual limit, so it needs an HR exception.",["loc32"]],
+          ["You're asking more than 28 days ahead, which meets the notice rule.",["loc33"]],
+          ["Notify IT Security at least 5 working days before you go, and use the VPN at all times.",["sec54","sec51"]]],
+   recs:["Open an HR ticket with your dates, country and a short work plan.","I can create that ticket now with these citations attached. It is only created after you confirm."],
+   escalation:["needs_hr_review","The Compliance Check returned needs_hr_review: cross-border work over the annual limit."],
+   trace:[
+    ["hr","lookup_employee_profile",{employee_id:"E1002"},"<b>Daniel Okafor</b>, FT exempt, office-hybrid, Austin · work_country US",{employee_id:"E1002",name:"Daniel Okafor",employment_type:"full_time_exempt",work_arrangement:"office_hybrid",office_id:"AUS",work_country:"US"},204],
+    ["policy","search_policy",{query:"temporary remote work abroad",doc_ids:["RSE-RW-01","RSE-LOC-01"]},"5 passages · top score 0.79",null,322,["RSE-LOC-01 §3.1","RSE-LOC-01 §3.2","RSE-LOC-01 §3.3","RSE-RW-01 §6.4","RSE-LOC-01 §4.2"]],
+    ["policy","search_policy",{query:"security requirements working abroad",doc_ids:["RSE-SEC-01"]},"5 passages · top score 0.84",null,298,["RSE-SEC-01 §5.4","RSE-SEC-01 §5.1","RSE-SEC-01 §5.2","RSE-SEC-01 §2.1","RSE-SEC-01 §5.3"]],
+    ["hr","check_policy_compliance",{employee_id:"E1002",request_type:"temporary_remote_work",details:{country:"PT",start_date:"2027-01-04",end_date:"2027-02-12"}},"<b>needs_hr_review</b> · approver HR · 30 working days &gt; 20 cap",{outcome:"needs_hr_review",approver:"HR",computed:{working_days:30},checks:[{rule:"XB-REVIEW",passed:false,detail:"cross-border",citation:"RSE-LOC-01 §3.1"},{rule:"XB-ANNUAL-CAP",passed:false,detail:"30 > 20 working days",citation:"RSE-LOC-01 §3.2"},{rule:"XB-NOTICE",passed:true,detail:"63 days ahead ≥ 28",citation:"RSE-LOC-01 §3.3"}]},101],
+    ["loop","citation check",null,"6 Policy Facts · <b>all citations match</b>",null,1],
+    ["esc","escalation",null,"trigger <b>needs_hr_review</b> · recommend ticket → Confirm",null,0]
+   ],
+   pending:{tool:"create_mock_hr_ticket",kind:"HR ticket (mock)",
+    fields:[["Category","remote_work"],["Priority","normal"],["Queue","HR · Cross-Border Review"],["Subject","Temporary work from Lisbon, PT: Jan 4 – Feb 12, 2027"],["Citations","RSE-LOC-01 §3.1, §3.2, §4.2 · RSE-SEC-01 §5.4"]],
+    body:"Daniel Okafor (E1002) requests to work from Lisbon, Portugal for 30 working days (Jan 4 – Feb 12, 2027). Exceeds the 20-working-day annual limit; HR exception needed. Work plan: to be attached by the employee. IT Security to be notified ≥ 5 working days before departure.",
+    result:["HR-MOCK-0042","Ticket created in this session's mock store. Routed to HR · Cross-Border Review."],
+    resultOut:{ticket_id:"HR-MOCK-0042",status:"open",queue:"HR · Cross-Border Review",mock:true}}
+  }},
+ CLR:{label:"Edge · Clarification (not set)",who:"",prompt:"How many PTO days do I have left?",
+  turn:{
+   clarification:"Who are you? Choose your name in “Speaking as”, or tell me your employee ID (for example E1001).",
+   facts:[],recs:[],
+   trace:[
+    ["hr","check_pto_balance",{employee_id:null},"<b>MISSING_ARGUMENT</b> · employee_id is required",{isError:true,code:"MISSING_ARGUMENT",message:"employee_id is required",hint:"Ask the user who they are"},44,null,true],
+    ["loop","clarification forced",null,"Speaking as is “(not set)” and an hr tool returned MISSING_ARGUMENT",null,0]
+   ]}},
+ CUT:{label:"Edge · Citation check removed a fact",who:"E1001",prompt:"Do my unused PTO days carry over?",
+  turn:{
+   lead:"Some of them. Up to 5 days carry into 2027.",
+   facts:[["Up to 5 unused PTO days carry over into the next calendar year.",["pto51"]],
+          ["Days above that cap are forfeited on December 31.",["pto51b"]]],
+   unverified:"Some details couldn't be verified, so I left them out. Contact HR if you need them.",
+   recs:["You have 11 days available; using 6 before Dec 31 avoids losing any."],
+   trace:[
+    ["policy","search_policy",{query:"PTO carryover limit year end"},"5 passages · top score 0.81",null,310,["RSE-PTO-01 §5.1","RSE-PTO-01 §5.2","RSE-PTO-01 §2.4","RSE-PTO-01 §3.4","RSE-LV-01 §6"]],
+    ["hr","check_pto_balance",{employee_id:"E1001"},"<b>available 11</b>",{available:11,as_of:"2026-11-02"},180],
+    ["cut","citation check",null,"1 fact cites <b>RSE-PTO-01 §5.4</b>, not returned this turn → retry",{failed:[{text:"Carried-over days must be used by March 31.",cited:"RSE-PTO-01 §5.4"}]},1,null,true],
+    ["cut","citation check (retry)",null,"still unmatched → <b>1 fact removed</b>; user told some details couldn't be verified",{removed:["Carried-over days must be used by March 31. (RSE-PTO-01 §5.4)"]},1,null,true]
+   ]}}
+};
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let layout="side", turns=[];
+try{layout=localStorage.getItem("rl-layout")||"side"}catch(e){}
+
+$("#who").innerHTML=PERSONAS.map(([id,n])=>`<option value="${id}">${id?id+" · ":""}${esc(n)}</option>`).join("");
+$("#scn").innerHTML=Object.entries(SCENARIOS).map(([k,s])=>`<option value="${k}">${esc(s.label)}</option>`).join("");
+
+function chipHTML(keys){return keys.map(k=>{const c=C[k];return `<button class="chip" data-k="${k}" aria-expanded="false">${c[0]} §${c[1]}</button>`}).join("")}
+function stepHTML(st,i){
+  const [srv,name,args,sum,out,ms,srcs,err]=st;
+  const call=args?`${name}(${Object.entries(args).map(([k,v])=>k+"="+(typeof v==="object"&&v!==null?JSON.stringify(v):v)).join(", ")})`:name;
+  const label={policy:"policy",hr:"hr",loop:"agent loop",esc:"escalation",cut:"citation check"}[srv];
+  return `<li><details class="step${err?" err":""}${srv==="pause"?" pause":""}">
+   <summary><span class="num">${i+1}</span><span class="srv ${srv}">${label}</span><span class="call" title="${esc(call)}">${esc(call)}</span><span class="ms">${ms?ms+" ms":""}</span></summary>
+   <div class="sum">${sum}</div>
+   ${srcs?`<div class="srcs">${srcs.map(s=>`<span>${s}</span>`).join("")}</div>`:""}
+   ${args?`<pre>args ${esc(JSON.stringify(args,null,2))}</pre>`:""}
+   ${out?`<pre>output ${esc(JSON.stringify(out,null,2))}</pre>`:""}
+  </details></li>`;
+}
+function traceFoot(steps){
+  const tools=steps.filter(s=>s[0]==="policy"||s[0]==="hr").length;
+  const ms=steps.reduce((a,s)=>a+(s[5]||0),0);
+  return `<span>${tools} tool calls</span><span>${ms} ms in tools</span><span>model: claude-haiku-4-5</span>`;
+}
+
+function render(){
+  const main=$("#main"); main.classList.toggle("inline",layout==="inline");
+  $("#lay-side").setAttribute("aria-pressed",layout==="side"); $("#lay-inline").setAttribute("aria-pressed",layout==="inline");
+  const chat=$("#chat"); chat.innerHTML="";
+  turns.forEach((t,ti)=>{
+    if(t.user){const u=document.createElement("div");u.className="msg user";u.innerHTML=`<div class="who">${t.whoName}</div>${esc(t.user)}`;chat.append(u);}
+    const b=document.createElement("div"); b.className="msg bot fade";
+    let h="";
+    if(t.lead) h+=`<p class="lead">${esc(t.lead)}</p>`;
+    if(t.clarification) h+=`<div class="note n-clar"><span class="lbl">Clarification</span><p>${esc(t.clarification)}</p></div>`;
+    if(t.facts&&t.facts.length) h+=`<div><h3>What the policy says</h3><ul class="facts" style="margin-top:8px">${t.facts.map((f,fi)=>`<li data-f="${ti}-${fi}">${esc(f[0])}${chipHTML(f[1])}${f[2]?` <span class="chip" style="cursor:default;background:var(--hr-soft);color:var(--hr)" title="From your HR record, not a policy">${f[2]}</span>`:""}</li>`).join("")}</ul></div>`;
+    if(t.unverified) h+=`<div class="note n-unv"><span class="lbl">Not verified</span><p>${esc(t.unverified)}</p></div>`;
+    if(t.escalation) h+=`<div class="note n-esc"><span class="lbl">Escalation · ${t.escalation[0]}</span><p>${esc(t.escalation[1])}</p></div>`;
+    if(t.recs&&t.recs.length) h+=`<div><h3>Suggested next steps</h3><ul class="recs" style="margin-top:8px">${t.recs.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></div>`;
+    if(t.done) h+=`<div class="note n-ok"><span class="lbl">Mock Action done</span><div class="result"><span class="mockid">${t.done[0]}</span><span class="tag">mock</span></div><p>${esc(t.done[1])}</p></div>`;
+    if(t.declined) h+=`<p class="lead">OK, I didn't ${t.declined}. Nothing was changed.</p>`;
+    if(layout==="inline") h+=`<details class="inline-trace"${ti===turns.length-1?" open":""}><summary>Trace · ${t.trace.length} steps</summary><ol class="trace">${t.trace.map(stepHTML).join("")}</ol><div class="tfoot" style="margin-top:8px">${traceFoot(t.trace)}</div></details>`;
+    b.innerHTML=h; chat.append(b);
+    if(t.pending&&!t.resolved){
+      const p=t.pending, c=document.createElement("div"); c.className="confirm fade";
+      c.innerHTML=`<div class="head"><span class="pause">⏸ Needs your confirmation</span><span class="tool">${p.tool}</span></div>
+       <div class="preview"><strong>${p.kind}</strong><dl>${p.fields.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl><div class="body">${esc(p.body)}</div></div>
+       <div class="actions"><button class="btn primary" id="ok">Confirm</button><button class="btn" id="no">Cancel</button><span class="hint">Mock only. Sending a new message cancels this.</span></div>`;
+      chat.append(c);
+      c.querySelector("#ok").onclick=()=>decide(t,"confirm");
+      c.querySelector("#no").onclick=()=>decide(t,"cancel");
+    }
+  });
+  const comp=document.createElement("div"); comp.className="composer";
+  comp.innerHTML=`<input id="msg" aria-label="Message" value="Type a message… (disabled in the prototype)" disabled><button class="btn" disabled>Send</button>`;
+  chat.append(comp);
+  const last=turns[turns.length-1];
+  $("#side-trace").innerHTML=turns.flatMap(t=>t.trace).map(stepHTML).join("");
+  $("#side-foot").innerHTML=traceFoot(turns.flatMap(t=>t.trace));
+  $("#side-meta").textContent=last?`${turns.length} turn${turns.length>1?"s":""} · this session`:"";
+  chat.querySelectorAll("button.chip").forEach(ch=>ch.onclick=()=>toggleCite(ch));
+}
+function toggleCite(ch){
+  const li=ch.closest("li"), open=ch.getAttribute("aria-expanded")==="true";
+  li.querySelectorAll(".cite").forEach(x=>x.remove());
+  li.querySelectorAll("button.chip").forEach(x=>x.setAttribute("aria-expanded","false"));
+  if(open) return;
+  const c=C[ch.dataset.k]; ch.setAttribute("aria-expanded","true");
+  const d=document.createElement("div"); d.className="cite";
+  d.innerHTML=`<div class="src">${c[0]} · ${esc(DOCS[c[0]])} · §${c[1]} ${esc(c[2])}</div><q>${esc(c[3])}</q>`;
+  li.append(d);
+}
+function decide(t,decision){
+  t.resolved=true; const p=t.pending;
+  const step=["loop",decision==="confirm"?"⏸ confirmation: confirmed":"⏸ confirmation: cancelled",null,decision==="confirm"?`POST /chat/actions/act_7f3c {decision:"confirm"} → loop resumes`:`user declined → told to the model; ${p.tool} not called`,null,0];
+  const trace=[step];
+  if(decision==="confirm") trace.push(["hr",p.tool,{employee_id:t.who,"…":"as previewed"},`<b>${p.result[0]}</b> · mock:true`,p.resultOut,140]);
+  turns.push(decision==="confirm"?{done:p.result,trace}:{declined:p.tool==="create_mock_hr_ticket"?"create the ticket":"draft the message",trace});
+  render();
+}
+function load(key){
+  const s=SCENARIOS[key]; $("#who").value=s.who;
+  const name=PERSONAS.find(p=>p[0]===s.who)[1].split(" · ")[0];
+  turns=[Object.assign({user:s.prompt,whoName:s.who?`${name} · ${s.who}`:"(not set)",who:s.who},JSON.parse(JSON.stringify(s.turn)))];
+  render();
+}
+$("#scn").onchange=e=>load(e.target.value);
+$("#lay-side").onclick=()=>{layout="side";try{localStorage.setItem("rl-layout",layout)}catch(e){}render()};
+$("#lay-inline").onclick=()=>{layout="inline";try{localStorage.setItem("rl-layout",layout)}catch(e){}render()};
+load("W01");
+</script>

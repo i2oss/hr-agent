@@ -204,4 +204,4 @@ def make_llm(settings: Settings) -> LLM:
         return AnthropicLLM(settings.llm_model, key)
     if settings.llm_provider == "openai_compat":
         return OpenAICompatLLM(settings.llm_model, key, settings.llm_base_url)
-    return FakeLLM(model=settings.llm_model)
+    return FakeLLM()

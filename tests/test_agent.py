@@ -248,3 +248,12 @@ def test_daily_cap(limited):
     c, _, _ = client_for(limited)
     with c:
         assert [chat(c, "hi").status_code for _ in range(2)] == [200, 429]
+
+
+def test_chat_page_is_served_at_root(settings):
+    c, _, _ = client_for(settings)
+    with c:
+        r = c.get("/")
+        js = c.get("/app.js")
+    assert r.status_code == 200 and "FICTIONAL" in r.text and "Speaking as" in r.text
+    assert js.status_code == 200 and "chat/actions/" in js.text

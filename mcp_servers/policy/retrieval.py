@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 import sqlite3
+import threading
 from collections.abc import Callable, Hashable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -71,6 +72,7 @@ class PolicyIndex:
         self._by_id = {r.chunk_id: r for r in rows}
         self._vectors = vectors
         self._db = db
+        self._lock = threading.Lock()
         self._embedder = embedder
         self.corpus_hash = meta["corpus_hash"]
         self.embedding_model = meta["embedding_model"]
@@ -103,10 +105,11 @@ class PolicyIndex:
         if not terms:
             return []
         match = " OR ".join(f'"{t}"' for t in terms)
-        ids = [cid for (cid,) in self._db.execute(
-            "SELECT chunk_id FROM chunks_fts WHERE chunks_fts MATCH ? ORDER BY bm25(chunks_fts), chunk_id",
-            (match,),
-        )]
+        with self._lock:  # one shared in-memory connection, searched from worker threads
+            ids = [cid for (cid,) in self._db.execute(
+                "SELECT chunk_id FROM chunks_fts WHERE chunks_fts MATCH ? ORDER BY bm25(chunks_fts), chunk_id",
+                (match,),
+            )]
         return [i for i in ids if allowed is None or i in allowed][:CANDIDATES]
 
     def search(self, query: str, *, k: int, mode: Literal["hybrid", "vector"], threshold: float,

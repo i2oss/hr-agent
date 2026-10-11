@@ -35,9 +35,10 @@ class Limits:
 
     @staticmethod
     def client_ip(request: Request) -> str:
+        # Render's proxy appends the address it saw, so the rightmost entry is the one a client can't forge.
         fwd = request.headers.get("x-forwarded-for")
         if fwd:
-            return fwd.split(",")[0].strip()
+            return fwd.split(",")[-1].strip()
         return request.client.host if request.client else "unknown"
 
     def check_message(self, request: Request, message: str, session_turns: int) -> None:
@@ -57,6 +58,8 @@ class Limits:
                 self._day, self._today = today, 0
             if self._today >= self.s.daily_message_cap:
                 raise HTTPException(429, LIMIT_MESSAGE)
+            for ip in [ip for ip, old in self._per_ip.items() if old and now - old[-1] > WINDOW_S]:
+                del self._per_ip[ip]  # forget idle addresses
             q = self._per_ip[self.client_ip(request)]
             while q and now - q[0] > WINDOW_S:
                 q.popleft()

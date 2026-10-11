@@ -32,6 +32,7 @@ class ToolCall:
     id: str
     name: str
     input: dict[str, Any]
+    error: str | None = None  # set when the provider's arguments weren't valid JSON
 
 
 @dataclass
@@ -47,7 +48,7 @@ class LLM(Protocol):
     model: str
 
     async def complete(self, system: Sequence[str], messages: list[Message], tools: list[ToolSpec],
-                       answer_schema: dict[str, Any]) -> LLMResponse: ...
+                       answer_schema: dict[str, Any], allow_tool_calls: bool = True) -> LLMResponse: ...
 
 
 # ---------------------------------------------------------------- Anthropic
@@ -67,7 +68,7 @@ class AnthropicLLM:
                  "strict": True} for t in tools]
 
     async def complete(self, system: Sequence[str], messages: list[Message], tools: list[ToolSpec],
-                       answer_schema: dict[str, Any]) -> LLMResponse:
+                       answer_schema: dict[str, Any], allow_tool_calls: bool = True) -> LLMResponse:
         import anthropic
 
         # The first system block is stable across sessions and cached together with the tools; the
@@ -78,6 +79,8 @@ class AnthropicLLM:
                                   "system": sys_blocks, "messages": messages}
         if tools:
             kwargs["tools"] = self._tools(tools)
+            if not allow_tool_calls:
+                kwargs["tool_choice"] = {"type": "none"}
         if self._structured:
             kwargs["output_config"] = {"format": {"type": "json_schema", "schema": answer_schema}}
         try:
@@ -125,8 +128,18 @@ class OpenAICompatLLM:
                     out.append({"role": "user", "content": "\n".join(texts)})
         return out
 
+    @staticmethod
+    def _call(call_id: str, name: str, arguments: str | None) -> ToolCall:
+        try:
+            args = json.loads(arguments or "{}")
+            if isinstance(args, dict):
+                return ToolCall(call_id, name, args)
+        except ValueError:
+            pass
+        return ToolCall(call_id, name, {}, error=f"the arguments for {name} were not a valid JSON object")
+
     async def complete(self, system: Sequence[str], messages: list[Message], tools: list[ToolSpec],
-                       answer_schema: dict[str, Any]) -> LLMResponse:
+                       answer_schema: dict[str, Any], allow_tool_calls: bool = True) -> LLMResponse:
         sys = [*system, "When you give your final answer, reply with only a JSON object matching this schema:\n"
                + json.dumps(answer_schema)]
         kwargs: dict[str, Any] = {"model": self.model, "temperature": 0, "max_tokens": MAX_TOKENS,
@@ -134,9 +147,11 @@ class OpenAICompatLLM:
         if tools:
             kwargs["tools"] = [{"type": "function", "function": {"name": t.name, "description": t.description,
                                                                  "parameters": t.input_schema}} for t in tools]
+            if not allow_tool_calls:
+                kwargs["tool_choice"] = "none"
         r = await self._client.chat.completions.create(**kwargs)
         msg = r.choices[0].message
-        calls = [ToolCall(c.id, c.function.name, json.loads(c.function.arguments or "{}"))
+        calls = [self._call(c.id, c.function.name, c.function.arguments)
                  for c in (msg.tool_calls or []) if c.type == "function"]
         usage = r.usage
         return LLMResponse(msg.content or "", calls, usage.prompt_tokens if usage else 0,
@@ -175,9 +190,11 @@ class FakeLLM:
         self._ids = itertools.count(1)
 
     async def complete(self, system: Sequence[str], messages: list[Message], tools: list[ToolSpec],
-                       answer_schema: dict[str, Any]) -> LLMResponse:
+                       answer_schema: dict[str, Any], allow_tool_calls: bool = True) -> LLMResponse:
+        offered = len(tools)
+        tools = tools if allow_tool_calls else []
         prompt, index = last_prompt(messages)
-        self.calls.append({"prompt": prompt, "index": index, "tools": [t.name for t in tools],
+        self.calls.append({"prompt": prompt, "index": index, "tools": [t.name for t in tools], "offered": offered,
                            "last": messages[-1] if messages else None})
         script = self.scripts.get(prompt)
         if script is None:

@@ -29,6 +29,9 @@ REGIONS = {"COLORADO": "CO", "TEXAS": "TX", "WASHINGTON": "WA", "OREGON": "OR", 
            "NEW MEXICO": "NM", "UTAH": "UT", "IDAHO": "ID", "FLORIDA": "FL", "ILLINOIS": "IL"}
 
 
+EXPENSE_CATEGORIES = ("meals", "lodging", "airfare", "mileage", "entertainment", "ppe", "other")
+
+
 class Check(BaseModel):
     rule: str
     passed: bool
@@ -76,8 +79,12 @@ class ComplianceChecker:
         doc_id, section = self.cites[rule].split(" §")
         return Check(rule=rule, passed=passed, detail=detail, citation=Citation(doc_id=doc_id, section=section))
 
+    def calendar(self, emp: Employee) -> str:
+        """US or CA: the home office's holiday calendar, from the facts sheet (RSE-HOL-01 §1.1)."""
+        return str(next(o["holiday_calendar"] for o in self.f["offices"] if o["id"] == emp.office_id))
+
     def holidays(self, emp: Employee) -> dict[dt.date, str]:
-        cal = next(o["holiday_calendar"] for o in self.f["offices"] if o["id"] == emp.office_id).lower()
+        cal = self.calendar(emp).lower()
         return {h["date"]: h["name"] for year in self.f["holidays"][cal].values() if isinstance(year, list)
                 for h in year}
 
@@ -131,7 +138,7 @@ class ComplianceChecker:
         hol_text = ", ".join(f"{h['name']} ({h['date']})" for h in excluded) or "none"
         checks.append(self._check("PTO-DAYS", True, f"{days} PTO day(s); company holidays excluded: {hol_text}."))
         computed: dict[str, Any] = {"working_days": days, "holidays_excluded": excluded,
-                                    "calendar": "CA" if emp.office_id == "TOR" else "US"}
+                                    "calendar": self.calendar(emp)}
         if not eligible:
             return ComplianceResult(outcome="not_allowed", approver=None, checks=checks, computed=computed)
 
@@ -256,9 +263,9 @@ class ComplianceChecker:
 
     def _expense(self, emp: Employee, details: dict[str, Any]) -> ComplianceResult:
         category = str(details.get("category") or "").lower()
-        if not category:
-            raise _missing("details.category is required.",
-                           "One of meals, lodging, airfare, mileage, entertainment, ppe, other.")
+        if category not in EXPENSE_CATEGORIES:
+            raise _missing(f"details.category {category!r} is not a known expense category.",
+                           f"Use one of: {', '.join(EXPENSE_CATEGORIES)}.")
         try:
             amount = float(details["amount"])
         except (KeyError, TypeError, ValueError):

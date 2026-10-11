@@ -59,7 +59,7 @@ def parse_answer(text: str) -> tuple[FinalAnswer | None, str | None]:
     fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", raw, re.S)
     if fenced:
         raw = fenced.group(1)
-    elif not raw.startswith("{") and "{" in raw:
+    elif not raw.startswith("{") and "{" in raw and "}" in raw:
         raw = raw[raw.index("{"): raw.rindex("}") + 1]
     try:
         data = json.loads(raw)
@@ -111,7 +111,8 @@ class AgentLoop:
         self.answer_schema = model_facing_schema()
 
     async def ensure_tools(self) -> None:
-        if not self.hub.tools:
+        """Discover tools, and re-discover while any server is missing (e.g. it was down at first contact)."""
+        if {t.server for t in self.hub.tools.values()} != set(self.hub.targets):
             await self.hub.discover()
 
     def _system(self, session: Session) -> list[str]:
@@ -126,6 +127,21 @@ class AgentLoop:
 
     async def chat(self, session: Session, message: str) -> TurnResult:
         await self.ensure_tools()
+        snapshot = (len(session.history), session.pending, session.turns)
+        try:
+            return await self._chat(session, message)
+        except BaseException:
+            self._rollback(session, snapshot)
+            raise
+
+    @staticmethod
+    def _rollback(session: Session, snapshot: tuple[int, PendingAction | None, int]) -> None:
+        """Keep history well-formed after a failure: no dangling tool_use without its tool_result."""
+        length, pending, turns = snapshot
+        del session.history[length:]
+        session.pending, session.turns = pending, turns
+
+    async def _chat(self, session: Session, message: str) -> TurnResult:
         session.turns += 1
         ctx = TurnContext(turn=session.turns, started=time.perf_counter())
         notes: list[str] = []
@@ -141,6 +157,14 @@ class AgentLoop:
 
     async def decide(self, session: Session, decision: str) -> TurnResult:
         await self.ensure_tools()
+        snapshot = (len(session.history), session.pending, session.turns)
+        try:
+            return await self._decide(session, decision)
+        except BaseException:
+            self._rollback(session, snapshot)
+            raise
+
+    async def _decide(self, session: Session, decision: str) -> TurnResult:
         assert session.pending is not None
         p = session.pending
         session.pending = None
@@ -178,9 +202,11 @@ class AgentLoop:
     # ------------------------------------------------------------ the loop
 
     async def _llm(self, session: Session, ctx: TurnContext, tools_on: bool) -> LLMResponse:
-        tools = list(self.hub.tools.values()) if tools_on else []
+        # Tool definitions are always sent (the history may hold tool_use blocks); tools_on only says
+        # whether the model may call one now.
         t0 = time.perf_counter()
-        r = await self.llm.complete(self._system(session), session.history, tools, self.answer_schema)
+        r = await self.llm.complete(self._system(session), session.history, list(self.hub.tools.values()),
+                                    self.answer_schema, allow_tool_calls=tools_on)
         ms = int((time.perf_counter() - t0) * 1000)
         what = (f"→ {len(r.tool_calls)} tool call(s): {', '.join(c.name for c in r.tool_calls)}" if r.tool_calls
                 else "→ answer")
@@ -233,8 +259,9 @@ class AgentLoop:
         clarify = False
         for call in resp.tool_calls:
             spec = self.hub.tools.get(call.name)
-            if spec is None or ctx.tool_calls >= MAX_TOOL_CALLS:
-                why = f"unknown tool {call.name}" if spec is None else f"tool limit ({MAX_TOOL_CALLS}) reached"
+            if spec is None or ctx.tool_calls >= MAX_TOOL_CALLS or call.error:
+                why = (f"unknown tool {call.name}" if spec is None else call.error if call.error
+                       else f"tool limit ({MAX_TOOL_CALLS}) reached")
                 session.trace.add(ctx.turn, "error", why, tool=call.name, args=call.input, status="error")
                 results.append(self._result(call.id, {"error": {"code": "TOOL_ERROR", "message": why}}, True))
                 continue

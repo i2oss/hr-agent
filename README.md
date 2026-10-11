@@ -2,7 +2,20 @@
 
 An agentic HR assistant for a fictional engineering firm: policy RAG with citations, MCP-exposed tools over synthetic employee data, and human-in-the-loop confirmation for anything that looks like an action. Built for Quantic MSAIE *AI Engineering Techniques and Architectures* (Project 3).
 
-> **Status: planning.** The route to a build-ready [SPEC.md](SPEC.md) is being charted as a wayfinder map in this repo's Issues.
+> **Status: building.** [SPEC.md](SPEC.md) is the build plan. Slices 1 and 3–7 (code) are in; the corpus prose is a draft pending review (slice 2), and docs, eval runs and the demo (slices 7 runs, 8, 9) are still to come.
+
+## Quickstart (development)
+
+```sh
+uv sync                                  # Python 3.12 + locked deps into .venv
+cp .env.example .env                     # set LLM_API_KEY, or LLM_PROVIDER=fake for no key
+make run                                 # http://127.0.0.1:8000 (chat page, /health, /config)
+make test                                # pytest: unit, data, MCP, end-to-end with the fake LLM
+make check                               # facts/outlines, Eval Set and corpus checks
+make index                               # rebuild the committed policy index after corpus edits
+uv run python -m evaluation.run --run-id baseline --runs 3   # evals (manual, costs LLM calls)
+uv run python -m evaluation.report       # regenerate the evaluation section
+```
 
 - **Map:** see the issue labelled `wayfinder:map`
 - **Glossary:** [CONTEXT.md](CONTEXT.md)

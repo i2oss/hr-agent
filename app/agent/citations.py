@@ -16,6 +16,7 @@ from dataclasses import dataclass, field
 from app.agent.answer import UNVERIFIED_NOTE, FinalAnswer, PolicyFact
 from mcp_servers.common.models import Passage
 
+MIN_SNIPPET_CHARS = 12  # an empty or one-word "quote" would match any passage
 _QUOTES = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"'})
 
 
@@ -57,6 +58,9 @@ def check_answer(answer: FinalAnswer, passages: Iterable[Passage], tools_ok: set
             texts = by_section.get((c.doc_id, c.section))
             if texts is None:
                 problems.append(f"Fact {i + 1}: {c.doc_id} §{c.section} wasn't returned by a policy tool this turn.")
+            elif len(normalise(c.snippet)) < MIN_SNIPPET_CHARS:
+                problems.append(f"Fact {i + 1}: the snippet for {c.doc_id} §{c.section} is too short to verify; "
+                                "quote a full phrase.")
             elif not any(normalise(c.snippet) in t for t in texts):
                 problems.append(f"Fact {i + 1}: the snippet for {c.doc_id} §{c.section} is not a verbatim quote "
                                 f"from that passage: {c.snippet!r}.")

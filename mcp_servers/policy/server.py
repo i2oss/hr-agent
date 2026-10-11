@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from typing import TYPE_CHECKING, Annotated, Literal
 
 from mcp.server import MCPServer
@@ -48,8 +49,13 @@ def build_policy_server(index: PolicyIndex, settings: Settings) -> MCPServer:
         Don't use when: you already have the passage this turn, or you need a whole section you can name
         (use get_policy_section). evidence "none" means nothing in the corpus matches: don't state policy.
         """
-        r = index.search(query, k=settings.retrieval_top_k, mode=settings.retrieval_mode,
-                         threshold=settings.evidence_threshold, doc_ids=doc_ids)
+        unknown = sorted(set(doc_ids or []) - set(index.doc_ids))
+        if unknown:
+            raise ToolFailure("UNKNOWN_DOCUMENT_OR_SECTION", f"Unknown doc_ids: {', '.join(unknown)}.",
+                              f"Known documents: {', '.join(index.doc_ids)}. Or omit doc_ids to search everything.")
+        # Embedding the query is CPU (or network, for Voyage): keep it off the single worker's event loop.
+        r = await asyncio.to_thread(index.search, query, k=settings.retrieval_top_k, mode=settings.retrieval_mode,
+                                    threshold=settings.evidence_threshold, doc_ids=doc_ids)
         return SearchResultOut(passages=r.passages, evidence=r.evidence)
 
     @server.tool(annotations=READ_ONLY)

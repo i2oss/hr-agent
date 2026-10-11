@@ -27,7 +27,6 @@ if TYPE_CHECKING:
 
 READ = ToolAnnotations(read_only_hint=True, destructive_hint=False, open_world_hint=False)
 ACTION = ToolAnnotations(read_only_hint=False, destructive_hint=True, idempotent_hint=False, open_world_hint=False)
-INJECTED = ("requester_id", "session_id", "preview_only")
 QUEUES: dict[str, str] = {"pto": "HR Service Desk", "remote_work": "HR · Cross-Border Review",
                           "benefits": "HR · Benefits", "expense": "Finance · Expenses",
                           "conduct": "HR Confidential", "other": "HR Service Desk"}

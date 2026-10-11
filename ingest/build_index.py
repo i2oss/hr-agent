@@ -34,10 +34,11 @@ def chunk_corpus(corpus_dir: Path, count_tokens: TokenCounter) -> list[Chunk]:
     return [replace(c, ord=i) for i, c in enumerate(chunks)]  # ord is global across the corpus
 
 
-def compute_manifest(corpus_dir: Path, count_tokens: TokenCounter, embedding_model: str) -> dict[str, Any]:
+def compute_manifest(corpus_dir: Path, count_tokens: TokenCounter, embedding_model: str,
+                     chunks: list[Chunk] | None = None) -> dict[str, Any]:
     files = {p.name: _sha256(p.read_bytes()) for p in corpus_files(corpus_dir)}
     corpus_hash = _sha256("".join(f"{k}:{v}\n" for k, v in sorted(files.items())).encode())
-    chunks = chunk_corpus(corpus_dir, count_tokens)
+    chunks = chunks if chunks is not None else chunk_corpus(corpus_dir, count_tokens)
     return {
         "chunker_version": CHUNKER_VERSION,
         "embedding_model": embedding_model,
@@ -48,8 +49,8 @@ def compute_manifest(corpus_dir: Path, count_tokens: TokenCounter, embedding_mod
 
 
 def build_index(corpus_dir: Path, out_dir: Path, embedder: Embedder) -> dict[str, Any]:
-    manifest = compute_manifest(corpus_dir, embedder.count_tokens, embedder.model_name)
     chunks = chunk_corpus(corpus_dir, embedder.count_tokens)
+    manifest = compute_manifest(corpus_dir, embedder.count_tokens, embedder.model_name, chunks)
     vectors = embedder.embed_passages([c.embed_text for c in chunks])
 
     out_dir.mkdir(parents=True, exist_ok=True)

@@ -14,9 +14,16 @@ from typing import Any
 
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
+from app.agent.llm import LLM, make_llm
+from app.agent.loop import AgentLoop
 from app.agent.mcp_client import McpHub, ServerName
-from app.config import Settings, get_settings
+from app.agent.sessions import SessionStore
+from app.api.limits import Limits
+from app.api.routes import build_router
+from app.config import ROOT, Settings, get_settings
+from mcp_servers.hr.models import load_mock_data
 from mcp_servers.hr.server import build_hr_server
 from mcp_servers.hr.store import MockActionStore
 from mcp_servers.policy.embeddings import make_embedder
@@ -24,9 +31,10 @@ from mcp_servers.policy.retrieval import PolicyIndex
 from mcp_servers.policy.server import build_policy_server
 
 
-def create_app(settings: Settings | None = None, *, in_memory_mcp: bool = False) -> FastAPI:
+def create_app(settings: Settings | None = None, *, in_memory_mcp: bool = False, llm: LLM | None = None) -> FastAPI:
     """`in_memory_mcp` (tests only) points the agent's MCP client at the server objects instead of
-    the HTTP mounts, because FastAPI's TestClient can't reach its own app over a socket."""
+    the HTTP mounts, because FastAPI's TestClient can't reach its own app over a socket. `llm`
+    (tests only) injects a scripted FakeLLM."""
     settings = settings or get_settings()
     started = time.monotonic()
 
@@ -42,6 +50,8 @@ def create_app(settings: Settings | None = None, *, in_memory_mcp: bool = False)
         {"policy": policy, "hr": hr} if in_memory_mcp else {"policy": settings.policy_url, "hr": settings.hr_url}
     )
     hub = McpHub(targets)
+    loop = AgentLoop(hub, llm or make_llm(settings), settings)
+    sessions = SessionStore()
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -55,6 +65,9 @@ def create_app(settings: Settings | None = None, *, in_memory_mcp: bool = False)
     app.state.settings = settings
     app.state.hub = hub
     app.state.store = store
+    app.state.loop = loop
+    app.state.sessions = sessions
+    app.include_router(build_router(loop, sessions, Limits(settings), load_mock_data(settings.mock_data_dir)))
     app.mount("/mcp/policy", policy_app)
     app.mount("/mcp/hr", hr_app)
 
@@ -73,4 +86,7 @@ def create_app(settings: Settings | None = None, *, in_memory_mcp: bool = False)
         }
         return JSONResponse(body, status_code=200 if ok else 503)
 
+    web = ROOT / "app" / "web"
+    if web.is_dir():
+        app.mount("/", StaticFiles(directory=web, html=True), name="web")  # last: the chat page
     return app

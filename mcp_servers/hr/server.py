@@ -40,6 +40,26 @@ SessionId = Annotated[str | None, Field(description="Injected by the agent loop.
 PreviewOnly = Annotated[bool, Field(description="Injected by the agent loop.")]
 
 
+class ComplianceDetails(BaseModel):
+    """The request being checked. Which fields apply depends on request_type."""
+
+    start_date: str | None = Field(None, description="YYYY-MM-DD (pto_request, temporary_remote_work)")
+    end_date: str | None = Field(None, description="YYYY-MM-DD (pto_request, temporary_remote_work)")
+    country: str | None = Field(None, description="temporary_remote_work: ISO code or name, e.g. 'PT'")
+    region: str | None = Field(None, description="temporary_remote_work: state/province, e.g. 'OR'")
+    working_days: int | None = Field(None, description="temporary_remote_work: duration if no dates")
+    category: str | None = Field(None, description="expense_item: meals | lodging | airfare | mileage | "
+                                 "entertainment | ppe | other")
+    amount: float | None = Field(None, description="expense_item: amount claimed")
+    currency: str | None = Field(None, description="expense_item: e.g. USD")
+    description: str | None = Field(None, description="expense_item: what it was")
+    international: bool | None = Field(None, description="expense_item: travel outside your own country")
+    nights: int | None = Field(None, description="expense_item lodging: number of nights")
+    days: int | None = Field(None, description="expense_item meals: number of days")
+    people: int | None = Field(None, description="expense_item entertainment: number of people")
+    miles: float | None = Field(None, description="expense_item mileage: business miles")
+
+
 class Person(BaseModel):
     id: str
     name: str
@@ -203,9 +223,9 @@ def build_hr_server(settings: Settings, store: MockActionStore) -> MCPServer:
         employee_id: EmployeeId = None,
         request_type: Annotated[RequestType | None, Field(description="pto_request | temporary_remote_work | "
                                                          "expense_item")] = None,
-        details: Annotated[dict[str, Any] | None, Field(description=(
-            "pto_request: {start_date, end_date}. temporary_remote_work: {country, region?, start_date, "
-            "end_date | working_days}. expense_item: {category, amount, currency, description}. Dates YYYY-MM-DD."
+        details: Annotated[ComplianceDetails | None, Field(description=(
+            "pto_request: start_date, end_date. temporary_remote_work: country, region (own country only), "
+            "start_date + end_date or working_days. expense_item: category, amount, currency, description."
         ))] = None,
         requester_id: RequesterId = None, session_id: SessionId = None,
     ) -> ComplianceResult:
@@ -221,7 +241,7 @@ def build_hr_server(settings: Settings, store: MockActionStore) -> MCPServer:
                               "Use pto_request, temporary_remote_work or expense_item.")
         resource: Resource = "compliance_pto" if request_type == "pto_request" else "compliance_other"
         e = resolve(data, requester_id, employee_id, resource)
-        return checker.check(e.id, request_type, details or {})
+        return checker.check(e.id, request_type, details.model_dump(exclude_none=True) if details else {})
 
     @server.tool(annotations=ACTION)
     @coded_errors

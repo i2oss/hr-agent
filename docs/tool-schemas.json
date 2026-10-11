@@ -255,6 +255,197 @@
         },
         "input_schema": {
           "type": "object",
+          "$defs": {
+            "ComplianceDetails": {
+              "description": "The request being checked. Which fields apply depends on request_type.",
+              "properties": {
+                "start_date": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "YYYY-MM-DD (pto_request, temporary_remote_work)",
+                  "title": "Start Date"
+                },
+                "end_date": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "YYYY-MM-DD (pto_request, temporary_remote_work)",
+                  "title": "End Date"
+                },
+                "country": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: ISO code or name, e.g. 'PT'",
+                  "title": "Country"
+                },
+                "region": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: state/province, e.g. 'OR'",
+                  "title": "Region"
+                },
+                "working_days": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: duration if no dates",
+                  "title": "Working Days"
+                },
+                "category": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: meals | lodging | airfare | mileage | entertainment | ppe | other",
+                  "title": "Category"
+                },
+                "amount": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: amount claimed",
+                  "title": "Amount"
+                },
+                "currency": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: e.g. USD",
+                  "title": "Currency"
+                },
+                "description": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: what it was",
+                  "title": "Description"
+                },
+                "international": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: travel outside your own country",
+                  "title": "International"
+                },
+                "nights": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item lodging: number of nights",
+                  "title": "Nights"
+                },
+                "days": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item meals: number of days",
+                  "title": "Days"
+                },
+                "people": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item entertainment: number of people",
+                  "title": "People"
+                },
+                "miles": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item mileage: business miles",
+                  "title": "Miles"
+                }
+              },
+              "title": "ComplianceDetails",
+              "type": "object"
+            }
+          },
           "properties": {
             "employee_id": {
               "anyOf": [
@@ -290,16 +481,14 @@
             "details": {
               "anyOf": [
                 {
-                  "additionalProperties": true,
-                  "type": "object"
+                  "$ref": "#/$defs/ComplianceDetails"
                 },
                 {
                   "type": "null"
                 }
               ],
               "default": null,
-              "description": "pto_request: {start_date, end_date}. temporary_remote_work: {country, region?, start_date, end_date | working_days}. expense_item: {category, amount, currency, description}. Dates YYYY-MM-DD.",
-              "title": "Details"
+              "description": "pto_request: start_date, end_date. temporary_remote_work: country, region (own country only), start_date + end_date or working_days. expense_item: category, amount, currency, description."
             },
             "requester_id": {
               "anyOf": [
@@ -332,6 +521,197 @@
         },
         "model_input_schema": {
           "type": "object",
+          "$defs": {
+            "ComplianceDetails": {
+              "description": "The request being checked. Which fields apply depends on request_type.",
+              "properties": {
+                "start_date": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "YYYY-MM-DD (pto_request, temporary_remote_work)",
+                  "title": "Start Date"
+                },
+                "end_date": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "YYYY-MM-DD (pto_request, temporary_remote_work)",
+                  "title": "End Date"
+                },
+                "country": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: ISO code or name, e.g. 'PT'",
+                  "title": "Country"
+                },
+                "region": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: state/province, e.g. 'OR'",
+                  "title": "Region"
+                },
+                "working_days": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "temporary_remote_work: duration if no dates",
+                  "title": "Working Days"
+                },
+                "category": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: meals | lodging | airfare | mileage | entertainment | ppe | other",
+                  "title": "Category"
+                },
+                "amount": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: amount claimed",
+                  "title": "Amount"
+                },
+                "currency": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: e.g. USD",
+                  "title": "Currency"
+                },
+                "description": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: what it was",
+                  "title": "Description"
+                },
+                "international": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item: travel outside your own country",
+                  "title": "International"
+                },
+                "nights": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item lodging: number of nights",
+                  "title": "Nights"
+                },
+                "days": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item meals: number of days",
+                  "title": "Days"
+                },
+                "people": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item entertainment: number of people",
+                  "title": "People"
+                },
+                "miles": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "expense_item mileage: business miles",
+                  "title": "Miles"
+                }
+              },
+              "title": "ComplianceDetails",
+              "type": "object"
+            }
+          },
           "properties": {
             "employee_id": {
               "anyOf": [
@@ -367,16 +747,14 @@
             "details": {
               "anyOf": [
                 {
-                  "additionalProperties": true,
-                  "type": "object"
+                  "$ref": "#/$defs/ComplianceDetails"
                 },
                 {
                   "type": "null"
                 }
               ],
               "default": null,
-              "description": "pto_request: {start_date, end_date}. temporary_remote_work: {country, region?, start_date, end_date | working_days}. expense_item: {category, amount, currency, description}. Dates YYYY-MM-DD.",
-              "title": "Details"
+              "description": "pto_request: start_date, end_date. temporary_remote_work: country, region (own country only), start_date + end_date or working_days. expense_item: category, amount, currency, description."
             }
           },
           "title": "check_policy_complianceArguments"

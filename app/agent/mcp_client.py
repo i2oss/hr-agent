@@ -42,7 +42,7 @@ class CallOutcome:
     error_code: str | None = None
     unavailable: bool = False
     retried: bool = False
-    extra: dict[str, Any] = field(default_factory=dict)
+    args: dict[str, Any] = field(default_factory=dict)  # exactly what was sent, injected arguments included
 
 
 def strip_injected(schema: dict[str, Any]) -> tuple[dict[str, Any], tuple[str, ...]]:
@@ -97,11 +97,15 @@ class McpHub:
                 out[server] = {"ok": False, "tools": [], "error": type(e).__name__}
         return out
 
+    def prepare_args(self, name: str, model_args: dict[str, Any], injected: dict[str, Any]) -> dict[str, Any]:
+        """Injected arguments overwrite anything the model wrote for them."""
+        spec = self.tools[name]
+        args = {k: v for k, v in model_args.items() if k not in INJECTED_ARGS}
+        return args | {k: v for k, v in injected.items() if k in spec.injectable}
+
     async def call(self, name: str, model_args: dict[str, Any], injected: dict[str, Any]) -> CallOutcome:
         spec = self.tools[name]
-        # Injected arguments overwrite anything the model wrote.
-        args = {k: v for k, v in model_args.items() if k not in INJECTED_ARGS}
-        args |= {k: v for k, v in injected.items() if k in spec.injectable}
+        args = self.prepare_args(name, model_args, injected)
         attempts_allowed = 1 if spec.destructive else 1 + READ_RETRIES
         start = time.perf_counter()
         last_error = ""
@@ -117,8 +121,9 @@ class McpHub:
                 output = r.structured_content or _text_json(r)
                 code = (output.get("error") or {}).get("code") if isinstance(output, dict) else None
                 return CallOutcome(False, output, ms, attempt, error_code=code or "TOOL_ERROR",
-                                   retried=attempt > 1)
-            return CallOutcome(True, r.structured_content or _text_json(r), ms, attempt, retried=attempt > 1)
+                                   retried=attempt > 1, args=args)
+            return CallOutcome(True, r.structured_content or _text_json(r), ms, attempt, retried=attempt > 1,
+                               args=args)
         ms = int((time.perf_counter() - start) * 1000)
         return CallOutcome(
             False,
@@ -127,6 +132,7 @@ class McpHub:
                        "hint": "Tell the user this part is unavailable right now. Don't state policy without "
                                "evidence; tools on the other server still work."}},
             ms, attempts_allowed, error_code="TOOL_UNAVAILABLE", unavailable=True, retried=attempts_allowed > 1,
+            args=args,
         )
 
 

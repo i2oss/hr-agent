@@ -1,6 +1,7 @@
 """Start check: the app boots and /health answers with both MCP servers' tools (slices 1, 3, 4)."""
 
 from fastapi.testclient import TestClient
+from pydantic import SecretStr
 
 from app.main import create_app
 
@@ -30,6 +31,6 @@ def test_health_is_503_when_a_server_is_down(settings):
 
 
 def test_health_never_returns_a_key(settings):
-    settings.llm_api_key = "sk-secret-value"
+    settings.llm_api_key = SecretStr("sk-secret-value")
     with TestClient(create_app(settings, in_memory_mcp=True)) as client:
         assert "sk-secret-value" not in client.get("/health").text

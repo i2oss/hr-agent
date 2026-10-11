@@ -16,7 +16,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 ROOT = Path(__file__).resolve().parent.parent
 
 # Calibrated in slice 3 by evaluation/calibrate_threshold.py (see evaluation/results/calibration/).
-CALIBRATED_EVIDENCE_THRESHOLD = 0.60
+CALIBRATED_EVIDENCE_THRESHOLD = 0.69
 
 
 class Settings(BaseSettings):

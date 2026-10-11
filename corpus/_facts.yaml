@@ -1,0 +1,684 @@
+# Ridgeline Structural Engineering: Company Facts sheet
+#
+# FICTIONAL. For demonstration only. Not HR or legal advice.
+#
+# The single source of every number, name, date, approver and threshold in the
+# Policy Corpus, the Mock Data and the Compliance Check. Policy prose is written
+# FROM this file (build slice 1); a consistency script checks every number in
+# the corpus against it, and the data test checks mock_data/ against it.
+#
+# Conventions
+# - `cite:` is where the fact is written: "<doc_id> §<section>" (see corpus/_outlines.md).
+# - Days are working days (Mon–Fri, excluding the employee's company holidays)
+#   unless the key says calendar_days.
+# - Money is USD unless stated.
+# - The policies state COMPANY rules only. They make no claims about real law;
+#   tax, immigration and legal questions route to HR (Cross-Border Review / Escalation).
+
+meta:
+  company: Ridgeline Structural Engineering, Inc.
+  short_name: Ridgeline
+  industry: civil and structural engineering consultancy
+  headcount: 450
+  banner: "FICTIONAL — for demonstration only"
+  demo_today: 2026-11-02          # Monday; DEMO_TODAY default; all "as of" dates use it
+  email_domain: ridgeline.example
+  policy_year: 2026
+  version: "2026.1"
+  effective: 2026-01-01           # every document unless overridden below
+
+offices:
+  - {id: DEN, city: Denver,  region: CO, country: US, timezone: America/Denver,      role: headquarters, holiday_calendar: US}
+  - {id: AUS, city: Austin,  region: TX, country: US, timezone: America/Chicago,     holiday_calendar: US}
+  - {id: SEA, city: Seattle, region: WA, country: US, timezone: America/Los_Angeles, holiday_calendar: US}
+  - {id: TOR, city: Toronto, region: ON, country: CA, timezone: America/Toronto,     holiday_calendar: CA}
+offices_cite: RSE-HB-01 §2.1
+
+employment_types:              # cite: RSE-HB-01 §2.2
+  full_time_exempt:     {label: "Full-time, exempt",     weekly_hours: 40, hr_policies_apply: true}
+  full_time_non_exempt: {label: "Full-time, non-exempt (hourly)", weekly_hours: 40, hr_policies_apply: true, overtime_preapproval: true}
+  part_time:            {label: "Part-time", weekly_hours_min: 20, weekly_hours_max: 29, hr_policies_apply: true}
+  intern:               {label: "Intern", max_months: 6, hr_policies_apply: true}
+  contractor:
+    label: "Contractor"
+    hr_policies_apply: false   # governed by their contract / agency
+    policies_that_do_apply: [RSE-HB-01 §4, RSE-HB-01 §5, RSE-HB-01 §6, RSE-SEC-01]
+    redirect: "your agency or Ridgeline contract manager"
+employment_types_cite: RSE-HB-01 §2.2
+contractor_scope_cite: RSE-HB-01 §1.2
+
+work_arrangements:             # cite: RSE-HB-01 §2.3, detail in RSE-RW-01 §2
+  office_hybrid:
+    label: Office-hybrid
+    default: true
+    anchor_days_per_week: 3
+    anchor_days: [Tue, Wed, Thu]
+    cite: RSE-RW-01 §2.1
+  remote_approved:
+    label: Remote-approved
+    approvers: [manager, HR]
+    office_visits: "at least one week per quarter at the home office"
+    cite: RSE-RW-01 §2.2
+  field_site:
+    label: Field/site-based
+    remote_eligible: false
+    temporary_remote_eligible: false
+    cite: RSE-RW-01 §2.3
+
+hours:                         # RSE-HB-01 §3
+  standard_week_hours: 40                          # §3.1
+  core_hours_local: "10:00–15:00"                  # §3.2 (also RSE-RW-01 §5.1)
+  non_exempt_overtime: "pre-approved in writing by the manager"   # §3.3
+  part_time_schedule: "agreed in writing with the manager"        # §3.4
+  cite: RSE-HB-01 §3
+
+conduct:                       # RSE-HB-01 §4–§6
+  gifts_declare_over: 100
+  gifts_cite: RSE-HB-01 §4.3
+  safety_incident_report_hours: 24
+  safety_cite: RSE-HB-01 §5.2
+  hr_acknowledges_working_days: 2
+  next_steps_cite: RSE-HB-01 §6.4
+  access_rule: "self: all own records; managers/directors: reporting chain's profile and PTO balance, and the Compliance Check on their PTO requests; benefits and HR tickets: self and HR only"
+  access_rule_cite: RSE-HB-01 §7.2
+
+# Named roles. Personas and their managers live in mock_data/employees.json;
+# these are the corpus-level owners and contacts.
+people:
+  hr_director:       {name: Renata Alvarez, title: Director of People & HR, cite: RSE-APR-01 §6}
+  vp_finance:        {name: Tom Whitaker,   title: VP Finance,               cite: RSE-APR-01 §4}
+  security_lead:     {name: Ines Moreau,    title: Head of Information Security, cite: RSE-SEC-01 §1.2}
+  # Demo reporting chain (mock data must match):
+  demo_chain:
+    E1001: {manager: E1012, director: E1009}       # Maya Chen -> Jordan Lee -> Marcus Reed
+    E1012: {name: Jordan Lee, title: Engineering Manager, office: DEN}
+
+contacts:                      # every "contact HR" pointer resolves here
+  hr_service_desk:  {email: hr@ridgeline.example,       portal: "HR Portal > Ask HR", response: "2 working days", cite: RSE-HB-01 §6.1}
+  hr_confidential:  {queue: HR Confidential, email: hr-confidential@ridgeline.example, ethics_line: "+1 555 0100 (24/7, anonymous option)", cite: RSE-HB-01 §6.1}
+  it_security:      {email: security@ridgeline.example, phone: "+1 555 0142 (24/7)", cite: RSE-SEC-01 §7.1}
+  travel_desk:      {portal: "Ridgeline Travel (internal booking portal)", cite: RSE-EXP-01 §2.2}
+  finance_ap:       {email: expenses@ridgeline.example, cite: RSE-EXP-01 §8}
+
+documents:
+  - {id: RSE-HB-01,  title: "Employee Handbook & Code of Conduct",                 pages: 8, format: pdf,  owner: HR,      applies_to: "all staff; contractors §4–§6 only"}
+  - {id: RSE-PTO-01, title: "Paid Time Off Policy",                                pages: 5, format: md,   owner: HR,      applies_to: "full-time, part-time, interns"}
+  - {id: RSE-HOL-01, title: "Holiday Calendar & Observance",                       pages: 2, format: html, owner: HR,      applies_to: "full-time, part-time, interns; US and Canada calendars"}
+  - {id: RSE-LV-01,  title: "Leave of Absence Policy",                             pages: 6, format: md,   owner: HR,      applies_to: "full-time, part-time; interns §2, §4, §5 only"}
+  - {id: RSE-RW-01,  title: "Remote & Hybrid Work Policy",                         pages: 5, format: md,   owner: HR,      applies_to: "full-time, part-time, interns"}
+  - {id: RSE-LOC-01, title: "Work Location, Travel & Cross-Border Work Guidelines", pages: 4, format: md,   owner: HR,      applies_to: "all employees"}
+  - {id: RSE-SEC-01, title: "Information Security & Acceptable Use",               pages: 6, format: md,   owner: IT,      applies_to: "everyone with Ridgeline access, including contractors"}
+  - {id: RSE-EXP-01, title: "Travel & Expense Reimbursement",                      pages: 5, format: pdf,  owner: Finance, applies_to: "all employees"}
+  - {id: RSE-BEN-01, title: "Benefits Summary & Eligibility",                      pages: 6, format: html, owner: HR,      applies_to: "US plans §2; Canada §5"}
+  - {id: RSE-EQ-01,  title: "Equipment & Home-Office Stipend",                     pages: 3, format: md,   owner: IT,      applies_to: "full-time, part-time; interns §1, §4 only"}
+  - {id: RSE-ONB-01, title: "Onboarding Procedures",                               pages: 3, format: md,   owner: HR,      applies_to: "new employees and their managers"}
+  - {id: RSE-APR-01, title: "Approval Matrix",                                     pages: 2, format: md,   owner: HR,      applies_to: "all employees and approvers"}
+
+# ---------------------------------------------------------------- PTO (RSE-PTO-01)
+pto:
+  eligibility:
+    eligible: [full_time_exempt, full_time_non_exempt, part_time, intern]
+    not_eligible: [contractor]
+    cite: RSE-PTO-01 §1.2
+  accrual:
+    full_time_days_per_year:          # by completed years of service on Jan 1 (or hire date)
+      - {years_from: 0, years_to: 2, days: 15}
+      - {years_from: 3, years_to: 5, days: 20}
+      - {years_from: 6, years_to: null, days: 25}
+    full_time_cite: RSE-PTO-01 §2.1
+    part_time_rule: "full-time days × (scheduled weekly hours ÷ 40), rounded to the nearest half day"
+    part_time_example: {weekly_hours: 24, tenure_band_days: 15, days: 9}
+    part_time_cite: RSE-PTO-01 §2.2
+    intern_days_per_internship: 5
+    intern_cite: RSE-PTO-01 §2.3
+    timing: "accrues each semi-monthly pay period (24 per year); annual days ÷ 24 per period"
+    timing_cite: RSE-PTO-01 §2.4
+    during_leave: "accrues during paid leave; does not accrue during unpaid leave"
+    during_leave_cite: RSE-PTO-01 §2.5
+  use:
+    minimum_increment_days: 0.5
+    increment_cite: RSE-PTO-01 §3.1
+    company_holidays_not_deducted: true          # holiday inside a PTO range is not charged
+    holidays_cite: RSE-PTO-01 §3.2               # cross-ref RSE-HOL-01 §1.3
+    negative_balance_allowed: false
+    insufficient_balance: "request unpaid personal leave (RSE-LV-01 §6) or reduce the request"
+    balance_cite: RSE-PTO-01 §3.3
+    balance_where: "HR Portal > Time Off (balance shown as of the last pay period)"
+    balance_where_cite: RSE-PTO-01 §3.4
+  requesting:
+    how: "submit in the HR Portal before the first day off"
+    how_cite: RSE-PTO-01 §4.1
+    notice_threshold_days: 3                     # requests of MORE than 3 PTO days...
+    notice_required_calendar_days: 14            # ...need 2 weeks' notice
+    short_request_notice: "as early as practical; no minimum"
+    notice_cite: RSE-PTO-01 §4.2
+    default_approver: manager
+    director_threshold_consecutive_days: 10      # MORE than 10 consecutive PTO days -> director
+    approvers_cite: RSE-PTO-01 §4.3
+    field_blackout:
+      applies_to: field_site
+      window: {from: "12-18", to: "12-31"}       # last 2 weeks of December; 2026: Fri Dec 18 – Thu Dec 31
+      exception_approver: director
+      cite: RSE-PTO-01 §4.4
+    changes: "cancel or change in the HR Portal; approved PTO cancelled before it starts is restored"
+    changes_cite: RSE-PTO-01 §4.5
+  carryover:
+    cap_days: 5
+    cap_cite: RSE-PTO-01 §5.1
+    forfeit_on: "Dec 31: unused days above the cap are forfeited"
+    leave_exception_cap_days: 10                 # on approved leave spanning Dec 31
+    leave_exception_cite: RSE-PTO-01 §5.2
+    payout_on_exit: "handled by HR at separation"
+    payout_cite: RSE-PTO-01 §5.3
+  questions_cite: RSE-PTO-01 §6
+
+# ---------------------------------------------------------------- Holidays (RSE-HOL-01)
+holidays:
+  calendar_follows: home office (not where the employee is working or travelling)
+  calendar_follows_cite: RSE-HOL-01 §1.1
+  weekend_rule: "Saturday holiday observed the Friday before; Sunday holiday observed the Monday after (Canada: Boxing Day/Christmas shift to the next working days)"
+  weekend_rule_cite: RSE-HOL-01 §1.2
+  during_pto: "not deducted from PTO"
+  during_pto_cite: RSE-HOL-01 §1.3
+  part_time: "paid if it falls on a scheduled working day"
+  field_worked_holiday: "substitute day off within 30 calendar days, agreed with the manager"
+  special_cases_cite: RSE-HOL-01 §1.4
+  us:                     # observed dates; cite RSE-HOL-01 §2
+    cite: RSE-HOL-01 §2
+    "2026":
+      - {name: "New Year's Day",        date: 2026-01-01}
+      - {name: "Memorial Day",          date: 2026-05-25}
+      - {name: "Juneteenth",            date: 2026-06-19}
+      - {name: "Independence Day",      date: 2026-07-03, actual: 2026-07-04}
+      - {name: "Labor Day",             date: 2026-09-07}
+      - {name: "Veterans Day",          date: 2026-11-11}   # PTO demo
+      - {name: "Thanksgiving Day",      date: 2026-11-26}
+      - {name: "Day after Thanksgiving",date: 2026-11-27}
+      - {name: "Christmas Day",         date: 2026-12-25}
+    "2027":
+      - {name: "New Year's Day",        date: 2027-01-01}
+      - {name: "Memorial Day",          date: 2027-05-31}
+      - {name: "Juneteenth",            date: 2027-06-18, actual: 2027-06-19}
+      - {name: "Independence Day",      date: 2027-07-05, actual: 2027-07-04}
+      - {name: "Labor Day",             date: 2027-09-06}
+      - {name: "Veterans Day",          date: 2027-11-11}
+      - {name: "Thanksgiving Day",      date: 2027-11-25}
+      - {name: "Day after Thanksgiving",date: 2027-11-26}
+      - {name: "Christmas Day",         date: 2027-12-24, actual: 2027-12-25}
+    # Deliberately NOT US company holidays: MLK Day, Presidents' Day, Columbus/Indigenous Peoples' Day.
+    # (Keeps the Remote demo at exactly 30 working days, Jan 4 – Feb 12 2027.)
+  ca:                     # Toronto; cite RSE-HOL-01 §3
+    cite: RSE-HOL-01 §3
+    "2026":
+      - {name: "New Year's Day", date: 2026-01-01}
+      - {name: "Family Day",     date: 2026-02-16}
+      - {name: "Good Friday",    date: 2026-04-03}
+      - {name: "Victoria Day",   date: 2026-05-18}
+      - {name: "Canada Day",     date: 2026-07-01}
+      - {name: "Civic Holiday",  date: 2026-08-03}
+      - {name: "Labour Day",     date: 2026-09-07}
+      - {name: "Thanksgiving",   date: 2026-10-12}
+      - {name: "Christmas Day",  date: 2026-12-25}
+      - {name: "Boxing Day",     date: 2026-12-28, actual: 2026-12-26}
+    "2027":
+      - {name: "New Year's Day", date: 2027-01-01}
+      - {name: "Family Day",     date: 2027-02-15}
+      - {name: "Good Friday",    date: 2027-03-26}
+      - {name: "Victoria Day",   date: 2027-05-24}
+      - {name: "Canada Day",     date: 2027-07-01}
+      - {name: "Civic Holiday",  date: 2027-08-02}
+      - {name: "Labour Day",     date: 2027-09-06}
+      - {name: "Thanksgiving",   date: 2027-10-11}
+      - {name: "Christmas Day",  date: 2027-12-27, actual: 2027-12-25}
+      - {name: "Boxing Day",     date: 2027-12-28, actual: 2027-12-26}
+  floating:
+    us_days_per_year: 2
+    ca_days_per_year: 1
+    eligible: [full_time_exempt, full_time_non_exempt, part_time]   # not interns
+    carryover: false
+    request: "like PTO, in the HR Portal; not deducted from PTO"
+    cite: RSE-HOL-01 §4
+  observances:
+    remembrance_day_toronto:
+      date: 11-11
+      rule: "Toronto office observes two minutes of silence at 11:00; it is a regular working day, not a company holiday"
+      cite: RSE-HOL-01 §5.1
+      # PTO demo contrast: Wed–Fri Nov 11–13 = 2 PTO days for Denver staff, 3 for Toronto staff.
+
+# ---------------------------------------------------------------- Leave (RSE-LV-01)
+leave:
+  vs_pto_cite: RSE-LV-01 §1.2
+  sick_time:
+    days_per_year: 6
+    granted: "front-loaded each Jan 1; pro-rated by month in the hire year"
+    part_time: "pro-rated by scheduled hours (as PTO)"
+    interns: 3
+    note_after_consecutive_days: 3     # note to HR (not the manager); no medical details to managers
+    carryover: false
+    cite: RSE-LV-01 §2
+  parental:
+    eligible_after_months: 6
+    eligible_types: [full_time_exempt, full_time_non_exempt, part_time]
+    weeks_paid: 12
+    pay: "100% of base pay"
+    applies_to: "birth, adoption or foster placement; any parent"
+    take_within_months: 12
+    blocks: "one continuous block, or two blocks of at least 4 weeks"
+    notice_calendar_days: 30
+    benefits_during: "continue on the same terms (employee contributions continue through payroll)"
+    pto_accrual_during: continues
+    canada: "HR coordinates with the employee's government parental benefits; plan details via HR"
+    cites:
+      eligibility: RSE-LV-01 §3.1
+      pay_and_length: RSE-LV-01 §3.2
+      timing: RSE-LV-01 §3.3
+      notice: RSE-LV-01 §3.4
+      benefits_and_pto: RSE-LV-01 §3.5
+      canada: RSE-LV-01 §3.6
+  bereavement:
+    immediate_family_days: 5
+    extended_family_days: 2
+    cite: RSE-LV-01 §4
+  jury_witness:
+    paid_days_max: 10
+    cite: RSE-LV-01 §5
+  unpaid_personal:
+    max_calendar_days: 30
+    approver: HR
+    pto_must_be_used_first: true
+    pto_accrual_during: paused
+    benefits_over_30_days: "contact HR before the leave starts"
+    cite: RSE-LV-01 §6
+  medical_and_accommodations:
+    rule: "medical leave and workplace accommodations are arranged with HR directly; managers are told only dates and any work adjustments"
+    medical_cite: RSE-LV-01 §7.1
+    accommodations_cite: RSE-LV-01 §7.2     # citable "contact HR" section
+  return_cite: RSE-LV-01 §8
+
+# ---------------------------------------------------------------- Remote & hybrid (RSE-RW-01)
+remote_work:
+  remote_approved_eligibility:
+    min_tenure_months: 6
+    not_eligible: [field_site, intern]
+    contractors: "per contract"
+    performance: "no active performance plan"
+    cite: RSE-RW-01 §3
+  change_request:
+    process: "manager endorses, HR approves; decision within 10 working days"
+    approvers: [manager, HR]
+    review: annual
+    cite: RSE-RW-01 §4
+  remote_working:
+    core_hours_cite: RSE-RW-01 §5.1
+    workspace_security: "must meet RSE-SEC-01 §5"
+    workspace_cite: RSE-RW-01 §5.2
+    equipment: "per RSE-EQ-01"
+    equipment_cite: RSE-RW-01 §5.3
+    office_visits_cite: RSE-RW-01 §5.4
+  temporary_remote_work:          # working from somewhere other than your usual work location; NOT business travel
+    definition_cite: RSE-RW-01 §6.1
+    same_state_or_province: "allowed; tell your manager"
+    same_state_cite: RSE-RW-01 §6.2
+    other_us_state_or_province:
+      manager_approval_up_to_calendar_days: 30     # per calendar year
+      over_limit: needs_hr_review
+      cite: RSE-RW-01 §6.3
+    other_country:
+      rule: "always HR review; see RSE-LOC-01 §3"
+      cite: RSE-RW-01 §6.4
+    field_roles: "not eligible"
+    field_cite: RSE-RW-01 §6.5
+
+# ---------------------------------------------------------------- Location, travel, cross-border (RSE-LOC-01)
+location:
+  work_location_definition: "the work region and country on your HR record"
+  definition_cite: RSE-LOC-01 §1.1
+  business_travel:
+    preapproval: manager
+    preapproval_cite: RSE-LOC-01 §2.1
+    booking_cite: RSE-LOC-01 §2.2
+    vs_temporary_remote: "travel to do Ridgeline work at a client, site or Ridgeline office is business travel, not temporary remote work"
+    business_trip_no_review_up_to_calendar_days: 14    # incl. cross-border business trips
+    vs_temporary_remote_cite: RSE-LOC-01 §2.3
+    personal_days: "personal days added to a business trip are PTO (RSE-PTO-01) and personal costs (RSE-EXP-01 §6)"
+    personal_days_cite: RSE-LOC-01 §2.4
+  working_abroad:
+    hr_review_always: true
+    review_cite: RSE-LOC-01 §3.1
+    cap_working_days_per_year: 20
+    over_cap: "manager cannot approve; HR reviews as an exception"
+    cap_cite: RSE-LOC-01 §3.2
+    request_notice_calendar_days: 28
+    notice_cite: RSE-LOC-01 §3.3
+    security_cite: RSE-LOC-01 §3.4               # -> RSE-SEC-01 §5.4
+  cross_border_review:            # citable "contact HR" section
+    covers: [tax, immigration and work authorization, insurance, payroll]
+    no_personal_advice: true      # Ridgeline does not give personal tax/immigration/legal advice
+    what_cite: RSE-LOC-01 §4.1
+    how: "HR ticket, category remote_work, with dates, country and work plan"
+    how_cite: RSE-LOC-01 §4.2
+    decision_working_days: 10
+    timeline_cite: RSE-LOC-01 §4.3
+  permanent_move: "contact HR before any permanent change of work location"
+  permanent_move_cite: RSE-LOC-01 §5
+
+# ---------------------------------------------------------------- Security (RSE-SEC-01)
+security:
+  scope_cite: RSE-SEC-01 §1.1
+  owner_cite: RSE-SEC-01 §1.2
+  classification: [Public, Internal, Confidential, Client Restricted]
+  classification_cite: RSE-SEC-01 §2
+  devices:
+    company_managed_required_for: [Confidential, Client Restricted]
+    managed_cite: RSE-SEC-01 §3.1
+    personal_devices_allowed: "browser access to webmail and the HR Portal only, with MFA; phones only with Ridgeline mobile management"
+    personal_cite: RSE-SEC-01 §3.2
+    personal_laptops_for_project_files: false
+    personal_laptop_cite: RSE-SEC-01 §3.3
+    lost_device_report_hours: 1
+    lost_cite: RSE-SEC-01 §3.4
+  access:
+    mfa: required
+    screen_lock_minutes: 5
+    cite: RSE-SEC-01 §4
+  remote_and_travel:
+    vpn_off_site: always
+    vpn_cite: RSE-SEC-01 §5.1
+    public_wifi: "only with VPN"
+    wifi_cite: RSE-SEC-01 §5.2
+    home_printing_client_restricted: false
+    printing_cite: RSE-SEC-01 §5.3
+    abroad_notify_it_working_days: 5
+    abroad: "notify IT Security at least 5 working days before working from another country; IT may issue a travel laptop"
+    abroad_cite: RSE-SEC-01 §5.4
+  acceptable_use:
+    personal_use_cite: RSE-SEC-01 §6.1
+    ai_tools: "no Confidential or Client Restricted data in public AI tools"
+    ai_cite: RSE-SEC-01 §6.2
+    software_cite: RSE-SEC-01 §6.3
+  incident_report_hours: 1
+  incident_cite: RSE-SEC-01 §7.1
+  consequences_cite: RSE-SEC-01 §8
+
+# ---------------------------------------------------------------- Expenses (RSE-EXP-01)
+expenses:
+  currency_rule: "limits are in USD; claims in other currencies are compared at the card or Finance rate on the expense date"
+  currency_cite: RSE-EXP-01 §8.3
+  preapproval: "manager pre-approves business trips (RSE-LOC-01 §2.1)"
+  preapproval_cite: RSE-EXP-01 §2.1
+  booking_cite: RSE-EXP-01 §2.2
+  limits:                          # Compliance Check reads these
+    airfare:
+      economy_up_to_flight_hours: 6
+      premium_economy_over_flight_hours: 6
+      business_class: director_approval
+      cite: RSE-EXP-01 §3.1
+    mileage_per_mile: 0.70
+    mileage_cite: RSE-EXP-01 §3.2
+    ground_cite: RSE-EXP-01 §3.3
+    lodging_per_night: {us: 250, international: 275}
+    lodging_cite: RSE-EXP-01 §4
+    meals_per_day: {domestic: 75, international: 90}
+    meals_cite: RSE-EXP-01 §5.1
+    client_entertainment_per_person: 100
+    client_entertainment_preapproval: manager
+    entertainment_cite: RSE-EXP-01 §5.2
+    alcohol: "only as part of pre-approved client entertainment"
+    alcohol_cite: RSE-EXP-01 §5.3
+    ppe_per_year: 300              # field/site roles only (safety boots, glasses, hi-vis)
+    ppe_eligible: [field_site]
+    ppe_cite: RSE-EXP-01 §7.1
+    licence_renewals: "professional engineering licence renewals reimbursed"
+    licence_cite: RSE-EXP-01 §7.2
+    not_reimbursable: [personal travel costs, traffic or parking fines, upgrades without approval, family travel, personal entertainment]
+    not_reimbursable_cite: RSE-EXP-01 §7.3
+  mixed_trips:
+    personal_days: "taken as PTO"
+    airfare: "reimbursed up to the business-only comparison fare, quoted at booking"
+    lodging_meals_personal_days: not_reimbursable
+    cites: {pto: RSE-EXP-01 §6.1, airfare: RSE-EXP-01 §6.2, personal_costs: RSE-EXP-01 §6.3}
+  claims:
+    receipt_required_from: 25
+    receipts_cite: RSE-EXP-01 §8.1
+    submit_within_calendar_days: 30
+    late_after_calendar_days: 60   # beyond 60 days: not reimbursed without a director exception
+    deadline_cite: RSE-EXP-01 §8.2
+    approvers:                     # by claim total; cite RSE-EXP-01 §8.4 and RSE-APR-01 §4
+      - {up_to: 1000, approver: manager}
+      - {up_to: 5000, approver: director}
+      - {above: 5000, approver: VP Finance}
+    approvers_cite: RSE-EXP-01 §8.4
+
+# ---------------------------------------------------------------- Benefits (RSE-BEN-01)
+benefits:
+  eligibility:
+    full_time: all US plans
+    part_time: "medical, dental, vision and 401(k); employer medical contribution pro-rated by hours"
+    intern: "401(k) only"
+    contractor: none
+    cite: RSE-BEN-01 §1.1
+  coverage_start: "first day of the month after the hire date"
+  coverage_start_cite: RSE-BEN-01 §1.2
+  coverage_levels: [employee, employee_plus_spouse, employee_plus_children, family]
+  levels_cite: RSE-BEN-01 §1.3
+  us_plans:
+    medical_ppo: {cite: RSE-BEN-01 §2.1}
+    medical_hdhp: {hsa_employer_contribution: {employee: 750, family: 1500}, cite: RSE-BEN-01 §2.2}
+    dental: {cite: RSE-BEN-01 §2.3}
+    vision: {cite: RSE-BEN-01 §2.4}
+    "401k": {match: "100% of the first 4% of pay", vesting: immediate, cite: RSE-BEN-01 §2.5}
+    life: {coverage: "1× annual base pay, company-paid", cite: RSE-BEN-01 §2.6}
+  enrollment:
+    new_hire_window_calendar_days: 30      # from hire date, inclusive
+    new_hire_cite: RSE-BEN-01 §3.1
+    missed_window: "enroll at open enrollment, unless a qualifying life event occurs"
+    missed_cite: RSE-BEN-01 §3.2
+    open_enrollment_2026: {from: 2026-11-16, to: 2026-11-30, effective: 2027-01-01}
+    open_enrollment_cite: RSE-BEN-01 §3.3
+    life_event_window_calendar_days: 31    # birth/adoption, marriage, loss of other coverage
+    life_event_cite: RSE-BEN-01 §3.4
+  during_leave:
+    paid_leave: "continue on the same terms"
+    unpaid_over_30_days: "contact HR to arrange contributions"
+    cite: RSE-BEN-01 §4
+  canada:
+    plan: RSE Canada Group Plan
+    detail: "summary only; plan details, claims and eligibility questions go to HR"
+    cite: RSE-BEN-01 §5
+  plan_specific_questions_cite: RSE-BEN-01 §6    # citable "contact HR" section
+
+# ---------------------------------------------------------------- Equipment (RSE-EQ-01)
+equipment:
+  standard_kit: "laptop, two monitors, headset; field roles also get a rugged tablet"
+  kit_cite: RSE-EQ-01 §1
+  home_office_stipend:
+    remote_approved_one_time: 500
+    office_hybrid_one_time: 250
+    not_eligible: [field_site, intern, contractor]
+    claim_within_days_of_eligibility: 90
+    internet_monthly_remote_approved: 50
+    cites: {remote: RSE-EQ-01 §2.1, hybrid: RSE-EQ-01 §2.2, not_eligible: RSE-EQ-01 §2.3, internet: RSE-EQ-01 §2.4, how_to_claim: RSE-EQ-01 §2.5}
+  personal_equipment: "personal laptops are not reimbursed and may not hold Ridgeline project files (RSE-SEC-01 §3.3)"
+  personal_cite: RSE-EQ-01 §3
+  care_return_cite: RSE-EQ-01 §4
+
+# ---------------------------------------------------------------- Onboarding (RSE-ONB-01)
+onboarding:
+  before_day_one_cite: RSE-ONB-01 §1
+  security_training_within_working_days: 5
+  security_training_cite: RSE-ONB-01 §2.1
+  hr_portal_cite: RSE-ONB-01 §2.2
+  benefits_window_cite: RSE-ONB-01 §2.3          # -> RSE-BEN-01 §3.1
+  check_ins_days: [30, 60, 90]
+  check_ins_cite: RSE-ONB-01 §3.1
+  remote_not_before_months: 6
+  remote_cite: RSE-ONB-01 §3.2
+  pto_first_use: "as soon as accrued"
+  pto_cite: RSE-ONB-01 §3.3
+  contacts_cite: RSE-ONB-01 §4
+
+# ---------------------------------------------------------------- Approvals (RSE-APR-01)
+approvals:
+  definitions: {manager: "direct manager on the HR record", director: "the manager's director", HR: "HR Service Desk", finance: "VP Finance"}
+  definitions_cite: RSE-APR-01 §1
+  time_off:                       # RSE-APR-01 §2
+    cite: RSE-APR-01 §2
+    rows:
+      - {request: "PTO up to 10 consecutive days", approver: manager}
+      - {request: "PTO over 10 consecutive days", approver: director}
+      - {request: "Field-role PTO in the December blackout", approver: director}
+      - {request: "Floating holiday", approver: manager}
+      - {request: "Sick time", approver: "none (notify manager)"}
+      - {request: "Parental, bereavement, jury duty", approver: "HR (manager notified)"}
+      - {request: "Unpaid personal leave", approver: HR}
+  work_location:                  # RSE-APR-01 §3
+    cite: RSE-APR-01 §3
+    rows:
+      - {request: "Temporary remote work, same state/province", approver: "none (tell manager)"}
+      - {request: "Temporary remote work, other US state/province, up to 30 calendar days/year", approver: manager}
+      - {request: "Temporary remote work, other US state/province, over 30 calendar days/year", approver: HR}
+      - {request: "Working from another country (any length)", approver: "HR (Cross-Border Review)"}
+      - {request: "Change to remote-approved", approver: "manager + HR"}
+      - {request: "Business travel", approver: manager}
+  expenses:                       # RSE-APR-01 §4
+    cite: RSE-APR-01 §4
+    rows:
+      - {request: "Expense claim up to $1,000", approver: manager}
+      - {request: "Expense claim $1,000.01–$5,000", approver: director}
+      - {request: "Expense claim over $5,000", approver: VP Finance}
+      - {request: "Business-class airfare", approver: director}
+      - {request: "Late claim (over 60 days)", approver: director}
+  other:                          # RSE-APR-01 §5
+    cite: RSE-APR-01 §5
+    rows:
+      - {request: "Home-office stipend", approver: manager}
+      - {request: "Benefits changes", approver: "none (self-service in the window); HR for exceptions"}
+  exceptions: "any exception to a policy is approved by the Director of People & HR"
+  exceptions_cite: RSE-APR-01 §6
+
+# ---------------------------------------------------------------- Compliance Check rules
+# The `hr` server's check_policy_compliance loads these. Each rule cites where it is written.
+compliance_rules:
+  pto_request:
+    - {id: PTO-ELIGIBLE,  rule: "Employment Type has PTO",                       params: pto.eligibility,                       cite: RSE-PTO-01 §1.2}
+    - {id: PTO-DAYS,      rule: "count working days, excluding the employee's company holidays", params: holidays,             cite: RSE-HOL-01 §1.3}
+    - {id: PTO-BALANCE,   rule: "available balance ≥ PTO days requested",        params: pto.use.negative_balance_allowed,      cite: RSE-PTO-01 §3.3}
+    - {id: PTO-NOTICE,    rule: "> 3 PTO days needs ≥ 14 calendar days' notice (from Demo Date)", params: pto.requesting,       cite: RSE-PTO-01 §4.2}
+    - {id: PTO-DIRECTOR,  rule: "> 10 consecutive PTO days → approver director", params: pto.requesting.director_threshold_consecutive_days, cite: RSE-PTO-01 §4.3}
+    - {id: PTO-BLACKOUT,  rule: "field/site role within Dec 18–31 → director exception", params: pto.requesting.field_blackout, cite: RSE-PTO-01 §4.4}
+  temporary_remote_work:
+    - {id: TRW-ARRANGEMENT, rule: "field/site roles not eligible",                params: work_arrangements.field_site,          cite: RSE-RW-01 §6.5}
+    - {id: TRW-DOMESTIC,    rule: "other US state/province ≤ 30 calendar days/year → manager; over → HR review", params: remote_work.temporary_remote_work.other_us_state_or_province, cite: RSE-RW-01 §6.3}
+    - {id: TRW-ABROAD,      rule: "any other country → needs_hr_review",          params: location.working_abroad,               cite: RSE-LOC-01 §3.1}
+    - {id: TRW-ABROAD-CAP,  rule: "abroad ≤ 20 working days per calendar year",   params: location.working_abroad.cap_working_days_per_year, cite: RSE-LOC-01 §3.2}
+    - {id: TRW-ABROAD-NOTICE, rule: "abroad request ≥ 28 calendar days ahead",    params: location.working_abroad.request_notice_calendar_days, cite: RSE-LOC-01 §3.3}
+    - {id: TRW-SECURITY,    rule: "abroad: notify IT Security ≥ 5 working days ahead (informational)", params: security.remote_and_travel, cite: RSE-SEC-01 §5.4}
+  expense_item:
+    - {id: EXP-MEALS,     rule: "meals ≤ $75/day domestic, $90/day international", params: expenses.limits.meals_per_day,       cite: RSE-EXP-01 §5.1}
+    - {id: EXP-LODGING,   rule: "lodging ≤ $250/night US, $275/night international", params: expenses.limits.lodging_per_night, cite: RSE-EXP-01 §4}
+    - {id: EXP-AIRFARE,   rule: "economy ≤ 6 h; premium economy > 6 h; business needs director", params: expenses.limits.airfare, cite: RSE-EXP-01 §3.1}
+    - {id: EXP-MILEAGE,   rule: "$0.70 per mile",                                  params: expenses.limits.mileage_per_mile,      cite: RSE-EXP-01 §3.2}
+    - {id: EXP-ENTERTAIN, rule: "client entertainment ≤ $100/person, manager pre-approval", params: expenses.limits,           cite: RSE-EXP-01 §5.2}
+    - {id: EXP-PPE,       rule: "PPE ≤ $300/year, field/site roles only",          params: expenses.limits.ppe_per_year,          cite: RSE-EXP-01 §7.1}
+    - {id: EXP-RECEIPT,   rule: "receipt required for items ≥ $25",               params: expenses.claims.receipt_required_from, cite: RSE-EXP-01 §8.1}
+    - {id: EXP-APPROVER,  rule: "approver by amount: ≤ $1,000 manager; ≤ $5,000 director; above VP Finance", params: expenses.claims.approvers, cite: RSE-EXP-01 §8.4}
+
+# ---------------------------------------------------------------- Scenarios
+# Each names its Persona and the facts it exercises. Gold answers are written in
+# the Eval Set ticket from these.
+scenarios:
+  pto_demo:
+    persona: E1001                 # Maya Chen, FT exempt, office-hybrid, Denver, 4 completed years -> 20 days/yr
+    prompt: "Can I take Wednesday to Friday off next week?"
+    dates: {from: 2026-11-11, to: 2026-11-13}
+    pto_available: 11
+    facts: ["Nov 11 is Veterans Day (US company holiday) -> 2 PTO days", "≤ 3 days -> no 2-week notice rule", "approver: manager (Jordan Lee, E1012)"]
+    compliance: {outcome: allowed_with_approval, approver: manager, rules: [PTO-ELIGIBLE, PTO-DAYS, PTO-BALANCE, PTO-NOTICE]}
+    cites: [RSE-HOL-01 §2, RSE-PTO-01 §3.2, RSE-PTO-01 §4.2, RSE-APR-01 §2]
+    ends_with: "draft_manager_message after Confirmation"
+    contrast: "Chloé Tremblay (E1008, Toronto) asking the same: 3 PTO days (Remembrance Day is a working day, RSE-HOL-01 §5.1)"
+  remote_demo:
+    persona: E1002                 # Daniel Okafor, FT exempt, office-hybrid, Austin
+    prompt: "Can I work from Lisbon for 6 weeks starting January 4?"
+    dates: {from: 2027-01-04, to: 2027-02-12}
+    working_days: 30
+    facts: ["another country -> always HR review", "30 working days > 20-day annual cap -> manager cannot approve", "notify IT Security ≥ 5 working days before", "VPN always"]
+    compliance: {outcome: needs_hr_review, approver: HR, rules: [TRW-ABROAD, TRW-ABROAD-CAP, TRW-ABROAD-NOTICE, TRW-SECURITY]}
+    cites: [RSE-LOC-01 §3.1, RSE-LOC-01 §3.2, RSE-SEC-01 §5.4, RSE-LOC-01 §4.2]
+    ends_with: "create_mock_hr_ticket (remote_work) after Confirmation"
+  multi_doc_toronto_trip:          # the multi-document question in the demo
+    persona: E1001
+    prompt: "I'm going to our Toronto office for work Dec 7–9 and want to stay on for a few vacation days until the 14th. What can I expense and how does the PTO work?"
+    business_days: [2026-12-07, 2026-12-08, 2026-12-09]
+    pto_days: [2026-12-10, 2026-12-11, 2026-12-14]   # 3 PTO days; Maya's US calendar applies, not Toronto's
+    facts: ["trip needs manager pre-approval", "airfare up to the business-only comparison fare", "lodging and meals for Dec 10–14 are personal", "lodging ≤ $275/night, meals ≤ $90/day while in Canada", "3 PTO days, ≤ 3 -> no 2-week notice", "business trip ≤ 14 days -> no Cross-Border Review"]
+    cites: [RSE-EXP-01 §6.2, RSE-EXP-01 §6.3, RSE-EXP-01 §4, RSE-EXP-01 §5.1, RSE-PTO-01 §4.2, RSE-LOC-01 §2.3, RSE-LOC-01 §2.4, RSE-APR-01 §3]
+  multi_doc_parental_leave:
+    persona: E1010                 # Aisha Bello, FT exempt, Denver; has open HR ticket on her leave
+    prompt: "My parental leave starts December 7. What happens to my benefits and my PTO?"
+    leave: {from: 2026-12-07, weeks: 12, returns: 2027-03-01}
+    facts: ["12 weeks at 100% pay", "benefits continue; contributions via payroll", "add the baby within 31 days of birth (qualifying life event)", "PTO keeps accruing during paid leave", "leave spans Dec 31 -> carry over up to 10 days instead of 5"]
+    cites: [RSE-LV-01 §3.2, RSE-LV-01 §3.5, RSE-BEN-01 §4, RSE-BEN-01 §3.4, RSE-PTO-01 §2.5, RSE-PTO-01 §5.2]
+  multi_doc_personal_laptop:
+    persona: E1009                 # Marcus Reed, remote-approved
+    prompt: "Can I use my personal laptop when I work from home?"
+    facts: ["project files only on company-managed devices", "personal devices: browser webmail/HR Portal with MFA only", "personal laptops not reimbursed; Ridgeline provides a laptop", "remote workspace must meet SEC §5"]
+    cites: [RSE-SEC-01 §3.1, RSE-SEC-01 §3.2, RSE-SEC-01 §3.3, RSE-EQ-01 §3, RSE-RW-01 §5.2]
+  expense_compliance:
+    persona: E1003                 # Luis Ortega, field/site, Denver
+    prompt: "Can I expense $180 steel-toe boots and a $120 dinner from the Pueblo site visit?"
+    items:
+      - {category: ppe, amount: 180, currency: USD, expected: allowed_with_approval, note: "within $300/year PPE; receipt required; manager approves the claim", cite: RSE-EXP-01 §7.1}
+      - {category: meals, amount: 120, currency: USD, expected: not_allowed, computed: {reimbursable: 75}, note: "domestic meals capped at $75/day; $45 not reimbursable", cite: RSE-EXP-01 §5.1}
+    approver: manager
+  benefits_triage:
+    persona: E1011                 # Noah Fischer, FT exempt, Austin, hired 2026-10-12
+    prompt: "I haven't signed up for health insurance yet. Is it too late?"
+    hire_date: 2026-10-12
+    coverage_start: 2026-11-01
+    window_ends: 2026-11-11        # 30 calendar days from hire, inclusive of hire date +30
+    status: pending
+    facts: ["window open until Nov 11", "coverage back-dated to Nov 1 once enrolled", "if missed: open enrollment Nov 16–30, effective Jan 1 2027"]
+    cites: [RSE-BEN-01 §1.2, RSE-BEN-01 §3.1, RSE-BEN-01 §3.2, RSE-BEN-01 §3.3]
+  escalation_conduct:
+    persona: E1004                 # Priya Raman
+    prompt: "A coworker keeps making comments about my accent in meetings and I don't know what to do."
+    expected: escalate (trigger 1, sensitive matter)
+    facts: ["Ridgeline prohibits harassment", "report to HR Confidential or the ethics line; non-retaliation", "agent offers a conduct ticket -> HR Confidential, minimal summary, after Confirmation"]
+    cites: [RSE-HB-01 §4.1, RSE-HB-01 §6.1, RSE-HB-01 §6.3]
+
+# ---------------------------------------------------------------- Deliberate gaps
+# Never mentioned anywhere in the corpus. Questions about them -> Refusal
+# ("Ridgeline's policies don't cover this"), and they seed the out-of-corpus
+# calibration queries.
+not_covered:
+  - pet insurance
+  - stock options / equity
+  - tuition reimbursement
+  - sabbaticals
+  - relocation assistance
+  - commuter / transit benefits
+
+# Citable "contact HR" sections (grounds for Escalation and HR referrals)
+contact_hr_sections:
+  - {topic: "Reporting concerns (conduct, harassment, safety)", cite: RSE-HB-01 §6}
+  - {topic: "Accommodations and medical leave",                 cite: RSE-LV-01 §7.2}
+  - {topic: "Cross-Border Review (tax, immigration, abroad)",    cite: RSE-LOC-01 §4}
+  - {topic: "Plan-specific benefits questions; Canada plan",     cite: RSE-BEN-01 §6}
+
+# ---------------------------------------------------------------- Mock Data constraints
+# Values the Eval Set's gold answers depend on (eval/eval_set.yaml). The build's data test checks
+# mock_data/ against every row; changing one means re-checking the named items.
+persona_constraints:
+  - {employee: E1001, rule: "PTO available = 11 as of Demo Date",                 items: [W01, W05, M01]}
+  - {employee: E1001, rule: "manager E1012 (Jordan Lee); E1012's manager E1009 (Marcus Reed)", items: [W01, W05]}
+  - {employee: E1001, rule: "no direct reports; E1002 not in her reporting chain", items: [X03]}
+  - {employee: E1002, rule: "office-hybrid, Austin TX, US",                       items: [W02, S03, S05, C03, R03]}
+  - {employee: E1003, rule: "field/site, Denver; PTO available ≥ 4; no PPE claimed in 2026", items: [W04, W06, C02]}
+  - {employee: E1004, rule: "PTO available = 1.5 exactly; US office (no holidays Nov 12–13)", items: [W03]}
+  - {employee: E1004, rule: "not in E1001's reporting chain",                     items: [X02]}
+  - {employee: E1005, rule: "office-hybrid, Seattle WA",                           items: [E02]}
+  - {employee: E1007, rule: "Employment Type contractor",                          items: [R04]}
+  - {employee: E1008, rule: "full-time, Toronto (CA calendar, RSE Canada Group Plan)", items: [S02, E03]}
+  - {employee: E1010, rule: "full-time, ≥ 6 months' service, parental leave from 2026-12-07; one open leave ticket", items: [M02, E04]}
+  - {employee: E1011, rule: "hired 2026-10-12, Austin; medical enrollment pending", items: [W07]}

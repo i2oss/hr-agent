@@ -1,4 +1,4 @@
-"""Consistency check for eval/: the Eval Set mix and format, every Citation resolves to a § in
+"""Consistency check for evaluation/: the Eval Set mix and format, every Citation resolves to a § in
 corpus/_outlines.md, tools/Personas/enums are valid, the date arithmetic behind each gold answer
 holds against corpus/_facts.yaml, the calibration set is disjoint from the Eval Set, and each
 "contradicts" seed really contradicts the facts sheet.
@@ -7,9 +7,9 @@ import re, sys, datetime as d, yaml
 root=sys.argv[1]
 F=yaml.safe_load(open(f"{root}/corpus/_facts.yaml"))
 O=open(f"{root}/corpus/_outlines.md").read()
-E=yaml.safe_load(open(f"{root}/eval/eval_set.yaml"))["items"]
-C=yaml.safe_load(open(f"{root}/eval/calibration_queries.yaml"))
-S=yaml.safe_load(open(f"{root}/eval/seeded_failures.yaml"))["seeded"]
+E=yaml.safe_load(open(f"{root}/evaluation/eval_set.yaml"))["items"]
+C=yaml.safe_load(open(f"{root}/evaluation/calibration_queries.yaml"))
+S=yaml.safe_load(open(f"{root}/evaluation/seeded_failures.yaml"))["seeded"]
 errs=[]
 def err(m): errs.append(m)
 # sections defined in outlines (same parse as check_facts_outlines.py)

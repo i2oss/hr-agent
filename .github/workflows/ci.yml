@@ -1,0 +1,67 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      LLM_PROVIDER: fake          # CI uses no LLM key
+      FASTEMBED_CACHE_PATH: ~/.cache/fastembed
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Cache embedding model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/fastembed
+          key: fastembed-bge-small-en-v1.5
+      - run: uv sync --frozen
+      - name: Lint
+        run: uv run ruff check .
+      - name: Typecheck
+        run: make typecheck
+      - name: Planning and corpus checks
+        run: make check
+      - name: Index manifest check (re-parse + re-chunk, no embedding recompute)
+        run: uv run python scripts/check_index_manifest.py
+      - name: Tool schemas are current
+        run: uv run python scripts/export_tool_schemas.py --check
+      - name: Tests (start check, unit, data, MCP discovery + per-tool calls, e2e W01 with the fake LLM)
+        run: uv run pytest -q
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      APP_URL: ${{ vars.APP_URL }}
+    steps:
+      - name: Trigger Render deploy hook
+        run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" > /dev/null
+      - name: Wait for the live /health to show this commit (cold start can take minutes)
+        run: |
+          for i in $(seq 1 60); do
+            body=$(curl -fsS --max-time 20 "$APP_URL/health" || true)
+            if echo "$body" | grep -q "\"version\":\"$GITHUB_SHA\""; then echo "$body"; exit 0; fi
+            sleep 10
+          done
+          echo "health never showed $GITHUB_SHA"; exit 1
+      - name: Post-deploy smoke (one real question as E1001)
+        run: |
+          resp=$(curl -fsS --max-time 120 -X POST "$APP_URL/chat" -H 'content-type: application/json' \
+            -d "{\"session_id\":\"smoke-$GITHUB_SHA\",\"speaking_as\":\"E1001\",\"message\":\"How many unused PTO days can I carry over?\"}")
+          echo "$resp" | python3 -c '
+          import json, sys
+          a = json.load(sys.stdin)["answer"]
+          cites = [c["doc_id"] for f in a["policy_facts"] for c in f["citations"]]
+          assert "RSE-PTO-01" in cites, f"no RSE-PTO-01 citation: {a}"
+          print("smoke ok:", a["lead"])'

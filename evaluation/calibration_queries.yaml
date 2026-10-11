@@ -1,6 +1,6 @@
 # Evidence-threshold calibration set
 #
-# FICTIONAL. Separate from, and disjoint with, eval/eval_set.yaml (no shared queries; the
+# FICTIONAL. Separate from, and disjoint with, evaluation/eval_set.yaml (no shared queries; the
 # not_covered gap used by the Eval Set's Refusal item, tuition reimbursement, is left out here).
 # Purpose (issue 11, "Chunking and retrieval strategy, and which ablation to run"): choose the
 # cutoff T on the TOP VECTOR COSINE below which search_policy returns evidence: "none".

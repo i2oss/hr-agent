@@ -1,0 +1,48 @@
+[project]
+name = "hr-agent"
+version = "0.1.0"
+description = "Ridgeline HR Agent: policy RAG with citations, MCP tools over synthetic HR data, human-in-the-loop Mock Actions. FICTIONAL."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic>=1.13.0",
+    "fastapi>=0.143.0",
+    "fastembed>=0.9.0",
+    "httpx>=0.28.1",
+    "mcp>=2.3,<3",
+    "numpy>=2.5.4",
+    "openai>=3.29.0",
+    "pydantic>=2.14.1",
+    "pydantic-settings>=2.15.0",
+    "pyyaml>=6.0.3",
+    "uvicorn>=0.54.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = ["scripts/check_facts_outlines.py", "scripts/check_eval_set.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[dependency-groups]
+dev = [
+    "beautifulsoup4>=4.15.0",
+    "markdown-pdf>=1.13.3",
+    "mypy>=2.4.0",
+    "pypdf>=6.20.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.17.0",
+    "types-pyyaml>=6.0.12.20260906",
+]

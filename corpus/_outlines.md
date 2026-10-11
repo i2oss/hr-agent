@@ -48,7 +48,7 @@ Pages are targets (~55 total). Format is the shipped format; PDFs are generated 
   - §6.4 What happens next — HR acknowledges within 2 working days, investigates, closes the loop
 - **§7 Personal Data and Privacy**
   - §7.1 What HR holds about you — profile, time off, benefits, tickets (mirrors Mock Data fields; no pay/health details in self-service)
-  - §7.2 Who can see your records — you see all of yours; managers and directors see their reporting chain's profile and time-off balance only; benefits and HR tickets are private to you and HR (the access rule)
+  - §7.2 Who can see your records — you see all of yours; managers and directors see their reporting chain's profile and time-off balance, and run the Compliance Check on their PTO requests; benefits and HR tickets are private to you and HR (the access rule)
   - §7.3 Asking for your data — via HR Service Desk
 - **§8 Acknowledgement** — read-and-acknowledge in the HR Portal
 

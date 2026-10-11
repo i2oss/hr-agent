@@ -667,7 +667,7 @@ contact_hr_sections:
   - {topic: "Plan-specific benefits questions; Canada plan",     cite: RSE-BEN-01 §6}
 
 # ---------------------------------------------------------------- Mock Data constraints
-# Values the Eval Set's gold answers depend on (eval/eval_set.yaml). The build's data test checks
+# Values the Eval Set's gold answers depend on (evaluation/eval_set.yaml). The build's data test checks
 # mock_data/ against every row; changing one means re-checking the named items.
 persona_constraints:
   - {employee: E1001, rule: "PTO available = 11 as of Demo Date",                 items: [W01, W05, M01]}

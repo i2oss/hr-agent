@@ -20,7 +20,9 @@ from typing import Any
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+from evaluation.graders import reply
+
+ROOT =Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "evaluation" / "results"
 
 SYSTEM = """You check whether an HR assistant's answer is grounded. You get the EVIDENCE the assistant \
@@ -56,7 +58,7 @@ def evidence(record: dict[str, Any]) -> dict[str, Any]:
 
 
 def answer_for_judge(record: dict[str, Any]) -> dict[str, Any]:
-    a = record["responses"][-1]["answer"]
+    a = reply(record)
     return {k: a.get(k) for k in ("lead", "policy_facts", "recommendations", "escalation", "clarification", "refusal")}
 
 
@@ -81,7 +83,7 @@ def seeded_records(run_dir: Path) -> list[tuple[dict[str, Any], dict[str, Any]]]
         rec = json.loads((run_dir / "traces" / f"{s['item']}-1.json").read_text())
         rec = copy.deepcopy(rec)
         doc_id, section = s["citation"].split("#")
-        rec["responses"][-1]["answer"].setdefault("policy_facts", []).append(
+        reply(rec).setdefault("policy_facts", []).append(
             {"text": s["claim"], "citations": [{"doc_id": doc_id, "section": section, "snippet": s["claim"]}],
              "data_sources": []})
         out.append((s, rec))

@@ -177,12 +177,15 @@ def test_not_set_plus_missing_argument_forces_one_clarification(settings):
 def test_injected_requester_overwrites_what_the_model_wrote(settings):
     spoof = {"tool_calls": [{"name": "check_pto_balance", "input": {"employee_id": "E1001",
                                                                    "requester_id": "E1009"}}]}
-    c, _, _ = client_for(settings, {"q": [spoof, {"final": {"lead": "Can't share that."}}]})
+    c, _, llm = client_for(settings, {"q": [spoof, {"final": {"lead": "Can't share that."}}]})
     with c:
         r = chat(c, "q", speaking_as="E1004").json()
     step = tool_steps(r["trace"])[0]
     assert step["args"]["requester_id"] == "E1004"
     assert step["output"]["error"]["code"] == "NOT_PERMITTED"
+    # The loop tells the model to stop after a denial, with the tool result.
+    notes = [b["text"] for b in llm.calls[1]["last"]["content"] if b["type"] == "text"]
+    assert any("not permitted" in n and "no Mock Action" in n for n in notes), notes
 
 
 def test_tool_limit_forces_a_final_answer(settings):

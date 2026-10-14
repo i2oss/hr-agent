@@ -42,6 +42,7 @@ def w01_record():
 
 def test_normalise_follows_the_eval_set_conventions():
     assert g.normalise("Nov 11–13, $1,000 — OK") == "nov 11 13 1000 ok"
+    assert g.normalise("11.0 days, 1.5 days, §4.02") == "11 days 1.5 days §4.02"
     assert g.normalise("I can’t share “that”") == "i can't share \"that\""
 
 
@@ -112,8 +113,13 @@ def test_ordered_collapses_consecutive_policy_calls():
     tail = ["check_policy_compliance", "CONFIRM", "create_mock_hr_ticket"]
     for searches in (["search_policy"], ["search_policy", "get_policy_section", "search_policy"]):
         assert g.tool_score(item, run("lookup_employee_profile", *searches, *tail)).ordered
-    # A policy call on the far side of another tool is its own step, so the order still counts.
+    # Reading a § the Compliance Check named, after the check, is a follow-up read.
+    after = ["check_policy_compliance", "get_policy_section", "search_policy", "CONFIRM", "create_mock_hr_ticket"]
+    assert g.tool_score(item, run("lookup_employee_profile", "search_policy", *after)).ordered
+    # A policy call on the far side of another tool is its own step, so the order still counts ...
     assert not g.tool_score(item, run("search_policy", "lookup_employee_profile", "search_policy", *tail)).ordered
+    # ... and the check still needs a search before it.
+    assert not g.tool_score(item, run("lookup_employee_profile", *after)).ordered
 
 
 def test_behavior_and_confusion():

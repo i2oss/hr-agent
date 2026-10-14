@@ -1,8 +1,9 @@
 """Code graders (SPEC slice 7): computed from the saved responses (answer + Trace) of each run.
 
 A record is one item × one run: {"item_id", "run", "speaking_as", "responses": [...]} where each
-response is the /chat or /chat/actions JSON. The last response holds the final answer and the whole
-session Trace. Matching conventions follow the header of evaluation/eval_set.yaml.
+response is the /chat or /chat/actions JSON. The first response holds the answer to the prompt; the
+last holds the whole session Trace and any action_result. Matching conventions follow the header of
+evaluation/eval_set.yaml.
 """
 
 from __future__ import annotations
@@ -28,6 +29,7 @@ def normalise(s: str) -> str:
     s = unicodedata.normalize("NFKC", str(s)).lower()
     s = re.sub(r"[‘’]", "'", re.sub(r"[“”]", '"', s))
     s = re.sub(r"[-‐‑‒–—]", " ", s).replace("$", "").replace(",", "")
+    s = re.sub(r"(\d)\.0\b", r"\1", s)  # "11.0 days", as a tool returns it, is "11 days"
     return re.sub(r"\s+", " ", s).strip()
 
 
@@ -37,6 +39,13 @@ def any_of(x: Any) -> list[str]:
 
 def final(record: Record) -> dict[str, Any]:
     return record["responses"][-1]
+
+
+def reply(record: Record) -> dict[str, Any]:
+    """The answer to the item's prompt. Later responses only follow a Confirm or Cancel ("done, here is
+    the ID"), so content, citations and behaviour are graded here; the Trace and action_result come
+    from final()."""
+    return record["responses"][0]["answer"]
 
 
 def answer_text(answer: dict[str, Any]) -> str:
@@ -68,7 +77,7 @@ def wilson(x: int, n: int, z: float = 1.96) -> tuple[float, float]:
 def exact_match(item: Item, record: Record) -> bool | None:
     if "gold_short" not in item:
         return None
-    text = answer_text(final(record)["answer"])
+    text = answer_text(reply(record))
     return any(normalise(g) in text for g in any_of(item["gold_short"]))
 
 
@@ -76,7 +85,7 @@ def partial_match(item: Item, record: Record) -> float | None:
     musts = item.get("must_contain") or []
     if not musts:
         return None
-    text = answer_text(final(record)["answer"])
+    text = answer_text(reply(record))
     return sum(any(normalise(alt) in text for alt in any_of(m)) for m in musts) / len(musts)
 
 
@@ -106,7 +115,7 @@ def citation_score(item: Item, record: Record) -> CitationScore | None:
     expected = item.get("expected_citations") or []
     if not expected:
         return None
-    preds = predicted_citations(final(record)["answer"])
+    preds = predicted_citations(reply(record))
     recall = sum(any(satisfies(p, e) for p in preds for e in any_of(entry)) for entry in expected) / len(expected)
     accept = [e for entry in expected for e in any_of(entry)] + list(item.get("also_accept", []))
     precision = (sum(any(satisfies(p, a) for a in accept) for p in preds) / len(preds)) if preds else None
@@ -145,13 +154,17 @@ def sequence(record: Record) -> list[str]:
 
 
 def collapse_policy(seq: list[str]) -> list[str]:
-    """Each run of consecutive policy calls becomes one "policy" step: how many searches it takes is
-    the model's choice (Sonnet often makes two or three where the gold lists one)."""
+    """The shape of a tool sequence for the ordered match. Each run of consecutive policy calls becomes
+    one "policy" step (how many searches it takes is the model's choice; Sonnet often makes two or
+    three where the gold lists one), and policy calls after check_policy_compliance are dropped: the
+    prompt tells the model to read a § the check names before citing it."""
     out: list[str] = []
     for name in seq:
-        name = "policy" if name in POLICY_TOOLS else name
-        if not (name == "policy" and out and out[-1] == "policy"):
-            out.append(name)
+        if name in POLICY_TOOLS:
+            if "check_policy_compliance" in out or (out and out[-1] == "policy"):
+                continue
+            name = "policy"
+        out.append(name)
     return out
 
 
@@ -197,7 +210,7 @@ def predicted_behavior(answer: dict[str, Any]) -> tuple[str, str | None]:
 
 
 def behavior_correct(item: Item, record: Record) -> bool:
-    got, detail = predicted_behavior(final(record)["answer"])
+    got, detail = predicted_behavior(reply(record))
     if got != item["expected_behavior"]:
         return False
     want = item.get("expected_trigger") or item.get("expected_reason")
@@ -272,7 +285,7 @@ def confusion(items: dict[str, Item], records: list[Record]) -> dict[str, Counte
     table: dict[str, Counter[str]] = {}
     for r in records:
         item = items[r["item_id"]]
-        got, _ = predicted_behavior(final(r)["answer"])
+        got, _ = predicted_behavior(reply(r))
         table.setdefault(item["expected_behavior"], Counter())[got] += 1
     return table
 

@@ -283,6 +283,11 @@ class AgentLoop:
                     ctx.passages += [Passage.model_validate(p) for p in o.output.get("passages", [])]
             elif o.error_code == "MISSING_ARGUMENT" and spec.server == "hr" and session.speaking_as is None:
                 clarify = True
+            elif o.error_code == "NOT_PERMITTED" and spec.server == "hr":
+                # Live X02 runs showed filler calls after a denial (a placeholder draft, "hello" searches).
+                notes.append("[Loop] That record is not permitted and stays that way this turn. Make no more "
+                             "`hr` calls about that person and propose no Mock Action. If you haven't yet, get "
+                             "RSE-HB-01 §7.2 with one `policy` call to cite it; then give your final answer.")
             results.append(self._result(call.id, o.output, not o.ok))
         if clarify:
             session.trace.add(ctx.turn, "clarification", "forced: Requester (not set) + MISSING_ARGUMENT")

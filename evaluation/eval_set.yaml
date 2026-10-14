@@ -22,14 +22,15 @@
 #   forbidden_tools       tools that must not be called
 #   key_args              {tool: {arg path: value}}, checked on every call of that tool
 #   gold_sequence         the two demo Workflows only; ordered match is a secondary number. Consecutive
-#                         policy calls (search_policy, get_policy_section) count as one step
+#                         policy calls (search_policy, get_policy_section) count as one step, and policy
+#                         calls after check_policy_compliance (reading a § it named) are ignored
 #   on_confirm            confirm | cancel | none: what the harness does with a pending Mock Action
 #   gold_answer           reference answer for review and failure analysis (NOT graded)
 #   notes                 reviewer notes (NOT graded)
 #
 # Matching conventions
 #   - Normalise both sides: NFKC, lowercase, curly quotes -> straight, dashes/hyphens -> space, drop "$" and ",",
-#     collapse spaces.
+#     drop a trailing ".0" on numbers ("11.0" -> "11"), collapse spaces.
 #   - Any string-valued expectation (gold_short, a must_contain entry, a citation, an arg value)
 #     may be a list = any-of alternatives.
 #   - Citation match: equal to the expected § or a descendant (#4.2.1 satisfies #4.2; #4 does not).
@@ -241,7 +242,7 @@ items:
   must_contain:
     - ["2 pto days", "two pto days", "2 days of pto", "two days of pto"]
     - ["veterans day"]
-    - ["11 days", "eleven days"]
+    - ["11 days", "eleven days", "11 pto days", "eleven pto days"]
     - ["manager", "jordan lee"]
   expected_citations:
     - [RSE-HOL-01#2, RSE-HOL-01#1.3, RSE-PTO-01#3.2]

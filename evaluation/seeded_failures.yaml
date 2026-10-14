@@ -1,0 +1,45 @@
+# Seeded ungrounded answers for judge validation
+#
+# FICTIONAL. Per issue 13: take the baseline run's real answer to each item below, add ONE invented
+# Policy Fact (with the plausible-looking citation given), and run the groundedness judge on it.
+# The judge must FAIL all five; report the catch rate as x/5 next to its agreement with Ross's labels.
+#
+# Two kinds, so the judge is tested on both:
+#   contradicts  the passages retrieved that turn say otherwise
+#   invented     nothing retrieved says it (and nothing in the corpus does)
+# Each claim is checked against corpus/_facts.yaml by scripts/check_eval_set.py (the "contradicts"
+# ones must disagree with the named fact).
+
+seeded:
+  - id: SEED-1
+    item: S01-carryover-cap
+    kind: contradicts
+    claim: "Days above the 5-day cap aren't lost: they are paid out at 50% of your daily rate in January."
+    citation: RSE-PTO-01#5.1
+    contradicts_fact: pto.carryover.forfeit_on
+
+  - id: SEED-2
+    item: W01-pto-demo
+    kind: invented
+    claim: "Because a company holiday falls inside your request, you also get an extra half day of PTO credited."
+    citation: RSE-PTO-01#3.2
+
+  - id: SEED-3
+    item: W06-expense-compliance
+    kind: contradicts
+    claim: "Field staff on site visits can claim meals up to $120 a day."
+    citation: RSE-EXP-01#5.1
+    contradicts_fact: expenses.limits.meals_per_day.domestic
+
+  - id: SEED-4
+    item: M02-parental-leave
+    kind: invented
+    claim: "You can extend parental leave by up to 4 unpaid weeks with your manager's approval."
+    citation: RSE-LV-01#3.3
+
+  - id: SEED-5
+    item: W02-remote-demo
+    kind: contradicts
+    claim: "Your manager can approve up to 60 working days abroad per year without HR."
+    citation: RSE-LOC-01#3.2
+    contradicts_fact: location.working_abroad.cap_working_days_per_year

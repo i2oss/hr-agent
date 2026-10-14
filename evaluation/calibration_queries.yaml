@@ -1,0 +1,54 @@
+# Evidence-threshold calibration set
+#
+# FICTIONAL. Separate from, and disjoint with, evaluation/eval_set.yaml (no shared queries; the
+# not_covered gap used by the Eval Set's Refusal item, tuition reimbursement, is left out here).
+# Purpose (issue 11, "Chunking and retrieval strategy, and which ablation to run"): choose the
+# cutoff T on the TOP VECTOR COSINE below which search_policy returns evidence: "none".
+#
+# Method: run each query through search_policy with keyword search ignored for the cutoff, record
+# the top cosine, then set T just below the lowest in-corpus top cosine, so no in-corpus query is
+# cut off. Out-of-corpus queries scoring above T are reported, not tuned away: the prompt's
+# "passages don't answer -> refuse" catches them. Report both distributions in the design doc.
+#
+# Queries are phrased the way the agent writes search_policy queries (short, keyword-ish),
+# not as chat prompts.
+#
+#   in_corpus:      query, expected (the § that should rank first or in the top k)
+#   out_of_corpus:  query, kind = gap (from not_covered) | non_hr | near_miss (shares words with the corpus)
+
+in_corpus:
+  - {id: CAL-IN-01, query: "bereavement leave days for a grandparent",            expected: RSE-LV-01#4}
+  - {id: CAL-IN-02, query: "is jury duty paid",                                   expected: RSE-LV-01#5}
+  - {id: CAL-IN-03, query: "doctor's note after sick days",                       expected: RSE-LV-01#2}
+  - {id: CAL-IN-04, query: "lost or stolen laptop reporting",                     expected: RSE-SEC-01#3.4}
+  - {id: CAL-IN-05, query: "working on airport public wifi",                      expected: RSE-SEC-01#5.2}
+  - {id: CAL-IN-06, query: "pasting client drawings into a public AI chatbot",    expected: RSE-SEC-01#6.2}
+  - {id: CAL-IN-07, query: "mileage rate driving my own car to a site",           expected: RSE-EXP-01#3.2}
+  - {id: CAL-IN-08, query: "receipt required for small purchases",                expected: RSE-EXP-01#8.1}
+  - {id: CAL-IN-09, query: "business class flight approval",                      expected: RSE-EXP-01#3.1}
+  - {id: CAL-IN-10, query: "accepting gifts from a supplier",                     expected: RSE-HB-01#4.3}
+  - {id: CAL-IN-11, query: "core working hours",                                  expected: [RSE-HB-01#3.2, RSE-RW-01#5.1]}
+  - {id: CAL-IN-12, query: "overtime approval for hourly employees",              expected: RSE-HB-01#3.3}
+  - {id: CAL-IN-13, query: "401k employer match and vesting",                     expected: RSE-BEN-01#2.5}
+  - {id: CAL-IN-14, query: "new hire check-in meetings first 90 days",            expected: RSE-ONB-01#3.1}
+  - {id: CAL-IN-15, query: "how many floating holidays",                          expected: RSE-HOL-01#4}
+  - {id: CAL-IN-16, query: "site injury near miss reporting deadline",            expected: RSE-HB-01#5.2}
+
+out_of_corpus:
+  # not_covered gaps (tuition reimbursement is held out for the Eval Set)
+  - {id: CAL-OUT-01, query: "pet insurance coverage",                             kind: gap}
+  - {id: CAL-OUT-02, query: "stock options vesting schedule",                     kind: gap}
+  - {id: CAL-OUT-03, query: "equity grant for engineers",                         kind: gap}
+  - {id: CAL-OUT-04, query: "sabbatical after five years of service",             kind: gap}
+  - {id: CAL-OUT-05, query: "relocation package for a new hire moving to Denver", kind: gap}
+  - {id: CAL-OUT-06, query: "transit pass commuter benefit",                      kind: gap}
+  - {id: CAL-OUT-07, query: "monthly parking subsidy at the office",              kind: near_miss}   # "parking" appears in §7.3 (fines)
+  # not HR at all
+  - {id: CAL-OUT-08, query: "minimum concrete cover for footing rebar",           kind: non_hr}
+  - {id: CAL-OUT-09, query: "AutoCAD trim command shortcut",                      kind: non_hr}
+  - {id: CAL-OUT-10, query: "weather in Seattle tomorrow",                        kind: near_miss}   # office city
+  - {id: CAL-OUT-11, query: "good lunch spots near the Denver office",            kind: near_miss}   # office city
+  - {id: CAL-OUT-12, query: "python script to merge PDF files",                   kind: non_hr}
+  - {id: CAL-OUT-13, query: "Broncos score last night",                           kind: non_hr}
+  - {id: CAL-OUT-14, query: "translate this email into French",                   kind: non_hr}
+  - {id: CAL-OUT-15, query: "car insurance quote for a new truck",                kind: near_miss}   # "insurance" appears in RSE-BEN-01

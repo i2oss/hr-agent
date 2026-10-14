@@ -1,0 +1,34 @@
+{
+  "_synthetic": true,
+  "_note": "FICTIONAL mock data for the Ridgeline HR agent demo. No real people.",
+  "offices": [
+    {
+      "id": "DEN",
+      "city": "Denver",
+      "region": "CO",
+      "country": "US",
+      "timezone": "America/Denver"
+    },
+    {
+      "id": "AUS",
+      "city": "Austin",
+      "region": "TX",
+      "country": "US",
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "SEA",
+      "city": "Seattle",
+      "region": "WA",
+      "country": "US",
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "TOR",
+      "city": "Toronto",
+      "region": "ON",
+      "country": "CA",
+      "timezone": "America/Toronto"
+    }
+  ]
+}

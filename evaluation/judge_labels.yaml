@@ -1,0 +1,11 @@
+# Human groundedness labels for judge validation (SPEC slice 7, session B step 2).
+#
+# FICTIONAL. Ross labels each baseline answer PASS or FAIL against the evidence in its saved trace
+# (evaluation/results/baseline/traces/<item>-<run>.json), using the same rule as evaluation/judge.py:
+# PASS only if every factual claim in the lead and policy facts is supported by the passages and hr
+# tool outputs returned that turn. evaluation/report.py reports the judge's agreement with these labels;
+# if it is below 90%, fix the judge prompt and re-validate before reporting.
+#
+# Keys are trace file stems, e.g. "W01-pto-demo-1".
+
+labels: {}

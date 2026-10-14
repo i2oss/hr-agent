@@ -1,0 +1,64 @@
+{
+  "_synthetic": true,
+  "_note": "FICTIONAL mock data for the Ridgeline HR agent demo. No real people.",
+  "hr_tickets": [
+    {
+      "id": "HR-2026-0412",
+      "employee_id": "E1010",
+      "category": "other",
+      "subject": "Parental leave from 2026-12-07",
+      "summary": "Plan 12 weeks of parental leave starting 2026-12-07; confirm benefits during leave and return date.",
+      "status": "open",
+      "priority": "normal",
+      "created": "2026-10-05",
+      "assigned_queue": "HR Service Desk",
+      "citations": [
+        {
+          "doc_id": "RSE-LV-01",
+          "section": "3.2"
+        },
+        {
+          "doc_id": "RSE-LV-01",
+          "section": "3.4"
+        }
+      ],
+      "mock": false
+    },
+    {
+      "id": "HR-2026-0377",
+      "employee_id": "E1002",
+      "category": "expense",
+      "subject": "Late hotel receipt, Dallas site visit",
+      "summary": "Hotel receipt was lost; manager approved the claim with an explanation.",
+      "status": "closed",
+      "priority": "low",
+      "created": "2026-08-19",
+      "assigned_queue": "Finance · Expenses",
+      "citations": [
+        {
+          "doc_id": "RSE-EXP-01",
+          "section": "8.1"
+        }
+      ],
+      "mock": false
+    },
+    {
+      "id": "HR-2026-0290",
+      "employee_id": "E1005",
+      "category": "benefits",
+      "subject": "Part-time benefits eligibility",
+      "summary": "Asked which plans part-time staff can join; answered from the benefits summary.",
+      "status": "closed",
+      "priority": "low",
+      "created": "2026-06-02",
+      "assigned_queue": "HR · Benefits",
+      "citations": [
+        {
+          "doc_id": "RSE-BEN-01",
+          "section": "1.1"
+        }
+      ],
+      "mock": false
+    }
+  ]
+}

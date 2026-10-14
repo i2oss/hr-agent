@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ridgeline HR Assistant</title>
+<meta name="description" content="FICTIONAL demo: an agentic HR assistant with cited policy answers, MCP tools and confirmed Mock Actions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="banner" role="note"><b>FICTIONAL</b> · Ridgeline is fictional. Demo only; not HR or legal advice.</div>
+
+<div class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <h1>Ridgeline HR Assistant</h1>
+      <p>Policy answers with citations · Mock Actions only after you confirm · <span id="demo-date">Demo date</span></p>
+    </div>
+    <div class="controls">
+      <div class="field"><label class="lbl" for="who">Speaking as</label>
+        <select id="who"><option value="">(not set)</option></select></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <section class="chat" aria-label="Conversation">
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <form class="composer" id="composer">
+        <label class="lbl" for="msg" hidden>Message</label>
+        <textarea id="msg" rows="2" maxlength="2000" placeholder="Ask about Ridgeline's HR policies…"></textarea>
+        <button class="btn send" id="send" type="submit">Send</button>
+      </form>
+    </section>
+    <aside class="side" aria-label="Trace">
+      <header><h2>Trace</h2><span class="hint" id="side-meta"></span></header>
+      <ol class="trace" id="side-trace"></ol>
+      <div class="tfoot" id="side-foot"></div>
+    </aside>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

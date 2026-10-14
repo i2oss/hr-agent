@@ -1,0 +1,20 @@
+name: keepalive
+
+# Pings the live /health every 10 minutes so the Render free service doesn't sleep (cold starts take
+# ~30-60 s). Off by default: it runs only while the repo variable KEEPALIVE is "on", switched on by
+# hand for the grading window (deployed.md). /health never calls the LLM, so a ping costs nothing.
+# Scheduled workflows run from the default branch only.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    if: vars.KEEPALIVE == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: GET /health
+        run: curl -fsS --max-time 120 "${{ vars.APP_URL }}/health" -o /dev/null -w '%{http_code} in %{time_total}s\n'

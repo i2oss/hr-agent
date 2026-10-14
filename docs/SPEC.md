@@ -2,7 +2,7 @@
 
 > **Build spec.** It was compiled from the closed tickets of the wayfinder map [HR agent (MSAIE Project 3): chart the way to a build-ready spec][map]. Every decision is restated here as a build instruction, with its later amendments already folded in, and links back to the ticket that holds its reasoning ("why: …"). **A build session reads only §1–§3 plus its own slice section. It never needs to open a ticket.** The tickets stay frozen as the reasoning record.
 >
-> After the build, this file moves to `docs/SPEC.md`, marked "build spec as planned, frozen at build start". `design-and-evaluation.md` is the living, as-built document ([why: Deliverable docs][t23]).
+> Moved from the repo root to `docs/SPEC.md` on 2026-10-14 (slice 8). It stays the working plan until the build ends; then it is marked "build spec as planned, frozen at build start", and `design-and-evaluation.md` becomes the living, as-built document ([why: Deliverable docs][t23]).
 
 **Contents:** [1 Destination](#1-destination-and-standing-decisions) · [2 Rubric matrix](#2-rubric-matrix) · [3 Cross-cutting contracts](#3-cross-cutting-contracts) · [4 Slices](#4-slices) · [5 Build order](#5-build-order-and-parallelism) · [Appendix A: decision log](#appendix-a-decision-log) · [Appendix B: superseded decisions](#appendix-b-superseded-decisions)
 
@@ -26,7 +26,7 @@
 | Human in the loop | Mock Actions run **only after explicit Confirmation**. |
 | Owner | Solo (Ross, `i2oss`). Group logistics are out of scope. |
 
-**Glossary.** [CONTEXT.md](CONTEXT.md) is the source of truth for domain terms: Company, Policy Corpus, Policy Document, Chunk, Citation, Policy Fact vs Recommendation, Mock Data, Employee, Persona, Demo Date, Requester, Tool, Mock Action, Compliance Check, Workflow, Trace, Clarification, Escalation, Refusal, Confirmation, Employment Type, Work Arrangement, Temporary Remote Work. Use those words in code, docs and UI.
+**Glossary.** [CONTEXT.md](../CONTEXT.md) is the source of truth for domain terms: Company, Policy Corpus, Policy Document, Chunk, Citation, Policy Fact vs Recommendation, Mock Data, Employee, Persona, Demo Date, Requester, Tool, Mock Action, Compliance Check, Workflow, Trace, Clarification, Escalation, Refusal, Confirmation, Employment Type, Work Arrangement, Temporary Remote Work. Use those words in code, docs and UI.
 
 **Out of scope for this spec:** recording the video and making the Shelton.ai slide. Slice 9 prepares the recording but does not record it.
 
@@ -60,7 +60,6 @@ These hold across slices. A slice that changes one updates this section in the s
 
 ```
 .
-├── SPEC.md                      # this file → docs/SPEC.md after the build
 ├── README.md  design-and-evaluation.md  ai-tooling.md  deployed.md  CONTEXT.md
 ├── pyproject.toml  uv.lock  Makefile  Dockerfile  .env.example  .dockerignore
 ├── app/                         # FastAPI web app + agent orchestration (MCP *client* side)
@@ -83,7 +82,7 @@ These hold across slices. A slice that changes one updates this section in the s
 │                                # calibrate_threshold.py, results/
 ├── scripts/                     # check_*.py, export_tool_schemas.py, build_pdfs.py, demo_runner.py
 ├── tests/                       # pytest: unit, data, mcp, e2e
-├── docs/                        # tool-schemas.json, demo-script.md, architecture assets
+├── docs/                        # SPEC.md (this file), tool-schemas.json, demo-script.md, architecture assets
 └── .github/workflows/           # ci.yml (test → deploy), keepalive.yml (off by default)
 ```
 
@@ -126,9 +125,9 @@ Assume 7 W items at ~$0.13 and 22 others at ~$0.04 (up to $0.16 and $0.08). That
 
 **Public traffic.** About $0.06 per message on average: the item mix plus a ~$0.03 cache write on a visit's first message after 5 idle minutes. A workflow message with its Confirm costs $0.13–0.16.
 - **Expected:** ~10 messages a day → ~$0.60 a day, ~$18 a month.
-- **Worst day:** with `DAILY_MESSAGE_CAP=300`, $18–39 a day. With a cap of 100, $6–13 a day.
+- **Worst day:** with `DAILY_MESSAGE_CAP=100`, $6–13 a day. The old cap of 300 allowed $18–39.
 
-**Recommendation (Ross to decide):** buy **$75 of credit** (the central build total plus a month of expected traffic) and set a **$100 monthly console spend limit** as the hard stop. Consider lowering `DAILY_MESSAGE_CAP` to 100: at 300, a day of abuse could use up a third of the limit.
+**Decided (Ross, 2026-10-14):** buy **$75 of credit** (the central build total plus a month of expected traffic), set a **$100 monthly console spend limit** as the hard stop, and lower `DAILY_MESSAGE_CAP` to **100**.
 
 ### 3.3 Configuration and secrets
 
@@ -152,7 +151,7 @@ Assume 7 W items at ~$0.13 and 22 others at ~$0.04 (up to $0.16 and $0.08). That
 | `RATE_LIMIT_PER_IP` | `20` | messages per IP per 10 minutes |
 | `MAX_MESSAGE_CHARS` | `2000` | per message |
 | `MAX_TURNS_PER_SESSION` | `30` | per conversation |
-| `DAILY_MESSAGE_CAP` | `300` | site-wide, per UTC day |
+| `DAILY_MESSAGE_CAP` | `100` | site-wide, per UTC day (300 until 2026-10-14; lowered for the Sonnet 5.5 budget) |
 | `EVAL_BYPASS_KEY` | — | secret. A request with header `X-Eval-Bypass: <key>` skips the rate limits (deployed latency run, demo runner). |
 | `PORT` | `8000` | set by Render |
 
@@ -435,7 +434,7 @@ Every value an eval gold answer depends on is pinned in `_facts.yaml` → `perso
    - Record the service URL.
 6. **Memory measurement:** run the image locally under `docker stats` with the embedding model loaded. Record the figure in `ai-tooling.md`. Target **< 400 MB of 512 MB**. Re-measure in slices 3 and 5; if over budget, switch to the Voyage fallback.
 
-**Done when:** a push to `main` runs `test` → `deploy` → live `/health` 200 showing the pushed SHA. A failing test blocks deploy (prove it once on a branch PR). The local `docker run` serves `/health`.
+**Done when:** a push to `main` runs `test` → `deploy` → live `/health` 200 showing the pushed SHA. A failing test blocks deploy (prove it once on `main`, then revert: on a branch or PR the `deploy` job is skipped by its `if:` anyway, so only `main` shows the gate. `scripts/setup_render.sh` stage 8 does this). The local `docker run` serves `/health`.
 
 ### Slice 2: Corpus prose (2 sessions) · Track A
 
@@ -570,7 +569,7 @@ Every value an eval gold answer depends on is pinned in `_facts.yaml` → `perso
 - The in-app limits and `X-Eval-Bypass`.
 - `GET /config`.
 
-**Ross (HITL):** buy Anthropic credit and set the console spend limit per the **LLM budget** in §3.2 (recommended: $75 of credit, a **$100 monthly limit**), and put `LLM_API_KEY` in Render.
+**Ross (HITL):** buy Anthropic credit and set the console spend limit per the **LLM budget** in §3.2 ($75 of credit, a **$100 monthly limit**), and put `LLM_API_KEY` in Render.
 
 **CI additions (fake LLM, no key):**
 - **End-to-end W01**: Maya → the 4 tool calls in gold order → `pending_action` (`draft_manager_message`) → confirm → `MSG-MOCK-0001` in `action_result`. The Trace shows the injected `requester_id` and the ⏸ step.

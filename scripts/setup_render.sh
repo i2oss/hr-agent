@@ -249,8 +249,8 @@ fi
 
 if want 4; then
 stage "Render: environment variables, health check, auto-deploy"
-ask DAILY_MESSAGE_CAP_RENDER "DAILY_MESSAGE_CAP for production (Enter for 300, the spec default):"
-DAILY_MESSAGE_CAP_RENDER=${DAILY_MESSAGE_CAP_RENDER:-300}
+ask DAILY_MESSAGE_CAP_RENDER "DAILY_MESSAGE_CAP for production (Enter for 100, the spec default):"
+DAILY_MESSAGE_CAP_RENDER=${DAILY_MESSAGE_CAP_RENDER:-100}
 write_env DAILY_MESSAGE_CAP_RENDER "$DAILY_MESSAGE_CAP_RENDER"
 ENV_BLOCK="LLM_PROVIDER=anthropic
 LLM_MODEL=claude-sonnet-5-5

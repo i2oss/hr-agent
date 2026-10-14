@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     rate_limit_per_ip: int = 20
     max_message_chars: int = 2000
     max_turns_per_session: int = 30
-    daily_message_cap: int = 300
+    daily_message_cap: int = 100
     eval_bypass_key: SecretStr | None = None
 
     render_git_commit: str | None = None

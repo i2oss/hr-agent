@@ -1,6 +1,6 @@
 # HR Agent — Domain Glossary
 
-The language of this project. Glossary only: no implementation decisions (those live in SPEC.md and the map's tickets).
+The language of this project. Glossary only: no implementation decisions (those live in docs/SPEC.md and the map's tickets).
 
 **Company** — Ridgeline Structural Engineering, Inc.: the fictional mid-size (~450-person) civil/structural engineering firm whose policies and employees the system serves. Entirely synthetic; HQ Denver, offices in Austin, Seattle and Toronto.
 

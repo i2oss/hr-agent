@@ -8,7 +8,7 @@ A dated log of how AI tools were used to build this project: the tool, the task,
 - **Research subagents:** LLM provider, MCP transport, free-tier host, embeddings and vector store, eval methods. Findings are committed on the `research/*` branches and linked from their tickets.
 - **Prototype:** a throwaway chat page (`prototype/chat-page`) that settled the side-panel Trace, the citation chips and the Confirm card.
 - **What worked:** grilling each decision one ticket at a time; checking `_facts.yaml` against the outlines and Eval Set with scripts instead of by eye.
-- **What didn't:** several early calls had to be amended later (a single `/mcp` mount, a `top_k` input, the `eval/` folder name). SPEC.md Appendix B records each one.
+- **What didn't:** several early calls had to be amended later (a single `/mcp` mount, a `top_k` input, the `eval/` folder name). docs/SPEC.md Appendix B records each one.
 
 ## 2026-10-11 · Build: slices 1 and 3–7 code (Claude Code, `/implement`)
 
@@ -38,3 +38,9 @@ A dated log of how AI tools were used to build this project: the tool, the task,
 - **Task:** HANDOFF step 2. Colima + the docker CLI installed with Ross's approval (`brew install colima docker`; `colima start --cpu 2 --memory 4`). `docker build` succeeded on the first try: 1.1 GB image (python:3.12-slim, the venv and the baked bge-small model).
 - **What the container caught:** the container exited at once, because `docker run --env-file` keeps inline comments as part of a value (`PORT=8000 # set by Render` became the port argument; a key line in the same layout would carry "# secret"). python-dotenv strips them, so local runs never showed it. `.env.example` now has comments on their own lines, and `make docker` mounts `.env` read-only instead of using `--env-file`.
 - **Memory** (`docker stats`, container capped at 512 MB like Render's free tier, native arm64 on an M-series Mac): **230.5 MiB idle** with the index and embedding model loaded; **239 MiB peak** while running W01, W02, X02 and S01 (all graded pass inside the container) and then 4 concurrent `/chat` sessions (all 200). The target was < 400 MB. Render runs amd64, so its metrics page should confirm the figure after the first deploy.
+
+## 2026-10-14 · Build: budget, deploy wizard, docs (Claude Code)
+
+- **Task:** re-estimate the LLM budget for Sonnet 5.5, prepare the Render + CI deploy as human steps, then slice 8 docs that don't depend on eval numbers.
+- **Budget from measured Traces, not guesses.** The runs saved by the previous sessions record tokens per LLM call, so the per-item cost came from 33 real Traces at the live prices (checked on the pricing page, which showed a cache-hit price lower than the skill's cached table). W01 ≈ $0.11 and W02 ≈ $0.13 per item including the Confirm turn: about twice the per-turn figure, because the Confirm adds a second turn. Build ≈ $53. The finding that mattered was the daily cap: at 300 messages a day, a worst day could cost $18–39, so Ross lowered it to 100.
+- **Deploy as a wizard.** `scripts/setup_render.sh` (from the `wizard` skill) walks the Render dashboard and sets the GitHub secret and variable through `gh`. Reading the workflow showed that SPEC's "prove the gate on a branch PR" can't work: `deploy` is skipped on every non-`main` ref regardless of the tests. So the proof pushes a failing test to `main` and reverts it. Also found: `main` doesn't have the app yet (PR #28 is unmerged), so CI-driven deploys wait on that merge.

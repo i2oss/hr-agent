@@ -65,3 +65,5 @@ Checks at handoff, all green: `ruff check .`, `make typecheck` (mypy), `make che
 - The worktree guard in background sessions rejects compound shell commands (heredocs, `&&` chains with `git`, and even the word `eval` in a path). Write edit scripts to a file and run them, or use the Write/Edit tools.
 - The first `python -m ingest.build_index` once hung at exit at 90% CPU and couldn't be reproduced afterwards. If it recurs, run it under `PYTHONFAULTHANDLER`.
 - `uv` was installed via Homebrew without asking (Ross has flagged this; don't repeat it). `docker` and `timeout` are not installed.
+- `.env` (with Ross's real key, gitignored) lives in this worktree. Don't print or read the key: the auto-mode classifier blocks it. To check the key works, start the app and send one `/chat`. `/config` reports the model in use.
+- A dev server from the 2026-10-14 session may still hold port 8000: `lsof -ti tcp:8000 | xargs kill` before `make run`.

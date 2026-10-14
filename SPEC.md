@@ -93,10 +93,42 @@ Brief equivalents: `evaluation/` = "evaluation/", `mock_data/` = "mock_data/", `
 
 - **Python 3.12**, dependencies managed by **uv** with a committed lockfile. Use `uv add` and `uv run` day to day. uv creates `.venv` (this is the brief's "virtual environment"). [why: Deployment & CI/CD][t12]
 - Runtime dependencies: `fastapi`, `uvicorn`, `mcp>=2.3,<3` (SDK v2: `MCPServer`, `Client`), `anthropic`, `openai`, `fastembed`, `numpy`, `pydantic`, `pydantic-settings`, `pyyaml`, `httpx`. Dev dependencies: `pytest`, `pytest-asyncio`, `ruff`, `pypdf`, `beautifulsoup4`, `markdown-pdf`, `playwright` (slice 9 only). [why: MCP transport][t3], [LLM provider][t2], [Embeddings][t5]
-- **LLM:** `claude-sonnet-5-5` through the native `anthropic` SDK, with `strict: true` tool schemas (except `check_policy_compliance`: the API allows at most 16 union-typed parameters across strict schemas). Haiku 4.5 was the first choice and failed W01 in the live smoke of 2026-10-14; `LLM_MODEL=claude-haiku-4-5` still works. Groq's free tier, through `openai_compat`, stays an optional smoke-test fallback. Budget: buy $25 of credit and set a **$50 Anthropic console spend limit**. The $45 estimate was for Haiku; Sonnet used about 3× the tokens per turn in the smoke, so re-estimate before the eval runs. [why: LLM provider][t2]
+- **LLM:** `claude-sonnet-5-5` through the native `anthropic` SDK, with `strict: true` tool schemas (except `check_policy_compliance`: the API allows at most 16 union-typed parameters across strict schemas). Haiku 4.5 was the first choice and failed W01 in the live smoke of 2026-10-14; `LLM_MODEL=claude-haiku-4-5` still works. Groq's free tier, through `openai_compat`, stays an optional smoke-test fallback. Budget: see **LLM budget** below (the first $45 estimate was for Haiku; re-estimated for Sonnet 5.5 on 2026-10-14). [why: LLM provider][t2]
 - **Embeddings:** `BAAI/bge-small-en-v1.5` run locally through **fastembed** (ONNX, no PyTorch, 67 MB). The fallback is **Voyage `voyage-4-lite`** over its API (`EMBEDDINGS_PROVIDER=voyage`). Switching to it requires rebuilding the committed index with `make index`. [why: Embeddings][t5]
 - **Vector store:** **one committed SQLite file** holding Chunks, citation metadata, an FTS5 keyword index and float32 vectors. Search is plain numpy cosine. Chroma, FAISS and a reranker are rejected (RAM, no gain at ~300 Chunks). sqlite-vec is an optional later upgrade. [why: Embeddings][t5]
 - **Host:** **Render free web service**: 512 MB RAM, 0.1 CPU, sleeps after 15 min idle, disk wiped on every deploy. Railway at $5/month is the fallback. [why: Free-tier host][t4]
+
+#### LLM budget (Sonnet 5.5, re-estimated 2026-10-14)
+
+**Prices** (platform.claude.com pricing page, checked 2026-10-14): $2 / MTok input, $10 / MTok output, $2.50 / MTok 5-minute cache write, $0.10 / MTok cache hit. The Batch API's 50% discount doesn't apply, because every eval item goes through `POST /chat`.
+
+**Measured cost per item.** From the token counts in 33 saved Traces (W01, W02, X02, S01, live runs on 2026-10-14), including the confirm turn. Uncached input only; the cached system prompt and tools (~12k tokens) cost ~$0.001 per call while warm.
+
+| Item | Tokens (in / out, all turns) | Cost |
+|---|---|---|
+| W01 (with Confirm) | ~35k / 3.8k | $0.11 |
+| W02 (with Confirm) | ~38k / 5.4k | $0.13 (max $0.16) |
+| X02 | ~4k / 0.9k | $0.02 (max $0.10, a run that hit the 8-call cap) |
+| S01 | ~1.6k / 0.8k | $0.01 |
+
+Assume 7 W items at ~$0.13 and 22 others at ~$0.04 (up to $0.16 and $0.08). That gives **~$1.80 per 29-item pass (≤ $2.90)**, so **~$5.40 per 3-run eval run (≤ $8.70)**.
+
+| Use | Central | High |
+|---|---|---|
+| Eval runs `baseline`, `k2`, `vector`, spare (4 × 87 items) | $22 | $35 |
+| `k10` run (~+$0.02 per item for the extra passages) | $7 | $11 |
+| Judge, Sonnet 5.5: 5 runs × 87 answers, 5 seeds, one re-validation (~530 calls, ~8–12k in / 0.4–0.8k out) | $11 | $17 |
+| Deployed latency: 29 warm + 5 cold, plus wake-ups | $2 | $4 |
+| Dev re-runs of W01/W02/X02 × 3 after prompt changes (~$0.80 a round, ~5 rounds) | $4 | $6 |
+| Demo: rehearsals, takes and `demo_runner` (~15 sessions × ~$0.40) | $6 | $8 |
+| CI post-deploy smoke (~20 deploys × ~$0.04, including a cold cache write) | $1 | $1 |
+| **Build total** | **~$53** | **~$82** |
+
+**Public traffic.** About $0.06 per message on average: the item mix plus a ~$0.03 cache write on a visit's first message after 5 idle minutes. A workflow message with its Confirm costs $0.13–0.16.
+- **Expected:** ~10 messages a day → ~$0.60 a day, ~$18 a month.
+- **Worst day:** with `DAILY_MESSAGE_CAP=300`, $18–39 a day. With a cap of 100, $6–13 a day.
+
+**Recommendation (Ross to decide):** buy **$75 of credit** (the central build total plus a month of expected traffic) and set a **$100 monthly console spend limit** as the hard stop. Consider lowering `DAILY_MESSAGE_CAP` to 100: at 300, a day of abuse could use up a third of the limit.
 
 ### 3.3 Configuration and secrets
 
@@ -538,7 +570,7 @@ Every value an eval gold answer depends on is pinned in `_facts.yaml` → `perso
 - The in-app limits and `X-Eval-Bypass`.
 - `GET /config`.
 
-**Ross (HITL):** buy $25 of Anthropic credit, set the **$50 spend limit**, and put `LLM_API_KEY` in Render.
+**Ross (HITL):** buy Anthropic credit and set the console spend limit per the **LLM budget** in §3.2 (recommended: $75 of credit, a **$100 monthly limit**), and put `LLM_API_KEY` in Render.
 
 **CI additions (fake LLM, no key):**
 - **End-to-end W01**: Maya → the 4 tool calls in gold order → `pending_action` (`draft_manager_message`) → confirm → `MSG-MOCK-0001` in `action_result`. The Trace shows the injected `requester_id` and the ⏸ step.
@@ -790,7 +822,7 @@ One line per closed ticket: what it fixed, and where it lives in this spec.
 
 | Ticket | Gist | In SPEC |
 |---|---|---|
-| [Which LLM gives reliable tool-calling within a small budget?][t2] | Haiku 4.5, native SDK, ~$45; free tiers too rate-capped; thin adapter by env var; Sonnet 5.5 as the upgrade | §3.2, §3.3, §3.6 |
+| [Which LLM gives reliable tool-calling within a small budget?][t2] | Haiku 4.5, native SDK, ~$45; free tiers too rate-capped; thin adapter by env var; Sonnet 5.5 as the upgrade. Amended 2026-10-14: Sonnet 5.5 is the default, and the budget is re-estimated at ~$53 for the build plus traffic (§3.2) | §3.2, §3.3, §3.6 |
 | [MCP transport and process topology for a single free-tier service][t3] | MCP mounted in FastAPI over Streamable HTTP, SDK v2; localhost client; in-memory for CI; stdio fallback | §3.4, slice 3 |
 | [Free-tier host in 2026: Render vs Railway vs alternatives][t4] | Render free; Actions `test` gates a deploy hook; Railway $5 fallback | §3.2, slice 1 |
 | [Embedding model and vector store that fit free-tier memory][t5] | bge-small via fastembed; one committed SQLite (FTS5 + numpy + RRF); Voyage fallback | §3.2, slice 3 |

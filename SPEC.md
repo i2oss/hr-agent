@@ -93,7 +93,7 @@ Brief equivalents: `evaluation/` = "evaluation/", `mock_data/` = "mock_data/", `
 
 - **Python 3.12**, dependencies managed by **uv** with a committed lockfile. Use `uv add` and `uv run` day to day. uv creates `.venv` (this is the brief's "virtual environment"). [why: Deployment & CI/CD][t12]
 - Runtime dependencies: `fastapi`, `uvicorn`, `mcp>=2.3,<3` (SDK v2: `MCPServer`, `Client`), `anthropic`, `openai`, `fastembed`, `numpy`, `pydantic`, `pydantic-settings`, `pyyaml`, `httpx`. Dev dependencies: `pytest`, `pytest-asyncio`, `ruff`, `pypdf`, `beautifulsoup4`, `markdown-pdf`, `playwright` (slice 9 only). [why: MCP transport][t3], [LLM provider][t2], [Embeddings][t5]
-- **LLM:** `claude-haiku-4-5` through the native `anthropic` SDK, with `strict: true` tool schemas. Upgrade path: `LLM_MODEL=claude-sonnet-5-5` (about 2× the cost) if Haiku fumbles a Workflow. Groq's free tier, through `openai_compat`, stays an optional smoke-test fallback. Budget: buy $25 of credit and set a **$50 Anthropic console spend limit**. Expect about $45 in total. [why: LLM provider][t2]
+- **LLM:** `claude-sonnet-5-5` through the native `anthropic` SDK, with `strict: true` tool schemas (except `check_policy_compliance`: the API allows at most 16 union-typed parameters across strict schemas). Haiku 4.5 was the first choice and failed W01 in the live smoke of 2026-10-14; `LLM_MODEL=claude-haiku-4-5` still works. Groq's free tier, through `openai_compat`, stays an optional smoke-test fallback. Budget: buy $25 of credit and set a **$50 Anthropic console spend limit**. The $45 estimate was for Haiku; Sonnet used about 3× the tokens per turn in the smoke, so re-estimate before the eval runs. [why: LLM provider][t2]
 - **Embeddings:** `BAAI/bge-small-en-v1.5` run locally through **fastembed** (ONNX, no PyTorch, 67 MB). The fallback is **Voyage `voyage-4-lite`** over its API (`EMBEDDINGS_PROVIDER=voyage`). Switching to it requires rebuilding the committed index with `make index`. [why: Embeddings][t5]
 - **Vector store:** **one committed SQLite file** holding Chunks, citation metadata, an FTS5 keyword index and float32 vectors. Search is plain numpy cosine. Chroma, FAISS and a reranker are rejected (RAM, no gain at ~300 Chunks). sqlite-vec is an optional later upgrade. [why: Embeddings][t5]
 - **Host:** **Render free web service**: 512 MB RAM, 0.1 CPU, sleeps after 15 min idle, disk wiped on every deploy. Railway at $5/month is the fallback. [why: Free-tier host][t4]
@@ -105,7 +105,7 @@ Brief equivalents: `evaluation/` = "evaluation/", `mock_data/` = "mock_data/", `
 | Var | Default | Purpose |
 |---|---|---|
 | `LLM_PROVIDER` | `anthropic` | `anthropic` \| `openai_compat` \| `fake` (scripted, for CI and tests) |
-| `LLM_MODEL` | `claude-haiku-4-5` | the agent's model |
+| `LLM_MODEL` | `claude-sonnet-5-5` | the agent's model |
 | `LLM_API_KEY` | — | secret |
 | `LLM_BASE_URL` | — | `openai_compat` only (Groq, OpenRouter, Gemini, Ollama) |
 | `JUDGE_MODEL` | `claude-sonnet-5-5` | groundedness judge (evals only) |
@@ -822,6 +822,7 @@ These earlier calls were later amended. **This spec follows the amendment**, so 
 | Access rule: managers see their chain's profile + balance only ([Guardrails][t10]) | [Eval Set][t19] | Plus the Compliance Check on their chain's PTO requests |
 | `policy_facts[]` with `citations` only ([Guardrails][t10]) | [Chat-page prototype][t22] | Plus optional `data_sources[{tool}]`, checked as "ran this turn" |
 | `eval/` folder, `eval/results/<run-id>/` ([Evaluation design][t13], [Eval Set][t19]) | [Deliverable docs][t23] | `evaluation/`, `evaluation/results/<run-id>/` |
+| Haiku 4.5 as the agent model; every tool `strict: true` ([LLM provider][t2], [MCP tools][t9]) | Live smoke, 2026-10-14 (`ai-tooling.md`) | Sonnet 5.5 by default (Haiku failed W01; Sonnet passed W01 and W02 3/3); `check_policy_compliance` sent non-strict |
 | Env var list ([Deployment & CI/CD][t12]) | [Evaluation design][t13] addendum | Plus `EVAL_BYPASS_KEY` and the rate-limit off switch |
 | M01 (Toronto trip) is "the one in the demo" ([Company & corpus][t7]) | [Demo script][t24] | The demo shows W01, W02 and guardrails; W02 covers multi-doc. M01 is an eval item only |
 | An employee ID typed in the message also sets identity ([Mock data][t8]) | [Guardrails][t10] | Identity comes only from the "Speaking as" picker |

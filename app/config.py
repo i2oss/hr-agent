@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     llm_provider: Literal["anthropic", "openai_compat", "fake"] = "anthropic"
-    llm_model: str = "claude-haiku-4-5"
+    llm_model: str = "claude-sonnet-5-5"
     llm_api_key: SecretStr | None = None
     llm_base_url: str | None = None
     judge_model: str = "claude-sonnet-5-5"

@@ -1,14 +1,16 @@
 """LLM adapters build the right requests (no network: the SDK clients are stubbed)."""
 
+import inspect
 from types import SimpleNamespace
 
 import anthropic
 import httpx
 import pytest
+from anthropic.resources.messages import AsyncMessages
 from mcp import Client
 
 from app.agent.answer import model_facing_schema
-from app.agent.llm import AnthropicLLM, OpenAICompatLLM
+from app.agent.llm import MAX_STRICT_UNIONS, NON_STRICT_TOOLS, AnthropicLLM, OpenAICompatLLM
 from app.agent.mcp_client import McpHub
 from mcp_servers.hr.server import build_hr_server
 from mcp_servers.hr.store import MockActionStore
@@ -31,6 +33,16 @@ def objects(node):
             yield from objects(v)
 
 
+def unions(node):
+    """Count parameters Anthropic treats as union-typed (anyOf or a type array)."""
+    if isinstance(node, dict):
+        own = int("anyOf" in node or isinstance(node.get("type"), list))
+        return own + sum(unions(v) for v in node.values())
+    if isinstance(node, list):
+        return sum(unions(v) for v in node)
+    return 0
+
+
 async def test_anthropic_request_uses_strict_tools_caching_and_structured_output(tools, monkeypatch):
     llm = AnthropicLLM("claude-haiku-4-5", "sk-test")
     seen = {}
@@ -44,10 +56,14 @@ async def test_anthropic_request_uses_strict_tools_caching_and_structured_output
     r = await llm.complete(["stable prompt", "Requester E1001"], [{"role": "user", "content": [
         {"type": "text", "text": "hi"}]}], tools, model_facing_schema())
     assert r.text == '{"lead": "hi"}' and r.input_tokens == 10
-    assert seen["temperature"] == 0 and seen["model"] == "claude-haiku-4-5"
+    inspect.signature(AsyncMessages.create).bind(None, **seen)  # every kwarg is one the real SDK takes
+    assert seen["model"] == "claude-haiku-4-5"
     assert seen["system"][0]["cache_control"] == {"type": "ephemeral"} and "cache_control" not in seen["system"][1]
     assert seen["output_config"]["format"]["type"] == "json_schema"
-    assert len(seen["tools"]) == 7 and all(t["strict"] for t in seen["tools"])
+    assert len(seen["tools"]) == 7
+    assert {t["name"] for t in seen["tools"] if not t["strict"]} == NON_STRICT_TOOLS
+    strict = [t["input_schema"] for t in seen["tools"] if t["strict"]] + [seen["output_config"]["format"]["schema"]]
+    assert sum(unions(s) for s in strict) <= MAX_STRICT_UNIONS
     for t in seen["tools"]:
         assert "requester_id" not in t["input_schema"]["properties"]
         for o in objects(t["input_schema"]):

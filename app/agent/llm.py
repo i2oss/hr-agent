@@ -25,6 +25,11 @@ if TYPE_CHECKING:
 
 Message = dict[str, Any]
 MAX_TOKENS = 4096
+# Anthropic caps a request at 16 union-typed (nullable) parameters across strict tools and the
+# output schema. check_policy_compliance alone has 17 (ComplianceDetails), so it is sent non-strict;
+# the hr server validates its details and returns MISSING_ARGUMENT for anything wrong.
+MAX_STRICT_UNIONS = 16
+NON_STRICT_TOOLS = frozenset({"check_policy_compliance"})
 
 
 @dataclass
@@ -65,7 +70,7 @@ class AnthropicLLM:
 
     def _tools(self, tools: list[ToolSpec]) -> list[dict[str, Any]]:
         return [{"name": t.name, "description": t.description, "input_schema": strict_schema(t.input_schema),
-                 "strict": True} for t in tools]
+                 "strict": t.name not in NON_STRICT_TOOLS} for t in tools]
 
     async def complete(self, system: Sequence[str], messages: list[Message], tools: list[ToolSpec],
                        answer_schema: dict[str, Any], allow_tool_calls: bool = True) -> LLMResponse:
@@ -75,7 +80,9 @@ class AnthropicLLM:
         # per-session block (Demo Date, Requester) comes after the breakpoint.
         sys_blocks: list[dict[str, Any]] = [{"type": "text", "text": system[0], "cache_control": {"type": "ephemeral"}}]
         sys_blocks += [{"type": "text", "text": s} for s in system[1:]]
-        kwargs: dict[str, Any] = {"model": self.model, "max_tokens": MAX_TOKENS, "temperature": 0,
+        # No temperature: the 1.x SDK has dropped the sampling parameters, so determinism comes from
+        # structured output and the fixed prompt (as in evaluation/judge.py).
+        kwargs: dict[str, Any] = {"model": self.model, "max_tokens": MAX_TOKENS,
                                   "system": sys_blocks, "messages": messages}
         if tools:
             kwargs["tools"] = self._tools(tools)

@@ -34,4 +34,5 @@ calibrate:
 
 docker:
 	docker build -t hr-agent .
-	docker run --rm -p 8000:8000 --env-file .env hr-agent
+	# .env is mounted, not passed with --env-file: Docker keeps inline comments as part of a value.
+	docker run --rm -p 8000:8000 -v "$(CURDIR)/.env:/srv/.env:ro" hr-agent

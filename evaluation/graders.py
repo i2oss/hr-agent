@@ -26,6 +26,7 @@ Record = dict[str, Any]
 
 def normalise(s: str) -> str:
     s = unicodedata.normalize("NFKC", str(s)).lower()
+    s = re.sub(r"[‘’]", "'", re.sub(r"[“”]", '"', s))
     s = re.sub(r"[-‐‑‒–—]", " ", s).replace("$", "").replace(",", "")
     return re.sub(r"\s+", " ", s).strip()
 
@@ -143,6 +144,21 @@ def sequence(record: Record) -> list[str]:
     return seq
 
 
+def collapse_policy(seq: list[str]) -> list[str]:
+    """Each run of consecutive policy calls becomes one "policy" step: how many searches it takes is
+    the model's choice (Sonnet often makes two or three where the gold lists one)."""
+    out: list[str] = []
+    for name in seq:
+        name = "policy" if name in POLICY_TOOLS else name
+        if not (name == "policy" and out and out[-1] == "policy"):
+            out.append(name)
+    return out
+
+
+def in_order(record: Record, gold: list[str]) -> bool:
+    return collapse_policy(sequence(record)) == collapse_policy(gold)
+
+
 @dataclass
 class ToolScore:
     correct: bool
@@ -164,7 +180,7 @@ def tool_score(item: Item, record: Record) -> ToolScore:
                 got = arg_at(c.get("args") or {}, path)
                 if got is None or normalise(got) not in {normalise(w) for w in any_of(want)}:
                     bad.append(f"{tool}.{path}={got!r}")
-    ordered = sequence(record) == item["gold_sequence"] if "gold_sequence" in item else None
+    ordered = in_order(record, item["gold_sequence"]) if "gold_sequence" in item else None
     return ToolScore(not missing and not forbidden and not bad, missing, forbidden, sorted(set(bad)), ordered)
 
 

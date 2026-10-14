@@ -182,7 +182,8 @@ class AgentLoop:
                 ctx.tools_ok.add(p.tool)
                 note = (f"[Confirmation] The user confirmed {p.tool}. Result: {json.dumps(o.output)}. It is a mock "
                         "action saved for this session; nothing was sent. Reply with a short final answer that "
-                        "confirms it and gives its ID.")
+                        "confirms it and gives its ID. Any Policy Fact still needs a citation from a passage "
+                        "returned earlier this turn or a data_sources entry; leave out what you can't back.")
                 result_info = {"tool": p.tool, "id": o.output.get("id"), "mock": True, "status": "confirmed"}
             else:
                 note = (f"[Confirmation] The user confirmed {p.tool}, but it failed: {json.dumps(o.output)}. "

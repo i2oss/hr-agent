@@ -42,6 +42,7 @@ def w01_record():
 
 def test_normalise_follows_the_eval_set_conventions():
     assert g.normalise("Nov 11–13, $1,000 — OK") == "nov 11 13 1000 ok"
+    assert g.normalise("I can’t share “that”") == "i can't share \"that\""
 
 
 def test_w01_real_record_scores(w01_record):
@@ -98,6 +99,21 @@ def test_tool_selection_forbidden_and_key_args():
     assert g.tool_score(item, bad_args).bad_args == ["check_policy_compliance.details.start_date='2026-11-11'"]
     proposed_ticket = record({"lead": "x"}, [step(1, "confirmation", "create_mock_hr_ticket")])
     assert g.tool_score(item, proposed_ticket).forbidden_used == ["create_mock_hr_ticket"]
+
+
+def test_ordered_collapses_consecutive_policy_calls():
+    item = ITEMS["W02-remote-demo"]  # the gold has two searches in a row
+
+    def run(*tools):
+        return record({"lead": "x"}, [
+            step(n, "confirmation", status="confirmed") if t == "CONFIRM" else step(n, "tool", t)
+            for n, t in enumerate(tools, 1)])
+
+    tail = ["check_policy_compliance", "CONFIRM", "create_mock_hr_ticket"]
+    for searches in (["search_policy"], ["search_policy", "get_policy_section", "search_policy"]):
+        assert g.tool_score(item, run("lookup_employee_profile", *searches, *tail)).ordered
+    # A policy call on the far side of another tool is its own step, so the order still counts.
+    assert not g.tool_score(item, run("search_policy", "lookup_employee_profile", "search_policy", *tail)).ordered
 
 
 def test_behavior_and_confusion():

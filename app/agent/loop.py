@@ -39,6 +39,9 @@ if TYPE_CHECKING:
 MAX_TOOL_CALLS = 8
 POLICY_TOOLS = ("search_policy", "get_policy_section")
 PROMPT = (Path(__file__).parent / "prompt.md").read_text(encoding="utf-8")
+BLOCKED_NOTE = ("[Loop] Refused without calling the server: that person's records were NOT_PERMITTED earlier this "
+                "turn. Make no more `hr` calls about them. If you haven't yet, get RSE-HB-01 §7.2 with one "
+                "`policy` call to cite it; then give your final answer.")
 NOT_SET_QUESTION = ("Who are you? Please choose yourself in the \"Speaking as\" picker at the top, so I can "
                     "look up your records.")
 
@@ -267,6 +270,18 @@ class AgentLoop:
                 results.append(self._result(call.id, {"error": {"code": "TOOL_ERROR", "message": why}}, True))
                 continue
             ctx.tool_calls += 1
+            subject = call.input.get("employee_id") if spec.server == "hr" else None
+            subject = subject if isinstance(subject, str) else None
+            if subject in ctx.denied:
+                # Live X02 (2026-10-15): the model repeated check_pto_balance on Maya after NOT_PERMITTED despite
+                # the note below, so a repeat hr call on a denied subject is refused here, not sent to the server.
+                why = f"blocked: {subject}'s records were NOT_PERMITTED earlier this turn"
+                session.trace.add(ctx.turn, "error", why, server="hr", tool=call.name, args=call.input,
+                                  status="error")
+                results.append(self._result(call.id, {"error": {"code": "NOT_PERMITTED", "message": why}}, True))
+                if BLOCKED_NOTE not in notes:
+                    notes.append(BLOCKED_NOTE)
+                continue
             if spec.destructive:
                 results.append(await self._pause(session, ctx, call.id, call.name, call.input))
                 continue
@@ -284,10 +299,16 @@ class AgentLoop:
             elif o.error_code == "MISSING_ARGUMENT" and spec.server == "hr" and session.speaking_as is None:
                 clarify = True
             elif o.error_code == "NOT_PERMITTED" and spec.server == "hr":
+                # Only a denial about someone else blocks repeats: the Requester's own "no manager on record"
+                # denial must still allow the HR ticket it suggests.
+                if subject and subject != session.speaking_as:
+                    ctx.denied.add(subject)
                 # Live X02 runs showed filler calls after a denial (a placeholder draft, "hello" searches).
                 notes.append("[Loop] That record is not permitted and stays that way this turn. Make no more "
-                             "`hr` calls about that person and propose no Mock Action. If you haven't yet, get "
-                             "RSE-HB-01 §7.2 with one `policy` call to cite it; then give your final answer.")
+                             "`hr` calls about that person (the loop will refuse them) and propose no Mock "
+                             f"Action. Don't list {call.name} under data_sources: it returned nothing. If you "
+                             "haven't yet, get RSE-HB-01 §7.2 with one `policy` call to cite it; then give your "
+                             "final answer.")
             results.append(self._result(call.id, o.output, not o.ok))
         if clarify:
             session.trace.add(ctx.turn, "clarification", "forced: Requester (not set) + MISSING_ARGUMENT")
@@ -311,6 +332,9 @@ class AgentLoop:
             return self._result(call_id, {"error": {"code": "TOOL_ERROR", "message": msg}}, True)
         preview = await self.hub.call(name, args, {**self._injected(session), "preview_only": True})
         if not preview.ok:
+            subject = args.get("employee_id")
+            if preview.error_code == "NOT_PERMITTED" and isinstance(subject, str) and subject != session.speaking_as:
+                ctx.denied.add(subject)
             summary, _ = summarise(name, preview)
             session.trace.add(ctx.turn, "tool", summary, server=spec.server, tool=name, args=preview.args,
                               output=preview.output, status="error", latency_ms=preview.latency_ms)

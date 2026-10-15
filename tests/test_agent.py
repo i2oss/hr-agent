@@ -188,6 +188,53 @@ def test_injected_requester_overwrites_what_the_model_wrote(settings):
     assert any("not permitted" in n and "no Mock Action" in n for n in notes), notes
 
 
+def test_repeat_hr_call_on_a_denied_subject_is_blocked(settings):
+    # Live X02 (2026-10-15): check_pto_balance on Maya again after NOT_PERMITTED. The loop refuses it.
+    balance = {"tool_calls": [{"name": "check_pto_balance", "input": {"employee_id": "E1001"}}]}
+    again = {"tool_calls": [{"name": "check_pto_balance", "input": {"employee_id": "E1001"}},
+                            {"name": "lookup_employee_profile", "input": {"employee_id": "E1001"}},
+                            {"name": "draft_manager_message", "input": {"employee_id": "E1001", "subject": "x",
+                                                                         "body": "y"}}]}
+    c, app, llm = client_for(settings, {"q": [balance, again, {"final": {"lead": "Can't share that."}}]})
+    with c:
+        r = chat(c, "q", speaking_as="E1004").json()
+    hr = [s for s in tool_steps(r["trace"]) if s["server"] == "hr"]
+    assert len(hr) == 1 and hr[0]["output"]["error"]["code"] == "NOT_PERMITTED"  # only the first reached the server
+    blocked = [s for s in r["trace"]["steps"] if s["kind"] == "error" and s["summary"].startswith("blocked")]
+    assert [s["tool"] for s in blocked] == ["check_pto_balance", "lookup_employee_profile", "draft_manager_message"]
+    assert r.get("pending_action") is None and app.state.store.messages == {}
+    results = [b for b in llm.calls[2]["last"]["content"] if b["type"] == "tool_result"]
+    assert len(results) == 3 and all(b["is_error"] and "NOT_PERMITTED" in b["content"] for b in results)
+    notes = [b["text"] for b in llm.calls[2]["last"]["content"] if b["type"] == "text"]
+    assert len(notes) == 1 and "Refused without calling the server" in notes[0]
+
+
+def test_denial_blocks_only_that_subject_and_only_this_turn(settings):
+    denied = {"tool_calls": [{"name": "check_pto_balance", "input": {"employee_id": "E1001"}}]}
+    own = {"tool_calls": [{"name": "check_pto_balance", "input": {"employee_id": "E1004"}}]}
+    done = {"final": {"lead": "Done."}}
+    c, _, _ = client_for(settings, {"q": [denied, own, done], "q2": [denied, done]})
+    with c:
+        s = sid()
+        r = chat(c, "q", speaking_as="E1004", session=s).json()
+        assert [x["status"] for x in tool_steps(r["trace"])] == ["error", "ok"]  # own balance still works
+        r = chat(c, "q2", speaking_as="E1004", session=s).json()
+    # a new turn asks the server again (and is denied again) rather than inheriting the block
+    assert [x["status"] for x in tool_steps(r["trace"]) if x["turn"] == 2] == ["error"]
+
+
+def test_own_no_manager_denial_still_allows_an_hr_ticket(settings):
+    draft = {"tool_calls": [{"name": "draft_manager_message", "input": {"employee_id": "E1020", "subject": "PTO",
+                                                                         "body": "Hi"}}]}
+    ticket = {"tool_calls": [{"name": "create_mock_hr_ticket", "input": {"employee_id": "E1020", "category": "pto",
+                                                                          "subject": "PTO", "summary": "Hi"}}]}
+    c, _, _ = client_for(settings, {"q": [draft, ticket, {"final": {"lead": "Please confirm the ticket."}}]})
+    with c:
+        r = chat(c, "q", speaking_as="E1020").json()
+    assert r["pending_action"]["tool"] == "create_mock_hr_ticket"
+    assert not any(s["summary"].startswith("blocked") for s in r["trace"]["steps"])
+
+
 def test_tool_limit_forces_a_final_answer(settings):
     loop_forever = {"tool_calls": [{"name": "search_policy", "input": {"query": "pto"}}]}
     c, _, llm = client_for(settings, {"q": [loop_forever] * 20 + [{"final": {"lead": "Stopped early."}}]})

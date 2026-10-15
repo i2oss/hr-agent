@@ -227,7 +227,8 @@ step "Create key → name it 'hr-agent-render' → copy it. You'll paste it into
 note "Not saved anywhere by this wizard. Also check Billing: credit and the monthly spend limit (SPEC §3.2, LLM budget)."
 pause "Press Enter once the key is copied somewhere safe (or paste it into Render straight away in stage 4)"
 EVAL_BYPASS_KEY=$(_existing EVAL_BYPASS_KEY || true)
-if [[ -z "$EVAL_BYPASS_KEY" ]]; then EVAL_BYPASS_KEY=$(openssl rand -hex 24); fi
+# An old-template .env has "EVAL_BYPASS_KEY=   # secret; …": a comment, not a key.
+if [[ ! "$EVAL_BYPASS_KEY" =~ ^[A-Za-z0-9_-]{16,}$ ]]; then EVAL_BYPASS_KEY=$(openssl rand -hex 24); fi
 write_env EVAL_BYPASS_KEY "$EVAL_BYPASS_KEY"
 note "EVAL_BYPASS_KEY lets the deployed latency run and the demo runner skip the rate limits."
 note "For evaluation.run, export it in your shell first: export EVAL_BYPASS_KEY=\$(grep ^EVAL_BYPASS_KEY= .env | cut -d= -f2)"
@@ -309,6 +310,11 @@ if want 6; then
 stage "GitHub: deploy hook secret and APP_URL variable"
 step "Render → the service → Settings → Deploy Hook → copy the URL (https://api.render.com/deploy/srv-…?key=…)."
 ask_secret RENDER_DEPLOY_HOOK_URL "Paste the deploy hook URL (hidden):"
+# Hidden input hides a failed paste too; an empty secret makes CI run curl -X POST "".
+while [[ "$RENDER_DEPLOY_HOOK_URL" != https://api.render.com/deploy/* ]]; do
+  warn "That doesn't look like a deploy hook URL (https://api.render.com/deploy/srv-…). Try again."
+  ask_secret RENDER_DEPLOY_HOOK_URL "Paste the deploy hook URL (hidden):"
+done
 if confirm "Set GitHub secret RENDER_DEPLOY_HOOK_URL and variable APP_URL=$(_existing APP_URL) on $REPO?"; then
   set_secret RENDER_DEPLOY_HOOK_URL "$RENDER_DEPLOY_HOOK_URL"
   set_var APP_URL "$(_existing APP_URL)"
@@ -352,7 +358,7 @@ else
   note "Live version now: $before"
   if confirm "Push the failing-test commit to main?"; then
     tmp=$(mktemp -d); git fetch -q origin main; git worktree add -q "$tmp" origin/main
-    printf 'def test_ci_gate_proof():\n    assert False, "deliberate: proves a failing test blocks the deploy"\n' > "$tmp/tests/test_ci_gate_proof.py"
+    printf 'def test_ci_gate_proof():\n    raise AssertionError("deliberate: proves a failing test blocks the deploy")\n' > "$tmp/tests/test_ci_gate_proof.py"
     git -C "$tmp" add tests/test_ci_gate_proof.py
     git -C "$tmp" commit -qm "CI gate proof: a deliberately failing test (reverted next)"
     git -C "$tmp" push -q origin HEAD:main

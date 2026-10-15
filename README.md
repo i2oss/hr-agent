@@ -2,15 +2,15 @@
 
 An agentic HR assistant for **Ridgeline Structural Engineering**, a fictional engineering firm. It answers policy questions with verbatim, checked citations, and it runs multi-step HR workflows by calling tools on two **MCP servers** over synthetic employee data. It never performs an action until the user confirms it. Built for Quantic MSAIE *AI Engineering Techniques and Architectures* (Project 3).
 
-![The chat page: a cited answer on the left, the Trace of MCP tool calls on the right](docs/chat-page-fake-llm.jpg)
+![The chat page: a cited answer on the left, the Trace of MCP tool calls on the right](docs/chat-page.jpg)
 
-<sub>Placeholder screenshot (local server, fake LLM); a deployed, real-LLM screenshot replaces it. The architecture diagram will live in `design-and-evaluation.md` (Architecture).</sub>
+<sub>W01 on the deployed app with Claude Sonnet 5.5 (2026-10-15): the cited answer, the Trace of the 5 tool calls, and the draft waiting for Confirm. The architecture diagram will live in `design-and-evaluation.md` (Architecture).</sub>
 
-> **Status: building.** The code (slices 1, 3–7) is in and passes CI. Still to come: the Render deploy, corpus sign-off, the eval runs, the design document and the demo. The build plan is [docs/SPEC.md](docs/SPEC.md).
+> **Status: building.** The code (slices 1, 3–7) is in, passes CI and is deployed: every push to `main` runs `test` → `deploy` → a live smoke question. Still to come: corpus sign-off, the eval runs, the design document and the demo. The build plan is [docs/SPEC.md](docs/SPEC.md).
 
 ## Try it
 
-**Live:** _URL pending the first deploy._ The first load may take up to a minute, because the free host sleeps when idle; see [deployed.md](deployed.md).
+**Live:** **https://ridgeline-hr-agent.onrender.com**. The first load may take up to a minute, because the free host sleeps when idle; see [deployed.md](deployed.md).
 
 Pick who you're **speaking as** (one of 11 Personas), then ask, for example:
 
@@ -71,13 +71,13 @@ Each score-5 rubric bullet, and where to find the evidence. Rows marked _pending
 
 | Rubric bullet | Evidence |
 |---|---|
-| **R1** Deployed system with correct, cited, grounded answers | Citation check: `app/agent/citations.py`, `tests/test_citations.py`, `tests/test_agent.py::test_retry_that_fixes_the_citation_keeps_the_fact`. Post-deploy smoke in `.github/workflows/ci.yml`. Groundedness and citation accuracy: _pending (slice 7)_. |
+| **R1** Deployed system with correct, cited, grounded answers | Citation check: `app/agent/citations.py`, `tests/test_citations.py`, `tests/test_agent.py::test_retry_that_fixes_the_citation_keeps_the_fact`. Post-deploy smoke in `.github/workflows/ci.yml`. Live W01, W02 and X02 on the deployed URL: [deployed.md](deployed.md) (Verified). Groundedness and citation accuracy: _pending (slice 7)_. |
 | **R2** MCP fully functional, clear traces, graceful errors | `/health` lists 2 + 7 tools live (`tests/test_e2e_http.py::test_health_lists_nine_tools_over_http`). One call per tool: `tests/test_policy_server.py`, `tests/test_hr_server.py`. Errors: `TOOL_UNAVAILABLE` (`tests/test_agent.py::test_policy_server_down_reports_tool_unavailable_and_no_policy_facts`), `MISSING_ARGUMENT` (`::test_not_set_plus_missing_argument_forces_one_clarification`), `NOT_PERMITTED` (`tests/test_hr_server.py::test_mock_action_for_another_employee_is_not_permitted`), `evidence: "none"` (`tests/test_policy_server.py::test_search_policy_no_evidence_is_not_an_error`). Trace side panel: the chat page. |
 | **R3** ≥ 2 end-to-end agentic tasks | W01 and W02 (above). Gold sequences: `evaluation/eval_set.yaml`. W01 end to end with the fake LLM over Streamable HTTP: `tests/test_e2e_http.py::test_w01_over_streamable_http`. Live pass^3: _pending (slice 7)_. |
 | **R4** RAG ingestion, retrieval, citations, guardrails | `ingest/` (MD/HTML/PDF), `tests/test_chunker.py`, the index manifest check (`scripts/check_index_manifest.py`, in CI), hybrid retrieval (`tests/test_retrieval.py`), the evidence threshold calibration (`evaluation/results/calibration/`). Guardrail accuracy: _pending (slice 7)_. |
 | **R5** Clear separation of components | The repo map above. The LLM adapter sits behind `LLM_PROVIDER` (`app/agent/llm.py`). The agent reaches the tools only through the MCP client (`app/agent/mcp_client.py`). Architecture diagram: _pending (`design-and-evaluation.md`)_. |
 | **R6** Free-tier deployment, env vars, cold start | [deployed.md](deployed.md), `.env.example`, `Dockerfile`. Cold vs warm latency: _pending (slice 7)_. |
-| **R7** CI/CD with build/start checks and an MCP test | `.github/workflows/ci.yml`: lint, typecheck, corpus and index checks, the tool-schema check, and pytest (start check `tests/test_start.py`, MCP discovery and calls, e2e W01). `deploy` needs `test`. |
+| **R7** CI/CD with build/start checks and an MCP test | `.github/workflows/ci.yml`: lint, typecheck, corpus and index checks, the tool-schema check, and pytest (start check `tests/test_start.py`, MCP discovery and calls, e2e W01). `deploy` needs `test`. The gate proven on `main`: a failing `test` job skipped `deploy` ([run](https://github.com/i2oss/hr-agent/actions/runs/38778719912)), and the revert deployed and passed the smoke ([run](https://github.com/i2oss/hr-agent/actions/runs/38778956058)). |
 | **R8** Evaluation | `evaluation/`: Eval Set, graders (`tests/test_graders.py`), judge, report. Results: _pending (slice 7)_. |
 | **R9** Design docs and demo | `design-and-evaluation.md`, `docs/demo-script.md` and the video timestamps: _pending (slices 8–9)_. |
 

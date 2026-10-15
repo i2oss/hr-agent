@@ -25,6 +25,7 @@ class TurnContext:
     tools_ok: set[str] = field(default_factory=set)
     tool_calls: int = 0
     started: float = 0.0
+    denied: set[str] = field(default_factory=set)  # subjects an hr tool said NOT_PERMITTED for this turn
 
 
 @dataclass

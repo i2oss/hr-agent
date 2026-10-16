@@ -8,7 +8,7 @@
 - Effective date: 2026-01-01
 - Owner: IT
 - Applies to: everyone with Ridgeline access, including contractors
-- Status: draft prose written from the Company Facts sheet, pending review
+- Status: approved, reviewed 2026-10-15
 
 ## 1 Scope and Ownership
 

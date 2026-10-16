@@ -1,0 +1,463 @@
+{
+  "item_id": "M02-parental-leave",
+  "run": 1,
+  "speaking_as": "E1010",
+  "session_id": "28bd6be42acf44659b0fbbca87081951",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Your benefits continue on the same terms during parental leave, and your PTO keeps accruing. Because your leave will span December 31, you can carry over more unused PTO than usual.",
+        "policy_facts": [
+          {
+            "text": "Your benefits continue on the same terms during parental leave, and your contributions continue through payroll. You don't need to re-enrol when you return.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.5",
+                "snippet": "Your benefits continue on the same terms during parental leave, and your employee contributions continue through payroll"
+              },
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "4",
+                "snippet": "When you return from any leave, your benefits continue as before; you don't need to re-enrol."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You are currently enrolled in Medical HDHP (family), Dental (family), Vision (family), 401(k) and Life.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_benefits_status"
+              }
+            ]
+          },
+          {
+            "text": "For your 401(k), the policy says to ask HR how a specific leave affects contributions, since they are based on pay received.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "4",
+                "snippet": "Ask HR how a specific leave affects your 401(k) contributions, since contributions are based on pay received."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "PTO keeps accruing during paid parental leave. PTO accrued before and during the leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "2.5",
+                "snippet": "PTO keeps accruing while you are on paid leave, such as paid parental leave."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "2.5",
+                "snippet": "PTO accrued before and during paid leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your current PTO balance is 10.33 days available (20.83 accrued, 10.5 used, 0 pending, 0 carryover) as of 2026-11-02.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          },
+          {
+            "text": "Approved leave in progress on December 31 lets you carry over up to 10 unused PTO days instead of 5. This is applied automatically when your leave is recorded in the HR Portal.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "you can carry over up to 10 unused PTO days instead of 5"
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Parental leave is 12 weeks of paid leave at 100% of base pay. These are calendar weeks, so company holidays inside your leave don't extend it. Your HR record, Employment Type and Work Arrangement stay the same.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.2",
+                "snippet": "Eligible employees get 12 weeks of paid parental leave at 100% of base pay."
+              },
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.5",
+                "snippet": "Your HR record, Employment Type and Work Arrangement stay the same during parental leave"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "For foreseeable leave, you must give HR at least 30 calendar days' notice of your planned start date. You request parental leave in the HR Portal.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.4",
+                "snippet": "give HR at least 30 calendar days' notice of your planned start date"
+              },
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.4",
+                "snippet": "Request parental leave in the HR Portal."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you want to add a new child to your benefits, do it within the qualifying life event window in RSE-BEN-01 \u00a73.4.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.5",
+                "snippet": "If you want to add a new child to your benefits, do it within the qualifying life event window in RSE-BEN-01 \u00a73.4."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "With a December 7 start, the 30-day notice point falls on about November 7. If you haven't already, submit your parental leave request in the HR Portal now."
+          },
+          {
+            "text": "Ask HR how your leave affects your 401(k) contributions."
+          },
+          {
+            "text": "If you're adding a new child to your coverage, check the qualifying life event window and deadline with HR so you don't miss it."
+          },
+          {
+            "text": "If you want to add PTO to the end of your leave, request it in the usual way with your manager, Jordan Lee. I can draft that message when you have dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 132,
+              "output_tokens": 430
+            },
+            "summary": "claude-sonnet-5-5 \u2192 5 tool call(s): lookup_employee_profile, check_pto_balance, lookup_benefits_status, search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2869,
+            "started_at": "2026-10-16T00:54:56.132+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1010",
+              "requester_id": "E1010",
+              "session_id": "28bd6be42acf44659b0fbbca87081951"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "name": "Aisha Bello",
+              "title": "Senior Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2019-11-04",
+              "weekly_hours": 40,
+              "work_email": "aisha.bello@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Aisha Bello, Senior Engineer, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-16T00:54:56.156+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1010",
+              "requester_id": "E1010",
+              "session_id": "28bd6be42acf44659b0fbbca87081951"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "accrued": 20.83,
+              "used": 10.5,
+              "pending": 0.0,
+              "carryover": 0.0,
+              "available": 10.33,
+              "as_of": "2026-11-02"
+            },
+            "summary": "10.33 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-16T00:54:56.167+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_benefits_status",
+            "args": {
+              "employee_id": "E1010",
+              "plan": null,
+              "requester_id": "E1010",
+              "session_id": "28bd6be42acf44659b0fbbca87081951"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "elections": [
+                {
+                  "employee_id": "E1010",
+                  "plan": "Medical HDHP",
+                  "coverage_level": "family",
+                  "status": "enrolled",
+                  "effective_date": "2019-12-01",
+                  "enrollment_window_end": "2019-12-04"
+                },
+                {
+                  "employee_id": "E1010",
+                  "plan": "Dental",
+                  "coverage_level": "family",
+                  "status": "enrolled",
+                  "effective_date": "2019-12-01",
+                  "enrollment_window_end": "2019-12-04"
+                },
+                {
+                  "employee_id": "E1010",
+                  "plan": "Vision",
+                  "coverage_level": "family",
+                  "status": "enrolled",
+                  "effective_date": "2019-12-01",
+                  "enrollment_window_end": "2019-12-04"
+                },
+                {
+                  "employee_id": "E1010",
+                  "plan": "401(k)",
+                  "coverage_level": "employee",
+                  "status": "enrolled",
+                  "effective_date": "2019-12-01",
+                  "enrollment_window_end": "2019-12-04"
+                },
+                {
+                  "employee_id": "E1010",
+                  "plan": "Life",
+                  "coverage_level": "employee",
+                  "status": "enrolled",
+                  "effective_date": "2019-12-01",
+                  "enrollment_window_end": "2019-12-04"
+                }
+              ]
+            },
+            "summary": "Medical HDHP: enrolled, Dental: enrolled, Vision: enrolled, 401(k): enrolled, Life: enrolled",
+            "status": "ok",
+            "latency_ms": 9,
+            "started_at": "2026-10-16T00:54:56.177+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "parental leave benefits coverage during leave",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.6",
+                  "section_heading": "Canadian employees",
+                  "text": "For employees of the Toronto office, HR coordinates Ridgeline's parental leave with the employee's government parental benefits. Plan details are available from HR.\nContact HR as early as you can, because government benefits have their own application steps and timing. HR explains how Ridgeline's paid leave and government benefits fit together for your dates; it doesn't give personal advice on government programmes.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.5",
+                  "section_heading": "Benefits and PTO during parental leave",
+                  "text": "Your benefits continue on the same terms during parental leave, and your employee contributions continue through payroll (see also RSE-BEN-01 \u00a74). Your PTO keeps accruing while you are on paid parental leave (RSE-PTO-01 \u00a72.5). If your leave spans December 31, you can carry over more unused PTO than usual; see RSE-PTO-01 \u00a75.2.\nIf you want to add a new child to your benefits, do it within the qualifying life event window in RSE-BEN-01 \u00a73.4. Your HR record, Employment Type and Work Arrangement stay the same during parental leave, and you return to the same role or a similar one.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "4",
+                  "section_heading": "Benefits During Leave",
+                  "text": "During paid leave, such as paid parental leave, your benefits continue on the same terms and your contributions continue through payroll. If you take unpaid leave of more than 30 days, contact HR before the leave starts to arrange how your contributions will be paid.\nShorter unpaid leave doesn't change your benefits. When you return from any leave, your benefits continue as before; you don't need to re-enrol. Ask HR how a specific leave affects your 401(k) contributions, since contributions are based on pay received.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.1",
+                  "section_heading": "Eligibility",
+                  "text": "Full-time and part-time employees with at least 6 months of service are eligible for parental leave. It is available to any parent, for the birth of a child, an adoption or a foster placement. Interns and contractors are not eligible.\nService is counted from your hire date to the first day of your leave. Both parents may take parental leave if both work at Ridgeline. If you will reach 6 months of service shortly after the birth or placement, contact HR to discuss timing.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.4",
+                  "section_heading": "Notice",
+                  "text": "When the leave is foreseeable, give HR at least 30 calendar days' notice of your planned start date. If the timing changes unexpectedly, tell HR as soon as you can.\nRequest parental leave in the HR Portal. HR confirms your dates, your pay during leave and your expected return date, and lets your manager know so cover can be planned.",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-LV-01 \u00a73.6",
+              "RSE-LV-01 \u00a73.5",
+              "RSE-BEN-01 \u00a74",
+              "RSE-LV-01 \u00a73.1",
+              "RSE-LV-01 \u00a73.4"
+            ],
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-16T00:54:56.190+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "parental leave PTO accrual during leave",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.5",
+                  "section_heading": "Benefits and PTO during parental leave",
+                  "text": "Your benefits continue on the same terms during parental leave, and your employee contributions continue through payroll (see also RSE-BEN-01 \u00a74). Your PTO keeps accruing while you are on paid parental leave (RSE-PTO-01 \u00a72.5). If your leave spans December 31, you can carry over more unused PTO than usual; see RSE-PTO-01 \u00a75.2.\nIf you want to add a new child to your benefits, do it within the qualifying life event window in RSE-BEN-01 \u00a73.4. Your HR record, Employment Type and Work Arrangement stay the same during parental leave, and you return to the same role or a similar one.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.5",
+                  "section_heading": "Accrual during leave",
+                  "text": "PTO keeps accruing while you are on paid leave, such as paid parental leave. PTO does not accrue during unpaid leave, such as unpaid personal leave (RSE-LV-01 \u00a76).\nPTO accrued before and during paid leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval. If your leave crosses the end of the year, see \u00a75.2 for the higher carryover cap.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.2",
+                  "section_heading": "Pay and length",
+                  "text": "Eligible employees get 12 weeks of paid parental leave at 100% of base pay. HR approves parental leave, and your manager is notified.\nThe 12 weeks are calendar weeks, so company holidays inside your leave don't extend it. Parental leave is paid through normal payroll on your usual pay dates. You can add PTO before or after your parental leave in the usual way.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "6",
+                  "section_heading": "Unpaid Personal Leave",
+                  "text": "You can request unpaid personal leave of up to 30 calendar days for personal reasons that PTO doesn't cover. HR approves unpaid personal leave. You must use your available PTO before unpaid leave begins. PTO accrual is paused during unpaid leave. If your unpaid leave will last more than 30 days, contact HR before the leave starts to arrange your benefits.\nRequest unpaid personal leave in the HR Portal with your dates and a short reason; you don't need to share personal details beyond what HR needs to decide. HR considers the effect on your project and team and talks to your manager about cover. Unpaid personal leave is not a substitute for medical leave or accommodations, which follow \u00a77.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0306
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-LV-01 \u00a73.5",
+              "RSE-PTO-01 \u00a72.5",
+              "RSE-LV-01 \u00a73.2",
+              "RSE-LV-01 \u00a76",
+              "RSE-PTO-01 \u00a75.2"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-16T00:54:56.205+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3697,
+              "output_tokens": 1840
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 10344,
+            "started_at": "2026-10-16T00:55:06.550+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "14 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T00:55:06.551+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 71,
+          "llm_calls": 2,
+          "llm_ms": 13213,
+          "total_ms": 13287,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

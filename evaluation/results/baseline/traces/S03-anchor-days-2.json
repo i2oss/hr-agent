@@ -1,0 +1,478 @@
+{
+  "item_id": "S03-anchor-days",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "ae37f6faaf864a1e9b381cfc3d0f23fa",
+  "responses": [
+    {
+      "answer": {
+        "lead": "As an office-hybrid employee, you're expected in the office on Tuesday, Wednesday and Thursday, and you may work remotely on Monday and Friday. I stopped early because I hit the tool limit, but I had the policy text I needed.",
+        "policy_facts": [
+          {
+            "text": "Office-hybrid employees work from their home office on 3 anchor days a week: Tuesday, Wednesday and Thursday. They may work remotely on Monday and Friday.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you can't be in the office on an anchor day, tell your manager. Working from home on an occasional anchor day is fine, but regularly missing anchor days is not.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Working from home on an occasional anchor day is fine; regularly missing them is not."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your HR record shows your Work Arrangement as office_hybrid, with your home office in Austin, TX.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If a site visit or appointment will keep you out of the office on an anchor day, let your manager, Rafael G\u00f3mez, know ahead of time."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 129,
+              "output_tokens": 181
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1717,
+            "started_at": "2026-10-16T00:59:47.523+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "hybrid schedule office days expected",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "3.4",
+                  "section_heading": "Part-time schedules",
+                  "text": "A part-time employee's schedule is agreed in writing with the manager and recorded in the HR Portal. The agreed schedule sets your scheduled working days, which matter for holidays (RSE-HOL-01 \u00a71.4) and for pro-rated PTO and benefits.",
+                  "score": 0.0309
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.3",
+                  "section_heading": "Work Arrangements",
+                  "text": "Each employee has one Work Arrangement. Office-hybrid is the default: you work from your home office on set anchor days and remotely on the others. Remote-approved employees work remotely most of the time, with approval from their manager and HR. Field/site-based employees work at project sites and are not eligible for remote work. The Remote & Hybrid Work Policy (RSE-RW-01) sets out the rules for each arrangement. Your Work Arrangement is part of your HR record and is agreed when you join. It can change, for example when an office-hybrid employee is approved to become remote-approved, or when a field/ site-based employee moves into a design role. Changes are requested through the HR Portal and approved as set out in the Approval Matrix.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0292
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-HB-01 \u00a73.4",
+              "RSE-HB-01 \u00a72.3",
+              "RSE-RW-01 \u00a76.2"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-16T00:59:47.547+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "ae37f6faaf864a1e9b381cfc3d0f23fa"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-16T00:59:47.561+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1703,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1171,
+            "started_at": "2026-10-16T00:59:48.733+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-16T00:59:48.754+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2066,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1272,
+            "started_at": "2026-10-16T00:59:50.026+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 16,
+            "started_at": "2026-10-16T00:59:50.043+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2429,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1276,
+            "started_at": "2026-10-16T00:59:51.320+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-16T00:59:51.337+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2792,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1243,
+            "started_at": "2026-10-16T00:59:52.581+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-16T00:59:52.598+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3155,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1568,
+            "started_at": "2026-10-16T00:59:54.167+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-16T00:59:54.183+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3518,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1383,
+            "started_at": "2026-10-16T00:59:55.566+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 7,
+            "started_at": "2026-10-16T00:59:55.574+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T00:59:55.574+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3926,
+              "output_tokens": 538
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3490,
+            "started_at": "2026-10-16T00:59:59.064+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T00:59:59.065+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 129,
+          "llm_calls": 8,
+          "llm_ms": 13120,
+          "total_ms": 13259,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

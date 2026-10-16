@@ -1,0 +1,550 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 3,
+  "speaking_as": "E1005",
+  "session_id": "fa1171efc3514cb6bacd8af7abd5e03a",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover tuition reimbursement for a master's degree, so I can't say it's reimbursed. I stopped searching early because I hit the tool limit.",
+        "policy_facts": [
+          {
+            "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-ONB-01",
+                "section": "4",
+                "snippet": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The expense policy covers reasonable expenses that are necessary for your work. It says to ask your manager or Finance before you spend money if you are unsure whether something is reimbursable.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "1",
+                "snippet": "If you are unsure whether something is reimbursable, ask your manager or Finance before you spend the money, not after."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Ask the HR Service Desk (hr@ridgeline.example or HR Portal > Ask HR) whether any education support exists before you enrol or pay any fees."
+          },
+          {
+            "text": "You could also ask your manager or Finance before spending any money, as the expense policy suggests."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover this. My searches for tuition, degree and training support found no matching policy. The only related result was licence renewals, which are a different matter. Please check with the HR Service Desk."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1368,
+            "started_at": "2026-10-16T01:09:35.785+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 48,
+            "started_at": "2026-10-16T01:09:35.834+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 85
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1212,
+            "started_at": "2026-10-16T01:09:37.047+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree training professional development reimbursement",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.2",
+                  "section_heading": "Professional licence renewals",
+                  "text": "Professional engineering licence renewals are reimbursed. Claim the renewal fee with the receipt. Fees for licences in additional jurisdictions are reimbursed when your manager agrees they are needed for your projects.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.0311
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.5",
+                  "section_heading": "Professional licensure",
+                  "text": "Only licensed professional engineers may seal or sign engineering drawings and calculations, and only for work they have personally reviewed. Never use another engineer's seal or signature. Keep your own licence current; licence renewals are reimbursed under RSE-EXP-01 \u00a77.2. Engineers working toward licensure should work under the supervision of a licensed engineer and keep a record of their experience. Tell your manager straight away if your licence lapses or is restricted, so project responsibilities can be adjusted.",
+                  "score": 0.0302
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "1",
+                  "section_heading": "Principles and Scope",
+                  "text": "Ridgeline reimburses reasonable expenses that are necessary for your work. Choose the cheapest practical option that gets the job done, and spend Ridgeline's money as you would your own. This policy applies to all employees. Limits are per person. Expenses must be for Ridgeline business, supported by receipts where required, and claimed promptly. Project-related costs should be charged to the right project so they can be billed to the client where the contract allows. If you are unsure whether something is reimbursable, ask your manager or Finance before you spend the money, not after.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.3",
+                  "section_heading": "Alcohol",
+                  "text": "Alcohol is reimbursed only as part of pre-approved client entertainment.",
+                  "score": 0.0295
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a77.2",
+              "RSE-EXP-01 \u00a75.2",
+              "RSE-HB-01 \u00a74.5",
+              "RSE-EXP-01 \u00a71",
+              "RSE-EXP-01 \u00a75.3"
+            ],
+            "status": "ok",
+            "latency_ms": 33,
+            "started_at": "2026-10-16T01:09:37.080+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1267,
+              "output_tokens": 90
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1369,
+            "started_at": "2026-10-16T01:09:38.450+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "benefits education degree study support",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-16T01:09:38.469+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1378,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1289,
+            "started_at": "2026-10-16T01:09:39.758+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-16T01:09:39.777+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1474,
+              "output_tokens": 80
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1382,
+            "started_at": "2026-10-16T01:09:41.159+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "courses training certifications learning",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-16T01:09:41.188+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1575,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1035,
+            "started_at": "2026-10-16T01:09:42.223+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "7.3",
+                  "section_heading": "Asking for your data",
+                  "text": "You can ask for a copy of the personal data HR holds about you, or ask for a correction, through the HR Service Desk. Most of your information can be checked and updated yourself in the HR Portal, such as your contact details and emergency contacts. For anything you can't change yourself, HR will respond to your request as soon as it can and tell you if any information has to be withheld to protect someone else's privacy.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "6",
+                  "section_heading": "Plan-Specific Questions",
+                  "text": "For anything this summary doesn't answer, including claims, plan details and costs, the RSE Canada Group Plan, or your own coverage, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nThis document is a summary. Where it differs from the plan documents, the plan documents apply. HR can explain how the plans work but cannot advise you which plan is best for your personal circumstances.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "7.2",
+                  "section_heading": "Accommodations",
+                  "text": "If you need a workplace accommodation for a disability, a health condition or pregnancy, contact HR directly through HR Confidential or the HR Service Desk. HR will talk with you about what you need, keep your information confidential, and tell your manager only about the work adjustments, not the reason for them.\nAccommodations might include changes to your schedule, equipment, workspace or duties. You can ask at any time, including before you join. HR may ask for information from a medical professional where it is needed to understand what will help, and will explain why.",
+                  "score": 0.0303
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a77.3",
+              "RSE-BEN-01 \u00a76",
+              "RSE-HB-01 \u00a76.1",
+              "RSE-LV-01 \u00a77.2"
+            ],
+            "status": "ok",
+            "latency_ms": 26,
+            "started_at": "2026-10-16T01:09:42.250+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2942,
+              "output_tokens": 92
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1173,
+            "started_at": "2026-10-16T01:09:43.423+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact",
+              "doc_ids": [
+                "RSE-ONB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "1",
+                  "section_heading": "Before Day One",
+                  "text": "Before your first day, send HR the documents listed in your offer pack so your HR record and payroll can be set up. Your manager arranges your desk or site induction, and IT prepares your standard equipment (RSE-EQ-01 \u00a71) so it is ready when you arrive.\nYour manager also assigns you an onboarding buddy, a colleague from your team who can answer everyday questions in your first months. Field/site-based employees complete a site safety induction before their first site visit.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "2.2",
+                  "section_heading": "HR Portal setup",
+                  "text": "Log in to the HR Portal in your first week and check your profile, set up time off and review your benefits options.\nCheck that your Employment Type, Work Arrangement, office and manager are recorded correctly, since they decide which policies apply to you. Add your emergency contacts and read and acknowledge the Employee Handbook (RSE-HB-01 \u00a78).",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.2",
+                  "section_heading": "Remote-approved arrangements",
+                  "text": "New employees can't become remote-approved before 6 months of service; see RSE-RW-01 \u00a73. Office-hybrid employees follow the anchor-day pattern from the start.\nYour first months in the office help you learn how Ridgeline works, meet colleagues across disciplines and build the relationships that make remote work successful later. Talk to your manager about your longer-term working pattern at your 90-day check-in.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.3",
+                  "section_heading": "Using PTO",
+                  "text": "You can use PTO as soon as it has accrued, including during your first 90 days. Request it in the HR Portal as usual.\nBecause PTO accrues each pay period, your balance in your first weeks is small. If you already have time off booked when you join, for example a holiday arranged before your offer, tell your manager and HR before your start date so it can be agreed; HR can discuss unpaid personal leave if your balance won't cover it.",
+                  "score": 0.0312
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-ONB-01 \u00a71",
+              "RSE-ONB-01 \u00a72.2",
+              "RSE-ONB-01 \u00a73.2",
+              "RSE-ONB-01 \u00a73.3"
+            ],
+            "status": "ok",
+            "latency_ms": 26,
+            "started_at": "2026-10-16T01:09:43.450+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4109,
+              "output_tokens": 92
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1386,
+            "started_at": "2026-10-16T01:09:44.836+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact",
+              "doc_ids": [
+                "RSE-ONB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "1",
+                  "section_heading": "Before Day One",
+                  "text": "Before your first day, send HR the documents listed in your offer pack so your HR record and payroll can be set up. Your manager arranges your desk or site induction, and IT prepares your standard equipment (RSE-EQ-01 \u00a71) so it is ready when you arrive.\nYour manager also assigns you an onboarding buddy, a colleague from your team who can answer everyday questions in your first months. Field/site-based employees complete a site safety induction before their first site visit.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "2.2",
+                  "section_heading": "HR Portal setup",
+                  "text": "Log in to the HR Portal in your first week and check your profile, set up time off and review your benefits options.\nCheck that your Employment Type, Work Arrangement, office and manager are recorded correctly, since they decide which policies apply to you. Add your emergency contacts and read and acknowledge the Employee Handbook (RSE-HB-01 \u00a78).",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.2",
+                  "section_heading": "Remote-approved arrangements",
+                  "text": "New employees can't become remote-approved before 6 months of service; see RSE-RW-01 \u00a73. Office-hybrid employees follow the anchor-day pattern from the start.\nYour first months in the office help you learn how Ridgeline works, meet colleagues across disciplines and build the relationships that make remote work successful later. Talk to your manager about your longer-term working pattern at your 90-day check-in.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.3",
+                  "section_heading": "Using PTO",
+                  "text": "You can use PTO as soon as it has accrued, including during your first 90 days. Request it in the HR Portal as usual.\nBecause PTO accrues each pay period, your balance in your first weeks is small. If you already have time off booked when you join, for example a holiday arranged before your offer, tell your manager and HR before your start date so it can be agreed; HR can discuss unpaid personal leave if your balance won't cover it.",
+                  "score": 0.0312
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-ONB-01 \u00a71",
+              "RSE-ONB-01 \u00a72.2",
+              "RSE-ONB-01 \u00a73.2",
+              "RSE-ONB-01 \u00a73.3"
+            ],
+            "status": "ok",
+            "latency_ms": 26,
+            "started_at": "2026-10-16T01:09:44.863+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T01:09:44.863+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5321,
+              "output_tokens": 549
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3925,
+            "started_at": "2026-10-16T01:09:48.788+00:00"
+          },
+          {
+            "n": 19,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "2 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T01:09:48.790+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 223,
+          "llm_calls": 9,
+          "llm_ms": 14139,
+          "total_ms": 14373,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

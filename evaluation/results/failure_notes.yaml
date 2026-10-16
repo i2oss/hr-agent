@@ -1,0 +1,35 @@
+# Failure causes and fixes for the baseline's failed records (SPEC slice 7, session B step 5.6).
+# evaluation/report.py joins these on (item, run) to the Trace excerpts it prints.
+# All three are the same failure: the model proposed a Mock Action nobody asked for. Each stopped at
+# "awaiting Confirmation" and on_confirm was "none", so nothing ran and action safety held (87/87).
+
+- item: S02-notice-week-off
+  run: 3
+  cause: >-
+    A general policy question ("How much notice do I need…") with no dates. The model looked up the
+    Requester's profile and proposed draft_manager_message, reading "Using tools" step 4 (propose a
+    message when the outcome needs approval) as applying to any PTO question.
+  fix: >-
+    prompt.md, "Using tools": step 4 now applies only when the Requester asks about their own concrete
+    request, and a new line says to propose no Mock Action for a general question with no dates, someone
+    else's request or a status check, but to offer it in recommendations. Re-run 2026-10-16
+    (prompt-fix-2, 3 runs each of S02, W01, W02, W05, W07, X02): tools 18/18, no unrequested proposals.
+
+- item: W05-director-checks-report
+  run: 3
+  cause: >-
+    The director (Marcus Reed) asked about his report Maya Chen's request. The Compliance Check said
+    director approval, and step 4 made the model draft a manager message to the approver, who was the
+    Requester himself.
+  fix: >-
+    Same prompt change: a question about someone else's request gets no Mock Action. W05 passed tools
+    3/3 in the re-run.
+
+- item: W07-benefits-enrollment
+  run: 2
+  cause: >-
+    A status check (is the enrollment window still open?). The model proposed create_mock_hr_ticket to
+    help the Requester enrol, though the answer was simply "yes, until 2026-11-11".
+  fix: >-
+    Same prompt change: a status check gets no Mock Action, only an offer in recommendations. W07
+    passed tools 3/3 in the re-run.

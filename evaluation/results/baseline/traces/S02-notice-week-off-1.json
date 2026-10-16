@@ -1,0 +1,484 @@
+{
+  "item_id": "S02-notice-week-off",
+  "run": 1,
+  "speaking_as": "E1008",
+  "session_id": "89f0775204fb4e65aded3ccedaf2be20",
+  "responses": [
+    {
+      "answer": {
+        "lead": "A week of vacation (about 5 PTO days) needs at least 14 calendar days' notice before your first day off.",
+        "policy_facts": [
+          {
+            "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice before the first day off. Requests of 3 PTO days or fewer have no minimum notice.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Notice is counted from the day you submit the request to the first day off. A late request isn't automatically declined, but your manager may decline it if the team can't cover your work.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Notice is counted from the day you submit the request to the first day off."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "A late request is not automatically declined, but your manager may decline it if the team can't cover your work."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your manager approves your PTO. A request for more than 10 consecutive PTO days also needs your director's approval, so a one-week request needs only your manager.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your profile shows you are office-hybrid, so the December 18\u201331 PTO blackout doesn't apply to you. It covers field/site-based employees only.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.4",
+                "snippet": "The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Submit the request in the HR Portal at least two weeks before your first day off. For example, a request submitted today, Monday 2026-11-02, would meet the notice rule for a start date of 2026-11-16 or later."
+          },
+          {
+            "text": "If you have specific dates in mind, tell me and I can check them against your balance and holiday calendar. I can also draft a message to your manager, Am\u00e9lie Roy."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 225
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2819,
+            "started_at": "2026-10-16T00:54:04.366+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO notice required vacation request",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0304
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0304
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "Paid time off (PTO) is time away from work, at full pay, for vacation and personal reasons. This policy explains how PTO is earned, used, requested and carried over. Sick time and other kinds of leave, such as parental, bereavement and jury duty leave, are not PTO; they are covered by the Leave of Absence Policy (RSE-LV-01).\nRidgeline wants everyone to take their PTO. Time away from project deadlines keeps people healthy and makes for better engineering, so managers are expected to encourage their teams to plan time off through the year rather than saving it all for December. Company holidays and floating holidays are separate from PTO and are covered by the Holiday Calendar & Observance policy (RSE-HOL-01).",
+                  "score": 0.0303
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 19,
+            "started_at": "2026-10-16T00:54:04.386+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "advance notice PTO approval",
+              "doc_ids": [
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "2",
+                  "section_heading": "Time Off",
+                  "text": "Request | Approver\nPTO up to 10 consecutive days | Manager\nPTO over 10 consecutive days | Director\nField-role PTO in the December blackout | Director\nFloating holiday | Manager\nSick time | None (notify your manager)\nParental, bereavement, jury duty | HR (manager notified)\nUnpaid personal leave | HR\nThe rules behind these rows are in the Paid Time Off Policy (RSE-PTO-01), the Holiday Calendar & Observance policy (RSE-HOL-01) and the Leave of Absence Policy (RSE-LV-01). For example, a PTO request of 11 consecutive working days needs the director, while a request of 10 or fewer needs only the manager.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "5",
+                  "section_heading": "Benefits, Equipment and Other",
+                  "text": "Request | Approver\nHome-office stipend | Manager\nBenefits changes | None (self-service in the window); HR for exceptions",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "3",
+                  "section_heading": "Work Location and Travel",
+                  "text": "Request | Approver\nTemporary remote work, same state/province | None (tell your manager)\nTemporary remote work, other US state/province, up to 30 calendar days/year | Manager\nTemporary remote work, other US state/province, over 30 calendar days/year | HR\nWorking from another country (any length) | HR (Cross-Border Review)\nChange to remote-approved | Manager + HR\nBusiness travel | Manager\nThe rules behind these rows are in the Remote & Hybrid Work Policy (RSE-RW-01) and the Work Location, Travel & Cross-Border Work Guidelines (RSE-LOC-01). Requests to work from another country go to HR's Cross-Border Review through an HR ticket; a manager's support is welcome but is not an approval.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "1",
+                  "section_heading": "How to Read This Matrix",
+                  "text": "This matrix lists who approves each kind of request. \"Manager\" means your direct manager on the HR record. \"Director\" means your manager's director. \"HR\" means the HR Service Desk. \"VP Finance\" means the VP Finance, Tom Whitaker. Where a row says \"none\", no approval is needed, but you may still need to tell someone.\nApprovals are given in the HR Portal unless a policy says otherwise. If your approver is away, their own manager can approve in their place. An approver cannot approve their own request; it goes to the next level up. The policies listed in each row hold the full rule, and this matrix only summarises who decides.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "4",
+                  "section_heading": "Expenses",
+                  "text": "Request | Approver\nExpense claim up to $1,000 | Manager\nExpense claim $1,000.01\u2013$5,000 | Director\nExpense claim over $5,000 | VP Finance\nBusiness-class airfare | Director\nLate claim (over 60 days) | Director\nExpense approvals are by the total of the claim, not by individual item. The rules behind these rows are in the Travel & Expense Reimbursement policy (RSE-EXP-01).",
+                  "score": 0.031
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-APR-01 \u00a72",
+              "RSE-APR-01 \u00a75",
+              "RSE-APR-01 \u00a73",
+              "RSE-APR-01 \u00a71",
+              "RSE-APR-01 \u00a74"
+            ],
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-16T00:54:04.400+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2901,
+              "output_tokens": 93
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1679,
+            "started_at": "2026-10-16T00:54:06.080+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "December blackout field roles PTO",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "Paid time off (PTO) is time away from work, at full pay, for vacation and personal reasons. This policy explains how PTO is earned, used, requested and carried over. Sick time and other kinds of leave, such as parental, bereavement and jury duty leave, are not PTO; they are covered by the Leave of Absence Policy (RSE-LV-01).\nRidgeline wants everyone to take their PTO. Time away from project deadlines keeps people healthy and makes for better engineering, so managers are expected to encourage their teams to plan time off through the year rather than saving it all for December. Company holidays and floating holidays are separate from PTO and are covered by the Holiday Calendar & Observance policy (RSE-HOL-01).",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-16T00:54:06.103+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4246,
+              "output_tokens": 156
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2232,
+            "started_at": "2026-10-16T00:54:08.335+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO notice more than 3 days 14 calendar days",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.1",
+                  "section_heading": "Full-time accrual",
+                  "text": "Full-time employees earn PTO according to their completed years of service, counted on January 1 (or from the hire date in the first year). With 0\u20132 completed years you earn 15 days a year. With 3\u20135 completed years you earn 20 days a year. With 6 or more completed years you earn 25 days a year. The higher rate starts in the calendar year after you reach the new band.\nFor example, an engineer who joined Ridgeline four years ago has 4 completed years of service and earns 20 days a year. An engineer who completes their sixth year of service during the year moves to 25 days a year from the following January 1. Service is counted from your hire date on your HR record, and periods of unpaid leave do not reduce it.",
+                  "score": 0.0292
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-16T00:54:08.364+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5664,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 961,
+            "started_at": "2026-10-16T00:54:09.326+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1008",
+              "requester_id": "E1008",
+              "session_id": "89f0775204fb4e65aded3ccedaf2be20"
+            },
+            "output": {
+              "employee_id": "E1008",
+              "name": "Chlo\u00e9 Tremblay",
+              "title": "Bridge Engineer",
+              "department": "Bridge Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "TOR",
+                "city": "Toronto",
+                "region": "ON",
+                "country": "CA",
+                "timezone": "America/Toronto"
+              },
+              "holiday_calendar": "CA",
+              "manager": {
+                "id": "E1019",
+                "name": "Am\u00e9lie Roy"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2020-05-04",
+              "weekly_hours": 40,
+              "work_email": "chloe.tremblay@ridgeline.example",
+              "work_region": "ON",
+              "work_country": "CA",
+              "employment_status": "active"
+            },
+            "summary": "Chlo\u00e9 Tremblay, Bridge Engineer, Toronto; manager Am\u00e9lie Roy",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-16T00:54:09.347+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6013,
+              "output_tokens": 880
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5428,
+            "started_at": "2026-10-16T00:54:14.776+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "6 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T00:54:14.778+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 105,
+          "llm_calls": 5,
+          "llm_ms": 13119,
+          "total_ms": 13231,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "item_id": "R03-tax-advice",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "b2499dd79e20419a93cddd8fa0665c5f",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't tell you whether you'd owe Portuguese income tax. Ridgeline doesn't give personal tax advice, and a six-week stay in Lisbon would need an HR Cross-Border Review.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline does not give personal tax, immigration or legal advice. HR's Cross-Border Review decides whether Ridgeline can support the request, and HR does not tell you what you personally owe in tax.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "4.1",
+                "snippet": "Ridgeline does not give personal tax, immigration or legal advice"
+              },
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "4.1",
+                "snippet": "HR does not tell you what you personally owe in tax or which visa you need."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Working from another country, other than on a short business trip, is always reviewed by HR. Your manager cannot approve it alone.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.1",
+                "snippet": "is always reviewed by HR, whatever the length. Your manager cannot approve it alone."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The annual cap for working from another country is 20 working days per calendar year, and six weeks (around 30 working days) is over that cap. HR reviews anything over the cap as an exception, and it may not be approved.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.2",
+                "snippet": "A stay of six weeks, for example, is around 30 working days and is over the cap."
+              },
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.2",
+                "snippet": "HR reviews it as an exception, and it may not be approved."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Requests should be made at least 28 calendar days before your start date.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.3",
+                "snippet": "Request work from another country at least 28 calendar days before you plan to start"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your work location on record is Austin, TX, US.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Please review and confirm the HR ticket I've prepared. It goes to the Cross-Border Review queue with your Lisbon plan and flags that six weeks is over the 20-day cap."
+          },
+          {
+            "text": "Add your exact dates and a work plan to the ticket. The plan should cover the work you'll do, how you'll meet core hours across time zones, and how you'll keep project data secure."
+          },
+          {
+            "text": "For your personal Portuguese tax position, ask an independent tax adviser."
+          },
+          {
+            "text": "Tell your manager, Rafael G\u00f3mez, that you've opened the ticket."
+          }
+        ],
+        "refusal": {
+          "reason": "legal_tax_immigration",
+          "text": "I can't give personal tax advice. Per the Cross-Border Review (RSE-LOC-01 \u00a74), HR reviews tax, immigration and payroll for requests to work abroad, but doesn't tell you what you personally owe. I've prepared an HR ticket you can confirm."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 135,
+              "output_tokens": 168
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1685,
+            "started_at": "2026-10-16T01:04:13.477+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Cross-Border Review temporary remote work abroad tax",
+              "doc_ids": [
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.3",
+                  "section_heading": "Business travel vs temporary remote work",
+                  "text": "Travel to do Ridgeline work at a client, a project site or a Ridgeline office is business travel, not temporary remote work. A business trip of up to 14 calendar days needs no Cross-Border Review, even when it is to another country. Longer stays, or working from another country for your own reasons, follow \u00a73.\nFor example, a week at the Toronto office for project meetings is business travel for a Denver employee: the manager pre-approves it and no Cross-Border Review is needed. Spending several weeks working from a family home abroad is not business travel, even if you do your normal job while there.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.1",
+                  "section_heading": "What HR reviews",
+                  "text": "The Cross-Border Review is how HR checks a request to work from another country. HR looks at tax, immigration and work authorization, insurance, and payroll. Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions.\nThe review protects both you and Ridgeline: working in another country can create obligations that neither side intended. HR may approve a request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax or which visa you need.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.2",
+                  "section_heading": "How to request",
+                  "text": "Open an HR ticket in the category remote_work, with your dates, the country and your work plan.\nYour work plan should say what work you will do, how you will meet core hours across time zones and how you will keep project data secure. Tell your manager you have opened the ticket. HR's Cross-Border Review queue picks it up and may ask you for more detail.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "1.1",
+                  "section_heading": "What \"work location\" means",
+                  "text": "Your work location is the work region and country on your HR record, for example Colorado, US or Ontario, Canada. Your work location decides which rules apply when you work from somewhere else, whether that is business travel (\u00a72) or temporary remote work (RSE-RW-01 \u00a76).\nFor most employees the work location is the state or province of their home office. Remote-approved employees may have a different work region, which is recorded when their arrangement is approved. Keep your work location up to date: it affects payroll, benefits and which holiday calendar applies.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.3",
+                  "section_heading": "Timeline",
+                  "text": "HR gives a decision within 10 working days of receiving a complete request.\nThe clock starts when HR has everything it needs, so include your dates, country and work plan in the ticket. Don't book non-refundable travel until you have the decision.",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a72.3",
+              "RSE-LOC-01 \u00a74.1",
+              "RSE-LOC-01 \u00a74.2",
+              "RSE-LOC-01 \u00a71.1",
+              "RSE-LOC-01 \u00a74.3"
+            ],
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-16T01:04:13.504+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1404,
+              "output_tokens": 82
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1079,
+            "started_at": "2026-10-16T01:04:14.584+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-LOC-01",
+              "section": "3"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.1",
+                  "section_heading": "Always reviewed by HR",
+                  "text": "Working from another country, other than on a short business trip (\u00a72.3), is always reviewed by HR, whatever the length. Your manager cannot approve it alone.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.3",
+                  "section_heading": "Request at least 28 calendar days ahead",
+                  "text": "Request work from another country at least 28 calendar days before you plan to start, so HR has time to complete the review.\nRequests made with less notice may still be reviewed, but HR may not be able to decide in time, and the request is more likely to be declined.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.4",
+                  "section_heading": "Security requirements",
+                  "text": "Working from another country has extra security requirements, including notifying IT Security in advance; see RSE-SEC-01 \u00a75.4.\nHR approval and IT Security's checks are separate steps, and both are needed before you go. Use the VPN at all times while abroad.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "4 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a73.1",
+              "RSE-LOC-01 \u00a73.2",
+              "RSE-LOC-01 \u00a73.3",
+              "RSE-LOC-01 \u00a73.4"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-16T01:04:14.602+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2179,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 902,
+            "started_at": "2026-10-16T01:04:15.504+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "b2499dd79e20419a93cddd8fa0665c5f"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-16T01:04:15.520+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2513,
+              "output_tokens": 438
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2957,
+            "started_at": "2026-10-16T01:04:18.477+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1002",
+              "category": "remote_work",
+              "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+              "summary": "Daniel Okafor (Austin, TX, US) asks to work remotely from Lisbon, Portugal for about six weeks (around 30 working days, over the 20-working-day annual cap) and asks about personal Portuguese income tax. Requesting Cross-Border Review (tax, immigration, insurance, payroll). Exact dates and work plan (work to be done, core hours across time zones, data security) to be provided.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "3.1"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "3.2"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.1"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.2"
+                }
+              ],
+              "requester_id": "E1002",
+              "session_id": "b2499dd79e20419a93cddd8fa0665c5f"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1002",
+              "category": "remote_work",
+              "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+              "summary": "Daniel Okafor (Austin, TX, US) asks to work remotely from Lisbon, Portugal for about six weeks (around 30 working days, over the 20-working-day annual cap) and asks about personal Portuguese income tax. Requesting Cross-Border Review (tax, immigration, insurance, payroll). Exact dates and work plan (work to be done, core hours across time zones, data security) to be provided.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "3.1"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "3.2"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.1"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.2"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-16T01:04:18.495+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3416,
+              "output_tokens": 1067
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 7167,
+            "started_at": "2026-10-16T01:04:25.662+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T01:04:25.663+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 59,
+          "llm_calls": 5,
+          "llm_ms": 13790,
+          "total_ms": 13871,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "838105b04d1a",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR \u00b7 Cross-Border Review",
+          "employee_id": "E1002",
+          "category": "remote_work",
+          "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+          "summary": "Daniel Okafor (Austin, TX, US) asks to work remotely from Lisbon, Portugal for about six weeks (around 30 working days, over the 20-working-day annual cap) and asks about personal Portuguese income tax. Requesting Cross-Border Review (tax, immigration, insurance, payroll). Exact dates and work plan (work to be done, core hours across time zones, data security) to be provided.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "3.1"
+            },
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "3.2"
+            },
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "4.1"
+            },
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "4.2"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

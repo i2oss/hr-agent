@@ -1,0 +1,672 @@
+{
+  "item_id": "M01-toronto-trip",
+  "run": 3,
+  "speaking_as": "E1001",
+  "session_id": "f2763c5aa0c3438c9d78923b1e4fab37",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Business days Dec 7\u20139 are expensable at the international limits. The vacation days (Dec 10, 11 and 14) are PTO at your own cost, and your manager Jordan Lee approves them.",
+        "policy_facts": [
+          {
+            "text": "Hotel lodging is reimbursed up to $275 per night outside the US, before taxes. The limit depends on where you stay, so Toronto uses the international limit even though you're a Denver employee.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "4",
+                "snippet": "a Denver employee staying in Toronto uses the international limit"
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Meals are reimbursed up to $90 per day for international travel. The cap covers all meals that day together, including tips.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "5.1",
+                "snippet": "up to $90 per day for international travel"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "When you combine business and personal travel, airfare is reimbursed only up to the business-only comparison fare. Ridgeline Travel quotes that fare at booking.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "6.2",
+                "snippet": "airfare is reimbursed up to the business-only comparison fare"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Lodging and meals on the vacation days are not reimbursed. Those days are PTO.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "6.3",
+                "snippet": "Lodging and meals on personal days are not reimbursed."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your manager must pre-approve the business trip before you book. Approval covers only the business part, and the personal days are requested separately as PTO.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "2.1",
+                "snippet": "Your manager must pre-approve every business trip before you book it."
+              },
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "2.4",
+                "snippet": "Request the PTO in the usual way, with the usual notice and approval."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your home office's holiday calendar still applies while you travel. Adding a few personal days doesn't make the trip temporary remote work, as long as you don't work on those days.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "2.4",
+                "snippet": "Adding a few personal days doesn't turn a business trip into temporary remote work, provided you don't work on those days."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The Compliance Check for Dec 10\u201314 charges 3 PTO days (Dec 10, 11 and 14). You have 11.0 days available, no company holidays fall in the range, and the outcome is allowed with manager approval from Jordan Lee.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              },
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          },
+          {
+            "text": "Requests of 3 PTO days or fewer have no minimum notice. Submit them as early as practical.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests of 3 PTO days or fewer have no minimum notice"
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "Submit the PTO request in the HR Portal before your first day off. PTO isn't approved until the HR Portal shows it as approved.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.1",
+                "snippet": "PTO is not approved until the HR Portal shows it as approved."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've drafted a message to Jordan Lee asking for pre-approval of the Dec 7\u20139 trip and for the 3 PTO days. Please review it and press Confirm if you want it saved. Nothing has been sent yet."
+          },
+          {
+            "text": "After Jordan approves the trip, book through Ridgeline Travel and ask for the business-only comparison fare so you know your airfare reimbursement cap."
+          },
+          {
+            "text": "Submit the PTO request in the HR Portal. I assumed Dec 10, 11 and 14 are your vacation days, with Dec 12\u201313 as the weekend."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 161,
+              "output_tokens": 445
+            },
+            "summary": "claude-sonnet-5-5 \u2192 4 tool call(s): lookup_employee_profile, check_pto_balance, search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 3975,
+            "started_at": "2026-10-16T01:05:55.495+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f2763c5aa0c3438c9d78923b1e4fab37"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-16T01:05:55.516+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f2763c5aa0c3438c9d78923b1e4fab37"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 25,
+            "started_at": "2026-10-16T01:05:55.542+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "business travel expenses lodging meals airfare international",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.1",
+                  "section_heading": "Meals",
+                  "text": "While travelling on business, meals are reimbursed up to $75 per day for domestic travel and up to $90 per day for international travel. Any amount over the daily cap is not reimbursed. The daily cap covers all your meals that day together, including tips. Domestic means travel within your own country; international means travel outside it. For example, a single dinner costing more than the domestic daily cap on a site visit is reimbursed only up to the cap, and you pay the difference. Meals provided by a client or included in a conference fee are not claimed again.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "4",
+                  "section_heading": "Lodging",
+                  "text": "Hotel lodging is reimbursed up to $250 per night in the US and up to $275 per night outside the US (international), before taxes. Book through Ridgeline Travel. The nightly limit depends on where you stay, not where you are from: a Denver employee staying in Toronto uses the international limit. If no reasonable hotel is available within the limit, for example during a major event, ask your manager to approve the higher rate before booking and note the approval on your claim. Room service, minibar and in-room entertainment are personal costs.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.2",
+                  "section_heading": "Airfare",
+                  "text": "When you combine business and personal travel, airfare is reimbursed up to the business-only comparison fare, which Ridgeline Travel quotes at booking for the dates the business trip alone would need.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.0299
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a75.1",
+              "RSE-EXP-01 \u00a76.3",
+              "RSE-EXP-01 \u00a74",
+              "RSE-EXP-01 \u00a76.2",
+              "RSE-EXP-01 \u00a75.2"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-16T01:05:55.566+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "personal vacation days added to business trip",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.1",
+                  "section_heading": "Personal days are PTO",
+                  "text": "Personal days added to a business trip are taken as PTO under the Paid Time Off Policy (RSE-PTO-01).",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.4",
+                  "section_heading": "Adding personal days to a trip",
+                  "text": "You may add personal days to a business trip. Personal days are taken as PTO under the Paid Time Off Policy (RSE-PTO-01), and the costs of the personal days are yours (RSE-EXP-01 \u00a76).\nRequest the PTO in the usual way, with the usual notice and approval. Your holiday calendar is still your home office's calendar while you travel. Adding a few personal days doesn't turn a business trip into temporary remote work, provided you don't work on those days.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.1",
+                  "section_heading": "Pre-approval",
+                  "text": "Your manager must pre-approve every business trip before you book it.\nAsk for approval with the purpose of the trip, the dates, the destination and an estimate of the main costs. Approval covers the business part of the trip; personal days added to it are requested separately as PTO (\u00a72.4).",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.0317
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.2",
+                  "section_heading": "Airfare",
+                  "text": "When you combine business and personal travel, airfare is reimbursed up to the business-only comparison fare, which Ridgeline Travel quotes at booking for the dates the business trip alone would need.",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a76.1",
+              "RSE-LOC-01 \u00a72.4",
+              "RSE-LOC-01 \u00a72.1",
+              "RSE-EXP-01 \u00a76.3",
+              "RSE-EXP-01 \u00a76.2"
+            ],
+            "status": "ok",
+            "latency_ms": 104,
+            "started_at": "2026-10-16T01:05:55.670+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2794,
+              "output_tokens": 502
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 3588,
+            "started_at": "2026-10-16T01:05:59.259+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice approval working days",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.0311
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "2",
+                  "section_heading": "Time Off",
+                  "text": "Request | Approver\nPTO up to 10 consecutive days | Manager\nPTO over 10 consecutive days | Director\nField-role PTO in the December blackout | Director\nFloating holiday | Manager\nSick time | None (notify your manager)\nParental, bereavement, jury duty | HR (manager notified)\nUnpaid personal leave | HR\nThe rules behind these rows are in the Paid Time Off Policy (RSE-PTO-01), the Holiday Calendar & Observance policy (RSE-HOL-01) and the Leave of Absence Policy (RSE-LV-01). For example, a PTO request of 11 consecutive working days needs the director, while a request of 10 or fewer needs only the manager.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-APR-01 \u00a72",
+              "RSE-PTO-01 \u00a74.1"
+            ],
+            "status": "ok",
+            "latency_ms": 30,
+            "started_at": "2026-10-16T01:05:59.290+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-12-10",
+                "end_date": "2026-12-14",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1001",
+              "session_id": "f2763c5aa0c3438c9d78923b1e4fab37"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "3 PTO day(s); company holidays excluded: none.",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 3 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "3 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "3 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 3,
+                "holidays_excluded": [],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 38,
+                "approver_name": "Jordan Lee"
+              }
+            },
+            "summary": "allowed_with_approval, approver manager, 3 working days",
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-16T01:05:59.304+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4866,
+              "output_tokens": 558
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 4337,
+            "started_at": "2026-10-16T01:06:03.641+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request Dec 10-14 added to Toronto business trip (Dec 7-9)",
+              "body": "Hi Jordan, I'm planning to travel to the Toronto office for work on Dec 7-9 and would like to stay on for personal time afterward. I'd like to request 3 PTO days: Dec 10, Dec 11 and Dec 14 (the weekend isn't charged). My balance shows 11.0 days available. I won't work on those days. I'll also need your pre-approval for the business part of the trip (Dec 7-9) before I book; I'll send the purpose and an estimate of the main costs. I'll submit the PTO request in the HR Portal too. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "2.4"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "2.1"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "f2763c5aa0c3438c9d78923b1e4fab37"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request Dec 10-14 added to Toronto business trip (Dec 7-9)",
+              "body": "Hi Jordan, I'm planning to travel to the Toronto office for work on Dec 7-9 and would like to stay on for personal time afterward. I'd like to request 3 PTO days: Dec 10, Dec 11 and Dec 14 (the weekend isn't charged). My balance shows 11.0 days available. I won't work on those days. I'll also need your pre-approval for the business part of the trip (Dec 7-9) before I book; I'll send the purpose and an estimate of the main costs. I'll submit the PTO request in the HR Portal too. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "2.4"
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "2.1"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-16T01:06:03.664+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5759,
+              "output_tokens": 1588
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 9236,
+            "started_at": "2026-10-16T01:06:12.901+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "14 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T01:06:12.902+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 6,
+          "tool_ms": 217,
+          "llm_calls": 4,
+          "llm_ms": 21136,
+          "total_ms": 21382,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "eb8a64d7612f",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1012",
+            "name": "Jordan Lee",
+            "email": "jordan.lee@ridgeline.example"
+          },
+          "subject": "PTO request Dec 10-14 added to Toronto business trip (Dec 7-9)",
+          "body": "Hi Jordan, I'm planning to travel to the Toronto office for work on Dec 7-9 and would like to stay on for personal time afterward. I'd like to request 3 PTO days: Dec 10, Dec 11 and Dec 14 (the weekend isn't charged). My balance shows 11.0 days available. I won't work on those days. I'll also need your pre-approval for the business part of the trip (Dec 7-9) before I book; I'll send the purpose and an estimate of the main costs. I'll submit the PTO request in the HR Portal too. Thanks, Maya",
+          "citations": [
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "2.4"
+            },
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "2.1"
+            },
+            {
+              "doc_id": "RSE-PTO-01",
+              "section": "4.3"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

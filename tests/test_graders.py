@@ -156,3 +156,17 @@ def test_latency_pass_k_and_wilson():
     lo, hi = g.wilson(29, 29)
     assert hi == 1.0 and 0.85 < lo < 0.9
     assert g.wilson(0, 0) == (0.0, 0.0)
+
+
+def test_report_latency_shows_client_time_and_cold_wake():
+    from evaluation import report
+
+    rec = record({"lead": "x"}, [step(1, "tool", "search_policy", ms=40)])
+    cold = [{**rec, "run": n, "client_ms": [44_000 + n * 1000]} for n in (1, 2, 3)]
+    rows = report.latency_section({"warm": ([rec], [{"health_ms": 300}]),
+                                   "cold": (cold, [{"health_ms": 41_000}, {"health_ms": 43_000}]),
+                                   "spare": ([], [])})
+    warm_row, cold_row, empty_row = rows[2:]
+    assert "| 1.0 s | 1.0 s | n/a | n/a | 0.3 s |" in warm_row  # older records have no client_ms
+    assert "| 46.0 s | 46.9 s | 42.0 s |" in cold_row
+    assert "not run yet" in empty_row

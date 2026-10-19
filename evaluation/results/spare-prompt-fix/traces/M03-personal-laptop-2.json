@@ -1,0 +1,224 @@
+{
+  "item_id": "M03-personal-laptop",
+  "run": 2,
+  "speaking_as": "E1009",
+  "session_id": "026ae473172c4f39935c4c0edb37aeb2",
+  "client_ms": [
+    6748
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "No. Don't use a personal laptop for Ridgeline project work, at home or anywhere else. Use your Ridgeline-issued laptop.",
+        "policy_facts": [
+          {
+            "text": "Personal laptops must never be used to store, open or work on Ridgeline project files, whether at home, in the office or travelling. This includes a quick look at a drawing.",
+            "citations": [
+              {
+                "doc_id": "RSE-SEC-01",
+                "section": "3.3",
+                "snippet": "Never use a personal laptop to store, open or work on Ridgeline project files, whether at home, in the office or travelling."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you don't have a Ridgeline laptop with you when you need one, ask IT about a loan device instead of using your own.",
+            "citations": [
+              {
+                "doc_id": "RSE-SEC-01",
+                "section": "3.3",
+                "snippet": "ask IT about a loan device rather than using your own"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine. Personal laptops are not reimbursed.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "3",
+                "snippet": "If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You can use personal accessories, such as your own headphones or keyboard, with Ridgeline equipment. They are not reimbursed outside the stipend.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "3",
+                "snippet": "Personal accessories such as your own headphones or keyboard may be used with Ridgeline equipment"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If your Ridgeline laptop is unavailable or isn't working for you, contact IT for a loan device or a replacement."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 123,
+              "output_tokens": 136
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2581,
+            "started_at": "2026-10-19T23:42:00.817+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "personal device laptop use for work",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "3.3",
+                  "section_heading": "Personal laptops",
+                  "text": "Never use a personal laptop to store, open or work on Ridgeline project files, whether at home, in the office or travelling.\nThis applies even to a quick look at a drawing or a short edit to a calculation. Personal laptops are outside IT's management, so Ridgeline cannot protect, track or wipe the files on them. If you don't have a Ridgeline laptop with you when you need one, ask IT about a loan device rather than using your own.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "3",
+                  "section_heading": "Personal Equipment",
+                  "text": "Personal laptops are not reimbursed, and they may not hold Ridgeline project files (RSE-SEC-01 \u00a73.3). Use the Ridgeline laptop you were issued for all project work.\nPersonal accessories such as your own headphones or keyboard may be used with Ridgeline equipment, but they are not reimbursed outside the stipend in \u00a72. If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "1",
+                  "section_heading": "Standard Equipment",
+                  "text": "Every employee gets a standard kit from IT: a laptop, two monitors and a headset. Field/site-based employees also get a rugged tablet for site work. IT has your equipment ready before your first day (RSE-ONB-01 \u00a71). Interns receive the standard kit for the length of their internship.\nThe kit is set up by IT with the software and security settings you need. Office-hybrid employees keep their laptop with them and use shared monitors on their anchor days; ask IT if you need monitors at home too. Specialist equipment, such as a high-performance workstation for analysis or modelling, is arranged through your manager and IT.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "5.4",
+                  "section_heading": "Working from another country",
+                  "text": "Notify IT Security at least 5 working days before you start working from another country. IT Security will check that your device and access are set up for the destination, and may issue a travel laptop for the trip. This applies in addition to the HR review in RSE-LOC-01 \u00a73.\nSome destinations have rules on encryption or on carrying certain data, and some client agreements forbid access from particular countries. IT Security checks these before you go. Don't take Client Restricted paper documents abroad, and keep your devices with you while travelling. Business trips abroad follow the same notification rule when you will work on Ridgeline systems while away.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "3.1",
+                  "section_heading": "Company-managed devices",
+                  "text": "Confidential and Client Restricted data may only be stored or worked on using company-managed devices: the laptops and tablets Ridgeline issues, which IT keeps encrypted and up to date.\nDon't disable security software, change device settings that IT manages, or let anyone else use your Ridgeline device. Install updates when prompted; IT may restart devices that fall too far behind.",
+                  "score": 0.0303
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-SEC-01 \u00a73.3",
+              "RSE-EQ-01 \u00a73",
+              "RSE-EQ-01 \u00a71",
+              "RSE-SEC-01 \u00a75.4",
+              "RSE-SEC-01 \u00a73.1"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:42:00.845+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1009",
+              "requester_id": "E1009",
+              "session_id": "026ae473172c4f39935c4c0edb37aeb2"
+            },
+            "output": {
+              "employee_id": "E1009",
+              "name": "Marcus Reed",
+              "title": "Engineering Director",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "remote_approved",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1020",
+                "name": "Helen Park"
+              },
+              "director": null,
+              "hire_date": "2015-08-24",
+              "weekly_hours": 40,
+              "work_email": "marcus.reed@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Marcus Reed, Engineering Director, Denver; manager Helen Park",
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T23:42:00.860+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1766,
+              "output_tokens": 656
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4118,
+            "started_at": "2026-10-19T23:42:04.979+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "4 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:42:04.980+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 43,
+          "llm_calls": 2,
+          "llm_ms": 6699,
+          "total_ms": 6745,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

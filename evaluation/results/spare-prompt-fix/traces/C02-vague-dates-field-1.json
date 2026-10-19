@@ -1,0 +1,59 @@
+{
+  "item_id": "C02-vague-dates-field",
+  "run": 1,
+  "speaking_as": "E1003",
+  "session_id": "ff946282b2f54060982d9d5004e2a1fa",
+  "client_ms": [
+    2496
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can check that for you, but I need the exact dates first.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Once you share the dates, I'll check them against your PTO balance, the holiday calendar and the approval rules. I can then draft a message to your approver."
+          }
+        ],
+        "clarification": {
+          "question": "Which dates in December do you want off? Please give the first and last day, for example December 14 to December 18."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 117,
+              "output_tokens": 235
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2493,
+            "started_at": "2026-10-19T23:38:11.218+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:38:11.219+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2493,
+          "total_ms": 2493,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

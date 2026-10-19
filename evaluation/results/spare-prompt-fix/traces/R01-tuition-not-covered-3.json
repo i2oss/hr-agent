@@ -1,0 +1,162 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 3,
+  "speaking_as": "E1005",
+  "session_id": "1dee9ba810de4611b1a10674c55048b6",
+  "client_ms": [
+    6567
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover tuition reimbursement, so I can't say whether a part-time master's would be reimbursed.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Ask the HR Service Desk whether Ridgeline offers any tuition or education assistance, and how to apply for it."
+          },
+          {
+            "text": "Ask before you enroll or pay any fees, so you know what to expect."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover this. I found nothing on tuition or degree reimbursement, so I can't confirm any benefit. The HR Service Desk can tell you more."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2116,
+            "started_at": "2026-10-19T23:50:42.774+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 19,
+            "started_at": "2026-10-19T23:50:42.794+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 80
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1035,
+            "started_at": "2026-10-19T23:50:43.830+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree training professional development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:50:43.851+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 340,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1080,
+            "started_at": "2026-10-19T23:50:44.932+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:50:44.953+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 436,
+              "output_tokens": 236
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2270,
+            "started_at": "2026-10-19T23:50:47.223+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:50:47.223+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 61,
+          "llm_calls": 4,
+          "llm_ms": 6501,
+          "total_ms": 6565,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

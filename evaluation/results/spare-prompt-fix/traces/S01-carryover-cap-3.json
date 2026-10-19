@@ -1,0 +1,236 @@
+{
+  "item_id": "S01-carryover-cap",
+  "run": 3,
+  "speaking_as": "E1001",
+  "session_id": "ce1a5b438fa64181b51d627f47361bff",
+  "client_ms": [
+    9650
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "You can carry over up to 5 unused PTO days into next year. The limit is 10 if you're on approved leave that spans December 31.",
+        "policy_facts": [
+          {
+            "text": "The standard carryover cap is 5 unused PTO days. Days above the cap are forfeited on December 31 and are not paid out.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "You can carry over up to 5 unused PTO days into the next calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you are on approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31, you can carry over up to 10 days instead. This is applied automatically.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "you can carry over up to 10 unused PTO days instead of 5."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "As of 2026-11-02 your available PTO balance is 11.0 days. Your record also shows 2.0 days of carryover.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "At 11.0 days available, you'd be about 6 days over the 5-day cap if you took no more PTO before December 31. Your balance may change before then as PTO accrues, so plan to use the rest before year-end."
+          },
+          {
+            "text": "Check the expected carryover shown in the HR Portal. I can also check specific dates against your balance and draft a message to your manager if you want to book time off."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 259
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_pto_balance",
+            "status": "ok",
+            "latency_ms": 2523,
+            "started_at": "2026-10-19T23:46:18.737+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days next year",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0296
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0294
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a75.3",
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 32,
+            "started_at": "2026-10-19T23:46:18.770+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "ce1a5b438fa64181b51d627f47361bff"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 10,
+            "started_at": "2026-10-19T23:46:18.781+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1508,
+              "output_tokens": 148
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_pto_balance",
+            "status": "ok",
+            "latency_ms": 1957,
+            "started_at": "2026-10-19T23:46:20.739+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "ce1a5b438fa64181b51d627f47361bff"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:46:20.757+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1640,
+              "output_tokens": 649
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5102,
+            "started_at": "2026-10-19T23:46:25.860+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:46:25.860+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 60,
+          "llm_calls": 3,
+          "llm_ms": 9582,
+          "total_ms": 9646,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

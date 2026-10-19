@@ -1,0 +1,461 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 2,
+  "speaking_as": "E1005",
+  "session_id": "686dd7a9fa2644b2922944a8908346b2",
+  "client_ms": [
+    15044
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover this: I found nothing on tuition reimbursement for a part-time master's degree.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline reimburses reasonable expenses that are necessary for your work, and if you are unsure whether something is reimbursable you should ask your manager or Finance before you spend the money.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "1",
+                "snippet": "If you are unsure whether something is reimbursable, ask your manager or Finance before you spend the money, not after."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The one education-related item I found is professional engineering licence renewals, which are reimbursed. That is not tuition.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "7.2",
+                "snippet": "Professional engineering licence renewals are reimbursed."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Ask the HR Service Desk whether Ridgeline has any education assistance program before you enrol or pay any tuition."
+          },
+          {
+            "text": "Check with your manager or Finance before spending money, as the expense policy advises."
+          },
+          {
+            "text": "I stopped searching early because I hit the tool limit for this turn. I ran several searches on tuition, degrees and education, and none returned a matching policy."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover this. I couldn't find any tuition or degree reimbursement policy, so please contact the HR Service Desk."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2176,
+            "started_at": "2026-10-19T23:45:11.162+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T23:45:11.186+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 979,
+            "started_at": "2026-10-19T23:45:12.166+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree tuition training development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-19T23:45:12.193+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 341,
+              "output_tokens": 82
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1141,
+            "started_at": "2026-10-19T23:45:13.334+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "professional development learning reimbursement",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.2",
+                  "section_heading": "Professional licence renewals",
+                  "text": "Professional engineering licence renewals are reimbursed. Claim the renewal fee with the receipt. Fees for licences in additional jurisdictions are reimbursed when your manager agrees they are needed for your projects.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.3",
+                  "section_heading": "Alcohol",
+                  "text": "Alcohol is reimbursed only as part of pre-approved client entertainment.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.5",
+                  "section_heading": "Professional licensure",
+                  "text": "Only licensed professional engineers may seal or sign engineering drawings and calculations, and only for work they have personally reviewed. Never use another engineer's seal or signature. Keep your own licence current; licence renewals are reimbursed under RSE-EXP-01 \u00a77.2. Engineers working toward licensure should work under the supervision of a licensed engineer and keep a record of their experience. Tell your manager straight away if your licence lapses or is restricted, so project responsibilities can be adjusted.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.0295
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.2",
+                  "section_heading": "Deadlines",
+                  "text": "Submit claims within 30 days of the expense. Claims older than 60 days are not reimbursed without a director exception. Submitting promptly helps projects bill clients accurately and helps Finance close each month. For a long trip, you may submit claims as you go rather than waiting until you return.",
+                  "score": 0.0292
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a77.2",
+              "RSE-EXP-01 \u00a75.3",
+              "RSE-HB-01 \u00a74.5",
+              "RSE-EXP-01 \u00a75.2",
+              "RSE-EXP-01 \u00a78.2"
+            ],
+            "status": "ok",
+            "latency_ms": 30,
+            "started_at": "2026-10-19T23:45:13.365+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1281,
+              "output_tokens": 95
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1096,
+            "started_at": "2026-10-19T23:45:14.461+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": [
+                "RSE-HB-01",
+                "RSE-EXP-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:45:14.486+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1398,
+              "output_tokens": 80
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1059,
+            "started_at": "2026-10-19T23:45:15.546+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "benefits education degree study support",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T23:45:15.570+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1499,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1010,
+            "started_at": "2026-10-19T23:45:16.580+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:45:16.601+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1595,
+              "output_tokens": 94
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1092,
+            "started_at": "2026-10-19T23:45:17.694+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "what expenses are not reimbursed",
+              "doc_ids": [
+                "RSE-EXP-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "1",
+                  "section_heading": "Principles and Scope",
+                  "text": "Ridgeline reimburses reasonable expenses that are necessary for your work. Choose the cheapest practical option that gets the job done, and spend Ridgeline's money as you would your own. This policy applies to all employees. Limits are per person. Expenses must be for Ridgeline business, supported by receipts where required, and claimed promptly. Project-related costs should be charged to the right project so they can be billed to the client where the contract allows. If you are unsure whether something is reimbursable, ask your manager or Finance before you spend the money, not after.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.3",
+                  "section_heading": "Not reimbursable",
+                  "text": "These are not reimbursed: personal travel costs, traffic or parking fines, upgrades without approval, family travel, and personal entertainment. Personal entertainment includes in-flight films, hotel films, gym fees and sightseeing. Family travel includes the costs of a partner or family members travelling with you, even when they share your room or car.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.1",
+                  "section_heading": "Meals",
+                  "text": "While travelling on business, meals are reimbursed up to $75 per day for domestic travel and up to $90 per day for international travel. Any amount over the daily cap is not reimbursed. The daily cap covers all your meals that day together, including tips. Domestic means travel within your own country; international means travel outside it. For example, a single dinner costing more than the domestic daily cap on a site visit is reimbursed only up to the cap, and you pay the difference. Meals provided by a client or included in a conference fee are not claimed again.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.3",
+                  "section_heading": "Alcohol",
+                  "text": "Alcohol is reimbursed only as part of pre-approved client entertainment.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.0302
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a71",
+              "RSE-EXP-01 \u00a77.3",
+              "RSE-EXP-01 \u00a75.1",
+              "RSE-EXP-01 \u00a75.3",
+              "RSE-EXP-01 \u00a76.3"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:45:17.723+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2679,
+              "output_tokens": 77
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1067,
+            "started_at": "2026-10-19T23:45:18.790+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "university course degree program",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:45:18.819+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:45:18.819+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2822,
+              "output_tokens": 525
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5208,
+            "started_at": "2026-10-19T23:45:24.027+00:00"
+          },
+          {
+            "n": 19,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "2 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:45:24.028+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 204,
+          "llm_calls": 9,
+          "llm_ms": 14828,
+          "total_ms": 15042,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

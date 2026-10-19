@@ -1,0 +1,59 @@
+{
+  "item_id": "C03-vague-location",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "270dd44c12334cf3b7bfbd97ab24fb20",
+  "client_ms": [
+    2383
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "I need to know where you'd be working from before I can check this.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Once you share the location, I can look up your profile and run the check. Exact start and end dates will help too."
+          }
+        ],
+        "clarification": {
+          "question": "Where would you work from: your own state or province, a different state or province in your country, or another country (and which one)?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 130,
+              "output_tokens": 222
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2380,
+            "started_at": "2026-10-19T23:44:16.072+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:44:16.072+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2380,
+          "total_ms": 2380,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

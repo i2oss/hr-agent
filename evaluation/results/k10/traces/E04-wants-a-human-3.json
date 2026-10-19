@@ -1,0 +1,491 @@
+{
+  "item_id": "E04-wants-a-human",
+  "run": 3,
+  "speaking_as": "E1010",
+  "session_id": "920f96706a604ae8a4b6a7a6365fa615",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes. You can reach a person in HR through the HR Service Desk, and I can open a ticket asking them to contact you.",
+        "policy_facts": [
+          {
+            "text": "For HR questions, you can contact the HR Service Desk by email or through HR Portal > Ask HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-ONB-01",
+                "section": "4",
+                "snippet": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR keeps the details of your leave. If you aren't sure which kind of leave fits, HR will help you choose.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "1.2",
+                "snippet": "HR keeps the details of your leave, and your manager sees only the dates you will be away."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You already have an open ticket, HR-2026-0412, \"Parental leave from 2026-12-07\", in the HR Service Desk queue.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "list_hr_tickets"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Please review the HR ticket preview and confirm it. It asks HR to contact you directly about your leave case and links to HR-2026-0412. Nothing has been created yet."
+          },
+          {
+            "text": "You can also email hr@ridgeline.example or use HR Portal > Ask HR now."
+          },
+          {
+            "text": "If your leave case involves medical details or an accommodation, you can use HR Confidential at hr-confidential@ridgeline.example instead."
+          }
+        ],
+        "escalation": {
+          "reason": "You asked to speak with a person in HR about your leave case.",
+          "trigger": "user_requested_human"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 261
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, list_hr_tickets",
+            "status": "ok",
+            "latency_ms": 2296,
+            "started_at": "2026-10-19T23:16:47.775+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact speak to a person",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "7.3",
+                  "section_heading": "Asking for your data",
+                  "text": "You can ask for a copy of the personal data HR holds about you, or ask for a correction, through the HR Service Desk. Most of your information can be checked and updated yourself in the HR Portal, such as your contact details and emergency contacts. For anything you can't change yourself, HR will respond to your request as soon as it can and tell you if any information has to be withheld to protect someone else's privacy.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "6",
+                  "section_heading": "Plan-Specific Questions",
+                  "text": "For anything this summary doesn't answer, including claims, plan details and costs, the RSE Canada Group Plan, or your own coverage, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nThis document is a summary. Where it differs from the plan documents, the plan documents apply. HR can explain how the plans work but cannot advise you which plan is best for your personal circumstances.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "7.2",
+                  "section_heading": "Accommodations",
+                  "text": "If you need a workplace accommodation for a disability, a health condition or pregnancy, contact HR directly through HR Confidential or the HR Service Desk. HR will talk with you about what you need, keep your information confidential, and tell your manager only about the work adjustments, not the reason for them.\nAccommodations might include changes to your schedule, equipment, workspace or duties. You can ask at any time, including before you join. HR may ask for information from a medical professional where it is needed to understand what will help, and will explain why.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "6",
+                  "section_heading": "Questions",
+                  "text": "Questions about this policy go to the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nBefore you ask, check your balance and the status of your requests in HR Portal > Time Off; most questions about how many days you have, or whether a request has been approved, are answered there. Questions about a specific request, such as whether a particular set of dates meets the notice rule or who needs to approve it, are best raised with your manager first. Questions about how this policy applies in an unusual situation, such as a change of Employment Type during the year or PTO around a leave of absence, go to the HR Service Desk, which replies within 2 working days.",
+                  "score": 0.0289
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "8",
+                  "section_heading": "Acknowledgement",
+                  "text": "When you join, and whenever a new version is published, read this handbook and acknowledge it in the HR Portal. Ask the HR Service Desk if anything is unclear. Acknowledging the handbook confirms that you have read it and understand where to find the policies that apply to you. It is not a contract, and it doesn't replace the terms of your employment. Managers check that new team members complete the acknowledgement during their first week.",
+                  "score": 0.0283
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "1",
+                  "section_heading": "How to Read This Matrix",
+                  "text": "This matrix lists who approves each kind of request. \"Manager\" means your direct manager on the HR record. \"Director\" means your manager's director. \"HR\" means the HR Service Desk. \"VP Finance\" means the VP Finance, Tom Whitaker. Where a row says \"none\", no approval is needed, but you may still need to tell someone.\nApprovals are given in the HR Portal unless a policy says otherwise. If your approver is away, their own manager can approve in their place. An approver cannot approve their own request; it goes to the next level up. The policies listed in each row hold the full rule, and this matrix only summarises who decides.",
+                  "score": 0.0265
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.0161
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "6",
+                  "section_heading": "Exceptions",
+                  "text": "Any exception to a Ridgeline policy is approved by the Director of People & HR, Renata Alvarez. Ask the HR Service Desk to start an exception request.\nExplain what you are asking for, which rule it departs from and why. Exceptions are granted only for good reason and are recorded, so that similar cases are treated consistently. An exception for one person does not change the policy for anyone else.",
+                  "score": 0.0156
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a77.3",
+              "RSE-BEN-01 \u00a76",
+              "RSE-LV-01 \u00a77.2",
+              "RSE-PTO-01 \u00a76",
+              "RSE-HB-01 \u00a78",
+              "RSE-APR-01 \u00a71",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-APR-01 \u00a76"
+            ],
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-19T23:16:47.803+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "list_hr_tickets",
+            "args": {
+              "employee_id": "E1010",
+              "status": null,
+              "requester_id": "E1010",
+              "session_id": "920f96706a604ae8a4b6a7a6365fa615"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "tickets": [
+                {
+                  "id": "HR-2026-0412",
+                  "employee_id": "E1010",
+                  "category": "other",
+                  "subject": "Parental leave from 2026-12-07",
+                  "summary": "Plan 12 weeks of parental leave starting 2026-12-07; confirm benefits during leave and return date.",
+                  "status": "open",
+                  "priority": "normal",
+                  "created": "2026-10-05",
+                  "assigned_queue": "HR Service Desk",
+                  "citations": [
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.2"
+                    },
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.4"
+                    }
+                  ],
+                  "mock": false
+                }
+              ]
+            },
+            "summary": "1 ticket(s)",
+            "status": "ok",
+            "latency_ms": 8,
+            "started_at": "2026-10-19T23:16:47.811+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3222,
+              "output_tokens": 99
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1569,
+            "started_at": "2026-10-19T23:16:49.381+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Leave of absence questions HR Service Desk reply",
+              "doc_ids": [
+                "RSE-LV-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "7.2",
+                  "section_heading": "Accommodations",
+                  "text": "If you need a workplace accommodation for a disability, a health condition or pregnancy, contact HR directly through HR Confidential or the HR Service Desk. HR will talk with you about what you need, keep your information confidential, and tell your manager only about the work adjustments, not the reason for them.\nAccommodations might include changes to your schedule, equipment, workspace or duties. You can ask at any time, including before you join. HR may ask for information from a medical professional where it is needed to understand what will help, and will explain why.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "1.2",
+                  "section_heading": "Leave vs PTO",
+                  "text": "The leave types in this policy are separate from paid time off. They do not use your PTO balance unless this policy says so; the one exception is unpaid personal leave, which requires you to use your available PTO first (\u00a76). PTO itself is covered by the Paid Time Off Policy (RSE-PTO-01).\nLeave is requested through the HR Portal, where you choose the leave type. HR keeps the details of your leave, and your manager sees only the dates you will be away. If you aren't sure which kind of leave fits your situation, contact the HR Service Desk and HR will help you choose.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "7.1",
+                  "section_heading": "Medical leave",
+                  "text": "Medical leave beyond sick time is arranged with HR directly. You share medical information only with HR. Your manager is told only the dates you will be away and any adjustments to your work.\nContact HR as soon as you know you will need medical leave, or ask someone to contact HR for you. HR will explain the options, the documents needed and how your pay and benefits are handled while you are away. Requests are handled through HR Confidential where you prefer.",
+                  "score": 0.0309
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.4",
+                  "section_heading": "Notice",
+                  "text": "When the leave is foreseeable, give HR at least 30 calendar days' notice of your planned start date. If the timing changes unexpectedly, tell HR as soon as you can.\nRequest parental leave in the HR Portal. HR confirms your dates, your pay during leave and your expected return date, and lets your manager know so cover can be planned.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "5",
+                  "section_heading": "Jury and Witness Duty",
+                  "text": "If you are called for jury duty or as a witness in court, Ridgeline pays you for up to 10 days. Give HR a copy of the summons, and tell your manager as soon as you receive it. HR approves the leave, and your manager is notified.\nIf you are released early on a day of jury service, you are not expected to return to work that day. Service beyond the paid days can be covered by PTO or unpaid personal leave; talk to HR.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.2",
+                  "section_heading": "Pay and length",
+                  "text": "Eligible employees get 12 weeks of paid parental leave at 100% of base pay. HR approves parental leave, and your manager is notified.\nThe 12 weeks are calendar weeks, so company holidays inside your leave don't extend it. Parental leave is paid through normal payroll on your usual pay dates. You can add PTO before or after your parental leave in the usual way.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.1",
+                  "section_heading": "Eligibility",
+                  "text": "Full-time and part-time employees with at least 6 months of service are eligible for parental leave. It is available to any parent, for the birth of a child, an adoption or a foster placement. Interns and contractors are not eligible.\nService is counted from your hire date to the first day of your leave. Both parents may take parental leave if both work at Ridgeline. If you will reach 6 months of service shortly after the birth or placement, contact HR to discuss timing.",
+                  "score": 0.0298
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "6",
+                  "section_heading": "Unpaid Personal Leave",
+                  "text": "You can request unpaid personal leave of up to 30 calendar days for personal reasons that PTO doesn't cover. HR approves unpaid personal leave. You must use your available PTO before unpaid leave begins. PTO accrual is paused during unpaid leave. If your unpaid leave will last more than 30 days, contact HR before the leave starts to arrange your benefits.\nRequest unpaid personal leave in the HR Portal with your dates and a short reason; you don't need to share personal details beyond what HR needs to decide. HR considers the effect on your project and team and talks to your manager about cover. Unpaid personal leave is not a substitute for medical leave or accommodations, which follow \u00a77.",
+                  "score": 0.0297
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "This policy covers time away from work for reasons other than vacation: sick time, parental leave, bereavement, jury and witness duty, unpaid personal leave, and medical leave and accommodations. It applies to full-time and part-time employees. Interns are covered by sick time (\u00a72), bereavement leave (\u00a74) and jury and witness duty (\u00a75) only.\nRidgeline wants people to be able to take the time they need for illness, family and civic duties without worrying about their job. Managers support colleagues on leave by planning cover early, keeping the reason for an absence private, and making the return to work straightforward. Leave rules are applied the same way in every office, and Canadian employees should also read \u00a73.6.",
+                  "score": 0.0297
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "8",
+                  "section_heading": "Returning from Leave",
+                  "text": "When you return from parental, medical or unpaid personal leave, you will have a return-to-work check-in with your manager and HR to plan your first weeks back and any changes to your schedule.\nThe check-in covers your workload, any project changes while you were away, and any adjustments you need. HR arranges it before your return date. If you want to change your schedule or Work Arrangement when you return, raise it at the check-in; changes follow the usual approvals in the Approval Matrix (RSE-APR-01).",
+                  "score": 0.0289
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-LV-01 \u00a77.2",
+              "RSE-LV-01 \u00a71.2",
+              "RSE-LV-01 \u00a77.1",
+              "RSE-LV-01 \u00a73.4",
+              "RSE-LV-01 \u00a75",
+              "RSE-LV-01 \u00a73.2",
+              "RSE-LV-01 \u00a73.1",
+              "RSE-LV-01 \u00a76",
+              "RSE-LV-01 \u00a71.1",
+              "RSE-LV-01 \u00a78"
+            ],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T23:16:49.405+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5656,
+              "output_tokens": 300
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2309,
+            "started_at": "2026-10-19T23:16:51.714+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with HR about leave case (HR-2026-0412)",
+              "summary": "Employee asked to speak with a person in HR about their leave case. Related to open ticket HR-2026-0412 (parental leave from 2026-12-07). Please contact the employee directly.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "section": "1.2"
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                }
+              ],
+              "requester_id": "E1010",
+              "session_id": "920f96706a604ae8a4b6a7a6365fa615"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Service Desk",
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with HR about leave case (HR-2026-0412)",
+              "summary": "Employee asked to speak with a person in HR about their leave case. Related to open ticket HR-2026-0412 (parental leave from 2026-12-07). Please contact the employee directly.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "section": "1.2"
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:16:51.732+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6266,
+              "output_tokens": 587
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4383,
+            "started_at": "2026-10-19T23:16:56.115+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:56.117+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "user_requested_human: You asked to speak with a person in HR about your leave case.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:56.117+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 58,
+          "llm_calls": 4,
+          "llm_ms": 10557,
+          "total_ms": 10638,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "110b79dd06bf",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR Service Desk",
+          "employee_id": "E1010",
+          "category": "other",
+          "subject": "Request to speak with HR about leave case (HR-2026-0412)",
+          "summary": "Employee asked to speak with a person in HR about their leave case. Related to open ticket HR-2026-0412 (parental leave from 2026-12-07). Please contact the employee directly.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-LV-01",
+              "section": "1.2"
+            },
+            {
+              "doc_id": "RSE-ONB-01",
+              "section": "4"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,824 @@
+{
+  "item_id": "E02-domestic-over-limit",
+  "run": 2,
+  "speaking_as": "E1005",
+  "session_id": "cbd256697d1d43838e35cd3449b12cb6",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Not on your manager's say-so alone: June 1 to July 10, 2027 in Portland is 40 calendar days, so it needs HR review.",
+        "policy_facts": [
+          {
+            "text": "Working from another US state needs manager approval for up to 30 calendar days per calendar year. Anything over 30 needs HR review, and HR decides.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "6.3",
+                "snippet": "Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The 30 days count every day you are away, including weekends, and they add up across all trips in the calendar year. HR reviews longer stays because working in another state can affect payroll and tax registration.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "6.3",
+                "snippet": "The 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Under the approval matrix, other-state remote work over 30 calendar days per year goes to HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-APR-01",
+                "section": "3",
+                "snippet": "Temporary remote work, other US state/province, over 30 calendar days/year | HR"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The Compliance Check for your Seattle-based, office-hybrid role found your work arrangement is eligible. The Oregon stay comes to 40 calendar days (27 working days), which is over the 30 a manager can approve, so the outcome is needs_hr_review with HR as approver.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              },
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Please review and confirm the HR ticket I've prepared. It asks HR to review your Portland stay from 2027-06-01 to 2027-07-10. Nothing is submitted until you confirm."
+          },
+          {
+            "text": "Let your manager, Ben Carter, know your plans. His support is welcome, but HR makes the decision."
+          },
+          {
+            "text": "If you could shorten the stay to 30 calendar days or fewer in total for 2027, your manager could approve it instead."
+          }
+        ],
+        "escalation": {
+          "reason": "The Compliance Check returned needs_hr_review because the stay is 40 calendar days, over the 30-day limit a manager can approve.",
+          "trigger": "needs_hr_review"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 147,
+              "output_tokens": 135
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, search_policy",
+            "status": "ok",
+            "latency_ms": 2417,
+            "started_at": "2026-10-19T22:53:48.919+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1005",
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "employee_id": "E1005",
+              "name": "Grace Liu",
+              "title": "Drafter",
+              "department": "Design Technology",
+              "employment_type": "part_time",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2025-01-06",
+              "weekly_hours": 24,
+              "work_email": "grace.liu@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Grace Liu, Drafter, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T22:53:48.942+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work another state",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "3",
+                  "section_heading": "Work Location and Travel",
+                  "text": "Request | Approver\nTemporary remote work, same state/province | None (tell your manager)\nTemporary remote work, other US state/province, up to 30 calendar days/year | Manager\nTemporary remote work, other US state/province, over 30 calendar days/year | HR\nWorking from another country (any length) | HR (Cross-Border Review)\nChange to remote-approved | Manager + HR\nBusiness travel | Manager\nThe rules behind these rows are in the Remote & Hybrid Work Policy (RSE-RW-01) and the Work Location, Travel & Cross-Border Work Guidelines (RSE-LOC-01). Requests to work from another country go to HR's Cross-Border Review through an HR ticket; a manager's support is welcome but is not an approval.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.2",
+              "RSE-APR-01 \u00a73"
+            ],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T22:53:48.961+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1123,
+              "output_tokens": 342
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 3116,
+            "started_at": "2026-10-19T22:53:52.078+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "other state 30 calendar days tax payroll",
+              "doc_ids": [
+                "RSE-RW-01",
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.3",
+                  "section_heading": "Another US state or province",
+                  "text": "Temporary remote work from another US state, or another province, needs your manager's approval for up to 30 calendar days per calendar year in total. Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides.\nThe 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year. For example, a stay from the first of one month to the tenth of the following month is well over 30 calendar days, so it needs HR review even if your manager supports it. Submit the request in the HR Portal with your dates and location; HR reviews longer stays because working in another state or province can affect payroll and tax registration.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 0.0313
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.3",
+              "RSE-LOC-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T22:53:52.103+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1005",
+              "request_type": "temporary_remote_work",
+              "details": {
+                "start_date": "2027-06-01",
+                "end_date": "2027-07-10",
+                "country": "US",
+                "region": "OR",
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "outcome": "needs_hr_review",
+              "approver": "HR",
+              "checks": [
+                {
+                  "rule": "TRW-ARRANGEMENT",
+                  "passed": true,
+                  "detail": "office_hybrid is eligible.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.5"
+                  }
+                },
+                {
+                  "rule": "TRW-DOMESTIC",
+                  "passed": false,
+                  "detail": "Another state/province: 40 calendar days vs 30 the manager can approve per year; over that needs HR review.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.3"
+                  }
+                }
+              ],
+              "computed": {
+                "country": "US",
+                "calendar_days": 40,
+                "working_days": 27,
+                "region": "OR"
+              }
+            },
+            "summary": "needs_hr_review, approver HR, 27 working days",
+            "status": "ok",
+            "latency_ms": 12,
+            "started_at": "2026-10-19T22:53:52.116+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2245,
+              "output_tokens": 417
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 3695,
+            "started_at": "2026-10-19T22:53:55.812+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "section": "3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "section": "3"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T22:53:55.834+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3026,
+              "output_tokens": 839
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6057,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "needs_hr_review: The Compliance Check returned needs_hr_review because the stay is 40 calendar days, over the 30-day limit a manager can approve.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 76,
+          "llm_calls": 4,
+          "llm_ms": 15285,
+          "total_ms": 15389,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "24fe879b77d5",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR \u00b7 Cross-Border Review",
+          "employee_id": "E1005",
+          "category": "remote_work",
+          "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+          "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-RW-01",
+              "section": "6.3"
+            },
+            {
+              "doc_id": "RSE-APR-01",
+              "section": "3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Okay, I didn't open the HR ticket, so nothing was changed.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "If you'd like to go ahead later, ask me and I'll prepare the HR ticket again. You can also submit the request in the HR Portal with your dates and location."
+          },
+          {
+            "text": "A stay of 30 calendar days or fewer in total for the year would only need your manager's approval, if you'd rather adjust your dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 147,
+              "output_tokens": 135
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, search_policy",
+            "status": "ok",
+            "latency_ms": 2417,
+            "started_at": "2026-10-19T22:53:48.919+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1005",
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "employee_id": "E1005",
+              "name": "Grace Liu",
+              "title": "Drafter",
+              "department": "Design Technology",
+              "employment_type": "part_time",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2025-01-06",
+              "weekly_hours": 24,
+              "work_email": "grace.liu@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Grace Liu, Drafter, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T22:53:48.942+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work another state",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "3",
+                  "section_heading": "Work Location and Travel",
+                  "text": "Request | Approver\nTemporary remote work, same state/province | None (tell your manager)\nTemporary remote work, other US state/province, up to 30 calendar days/year | Manager\nTemporary remote work, other US state/province, over 30 calendar days/year | HR\nWorking from another country (any length) | HR (Cross-Border Review)\nChange to remote-approved | Manager + HR\nBusiness travel | Manager\nThe rules behind these rows are in the Remote & Hybrid Work Policy (RSE-RW-01) and the Work Location, Travel & Cross-Border Work Guidelines (RSE-LOC-01). Requests to work from another country go to HR's Cross-Border Review through an HR ticket; a manager's support is welcome but is not an approval.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.2",
+              "RSE-APR-01 \u00a73"
+            ],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T22:53:48.961+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1123,
+              "output_tokens": 342
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 3116,
+            "started_at": "2026-10-19T22:53:52.078+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "other state 30 calendar days tax payroll",
+              "doc_ids": [
+                "RSE-RW-01",
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.3",
+                  "section_heading": "Another US state or province",
+                  "text": "Temporary remote work from another US state, or another province, needs your manager's approval for up to 30 calendar days per calendar year in total. Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides.\nThe 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year. For example, a stay from the first of one month to the tenth of the following month is well over 30 calendar days, so it needs HR review even if your manager supports it. Submit the request in the HR Portal with your dates and location; HR reviews longer stays because working in another state or province can affect payroll and tax registration.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 0.0313
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.3",
+              "RSE-LOC-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T22:53:52.103+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1005",
+              "request_type": "temporary_remote_work",
+              "details": {
+                "start_date": "2027-06-01",
+                "end_date": "2027-07-10",
+                "country": "US",
+                "region": "OR",
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "outcome": "needs_hr_review",
+              "approver": "HR",
+              "checks": [
+                {
+                  "rule": "TRW-ARRANGEMENT",
+                  "passed": true,
+                  "detail": "office_hybrid is eligible.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.5"
+                  }
+                },
+                {
+                  "rule": "TRW-DOMESTIC",
+                  "passed": false,
+                  "detail": "Another state/province: 40 calendar days vs 30 the manager can approve per year; over that needs HR review.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.3"
+                  }
+                }
+              ],
+              "computed": {
+                "country": "US",
+                "calendar_days": 40,
+                "working_days": 27,
+                "region": "OR"
+              }
+            },
+            "summary": "needs_hr_review, approver HR, 27 working days",
+            "status": "ok",
+            "latency_ms": 12,
+            "started_at": "2026-10-19T22:53:52.116+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2245,
+              "output_tokens": 417
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 3695,
+            "started_at": "2026-10-19T22:53:55.812+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "section": "3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "section": "3"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T22:53:55.834+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3026,
+              "output_tokens": 839
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6057,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "needs_hr_review: The Compliance Check returned needs_hr_review because the stay is 40 calendar days, over the 30-day limit a manager can approve.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:01.891+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (E1005, Drafter, Seattle, office-hybrid) requests temporary remote work from family's home in Portland, Oregon from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager: Ben Carter (E1017).",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "section": "3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "cbd256697d1d43838e35cd3449b12cb6"
+            },
+            "summary": "\u23f8 create_mock_hr_ticket cancelled by the user",
+            "status": "cancelled",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:01.896+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3920,
+              "output_tokens": 176
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2776,
+            "started_at": "2026-10-19T22:54:04.673+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:04.673+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 76,
+          "llm_calls": 5,
+          "llm_ms": 18061,
+          "total_ms": 18166,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "create_mock_hr_ticket",
+        "id": null,
+        "mock": true,
+        "status": "cancelled"
+      }
+    }
+  ]
+}

@@ -1,0 +1,975 @@
+{
+  "item_id": "E01-sensitive-conduct",
+  "run": 3,
+  "speaking_as": "E1004",
+  "session_id": "f0652291eb784da3b6a0a4c8c88e852a",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I'm sorry you're dealing with this. Repeated comments about your accent are the kind of conduct Ridgeline's policy prohibits, and you have several ways to raise it.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline prohibits unwelcome comments about a person's accent and repeated belittling in meetings. What matters is the effect of the conduct, not the intention, and a pattern of small remarks can be as serious as a single incident.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "4.1",
+                "snippet": "unwelcome comments or jokes about a person's accent"
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "4.1",
+                "snippet": "What matters is the effect of the conduct, not the intention behind it."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You can raise it in whichever way you're most comfortable with: your manager, the HR Service Desk, HR Confidential (for sensitive matters), or the 24/7 ethics line, which has an anonymous option. You never have to raise it with the person it is about.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You never have to raise a concern with the person it is about."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You don't need proof to raise a concern. It's enough that you have a genuine concern. When you do, say what happened, when and where, who was involved and whether anyone else saw it.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You don't need proof, and you don't need to be certain that a rule was broken"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Concerns are handled confidentially, and Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.2",
+                "snippet": "Concerns are handled confidentially."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.3",
+                "snippet": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR acknowledges every concern within 2 working days and then looks into it. It may put temporary measures in place, such as changing meeting arrangements, and these are not a finding against anyone.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.4",
+                "snippet": "HR acknowledges every concern within 2 working days."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.4",
+                "snippet": "such as changing meeting arrangements or reporting lines"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR can open a ticket for you in the HR Confidential queue, recording only a minimal summary, and then contact you privately to discuss the details.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've prepared a minimal HR Confidential ticket for you. Please review it and press Confirm if you'd like it opened. Nothing has been created yet."
+          },
+          {
+            "text": "Jot down what was said, when, in which meetings, and who else was present. You don't need proof, but these details help HR."
+          },
+          {
+            "text": "If you'd rather not use a ticket, you can email HR Confidential or call the ethics line instead."
+          }
+        ],
+        "escalation": {
+          "reason": "Repeated comments about accent in meetings are a possible harassment or discrimination concern, which is a sensitive matter for HR Confidential.",
+          "trigger": "sensitive_matter"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2165,
+            "started_at": "2026-10-19T23:16:04.660+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.2",
+                  "section_heading": "Who it applies to",
+                  "text": "This handbook applies to every Ridgeline employee: full-time, part-time and interns. Contractors are not employees. A contractor is bound only by the Code of Conduct (\u00a74), Health and Safety (\u00a75), Reporting Concerns (\u00a76) and the Information Security & Acceptable Use policy (RSE-SEC-01). Every other matter for a contractor, including time off, pay, benefits and working arrangements, is governed by their contract or agency. Contractors with questions about those matters should contact their agency or Ridgeline contract manager. Ridgeline's other HR policies do not apply to contractors. Managers who work with contractors should make sure the contractor knows which Ridgeline rules bind them: how to behave at work, how to stay safe on site, how to raise a concern and how to handle Ridgeline information and systems. Requests from contractors about anything else, such as taking time off or working from another location, are not decided by the contractor's Ridgeline manager under Ridgeline policy; they are settled under the contractor's own contract, through their agency or Ridgeline contract manager.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.4",
+                  "section_heading": "Managers, directors and approvers",
+                  "text": "Your manager is the direct manager on your HR record. Your director is your manager's director. Many requests need a particular approver: your manager, your director, HR or the VP Finance. The Approval Matrix (RSE-APR-01) lists who approves what, and it is the single place those approvers are defined. Managers and directors also have responsibilities beyond approving requests. They make sure their teams know the policies that apply to them, respond to requests promptly, keep personal information about their team members confidential, and pass concerns raised with them to HR when a concern is serious or sensitive. A manager who is unsure how to handle a request should ask the HR Service Desk before deciding.",
+                  "score": 0.029
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.4",
+                  "section_heading": "Client confidentiality",
+                  "text": "Client drawings, models and project information are confidential. Handle them according to their data classification under the Information Security & Acceptable Use policy (RSE-SEC-01 \u00a72), and share them only with people who need them for the project. Don't discuss client projects in public places, on social media or with people outside Ridgeline unless the client has agreed. Your duty of confidentiality continues after a project ends and after you leave Ridgeline.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "5.2",
+                  "section_heading": "Incident reporting",
+                  "text": "Report every injury and near-miss to your manager and HR within 24 hours, even if no one was hurt. Reports help us fix hazards before they cause harm. In an emergency, get help first and report afterwards. Use the incident form in the HR Portal, describing what happened, where, who was involved and what has been done to make the area safe. Don't include medical details beyond what is needed to describe the injury; HR will follow up privately with the person affected. Incident reports are reviewed so that lessons are shared across our project sites.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "This handbook explains how Ridgeline Structural Engineering, Inc. (\"Ridgeline\") works: who we are, the standards of conduct we expect, how to raise a concern and who can see your HR records. It is the starting point for every other Ridgeline policy, and it points to them rather than repeating them. Ridgeline is a fictional company, and this handbook is FICTIONAL \u2014 for demonstration only. Nothing in it is HR or legal advice. The handbook is written for everyone at Ridgeline, from new graduates on their first project site to directors who approve requests for their teams. It is deliberately short. Each section gives the rule in plain words and then points to the policy that owns the detail, so you can find the full answer without reading every document. If something you need isn't covered here or in another policy, ask the HR Service Desk rather than guessing: a question asked early is always easier to answer than a problem fixed later.",
+                  "score": 0.028
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a76.4",
+              "RSE-HB-01 \u00a71.2",
+              "RSE-HB-01 \u00a72.4",
+              "RSE-HB-01 \u00a74.4",
+              "RSE-HB-01 \u00a75.2",
+              "RSE-HB-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T23:16:04.689+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3161,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1203,
+            "started_at": "2026-10-19T23:16:05.893+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.2",
+                  "section_heading": "Who it applies to",
+                  "text": "This handbook applies to every Ridgeline employee: full-time, part-time and interns. Contractors are not employees. A contractor is bound only by the Code of Conduct (\u00a74), Health and Safety (\u00a75), Reporting Concerns (\u00a76) and the Information Security & Acceptable Use policy (RSE-SEC-01). Every other matter for a contractor, including time off, pay, benefits and working arrangements, is governed by their contract or agency. Contractors with questions about those matters should contact their agency or Ridgeline contract manager. Ridgeline's other HR policies do not apply to contractors. Managers who work with contractors should make sure the contractor knows which Ridgeline rules bind them: how to behave at work, how to stay safe on site, how to raise a concern and how to handle Ridgeline information and systems. Requests from contractors about anything else, such as taking time off or working from another location, are not decided by the contractor's Ridgeline manager under Ridgeline policy; they are settled under the contractor's own contract, through their agency or Ridgeline contract manager.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.4",
+                  "section_heading": "Managers, directors and approvers",
+                  "text": "Your manager is the direct manager on your HR record. Your director is your manager's director. Many requests need a particular approver: your manager, your director, HR or the VP Finance. The Approval Matrix (RSE-APR-01) lists who approves what, and it is the single place those approvers are defined. Managers and directors also have responsibilities beyond approving requests. They make sure their teams know the policies that apply to them, respond to requests promptly, keep personal information about their team members confidential, and pass concerns raised with them to HR when a concern is serious or sensitive. A manager who is unsure how to handle a request should ask the HR Service Desk before deciding.",
+                  "score": 0.029
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.4",
+                  "section_heading": "Client confidentiality",
+                  "text": "Client drawings, models and project information are confidential. Handle them according to their data classification under the Information Security & Acceptable Use policy (RSE-SEC-01 \u00a72), and share them only with people who need them for the project. Don't discuss client projects in public places, on social media or with people outside Ridgeline unless the client has agreed. Your duty of confidentiality continues after a project ends and after you leave Ridgeline.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "5.2",
+                  "section_heading": "Incident reporting",
+                  "text": "Report every injury and near-miss to your manager and HR within 24 hours, even if no one was hurt. Reports help us fix hazards before they cause harm. In an emergency, get help first and report afterwards. Use the incident form in the HR Portal, describing what happened, where, who was involved and what has been done to make the area safe. Don't include medical details beyond what is needed to describe the injury; HR will follow up privately with the person affected. Incident reports are reviewed so that lessons are shared across our project sites.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "This handbook explains how Ridgeline Structural Engineering, Inc. (\"Ridgeline\") works: who we are, the standards of conduct we expect, how to raise a concern and who can see your HR records. It is the starting point for every other Ridgeline policy, and it points to them rather than repeating them. Ridgeline is a fictional company, and this handbook is FICTIONAL \u2014 for demonstration only. Nothing in it is HR or legal advice. The handbook is written for everyone at Ridgeline, from new graduates on their first project site to directors who approve requests for their teams. It is deliberately short. Each section gives the rule in plain words and then points to the policy that owns the detail, so you can find the full answer without reading every document. If something you need isn't covered here or in another policy, ask the HR Service Desk rather than guessing: a question asked early is always easier to answer than a problem fixed later.",
+                  "score": 0.028
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a76.4",
+              "RSE-HB-01 \u00a71.2",
+              "RSE-HB-01 \u00a72.4",
+              "RSE-HB-01 \u00a74.4",
+              "RSE-HB-01 \u00a75.2",
+              "RSE-HB-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 33,
+            "started_at": "2026-10-19T23:16:05.927+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6188,
+              "output_tokens": 276
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2040,
+            "started_at": "2026-10-19T23:16:07.968+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "f0652291eb784da3b6a0a4c8c88e852a"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:16:07.990+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6749,
+              "output_tokens": 1377
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 8501,
+            "started_at": "2026-10-19T23:16:16.492+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "11 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:16.493+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "sensitive_matter: Repeated comments about accent in meetings are a possible harassment or discrimination concern, which is a sensitive matter for HR Confidential.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:16.493+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 62,
+          "llm_calls": 4,
+          "llm_ms": 13909,
+          "total_ms": 13997,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "a9b90f73131e",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR Confidential",
+          "employee_id": "E1004",
+          "category": "conduct",
+          "subject": "Concern about repeated comments in meetings",
+          "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-HB-01",
+              "section": "6.1"
+            },
+            {
+              "doc_id": "RSE-HB-01",
+              "section": "4.1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Your HR Confidential ticket HR-MOCK-0004 is open, with a minimal summary recorded.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "HR will contact you privately to discuss the details. Until then, it may help to note what was said, when, and who else was present."
+          },
+          {
+            "text": "If anything else happens, or you feel you're being treated differently for raising this, you can contact HR Confidential or the ethics line any time."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2165,
+            "started_at": "2026-10-19T23:16:04.660+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.2",
+                  "section_heading": "Who it applies to",
+                  "text": "This handbook applies to every Ridgeline employee: full-time, part-time and interns. Contractors are not employees. A contractor is bound only by the Code of Conduct (\u00a74), Health and Safety (\u00a75), Reporting Concerns (\u00a76) and the Information Security & Acceptable Use policy (RSE-SEC-01). Every other matter for a contractor, including time off, pay, benefits and working arrangements, is governed by their contract or agency. Contractors with questions about those matters should contact their agency or Ridgeline contract manager. Ridgeline's other HR policies do not apply to contractors. Managers who work with contractors should make sure the contractor knows which Ridgeline rules bind them: how to behave at work, how to stay safe on site, how to raise a concern and how to handle Ridgeline information and systems. Requests from contractors about anything else, such as taking time off or working from another location, are not decided by the contractor's Ridgeline manager under Ridgeline policy; they are settled under the contractor's own contract, through their agency or Ridgeline contract manager.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.4",
+                  "section_heading": "Managers, directors and approvers",
+                  "text": "Your manager is the direct manager on your HR record. Your director is your manager's director. Many requests need a particular approver: your manager, your director, HR or the VP Finance. The Approval Matrix (RSE-APR-01) lists who approves what, and it is the single place those approvers are defined. Managers and directors also have responsibilities beyond approving requests. They make sure their teams know the policies that apply to them, respond to requests promptly, keep personal information about their team members confidential, and pass concerns raised with them to HR when a concern is serious or sensitive. A manager who is unsure how to handle a request should ask the HR Service Desk before deciding.",
+                  "score": 0.029
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.4",
+                  "section_heading": "Client confidentiality",
+                  "text": "Client drawings, models and project information are confidential. Handle them according to their data classification under the Information Security & Acceptable Use policy (RSE-SEC-01 \u00a72), and share them only with people who need them for the project. Don't discuss client projects in public places, on social media or with people outside Ridgeline unless the client has agreed. Your duty of confidentiality continues after a project ends and after you leave Ridgeline.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "5.2",
+                  "section_heading": "Incident reporting",
+                  "text": "Report every injury and near-miss to your manager and HR within 24 hours, even if no one was hurt. Reports help us fix hazards before they cause harm. In an emergency, get help first and report afterwards. Use the incident form in the HR Portal, describing what happened, where, who was involved and what has been done to make the area safe. Don't include medical details beyond what is needed to describe the injury; HR will follow up privately with the person affected. Incident reports are reviewed so that lessons are shared across our project sites.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "This handbook explains how Ridgeline Structural Engineering, Inc. (\"Ridgeline\") works: who we are, the standards of conduct we expect, how to raise a concern and who can see your HR records. It is the starting point for every other Ridgeline policy, and it points to them rather than repeating them. Ridgeline is a fictional company, and this handbook is FICTIONAL \u2014 for demonstration only. Nothing in it is HR or legal advice. The handbook is written for everyone at Ridgeline, from new graduates on their first project site to directors who approve requests for their teams. It is deliberately short. Each section gives the rule in plain words and then points to the policy that owns the detail, so you can find the full answer without reading every document. If something you need isn't covered here or in another policy, ask the HR Service Desk rather than guessing: a question asked early is always easier to answer than a problem fixed later.",
+                  "score": 0.028
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a76.4",
+              "RSE-HB-01 \u00a71.2",
+              "RSE-HB-01 \u00a72.4",
+              "RSE-HB-01 \u00a74.4",
+              "RSE-HB-01 \u00a75.2",
+              "RSE-HB-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T23:16:04.689+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3161,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1203,
+            "started_at": "2026-10-19T23:16:05.893+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.2",
+                  "section_heading": "Who it applies to",
+                  "text": "This handbook applies to every Ridgeline employee: full-time, part-time and interns. Contractors are not employees. A contractor is bound only by the Code of Conduct (\u00a74), Health and Safety (\u00a75), Reporting Concerns (\u00a76) and the Information Security & Acceptable Use policy (RSE-SEC-01). Every other matter for a contractor, including time off, pay, benefits and working arrangements, is governed by their contract or agency. Contractors with questions about those matters should contact their agency or Ridgeline contract manager. Ridgeline's other HR policies do not apply to contractors. Managers who work with contractors should make sure the contractor knows which Ridgeline rules bind them: how to behave at work, how to stay safe on site, how to raise a concern and how to handle Ridgeline information and systems. Requests from contractors about anything else, such as taking time off or working from another location, are not decided by the contractor's Ridgeline manager under Ridgeline policy; they are settled under the contractor's own contract, through their agency or Ridgeline contract manager.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.4",
+                  "section_heading": "Managers, directors and approvers",
+                  "text": "Your manager is the direct manager on your HR record. Your director is your manager's director. Many requests need a particular approver: your manager, your director, HR or the VP Finance. The Approval Matrix (RSE-APR-01) lists who approves what, and it is the single place those approvers are defined. Managers and directors also have responsibilities beyond approving requests. They make sure their teams know the policies that apply to them, respond to requests promptly, keep personal information about their team members confidential, and pass concerns raised with them to HR when a concern is serious or sensitive. A manager who is unsure how to handle a request should ask the HR Service Desk before deciding.",
+                  "score": 0.029
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.4",
+                  "section_heading": "Client confidentiality",
+                  "text": "Client drawings, models and project information are confidential. Handle them according to their data classification under the Information Security & Acceptable Use policy (RSE-SEC-01 \u00a72), and share them only with people who need them for the project. Don't discuss client projects in public places, on social media or with people outside Ridgeline unless the client has agreed. Your duty of confidentiality continues after a project ends and after you leave Ridgeline.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "5.2",
+                  "section_heading": "Incident reporting",
+                  "text": "Report every injury and near-miss to your manager and HR within 24 hours, even if no one was hurt. Reports help us fix hazards before they cause harm. In an emergency, get help first and report afterwards. Use the incident form in the HR Portal, describing what happened, where, who was involved and what has been done to make the area safe. Don't include medical details beyond what is needed to describe the injury; HR will follow up privately with the person affected. Incident reports are reviewed so that lessons are shared across our project sites.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "This handbook explains how Ridgeline Structural Engineering, Inc. (\"Ridgeline\") works: who we are, the standards of conduct we expect, how to raise a concern and who can see your HR records. It is the starting point for every other Ridgeline policy, and it points to them rather than repeating them. Ridgeline is a fictional company, and this handbook is FICTIONAL \u2014 for demonstration only. Nothing in it is HR or legal advice. The handbook is written for everyone at Ridgeline, from new graduates on their first project site to directors who approve requests for their teams. It is deliberately short. Each section gives the rule in plain words and then points to the policy that owns the detail, so you can find the full answer without reading every document. If something you need isn't covered here or in another policy, ask the HR Service Desk rather than guessing: a question asked early is always easier to answer than a problem fixed later.",
+                  "score": 0.028
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a76.4",
+              "RSE-HB-01 \u00a71.2",
+              "RSE-HB-01 \u00a72.4",
+              "RSE-HB-01 \u00a74.4",
+              "RSE-HB-01 \u00a75.2",
+              "RSE-HB-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 33,
+            "started_at": "2026-10-19T23:16:05.927+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6188,
+              "output_tokens": 276
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2040,
+            "started_at": "2026-10-19T23:16:07.968+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "f0652291eb784da3b6a0a4c8c88e852a"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:16:07.990+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6749,
+              "output_tokens": 1377
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 8501,
+            "started_at": "2026-10-19T23:16:16.492+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "11 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:16.493+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "sensitive_matter: Repeated comments about accent in meetings are a possible harassment or discrimination concern, which is a sensitive matter for HR Confidential.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:16.493+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "create_mock_hr_ticket",
+            "summary": "\u23f8 create_mock_hr_ticket confirmed by the user; executing",
+            "status": "confirmed",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:16.498+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "f0652291eb784da3b6a0a4c8c88e852a"
+            },
+            "output": {
+              "id": "HR-MOCK-0004",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "HR-MOCK-0004 (mock)",
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:16:16.512+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 8448,
+              "output_tokens": 172
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2105,
+            "started_at": "2026-10-19T23:16:18.618+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:18.619+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 76,
+          "llm_calls": 5,
+          "llm_ms": 16014,
+          "total_ms": 16118,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "create_mock_hr_ticket",
+        "id": "HR-MOCK-0004",
+        "mock": true,
+        "status": "confirmed"
+      }
+    }
+  ]
+}

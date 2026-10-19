@@ -1,0 +1,1086 @@
+{
+  "item_id": "E02-domestic-over-limit",
+  "run": 3,
+  "speaking_as": "E1005",
+  "session_id": "2ccf6fac734f4f0e842ea70554d1cde6",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Not on your manager's say-so alone. Working from Portland, OR from 2027-06-01 to 2027-07-10 is 40 calendar days, which is over the 30 a manager can approve, so it needs HR review.",
+        "policy_facts": [
+          {
+            "text": "Your Seattle, WA work location and office-hybrid arrangement are eligible for temporary remote work. Oregon counts as another US state.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "6.3",
+                "snippet": "Temporary remote work from another US state, or another province, needs your manager's approval for up to 30 calendar days per calendar year in total."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              },
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "Your dates come to 40 calendar days (27 working days). That is over the 30 calendar days a manager can approve, so the Compliance Check outcome is needs_hr_review with HR as the approver.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "6.3",
+                "snippet": "Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "The 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "6.3",
+                "snippet": "The 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've prepared an HR ticket (category remote_work) with your dates and location. Please review it and press Confirm to submit it."
+          },
+          {
+            "text": "Let your manager, Ben Carter, know about your plans. Also be ready to explain how you'll meet core hours and plan around your anchor days."
+          },
+          {
+            "text": "If you can shorten the stay to 30 calendar days or fewer, and you have no other out-of-state remote time in 2027, your manager could approve it instead."
+          }
+        ],
+        "escalation": {
+          "reason": "The request is 40 calendar days in another US state, which is over the 30 days a manager can approve, so HR must review it.",
+          "trigger": "needs_hr_review"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 147,
+              "output_tokens": 232
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, search_policy",
+            "status": "ok",
+            "latency_ms": 2861,
+            "started_at": "2026-10-19T23:16:21.489+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1005",
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "employee_id": "E1005",
+              "name": "Grace Liu",
+              "title": "Drafter",
+              "department": "Design Technology",
+              "employment_type": "part_time",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2025-01-06",
+              "weekly_hours": 24,
+              "work_email": "grace.liu@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Grace Liu, Drafter, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:16:21.518+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work from another state or location",
+              "doc_ids": [
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "1.1",
+                  "section_heading": "What \"work location\" means",
+                  "text": "Your work location is the work region and country on your HR record, for example Colorado, US or Ontario, Canada. Your work location decides which rules apply when you work from somewhere else, whether that is business travel (\u00a72) or temporary remote work (RSE-RW-01 \u00a76).\nFor most employees the work location is the state or province of their home office. Remote-approved employees may have a different work region, which is recorded when their arrangement is approved. Keep your work location up to date: it affects payroll, benefits and which holiday calendar applies.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.3",
+                  "section_heading": "Business travel vs temporary remote work",
+                  "text": "Travel to do Ridgeline work at a client, a project site or a Ridgeline office is business travel, not temporary remote work. A business trip of up to 14 calendar days needs no Cross-Border Review, even when it is to another country. Longer stays, or working from another country for your own reasons, follow \u00a73.\nFor example, a week at the Toronto office for project meetings is business travel for a Denver employee: the manager pre-approves it and no Cross-Border Review is needed. Spending several weeks working from a family home abroad is not business travel, even if you do your normal job while there.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "5",
+                  "section_heading": "Moving Permanently",
+                  "text": "Contact HR before any permanent change of work location, to another state, province or country. A permanent move changes your HR record and may not be possible for every role.\nA move can change your payroll, benefits, holiday calendar and Work Arrangement. HR will explain what changes and what needs to be approved. Moving before HR has agreed can leave Ridgeline unable to employ you in the new location.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.4",
+                  "section_heading": "Adding personal days to a trip",
+                  "text": "You may add personal days to a business trip. Personal days are taken as PTO under the Paid Time Off Policy (RSE-PTO-01), and the costs of the personal days are yours (RSE-EXP-01 \u00a76).\nRequest the PTO in the usual way, with the usual notice and approval. Your holiday calendar is still your home office's calendar while you travel. Adding a few personal days doesn't turn a business trip into temporary remote work, provided you don't work on those days.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.4",
+                  "section_heading": "Security requirements",
+                  "text": "Working from another country has extra security requirements, including notifying IT Security in advance; see RSE-SEC-01 \u00a75.4.\nHR approval and IT Security's checks are separate steps, and both are needed before you go. Use the VPN at all times while abroad.",
+                  "score": 0.0305
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.3",
+                  "section_heading": "Request at least 28 calendar days ahead",
+                  "text": "Request work from another country at least 28 calendar days before you plan to start, so HR has time to complete the review.\nRequests made with less notice may still be reviewed, but HR may not be able to decide in time, and the request is more likely to be declined.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.1",
+                  "section_heading": "Always reviewed by HR",
+                  "text": "Working from another country, other than on a short business trip (\u00a72.3), is always reviewed by HR, whatever the length. Your manager cannot approve it alone.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 0.0294
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.2",
+                  "section_heading": "How to request",
+                  "text": "Open an HR ticket in the category remote_work, with your dates, the country and your work plan.\nYour work plan should say what work you will do, how you will meet core hours across time zones and how you will keep project data secure. Tell your manager you have opened the ticket. HR's Cross-Border Review queue picks it up and may ask you for more detail.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.1",
+                  "section_heading": "What HR reviews",
+                  "text": "The Cross-Border Review is how HR checks a request to work from another country. HR looks at tax, immigration and work authorization, insurance, and payroll. Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions.\nThe review protects both you and Ridgeline: working in another country can create obligations that neither side intended. HR may approve a request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax or which visa you need.",
+                  "score": 0.0284
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a71.1",
+              "RSE-LOC-01 \u00a72.3",
+              "RSE-LOC-01 \u00a75",
+              "RSE-LOC-01 \u00a72.4",
+              "RSE-LOC-01 \u00a73.4",
+              "RSE-LOC-01 \u00a73.3",
+              "RSE-LOC-01 \u00a73.1",
+              "RSE-LOC-01 \u00a73.2",
+              "RSE-LOC-01 \u00a74.2",
+              "RSE-LOC-01 \u00a74.1"
+            ],
+            "status": "ok",
+            "latency_ms": 36,
+            "started_at": "2026-10-19T23:16:21.554+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2754,
+              "output_tokens": 316
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2270,
+            "started_at": "2026-10-19T23:16:23.825+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work another state limit working days approval",
+              "doc_ids": [
+                "RSE-RW-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.3",
+                  "section_heading": "Another US state or province",
+                  "text": "Temporary remote work from another US state, or another province, needs your manager's approval for up to 30 calendar days per calendar year in total. Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides.\nThe 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year. For example, a stay from the first of one month to the tenth of the following month is well over 30 calendar days, so it needs HR review even if your manager supports it. Submit the request in the HR Portal with your dates and location; HR reviews longer stays because working in another state or province can affect payroll and tax registration.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.1",
+                  "section_heading": "What counts",
+                  "text": "Temporary remote work means working for a period from somewhere other than your usual work location, such as a family home or a holiday rental, while doing your normal job. Travelling to do Ridgeline work at a client, a project site or another Ridgeline office is business travel, not temporary remote work; see RSE-LOC-01 \u00a72.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.5",
+                  "section_heading": "Field/site roles",
+                  "text": "Field/site-based employees are not eligible for temporary remote work.\nTheir work depends on being at the project site. Travel to another site for work is business travel (RSE-LOC-01 \u00a72).",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.4",
+                  "section_heading": "Another country",
+                  "text": "Working from another country always needs HR review, whatever the length. See RSE-LOC-01 \u00a73 for the rules and the Cross-Border Review.\nYour manager can support the request, but cannot approve it. Plan well ahead: the review takes time, and there are notice and security requirements before you go.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "4",
+                  "section_heading": "Requesting a Change",
+                  "text": "To change your Work Arrangement to remote-approved, submit a request in the HR Portal. Your manager endorses it and HR approves it; HR gives a decision within 10 working days. Remote-approved arrangements are reviewed annually and can be revoked if the role or circumstances change.\nExplain in your request where you will work, how you will meet core hours and how you will stay connected with your team. If the request is declined, HR tells you why. You can ask again later, for example when your circumstances or role change.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.3",
+                  "section_heading": "Field/site-based",
+                  "text": "Field/site-based employees work at project sites. Their roles cannot be done remotely, so they are not eligible for remote-approved status or for temporary remote work.\nField/site-based employees may still do some office-based tasks, such as writing reports, at a Ridgeline office when their manager agrees. If a field/site-based employee moves into an office-based role, their Work Arrangement changes with the role.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.2",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees work remotely most of the time. The arrangement must be approved by both the manager and HR. Remote-approved employees spend at least one week per quarter at their home office.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "3",
+                  "section_heading": "Who Can Become Remote-Approved",
+                  "text": "To become remote-approved you need at least 6 months of service at Ridgeline and no active performance plan. Field/site-based roles and interns are not eligible. For contractors, remote work is set by their contract.\nMeeting these requirements makes you eligible to ask; it doesn't guarantee approval. Your manager and HR also consider whether your role can be done well remotely, the needs of your projects and clients, and your team's ability to work together.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "1",
+                  "section_heading": "Purpose and Scope",
+                  "text": "This policy sets out where Ridgeline employees work: the three Work Arrangements, who can become remote-approved, how to request a change, the rules for working remotely, and temporary remote work away from your usual location. It applies to full-time, part-time and intern employees. Business travel is covered separately by RSE-LOC-01 \u00a72.\nRidgeline believes engineering is best done with time together and time to focus. The arrangements in this policy aim to give teams regular in-person collaboration while allowing flexibility where the work allows it. Managers apply the policy fairly and consistently across their teams, and any questions go to the HR Service Desk.",
+                  "score": 0.0289
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.2",
+              "RSE-RW-01 \u00a76.3",
+              "RSE-RW-01 \u00a76.1",
+              "RSE-RW-01 \u00a76.5",
+              "RSE-RW-01 \u00a76.4",
+              "RSE-RW-01 \u00a74",
+              "RSE-RW-01 \u00a72.3",
+              "RSE-RW-01 \u00a72.2",
+              "RSE-RW-01 \u00a73",
+              "RSE-RW-01 \u00a71"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:16:23.849+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1005",
+              "request_type": "temporary_remote_work",
+              "details": {
+                "start_date": "2027-06-01",
+                "end_date": "2027-07-10",
+                "country": "US",
+                "region": "OR",
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "outcome": "needs_hr_review",
+              "approver": "HR",
+              "checks": [
+                {
+                  "rule": "TRW-ARRANGEMENT",
+                  "passed": true,
+                  "detail": "office_hybrid is eligible.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.5"
+                  }
+                },
+                {
+                  "rule": "TRW-DOMESTIC",
+                  "passed": false,
+                  "detail": "Another state/province: 40 calendar days vs 30 the manager can approve per year; over that needs HR review.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.3"
+                  }
+                }
+              ],
+              "computed": {
+                "country": "US",
+                "calendar_days": 40,
+                "working_days": 27,
+                "region": "OR"
+              }
+            },
+            "summary": "needs_hr_review, approver HR, 27 working days",
+            "status": "ok",
+            "latency_ms": 12,
+            "started_at": "2026-10-19T23:16:23.862+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5362,
+              "output_tokens": 375
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2874,
+            "started_at": "2026-10-19T23:16:26.736+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:16:26.755+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6127,
+              "output_tokens": 784
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6161,
+            "started_at": "2026-10-19T23:16:32.916+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "6 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:32.918+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "needs_hr_review: The request is 40 calendar days in another US state, which is over the 30 days a manager can approve, so HR must review it.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:32.918+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 100,
+          "llm_calls": 4,
+          "llm_ms": 14166,
+          "total_ms": 14290,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "724d8f964088",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR \u00b7 Cross-Border Review",
+          "employee_id": "E1005",
+          "category": "remote_work",
+          "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+          "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-RW-01",
+              "section": "6.3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Okay, I didn't submit the HR ticket, so nothing was changed.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Your Portland request is still over what your manager can approve. Ask me to prepare the ticket again whenever you're ready, or ask about shortening the dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 147,
+              "output_tokens": 232
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, search_policy",
+            "status": "ok",
+            "latency_ms": 2861,
+            "started_at": "2026-10-19T23:16:21.489+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1005",
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "employee_id": "E1005",
+              "name": "Grace Liu",
+              "title": "Drafter",
+              "department": "Design Technology",
+              "employment_type": "part_time",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2025-01-06",
+              "weekly_hours": 24,
+              "work_email": "grace.liu@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Grace Liu, Drafter, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:16:21.518+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work from another state or location",
+              "doc_ids": [
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "1.1",
+                  "section_heading": "What \"work location\" means",
+                  "text": "Your work location is the work region and country on your HR record, for example Colorado, US or Ontario, Canada. Your work location decides which rules apply when you work from somewhere else, whether that is business travel (\u00a72) or temporary remote work (RSE-RW-01 \u00a76).\nFor most employees the work location is the state or province of their home office. Remote-approved employees may have a different work region, which is recorded when their arrangement is approved. Keep your work location up to date: it affects payroll, benefits and which holiday calendar applies.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.3",
+                  "section_heading": "Business travel vs temporary remote work",
+                  "text": "Travel to do Ridgeline work at a client, a project site or a Ridgeline office is business travel, not temporary remote work. A business trip of up to 14 calendar days needs no Cross-Border Review, even when it is to another country. Longer stays, or working from another country for your own reasons, follow \u00a73.\nFor example, a week at the Toronto office for project meetings is business travel for a Denver employee: the manager pre-approves it and no Cross-Border Review is needed. Spending several weeks working from a family home abroad is not business travel, even if you do your normal job while there.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "5",
+                  "section_heading": "Moving Permanently",
+                  "text": "Contact HR before any permanent change of work location, to another state, province or country. A permanent move changes your HR record and may not be possible for every role.\nA move can change your payroll, benefits, holiday calendar and Work Arrangement. HR will explain what changes and what needs to be approved. Moving before HR has agreed can leave Ridgeline unable to employ you in the new location.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.4",
+                  "section_heading": "Adding personal days to a trip",
+                  "text": "You may add personal days to a business trip. Personal days are taken as PTO under the Paid Time Off Policy (RSE-PTO-01), and the costs of the personal days are yours (RSE-EXP-01 \u00a76).\nRequest the PTO in the usual way, with the usual notice and approval. Your holiday calendar is still your home office's calendar while you travel. Adding a few personal days doesn't turn a business trip into temporary remote work, provided you don't work on those days.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.4",
+                  "section_heading": "Security requirements",
+                  "text": "Working from another country has extra security requirements, including notifying IT Security in advance; see RSE-SEC-01 \u00a75.4.\nHR approval and IT Security's checks are separate steps, and both are needed before you go. Use the VPN at all times while abroad.",
+                  "score": 0.0305
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.3",
+                  "section_heading": "Request at least 28 calendar days ahead",
+                  "text": "Request work from another country at least 28 calendar days before you plan to start, so HR has time to complete the review.\nRequests made with less notice may still be reviewed, but HR may not be able to decide in time, and the request is more likely to be declined.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.1",
+                  "section_heading": "Always reviewed by HR",
+                  "text": "Working from another country, other than on a short business trip (\u00a72.3), is always reviewed by HR, whatever the length. Your manager cannot approve it alone.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 0.0294
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.2",
+                  "section_heading": "How to request",
+                  "text": "Open an HR ticket in the category remote_work, with your dates, the country and your work plan.\nYour work plan should say what work you will do, how you will meet core hours across time zones and how you will keep project data secure. Tell your manager you have opened the ticket. HR's Cross-Border Review queue picks it up and may ask you for more detail.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.1",
+                  "section_heading": "What HR reviews",
+                  "text": "The Cross-Border Review is how HR checks a request to work from another country. HR looks at tax, immigration and work authorization, insurance, and payroll. Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions.\nThe review protects both you and Ridgeline: working in another country can create obligations that neither side intended. HR may approve a request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax or which visa you need.",
+                  "score": 0.0284
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a71.1",
+              "RSE-LOC-01 \u00a72.3",
+              "RSE-LOC-01 \u00a75",
+              "RSE-LOC-01 \u00a72.4",
+              "RSE-LOC-01 \u00a73.4",
+              "RSE-LOC-01 \u00a73.3",
+              "RSE-LOC-01 \u00a73.1",
+              "RSE-LOC-01 \u00a73.2",
+              "RSE-LOC-01 \u00a74.2",
+              "RSE-LOC-01 \u00a74.1"
+            ],
+            "status": "ok",
+            "latency_ms": 36,
+            "started_at": "2026-10-19T23:16:21.554+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2754,
+              "output_tokens": 316
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2270,
+            "started_at": "2026-10-19T23:16:23.825+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "temporary remote work another state limit working days approval",
+              "doc_ids": [
+                "RSE-RW-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.3",
+                  "section_heading": "Another US state or province",
+                  "text": "Temporary remote work from another US state, or another province, needs your manager's approval for up to 30 calendar days per calendar year in total. Anything over 30 calendar days in a year needs HR review: your manager can't approve it alone, and HR decides.\nThe 30 calendar days count every day you are away, including weekends, and they add up across all trips in the calendar year. For example, a stay from the first of one month to the tenth of the following month is well over 30 calendar days, so it needs HR review even if your manager supports it. Submit the request in the HR Portal with your dates and location; HR reviews longer stays because working in another state or province can affect payroll and tax registration.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.1",
+                  "section_heading": "What counts",
+                  "text": "Temporary remote work means working for a period from somewhere other than your usual work location, such as a family home or a holiday rental, while doing your normal job. Travelling to do Ridgeline work at a client, a project site or another Ridgeline office is business travel, not temporary remote work; see RSE-LOC-01 \u00a72.",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.5",
+                  "section_heading": "Field/site roles",
+                  "text": "Field/site-based employees are not eligible for temporary remote work.\nTheir work depends on being at the project site. Travel to another site for work is business travel (RSE-LOC-01 \u00a72).",
+                  "score": 0.031
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.4",
+                  "section_heading": "Another country",
+                  "text": "Working from another country always needs HR review, whatever the length. See RSE-LOC-01 \u00a73 for the rules and the Cross-Border Review.\nYour manager can support the request, but cannot approve it. Plan well ahead: the review takes time, and there are notice and security requirements before you go.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "4",
+                  "section_heading": "Requesting a Change",
+                  "text": "To change your Work Arrangement to remote-approved, submit a request in the HR Portal. Your manager endorses it and HR approves it; HR gives a decision within 10 working days. Remote-approved arrangements are reviewed annually and can be revoked if the role or circumstances change.\nExplain in your request where you will work, how you will meet core hours and how you will stay connected with your team. If the request is declined, HR tells you why. You can ask again later, for example when your circumstances or role change.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.3",
+                  "section_heading": "Field/site-based",
+                  "text": "Field/site-based employees work at project sites. Their roles cannot be done remotely, so they are not eligible for remote-approved status or for temporary remote work.\nField/site-based employees may still do some office-based tasks, such as writing reports, at a Ridgeline office when their manager agrees. If a field/site-based employee moves into an office-based role, their Work Arrangement changes with the role.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.2",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees work remotely most of the time. The arrangement must be approved by both the manager and HR. Remote-approved employees spend at least one week per quarter at their home office.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "3",
+                  "section_heading": "Who Can Become Remote-Approved",
+                  "text": "To become remote-approved you need at least 6 months of service at Ridgeline and no active performance plan. Field/site-based roles and interns are not eligible. For contractors, remote work is set by their contract.\nMeeting these requirements makes you eligible to ask; it doesn't guarantee approval. Your manager and HR also consider whether your role can be done well remotely, the needs of your projects and clients, and your team's ability to work together.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "1",
+                  "section_heading": "Purpose and Scope",
+                  "text": "This policy sets out where Ridgeline employees work: the three Work Arrangements, who can become remote-approved, how to request a change, the rules for working remotely, and temporary remote work away from your usual location. It applies to full-time, part-time and intern employees. Business travel is covered separately by RSE-LOC-01 \u00a72.\nRidgeline believes engineering is best done with time together and time to focus. The arrangements in this policy aim to give teams regular in-person collaboration while allowing flexibility where the work allows it. Managers apply the policy fairly and consistently across their teams, and any questions go to the HR Service Desk.",
+                  "score": 0.0289
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a76.2",
+              "RSE-RW-01 \u00a76.3",
+              "RSE-RW-01 \u00a76.1",
+              "RSE-RW-01 \u00a76.5",
+              "RSE-RW-01 \u00a76.4",
+              "RSE-RW-01 \u00a74",
+              "RSE-RW-01 \u00a72.3",
+              "RSE-RW-01 \u00a72.2",
+              "RSE-RW-01 \u00a73",
+              "RSE-RW-01 \u00a71"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:16:23.849+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1005",
+              "request_type": "temporary_remote_work",
+              "details": {
+                "start_date": "2027-06-01",
+                "end_date": "2027-07-10",
+                "country": "US",
+                "region": "OR",
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "outcome": "needs_hr_review",
+              "approver": "HR",
+              "checks": [
+                {
+                  "rule": "TRW-ARRANGEMENT",
+                  "passed": true,
+                  "detail": "office_hybrid is eligible.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.5"
+                  }
+                },
+                {
+                  "rule": "TRW-DOMESTIC",
+                  "passed": false,
+                  "detail": "Another state/province: 40 calendar days vs 30 the manager can approve per year; over that needs HR review.",
+                  "citation": {
+                    "doc_id": "RSE-RW-01",
+                    "section": "6.3"
+                  }
+                }
+              ],
+              "computed": {
+                "country": "US",
+                "calendar_days": 40,
+                "working_days": 27,
+                "region": "OR"
+              }
+            },
+            "summary": "needs_hr_review, approver HR, 27 working days",
+            "status": "ok",
+            "latency_ms": 12,
+            "started_at": "2026-10-19T23:16:23.862+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5362,
+              "output_tokens": 375
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2874,
+            "started_at": "2026-10-19T23:16:26.736+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:16:26.755+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6127,
+              "output_tokens": 784
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6161,
+            "started_at": "2026-10-19T23:16:32.916+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "6 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:32.918+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "needs_hr_review: The request is 40 calendar days in another US state, which is over the 30 days a manager can approve, so HR must review it.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:32.918+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1005",
+              "category": "remote_work",
+              "subject": "Temporary remote work from Portland, OR, 2027-06-01 to 2027-07-10",
+              "summary": "Grace Liu (Drafter, Seattle, WA; office-hybrid) requests temporary remote work from family home in Portland, Oregon, US from 2027-06-01 to 2027-07-10 (40 calendar days, 27 working days). This exceeds the 30 calendar days per year a manager can approve for another US state, so HR review is needed. Manager Ben Carter will be informed. Request includes plan to meet core hours and anchor days.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "section": "6.3"
+                }
+              ],
+              "requester_id": "E1005",
+              "session_id": "2ccf6fac734f4f0e842ea70554d1cde6"
+            },
+            "summary": "\u23f8 create_mock_hr_ticket cancelled by the user",
+            "status": "cancelled",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:32.921+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6966,
+              "output_tokens": 126
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1667,
+            "started_at": "2026-10-19T23:16:34.589+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:34.590+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 100,
+          "llm_calls": 5,
+          "llm_ms": 15833,
+          "total_ms": 15958,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "create_mock_hr_ticket",
+        "id": null,
+        "mock": true,
+        "status": "cancelled"
+      }
+    }
+  ]
+}

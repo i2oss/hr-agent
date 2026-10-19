@@ -1,0 +1,422 @@
+{
+  "item_id": "S03-anchor-days",
+  "run": 3,
+  "speaking_as": "E1002",
+  "session_id": "3501238e368b4db0831fb5b03edd64f4",
+  "responses": [
+    {
+      "answer": {
+        "lead": "You're expected in the office on the three anchor days: Tuesday, Wednesday and Thursday. Monday and Friday can be remote.",
+        "policy_facts": [
+          {
+            "text": "Your record shows an office-hybrid Work Arrangement, based in the Austin office.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Office-hybrid employees work from their home office on 3 anchor days a week: Tuesday, Wednesday and Thursday. They may work remotely on Monday and Friday.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine, but regularly missing them is not.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Working from home on an occasional anchor day is fine; regularly missing them is not."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If you'll miss an anchor day, let your manager, Rafael G\u00f3mez, know ahead of time."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 129,
+              "output_tokens": 186
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1786,
+            "started_at": "2026-10-19T22:56:08.297+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "hybrid schedule office days expected",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.2"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T22:56:08.322+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "3501238e368b4db0831fb5b03edd64f4"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T22:56:08.342+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1050,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1271,
+            "started_at": "2026-10-19T22:56:09.613+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T22:56:09.631+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1413,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1233,
+            "started_at": "2026-10-19T22:56:10.864+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T22:56:10.881+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1776,
+              "output_tokens": 101
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2173,
+            "started_at": "2026-10-19T22:56:13.055+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1002",
+              "request_type": null,
+              "details": null,
+              "requester_id": "E1002",
+              "session_id": "3501238e368b4db0831fb5b03edd64f4"
+            },
+            "output": {
+              "error": {
+                "code": "MISSING_ARGUMENT",
+                "message": "request_type is required.",
+                "hint": "Use pto_request, temporary_remote_work or expense_item."
+              }
+            },
+            "summary": "MISSING_ARGUMENT: request_type is required.",
+            "status": "error",
+            "latency_ms": 13,
+            "started_at": "2026-10-19T22:56:13.068+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1949,
+              "output_tokens": 104
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1445,
+            "started_at": "2026-10-19T22:56:14.513+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "hybrid anchor days Tuesday Wednesday Thursday",
+              "doc_ids": [
+                "RSE-RW-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0318
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-RW-01 \u00a76.2"
+            ],
+            "status": "ok",
+            "latency_ms": 32,
+            "started_at": "2026-10-19T22:56:14.545+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2521,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1355,
+            "started_at": "2026-10-19T22:56:15.901+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "3501238e368b4db0831fb5b03edd64f4"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 19,
+            "started_at": "2026-10-19T22:56:15.921+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2855,
+              "output_tokens": 496
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3322,
+            "started_at": "2026-10-19T22:56:19.244+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:56:19.246+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 7,
+          "tool_ms": 142,
+          "llm_calls": 7,
+          "llm_ms": 12585,
+          "total_ms": 12734,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

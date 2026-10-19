@@ -1,0 +1,505 @@
+{
+  "item_id": "E03-canada-benefits",
+  "run": 3,
+  "speaking_as": "E1008",
+  "session_id": "fc9f0ebb0c7945c78fe9e09ba8692920",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't spell out the Canada Group Plan's dental coverage or claim steps. HR handles both, and HR provides the plan booklet and claim forms.",
+        "policy_facts": [
+          {
+            "text": "Toronto office employees are covered by the RSE Canada Group Plan, which provides health, dental and other group benefits. The benefits summary doesn't describe the plan in detail. Plan details, claims and eligibility questions go to HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "The US plan descriptions, including the US dental plan, do not apply to Toronto employees, even where the plans have similar names.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "The US plan descriptions in \u00a72 do not apply to Toronto employees, even where the plans have similar names."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR provides the plan booklet and claim forms.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "HR provides the plan booklet and claim forms."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "For claims, plan details and costs, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "6",
+                "snippet": "contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've prepared an HR benefits ticket asking for the dental coverage details, the plan booklet and the claim forms. Please review it and press Confirm if you'd like it raised. Nothing is created until you confirm."
+          },
+          {
+            "text": "You can also contact the HR Service Desk directly using the details above."
+          }
+        ],
+        "escalation": {
+          "reason": "Canada Group Plan details and claims are handled by HR according to the benefits summary.",
+          "trigger": "hr_handles_per_policy"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 136,
+              "output_tokens": 250
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2081,
+            "started_at": "2026-10-19T23:16:36.680+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "RSE Canada Group Plan dental coverage",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "5",
+                  "section_heading": "Canada: RSE Canada Group Plan",
+                  "text": "Employees of the Toronto office are covered by the RSE Canada Group Plan, which provides health, dental and other group benefits for Canadian employees. This summary does not describe the plan in detail. Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR.\nThe US plan descriptions in \u00a72 do not apply to Toronto employees, even where the plans have similar names. Toronto employees enrol in the RSE Canada Group Plan through HR when they join, and HR provides the plan booklet and claim forms.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "2.3",
+                  "section_heading": "Dental",
+                  "text": "Feature | Dental\nPreventive care | Cleanings and check-ups covered in network\nBasic and major care | Fillings, crowns and other treatment shared with the plan\nYou can join the dental plan even if you waive medical coverage, and you can choose a different coverage level for dental than for medical. Details of the dental network are in the plan documents.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "6",
+                  "section_heading": "Plan-Specific Questions",
+                  "text": "For anything this summary doesn't answer, including claims, plan details and costs, the RSE Canada Group Plan, or your own coverage, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nThis document is a summary. Where it differs from the plan documents, the plan documents apply. HR can explain how the plans work but cannot advise you which plan is best for your personal circumstances.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "1.1",
+                  "section_heading": "Who is eligible",
+                  "text": "Benefits eligibility depends on your Employment Type. Full-time employees are eligible for all US plans in \u00a72. Part-time employees are eligible for medical, dental, vision and the 401(k); Ridgeline's employer contribution to medical premiums is pro-rated by scheduled hours. Interns are eligible for the 401(k) only. Contractors are not eligible for Ridgeline benefits. Employees of the Toronto office are covered by the RSE Canada Group Plan instead of the US plans (\u00a75).\nYour eligibility is based on the Employment Type on your HR record. If your Employment Type changes, for example from part-time to full-time, your eligibility changes from the date of the change, and you can update your elections within the qualifying life event window (\u00a73.4).",
+                  "score": 0.0312
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "1.3",
+                  "section_heading": "Coverage levels",
+                  "text": "For medical, dental and vision you choose one coverage level: employee only, employee plus spouse, employee plus children, or family.\nYou can choose a different coverage level for each plan, for example family medical coverage and employee-only vision. Your coverage level stays the same for the plan year unless you have a qualifying life event (\u00a73.4).",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "1.2",
+                  "section_heading": "When coverage starts",
+                  "text": "Coverage starts on the first day of the month after your hire date. If you enrol within your new-hire window (\u00a73.1) after that date has passed, your coverage is back-dated to the first day of the month after your hire date.\nFor example, an employee hired in the middle of October is covered from the first day of November once they enrol, even if they enrol a few days into November. Until you enrol, you have no Ridgeline coverage, so enrol early in your window.",
+                  "score": 0.0284
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "2.2",
+                  "section_heading": "Medical \u2014 HDHP",
+                  "text": "Feature | Medical HDHP with HSA\nPremiums | Lower premiums, higher deductible\nHealth savings account (HSA) | Ridgeline contributes $750 a year for employee-only coverage, or $1,500 a year for any coverage that includes family members\nWho it suits | Employees who want lower premiums and to save for health costs tax-efficiently\nRidgeline's HSA contribution is paid into your account in instalments through the year, and the account is yours to keep if you leave. You can add your own contributions through payroll. The HDHP pays for preventive care before the deductible is met.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "3.3",
+                  "section_heading": "Open enrollment",
+                  "text": "Open enrollment for 2027 runs from November 16 to November 30, 2026. Choices made at open enrollment take effect on January 1, 2027. Open enrollment is the time to join, change or leave a plan for the coming year.\nHR sends a reminder before open enrollment starts, with any changes to the plans for the coming year. If you make no changes, your current elections generally continue into the new year. Check your family members and coverage levels each year.",
+                  "score": 0.0271
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "2.6",
+                  "section_heading": "Life insurance",
+                  "text": "Feature | Life insurance\nCoverage | 1\u00d7 annual base pay\nCost | Company-paid; no employee contribution\nName your beneficiaries in the HR Portal and keep them up to date, especially after a marriage or the birth of a child. Life insurance coverage ends when you leave Ridgeline.",
+                  "score": 0.0271
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.1",
+                  "section_heading": "Offices",
+                  "text": "Ridgeline is a civil and structural engineering consultancy with about 450 people. We have four offices. Denver, Colorado is our headquarters (America/Denver time). Our other offices are Austin, Texas (America/Chicago), Seattle, Washington (America/Los_Angeles) and Toronto, Ontario (America/ Toronto). Your home office is the office on your HR record. It decides your holiday calendar (RSE-HOL-01 \u00a71.1) and your local core hours. Each office runs its own projects but shares engineering standards, tools and teams across the firm. It is common for a project team to include engineers from more than one office, which is why core hours (\u00a73.2) and shared anchor days matter. Toronto staff follow the Canada holiday calendar; staff in Denver, Austin and Seattle follow the US calendar. Your home office stays the same when you travel or work temporarily from somewhere else.",
+                  "score": 0.0265
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-BEN-01 \u00a75",
+              "RSE-BEN-01 \u00a72.3",
+              "RSE-BEN-01 \u00a76",
+              "RSE-BEN-01 \u00a71.1",
+              "RSE-BEN-01 \u00a71.3",
+              "RSE-BEN-01 \u00a71.2",
+              "RSE-BEN-01 \u00a72.2",
+              "RSE-BEN-01 \u00a73.3",
+              "RSE-BEN-01 \u00a72.6",
+              "RSE-HB-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:16:36.705+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Canada benefits claim how to submit",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "6",
+                  "section_heading": "Plan-Specific Questions",
+                  "text": "For anything this summary doesn't answer, including claims, plan details and costs, the RSE Canada Group Plan, or your own coverage, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nThis document is a summary. Where it differs from the plan documents, the plan documents apply. HR can explain how the plans work but cannot advise you which plan is best for your personal circumstances.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "5",
+                  "section_heading": "Canada: RSE Canada Group Plan",
+                  "text": "Employees of the Toronto office are covered by the RSE Canada Group Plan, which provides health, dental and other group benefits for Canadian employees. This summary does not describe the plan in detail. Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR.\nThe US plan descriptions in \u00a72 do not apply to Toronto employees, even where the plans have similar names. Toronto employees enrol in the RSE Canada Group Plan through HR when they join, and HR provides the plan booklet and claim forms.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.2",
+                  "section_heading": "Deadlines",
+                  "text": "Submit claims within 30 days of the expense. Claims older than 60 days are not reimbursed without a director exception. Submitting promptly helps projects bill clients accurately and helps Finance close each month. For a long trip, you may submit claims as you go rather than waiting until you return.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.5",
+                  "section_heading": "How to claim",
+                  "text": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts. Your manager approves the claim (RSE-APR-01 \u00a75).\nYou become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement. The internet allowance is claimed monthly as an expense, with the bill attached.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.6",
+                  "section_heading": "Canadian employees",
+                  "text": "For employees of the Toronto office, HR coordinates Ridgeline's parental leave with the employee's government parental benefits. Plan details are available from HR.\nContact HR as early as you can, because government benefits have their own application steps and timing. HR explains how Ridgeline's paid leave and government benefits fit together for your dates; it doesn't give personal advice on government programmes.",
+                  "score": 0.0297
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "1.1",
+                  "section_heading": "Who is eligible",
+                  "text": "Benefits eligibility depends on your Employment Type. Full-time employees are eligible for all US plans in \u00a72. Part-time employees are eligible for medical, dental, vision and the 401(k); Ridgeline's employer contribution to medical premiums is pro-rated by scheduled hours. Interns are eligible for the 401(k) only. Contractors are not eligible for Ridgeline benefits. Employees of the Toronto office are covered by the RSE Canada Group Plan instead of the US plans (\u00a75).\nYour eligibility is based on the Employment Type on your HR record. If your Employment Type changes, for example from part-time to full-time, your eligibility changes from the date of the change, and you can update your elections within the qualifying life event window (\u00a73.4).",
+                  "score": 0.0294
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.0284
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "4",
+                  "section_heading": "Benefits During Leave",
+                  "text": "During paid leave, such as paid parental leave, your benefits continue on the same terms and your contributions continue through payroll. If you take unpaid leave of more than 30 days, contact HR before the leave starts to arrange how your contributions will be paid.\nShorter unpaid leave doesn't change your benefits. When you return from any leave, your benefits continue as before; you don't need to re-enrol. Ask HR how a specific leave affects your 401(k) contributions, since contributions are based on pay received.",
+                  "score": 0.0283
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.1",
+                  "section_heading": "Receipts",
+                  "text": "Attach an itemised receipt for every item of $25 or more. A card statement is not a receipt. Photograph paper receipts and attach them to your claim in the HR Portal. If a receipt is lost, explain on the claim; your manager decides whether to approve it.",
+                  "score": 0.0281
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.4",
+                  "section_heading": "Who approves",
+                  "text": "Expense claims are approved by claim total. Your manager approves claims up to $1,000. Your director approves claims up to $5,000. The VP Finance approves claims above $5,000. See also the Approval Matrix (RSE-APR-01 \u00a74). Questions go to Finance at expenses@ridgeline.example. Approvers check that each item is a genuine business expense, within the limits in this policy and supported by receipts. An approver may approve part of a claim and decline the rest; you will be told which items and why.",
+                  "score": 0.0272
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-BEN-01 \u00a76",
+              "RSE-BEN-01 \u00a75",
+              "RSE-EXP-01 \u00a78.2",
+              "RSE-EQ-01 \u00a72.5",
+              "RSE-LV-01 \u00a73.6",
+              "RSE-BEN-01 \u00a71.1",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-BEN-01 \u00a74",
+              "RSE-EXP-01 \u00a78.1",
+              "RSE-EXP-01 \u00a78.4"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T23:16:36.720+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5007,
+              "output_tokens": 174
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1761,
+            "started_at": "2026-10-19T23:16:38.482+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1008",
+              "requester_id": "E1008",
+              "session_id": "fc9f0ebb0c7945c78fe9e09ba8692920"
+            },
+            "output": {
+              "employee_id": "E1008",
+              "name": "Chlo\u00e9 Tremblay",
+              "title": "Bridge Engineer",
+              "department": "Bridge Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "TOR",
+                "city": "Toronto",
+                "region": "ON",
+                "country": "CA",
+                "timezone": "America/Toronto"
+              },
+              "holiday_calendar": "CA",
+              "manager": {
+                "id": "E1019",
+                "name": "Am\u00e9lie Roy"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2020-05-04",
+              "weekly_hours": 40,
+              "work_email": "chloe.tremblay@ridgeline.example",
+              "work_region": "ON",
+              "work_country": "CA",
+              "employment_status": "active"
+            },
+            "summary": "Chlo\u00e9 Tremblay, Bridge Engineer, Toronto; manager Am\u00e9lie Roy",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:16:38.503+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5356,
+              "output_tokens": 303
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2185,
+            "started_at": "2026-10-19T23:16:40.689+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1008",
+              "category": "benefits",
+              "subject": "RSE Canada Group Plan: dental coverage details and claim process",
+              "summary": "Chlo\u00e9 Tremblay (Toronto office) asks what the RSE Canada Group Plan covers for dental and how to make a dental claim. Requesting the plan booklet and claim forms.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "section": "5"
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "section": "6"
+                }
+              ],
+              "requester_id": "E1008",
+              "session_id": "fc9f0ebb0c7945c78fe9e09ba8692920"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Benefits",
+              "employee_id": "E1008",
+              "category": "benefits",
+              "subject": "RSE Canada Group Plan: dental coverage details and claim process",
+              "summary": "Chlo\u00e9 Tremblay (Toronto office) asks what the RSE Canada Group Plan covers for dental and how to make a dental claim. Requesting the plan booklet and claim forms.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "section": "5"
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "section": "6"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:16:40.712+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5983,
+              "output_tokens": 761
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4754,
+            "started_at": "2026-10-19T23:16:45.466+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:45.468+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "hr_handles_per_policy: Canada Group Plan details and claims are handled by HR according to the benefits summary.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:16:45.468+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 60,
+          "llm_calls": 4,
+          "llm_ms": 10781,
+          "total_ms": 10869,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "a6100afc024e",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR \u00b7 Benefits",
+          "employee_id": "E1008",
+          "category": "benefits",
+          "subject": "RSE Canada Group Plan: dental coverage details and claim process",
+          "summary": "Chlo\u00e9 Tremblay (Toronto office) asks what the RSE Canada Group Plan covers for dental and how to make a dental claim. Requesting the plan booklet and claim forms.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-BEN-01",
+              "section": "5"
+            },
+            {
+              "doc_id": "RSE-BEN-01",
+              "section": "6"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "item_id": "E04-wants-a-human",
+  "run": 3,
+  "speaking_as": "E1010",
+  "session_id": "b9a1e250ca7f4b14a4c2ab93e2b1b9e5",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes, you can talk to a person in HR. The HR Service Desk handles leave questions, and you already have an open parental leave case.",
+        "policy_facts": [
+          {
+            "text": "HR questions go to the HR Service Desk by email or through HR Portal > Ask HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-ONB-01",
+                "section": "4",
+                "snippet": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your open ticket HR-2026-0412, \"Parental leave from 2026-12-07\", is in the HR Service Desk queue.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "list_hr_tickets"
+              }
+            ]
+          },
+          {
+            "text": "For parental leave, HR confirms your dates, your pay during leave and your expected return date.",
+            "citations": [
+              {
+                "doc_id": "RSE-LV-01",
+                "section": "3.4",
+                "snippet": "HR confirms your dates, your pay during leave and your expected return date"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Email hr@ridgeline.example or use HR Portal > Ask HR, and mention ticket HR-2026-0412."
+          },
+          {
+            "text": "I've prepared an HR ticket asking an HR person to contact you about this case. Please review it and press Confirm if you'd like me to open it. Nothing has been created yet."
+          }
+        ],
+        "escalation": {
+          "reason": "You asked to speak with a person in HR about your leave case, so I'm pointing you to the HR Service Desk.",
+          "trigger": "user_requested_human"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 262
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, list_hr_tickets",
+            "status": "ok",
+            "latency_ms": 2211,
+            "started_at": "2026-10-19T23:00:08.006+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact speak to a person",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a76.1"
+            ],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T23:00:08.030+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "list_hr_tickets",
+            "args": {
+              "employee_id": "E1010",
+              "status": null,
+              "requester_id": "E1010",
+              "session_id": "b9a1e250ca7f4b14a4c2ab93e2b1b9e5"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "tickets": [
+                {
+                  "id": "HR-2026-0412",
+                  "employee_id": "E1010",
+                  "category": "other",
+                  "subject": "Parental leave from 2026-12-07",
+                  "summary": "Plan 12 weeks of parental leave starting 2026-12-07; confirm benefits during leave and return date.",
+                  "status": "open",
+                  "priority": "normal",
+                  "created": "2026-10-05",
+                  "assigned_queue": "HR Service Desk",
+                  "citations": [
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.2"
+                    },
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.4"
+                    }
+                  ],
+                  "mock": false
+                }
+              ]
+            },
+            "summary": "1 ticket(s)",
+            "status": "ok",
+            "latency_ms": 7,
+            "started_at": "2026-10-19T23:00:08.037+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1204,
+              "output_tokens": 90
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1532,
+            "started_at": "2026-10-19T23:00:09.570+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "parental leave HR contact",
+              "doc_ids": [
+                "RSE-LV-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.6",
+                  "section_heading": "Canadian employees",
+                  "text": "For employees of the Toronto office, HR coordinates Ridgeline's parental leave with the employee's government parental benefits. Plan details are available from HR.\nContact HR as early as you can, because government benefits have their own application steps and timing. HR explains how Ridgeline's paid leave and government benefits fit together for your dates; it doesn't give personal advice on government programmes.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.4",
+                  "section_heading": "Notice",
+                  "text": "When the leave is foreseeable, give HR at least 30 calendar days' notice of your planned start date. If the timing changes unexpectedly, tell HR as soon as you can.\nRequest parental leave in the HR Portal. HR confirms your dates, your pay during leave and your expected return date, and lets your manager know so cover can be planned.",
+                  "score": 0.0318
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-LV-01 \u00a73.6",
+              "RSE-LV-01 \u00a73.4"
+            ],
+            "status": "ok",
+            "latency_ms": 33,
+            "started_at": "2026-10-19T23:00:09.604+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1683,
+              "output_tokens": 294
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2297,
+            "started_at": "2026-10-19T23:00:11.902+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with an HR person about parental leave case HR-2026-0412",
+              "summary": "Requester would like to talk to a person in HR about their parental leave case (HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "section": "3.4"
+                }
+              ],
+              "requester_id": "E1010",
+              "session_id": "b9a1e250ca7f4b14a4c2ab93e2b1b9e5"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Service Desk",
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with an HR person about parental leave case HR-2026-0412",
+              "summary": "Requester would like to talk to a person in HR about their parental leave case (HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "section": "3.4"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:00:11.925+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2281,
+              "output_tokens": 551
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4117,
+            "started_at": "2026-10-19T23:00:16.042+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:00:16.043+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "user_requested_human: You asked to speak with a person in HR about your leave case, so I'm pointing you to the HR Service Desk.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:00:16.043+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 63,
+          "llm_calls": 4,
+          "llm_ms": 10157,
+          "total_ms": 10247,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "e75084b2b14c",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR Service Desk",
+          "employee_id": "E1010",
+          "category": "other",
+          "subject": "Request to speak with an HR person about parental leave case HR-2026-0412",
+          "summary": "Requester would like to talk to a person in HR about their parental leave case (HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-ONB-01",
+              "section": "4"
+            },
+            {
+              "doc_id": "RSE-LV-01",
+              "section": "3.4"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

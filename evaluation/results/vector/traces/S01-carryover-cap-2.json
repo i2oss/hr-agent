@@ -1,0 +1,383 @@
+{
+  "item_id": "S01-carryover-cap",
+  "run": 2,
+  "speaking_as": "E1001",
+  "session_id": "994b2fa0b9b74266a3d8fdf5e4ab05c1",
+  "responses": [
+    {
+      "answer": {
+        "lead": "You can carry over up to 5 unused PTO days into next year. Any unused days above that are forfeited on December 31.",
+        "policy_facts": [
+          {
+            "text": "The standard carryover cap is 5 unused PTO days into the next calendar year. Days above the cap are forfeited on December 31 and are not paid out.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "You can carry over up to 5 unused PTO days into the next calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you are on approved leave that spans December 31, such as parental leave, the cap is 10 days instead of 5. It is applied automatically.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "As of 2026-11-02 your available PTO balance is 11.0 days. That is above the 5-day cap, so if you don't use any more PTO before year-end, about 6 days would be forfeited. This is based on today's balance, and any further accrual would change the number.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Plan to use at least 6 PTO days before December 31 so you don't lose any. If you want to book time off, give me the dates and I'll check them."
+          },
+          {
+            "text": "Please ignore the draft message to Jordan Lee that is waiting on a Confirm card. It contains only placeholder text because I started it by mistake. Don't press Confirm. Nothing has been sent."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 266
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): search_policy, check_pto_balance, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2998,
+            "started_at": "2026-10-19T23:23:30.148+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days next year",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.8725
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.8494
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.7791
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.7632
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.1",
+                  "section_heading": "Increments",
+                  "text": "PTO is taken in whole or half days. The minimum increment is a half day (0.5 days).\nA half day is a morning or an afternoon of your normal working day. If you need a shorter absence, such as an hour for an appointment, agree it informally with your manager instead of booking PTO. When your available balance includes a half day, you can use it on its own, for example to take one full day and one half day.",
+                  "score": 0.7364
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a73.1"
+            ],
+            "status": "ok",
+            "latency_ms": 48,
+            "started_at": "2026-10-19T23:23:30.197+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "994b2fa0b9b74266a3d8fdf5e4ab05c1"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-19T23:23:30.211+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "994b2fa0b9b74266a3d8fdf5e4ab05c1"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 10,
+            "started_at": "2026-10-19T23:23:30.221+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1880,
+              "output_tokens": 94
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1530,
+            "started_at": "2026-10-19T23:23:31.751+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days next year",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.8725
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.8494
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.7791
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.7632
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.1",
+                  "section_heading": "Increments",
+                  "text": "PTO is taken in whole or half days. The minimum increment is a half day (0.5 days).\nA half day is a morning or an afternoon of your normal working day. If you need a shorter absence, such as an hour for an appointment, agree it informally with your manager instead of booking PTO. When your available balance includes a half day, you can use it on its own, for example to take one full day and one half day.",
+                  "score": 0.7364
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a73.1"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:23:31.779+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3107,
+              "output_tokens": 128
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 1785,
+            "started_at": "2026-10-19T23:23:33.565+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "placeholder",
+              "body": "placeholder",
+              "citations": [],
+              "requester_id": "E1001",
+              "session_id": "994b2fa0b9b74266a3d8fdf5e4ab05c1"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "placeholder",
+              "body": "placeholder",
+              "citations": []
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:23:33.586+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3405,
+              "output_tokens": 755
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5773,
+            "started_at": "2026-10-19T23:23:39.360+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:23:39.361+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 99,
+          "llm_calls": 4,
+          "llm_ms": 12086,
+          "total_ms": 12210,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "61c95a42dd78",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1012",
+            "name": "Jordan Lee",
+            "email": "jordan.lee@ridgeline.example"
+          },
+          "subject": "placeholder",
+          "body": "placeholder",
+          "citations": []
+        }
+      }
+    }
+  ]
+}

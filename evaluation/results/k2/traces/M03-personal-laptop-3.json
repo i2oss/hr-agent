@@ -1,0 +1,199 @@
+{
+  "item_id": "M03-personal-laptop",
+  "run": 3,
+  "speaking_as": "E1009",
+  "session_id": "ed6fb778dc684131b8cecb42966f38c0",
+  "responses": [
+    {
+      "answer": {
+        "lead": "No. Don't use a personal laptop for Ridgeline project work, including when you work from home. Use your Ridgeline-issued laptop.",
+        "policy_facts": [
+          {
+            "text": "Personal laptops must never be used to store, open or work on Ridgeline project files. This applies at home, in the office and when travelling, even for a quick look or a short edit.",
+            "citations": [
+              {
+                "doc_id": "RSE-SEC-01",
+                "section": "3.3",
+                "snippet": "Never use a personal laptop to store, open or work on Ridgeline project files, whether at home, in the office or travelling."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you don't have a Ridgeline laptop when you need one, ask IT for a loan device instead of using your own.",
+            "citations": [
+              {
+                "doc_id": "RSE-SEC-01",
+                "section": "3.3",
+                "snippet": "If you don't have a Ridgeline laptop with you when you need one, ask IT about a loan device rather than using your own."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Personal laptops are not reimbursed. If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "3",
+                "snippet": "Personal laptops are not reimbursed, and they may not hold Ridgeline project files (RSE-SEC-01 \u00a73.3)."
+              },
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "3",
+                "snippet": "If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Personal accessories, such as your own headphones or keyboard, may be used with Ridgeline equipment.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "3",
+                "snippet": "Personal accessories such as your own headphones or keyboard may be used with Ridgeline equipment"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If your Ridgeline laptop is missing or doesn't meet your needs, contact IT about a loan device or a replacement."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 123,
+              "output_tokens": 136
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1877,
+            "started_at": "2026-10-19T22:57:13.443+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "personal laptop device work from home",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "3.3",
+                  "section_heading": "Personal laptops",
+                  "text": "Never use a personal laptop to store, open or work on Ridgeline project files, whether at home, in the office or travelling.\nThis applies even to a quick look at a drawing or a short edit to a calculation. Personal laptops are outside IT's management, so Ridgeline cannot protect, track or wipe the files on them. If you don't have a Ridgeline laptop with you when you need one, ask IT about a loan device rather than using your own.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "3",
+                  "section_heading": "Personal Equipment",
+                  "text": "Personal laptops are not reimbursed, and they may not hold Ridgeline project files (RSE-SEC-01 \u00a73.3). Use the Ridgeline laptop you were issued for all project work.\nPersonal accessories such as your own headphones or keyboard may be used with Ridgeline equipment, but they are not reimbursed outside the stipend in \u00a72. If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine.",
+                  "score": 0.0323
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-SEC-01 \u00a73.3",
+              "RSE-EQ-01 \u00a73"
+            ],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T22:57:13.473+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1009",
+              "requester_id": "E1009",
+              "session_id": "ed6fb778dc684131b8cecb42966f38c0"
+            },
+            "output": {
+              "employee_id": "E1009",
+              "name": "Marcus Reed",
+              "title": "Engineering Director",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "remote_approved",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1020",
+                "name": "Helen Park"
+              },
+              "director": null,
+              "hire_date": "2015-08-24",
+              "weekly_hours": 40,
+              "work_email": "marcus.reed@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Marcus Reed, Engineering Director, Denver; manager Helen Park",
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-19T22:57:13.486+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1028,
+              "output_tokens": 727
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4443,
+            "started_at": "2026-10-19T22:57:17.930+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:57:17.930+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 42,
+          "llm_calls": 2,
+          "llm_ms": 6320,
+          "total_ms": 6364,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

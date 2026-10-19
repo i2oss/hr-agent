@@ -1,0 +1,183 @@
+{
+  "item_id": "E03-canada-benefits",
+  "run": 1,
+  "speaking_as": "E1008",
+  "session_id": "c4e63de330e149a6ac66edf58c3b28cd",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't detail the RSE Canada Group Plan's dental coverage or claims. HR handles both.",
+        "policy_facts": [
+          {
+            "text": "The RSE Canada Group Plan covers Toronto office employees and provides health, dental and other group benefits. The benefits summary does not describe the plan in detail.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "This summary does not describe the plan in detail."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR. HR provides the plan booklet and claim forms.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR."
+              },
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "HR provides the plan booklet and claim forms."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The US plan descriptions, including the US dental plan, do not apply to Toronto employees, even where the plans have similar names.",
+            "citations": [
+              {
+                "doc_id": "RSE-BEN-01",
+                "section": "5",
+                "snippet": "The US plan descriptions in \u00a72 do not apply to Toronto employees, even where the plans have similar names."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Ask HR for the RSE Canada Group Plan booklet and claim forms. They will cover what dental care is covered and how to submit a claim."
+          },
+          {
+            "text": "I can open an HR ticket asking for the plan booklet and claim instructions. Would you like me to?"
+          }
+        ],
+        "escalation": {
+          "reason": "Policy says plan details and claims for the RSE Canada Group Plan are handled by HR.",
+          "trigger": "hr_handles_per_policy"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 136,
+              "output_tokens": 253
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 5244,
+            "started_at": "2026-10-19T22:47:40.140+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "RSE Canada Group Plan dental coverage",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "5",
+                  "section_heading": "Canada: RSE Canada Group Plan",
+                  "text": "Employees of the Toronto office are covered by the RSE Canada Group Plan, which provides health, dental and other group benefits for Canadian employees. This summary does not describe the plan in detail. Plan details, claims and eligibility questions for the RSE Canada Group Plan go to HR.\nThe US plan descriptions in \u00a72 do not apply to Toronto employees, even where the plans have similar names. Toronto employees enrol in the RSE Canada Group Plan through HR when they join, and HR provides the plan booklet and claim forms.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-BEN-01",
+                  "title": "Benefits Summary & Eligibility",
+                  "section": "2.3",
+                  "section_heading": "Dental",
+                  "text": "Feature | Dental\nPreventive care | Cleanings and check-ups covered in network\nBasic and major care | Fillings, crowns and other treatment shared with the plan\nYou can join the dental plan even if you waive medical coverage, and you can choose a different coverage level for dental than for medical. Details of the dental network are in the plan documents.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-BEN-01 \u00a75",
+              "RSE-BEN-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 53,
+            "started_at": "2026-10-19T22:47:40.194+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Canada benefits claim dental",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 16,
+            "started_at": "2026-10-19T22:47:40.210+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 845,
+              "output_tokens": 704
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 8311,
+            "started_at": "2026-10-19T22:47:48.522+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "4 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:47:48.522+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "hr_handles_per_policy: Policy says plan details and claims for the RSE Canada Group Plan are handled by HR.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:47:48.522+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 69,
+          "llm_calls": 2,
+          "llm_ms": 13555,
+          "total_ms": 13627,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "item_id": "C01-not-set-balance",
+  "run": 3,
+  "speaking_as": null,
+  "session_id": "b376f21805464f4c91fbe7e03d106b03",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't look up your PTO balance yet because I don't know who you are in this session.",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Please choose who you are in the \"Speaking as\" picker so I can check your PTO balance. Which employee are you?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 118,
+              "output_tokens": 77
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1298,
+            "started_at": "2026-10-19T23:15:55.095+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO balance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.3",
+                  "section_heading": "Using PTO",
+                  "text": "You can use PTO as soon as it has accrued, including during your first 90 days. Request it in the HR Portal as usual.\nBecause PTO accrues each pay period, your balance in your first weeks is small. If you already have time off booked when you join, for example a holiday arranged before your offer, tell your manager and HR before your start date so it can be agreed; HR can discuss unpaid personal leave if your balance won't cover it.",
+                  "score": 0.0312
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.1",
+                  "section_heading": "Increments",
+                  "text": "PTO is taken in whole or half days. The minimum increment is a half day (0.5 days).\nA half day is a morning or an afternoon of your normal working day. If you need a shorter absence, such as an hour for an appointment, agree it informally with your manager instead of booking PTO. When your available balance includes a half day, you can use it on its own, for example to take one full day and one half day.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0294
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.5",
+                  "section_heading": "Accrual during leave",
+                  "text": "PTO keeps accruing while you are on paid leave, such as paid parental leave. PTO does not accrue during unpaid leave, such as unpaid personal leave (RSE-LV-01 \u00a76).\nPTO accrued before and during paid leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval. If your leave crosses the end of the year, see \u00a75.2 for the higher carryover cap.",
+                  "score": 0.029
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.0285
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.1",
+                  "section_heading": "Personal days are PTO",
+                  "text": "Personal days added to a business trip are taken as PTO under the Paid Time Off Policy (RSE-PTO-01).",
+                  "score": 0.0281
+                },
+                {
+                  "doc_id": "RSE-LV-01",
+                  "title": "Leave of Absence Policy",
+                  "section": "3.5",
+                  "section_heading": "Benefits and PTO during parental leave",
+                  "text": "Your benefits continue on the same terms during parental leave, and your employee contributions continue through payroll (see also RSE-BEN-01 \u00a74). Your PTO keeps accruing while you are on paid parental leave (RSE-PTO-01 \u00a72.5). If your leave spans December 31, you can carry over more unused PTO than usual; see RSE-PTO-01 \u00a75.2.\nIf you want to add a new child to your benefits, do it within the qualifying life event window in RSE-BEN-01 \u00a73.4. Your HR record, Employment Type and Work Arrangement stay the same during parental leave, and you return to the same role or a similar one.",
+                  "score": 0.027
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a73.3",
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-ONB-01 \u00a73.3",
+              "RSE-PTO-01 \u00a73.1",
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a72.5",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-EXP-01 \u00a76.1",
+              "RSE-LV-01 \u00a73.5"
+            ],
+            "status": "ok",
+            "latency_ms": 34,
+            "started_at": "2026-10-19T23:15:55.129+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2403,
+              "output_tokens": 158
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1894,
+            "started_at": "2026-10-19T23:15:57.024+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:15:57.025+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 1,
+          "tool_ms": 34,
+          "llm_calls": 2,
+          "llm_ms": 3192,
+          "total_ms": 3228,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "item_id": "E01-sensitive-conduct",
+  "run": 1,
+  "speaking_as": "E1004",
+  "session_id": "7d2c4a3d7c1644bf862e4b0f194e4215",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I'm sorry you're dealing with this. Repeated comments about your accent are something you can raise with HR, and you don't have to confront your coworker yourself.",
+        "policy_facts": [
+          {
+            "text": "You can raise a concern about harassment, discrimination or other breaches in whichever way you're most comfortable with. Options include your manager, the HR Service Desk, HR Confidential (for sensitive matters) and the 24/7 ethics line, which has an anonymous option.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You never have to raise a concern with the person it is about. You don't need proof or certainty that a rule was broken, only a genuine concern.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You never have to raise a concern with the person it is about."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "When you raise it, say what happened, when and where, who was involved and whether anyone else saw it.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "say what happened, when and where, who was involved and whether anyone else saw it"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR can open a ticket for you in the HR Confidential queue with only a minimal summary recorded, and then contact you to talk through the details privately.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Concerns are handled confidentially, and information is shared only with the people who need it to look into and resolve the concern.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.2",
+                "snippet": "Concerns are handled confidentially."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.3",
+                "snippet": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR acknowledges every concern within 2 working days. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements. These are not a finding against anyone.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.4",
+                "snippet": "HR acknowledges every concern within 2 working days."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Consider noting down what was said, when, in which meetings, and who else was there. This will make it easier to explain what happened."
+          },
+          {
+            "text": "Pick the route that feels safest: HR Confidential (hr-confidential@ridgeline.example), the ethics line (+1 555 0100, anonymous if you prefer), the HR Service Desk, or your manager."
+          },
+          {
+            "text": "If you'd like, I can open an HR Confidential ticket for you with a minimal summary. Just say so and I'll prepare it for you to review and confirm. Nothing is created until you confirm."
+          }
+        ],
+        "escalation": {
+          "reason": "Repeated comments about your accent may be harassment or discrimination, which is a sensitive matter for HR Confidential. I'm not judging or investigating it.",
+          "trigger": "sensitive_matter"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 228
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, get_policy_section",
+            "status": "ok",
+            "latency_ms": 7821,
+            "started_at": "2026-10-19T22:46:57.411+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2"
+            ],
+            "status": "ok",
+            "latency_ms": 32,
+            "started_at": "2026-10-19T22:46:57.443+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-HB-01",
+              "section": "6"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "4 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a76.4"
+            ],
+            "status": "ok",
+            "latency_ms": 9,
+            "started_at": "2026-10-19T22:46:57.453+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1842,
+              "output_tokens": 1222
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 12631,
+            "started_at": "2026-10-19T22:47:10.085+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:47:10.086+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "sensitive_matter: Repeated comments about your accent may be harassment or discrimination, which is a sensitive matter for HR Confidential. I'm not judging or investigating it.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:47:10.086+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 41,
+          "llm_calls": 2,
+          "llm_ms": 20452,
+          "total_ms": 20496,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

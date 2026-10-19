@@ -1,0 +1,519 @@
+{
+  "item_id": "W05-director-checks-report",
+  "run": 3,
+  "speaking_as": "E1009",
+  "session_id": "ed31f71b274c4b179f922d5efdf4f8ba",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes. Maya Chen has exactly enough PTO: 11.0 days available against 11 days requested. Because the absence is longer than 10 consecutive days, it needs director approval, and that director is you, Marcus.",
+        "policy_facts": [
+          {
+            "text": "Maya's Nov 30 \u2013 Dec 14 request is 11 PTO days, with no company holidays excluded. Her available balance is 11.0 days, so it fits with no negative balance.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "3.3",
+                "snippet": "Your PTO balance cannot go negative."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              },
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "The Compliance Check outcome is allowed_with_approval, with the director (Marcus Reed) as approver. Her notice is 28 calendar days, which meets the 14-day requirement for requests over 3 PTO days.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              },
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "A request for more than 10 consecutive PTO days must also be approved by the director, in addition to the manager. Maya's manager is Jordan Lee.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "A request for more than 10 consecutive PTO days must also be approved by your director."
+              },
+              {
+                "doc_id": "RSE-APR-01",
+                "section": "2",
+                "snippet": "PTO over 10 consecutive days | Director"
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Maya is office-hybrid, so the December 18\u201331 blackout (which covers field/site-based employees) does not apply to her.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.4",
+                "snippet": "The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Maya should submit the request in the HR Portal before her first day off, ideally after talking with Jordan Lee about project cover."
+          },
+          {
+            "text": "Her request would then come to you for approval. Her balance would be fully used, so she would have no PTO left for anything else this year."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 151,
+              "output_tokens": 232
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2036,
+            "started_at": "2026-10-19T23:15:12.398+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1009",
+              "requester_id": "E1009",
+              "session_id": "ed31f71b274c4b179f922d5efdf4f8ba"
+            },
+            "output": {
+              "employee_id": "E1009",
+              "name": "Marcus Reed",
+              "title": "Engineering Director",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "remote_approved",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1020",
+                "name": "Helen Park"
+              },
+              "director": null,
+              "hire_date": "2015-08-24",
+              "weekly_hours": 40,
+              "work_email": "marcus.reed@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Marcus Reed, Engineering Director, Denver; manager Helen Park",
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:15:12.422+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1009",
+              "session_id": "ed31f71b274c4b179f922d5efdf4f8ba"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:15:12.437+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 834,
+              "output_tokens": 401
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): check_pto_balance, search_policy, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2577,
+            "started_at": "2026-10-19T23:15:15.014+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1009",
+              "session_id": "ed31f71b274c4b179f922d5efdf4f8ba"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:15:15.033+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO approval extended leave days manager director",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-APR-01",
+                "RSE-HOL-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "2",
+                  "section_heading": "Time Off",
+                  "text": "Request | Approver\nPTO up to 10 consecutive days | Manager\nPTO over 10 consecutive days | Director\nField-role PTO in the December blackout | Director\nFloating holiday | Manager\nSick time | None (notify your manager)\nParental, bereavement, jury duty | HR (manager notified)\nUnpaid personal leave | HR\nThe rules behind these rows are in the Paid Time Off Policy (RSE-PTO-01), the Holiday Calendar & Observance policy (RSE-HOL-01) and the Leave of Absence Policy (RSE-LV-01). For example, a PTO request of 11 consecutive working days needs the director, while a request of 10 or fewer needs only the manager.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0298
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "1.3",
+                  "section_heading": "Holidays during PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO. When you count the PTO days a request will use, leave out weekends and your home office's company holidays. For example, a Denver employee taking Wednesday to Friday off in a week where Wednesday is a US company holiday uses 2 PTO days, not 3. See also RSE-PTO-01 \u00a73.2.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.0287
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0284
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0272
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.3",
+                  "section_heading": "Interns",
+                  "text": "Interns earn 5 days of PTO per internship, whatever its length. Unused intern PTO is not carried over or paid out.\nInterns request PTO in the HR Portal like everyone else, and the notice and approval rules in \u00a74 apply. An intern who later joins Ridgeline as a full-time or part-time employee starts accruing under \u00a72.1 or \u00a72.2 from their new hire date.",
+                  "score": 0.027
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-APR-01 \u00a72",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-HOL-01 \u00a71.3",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 40,
+            "started_at": "2026-10-19T23:15:15.074+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-30",
+                "end_date": "2026-12-14",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1009",
+              "session_id": "ed31f71b274c4b179f922d5efdf4f8ba"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "director",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "11 PTO day(s); company holidays excluded: none.",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 11 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "11 days > 3: needs 14 calendar days' notice; giving 28.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "11 consecutive PTO days > 10: director approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 11,
+                "holidays_excluded": [],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 28,
+                "approver_name": "Marcus Reed"
+              }
+            },
+            "summary": "allowed_with_approval, approver director, 11 working days",
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:15:15.085+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4115,
+              "output_tokens": 343
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 3143,
+            "started_at": "2026-10-19T23:15:18.229+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-PTO-01",
+              "section": "3.3"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a73.3"
+            ],
+            "status": "ok",
+            "latency_ms": 7,
+            "started_at": "2026-10-19T23:15:18.237+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4467,
+              "output_tokens": 1051
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 7107,
+            "started_at": "2026-10-19T23:15:25.344+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "11 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:15:25.345+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 6,
+          "tool_ms": 114,
+          "llm_calls": 4,
+          "llm_ms": 14863,
+          "total_ms": 14983,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

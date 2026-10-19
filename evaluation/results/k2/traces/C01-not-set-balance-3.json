@@ -1,0 +1,97 @@
+{
+  "item_id": "C01-not-set-balance",
+  "run": 3,
+  "speaking_as": null,
+  "session_id": "21abf0f7be174ccbbfa822004e5ca84e",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't check your PTO balance yet because I don't know who you are in this session.",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Could you choose who you are in the \"Speaking as\" picker so I can look up your PTO balance?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 118,
+              "output_tokens": 56
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1308,
+            "started_at": "2026-10-19T22:59:16.914+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": null,
+              "requester_id": null,
+              "session_id": "21abf0f7be174ccbbfa822004e5ca84e"
+            },
+            "output": {
+              "error": {
+                "code": "MISSING_ARGUMENT",
+                "message": "No Requester: 'Speaking as' is (not set).",
+                "hint": "Ask the user to choose who they are in the 'Speaking as' picker; an ID typed in chat doesn't count."
+              }
+            },
+            "summary": "MISSING_ARGUMENT: No Requester: 'Speaking as' is (not set).",
+            "status": "error",
+            "latency_ms": 12,
+            "started_at": "2026-10-19T22:59:16.926+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "clarification",
+            "summary": "forced: Requester (not set) + MISSING_ARGUMENT",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:59:16.926+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 353,
+              "output_tokens": 108
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1362,
+            "started_at": "2026-10-19T22:59:18.289+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:59:18.289+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 1,
+          "tool_ms": 12,
+          "llm_calls": 2,
+          "llm_ms": 2670,
+          "total_ms": 2682,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

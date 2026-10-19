@@ -1,0 +1,52 @@
+{
+  "item_id": "C02-vague-dates-field",
+  "run": 3,
+  "speaking_as": "E1003",
+  "session_id": "282efdd929974b28afdf37a4b38f98c8",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Which dates in December do you have in mind?",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Which exact dates in December would you like off (start and end date, for example 2026-12-14 to 2026-12-18)? I need them to check the request against your balance, the holiday calendar and the approval rules."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 117,
+              "output_tokens": 237
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2899,
+            "started_at": "2026-10-19T23:32:10.727+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:10.727+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2899,
+          "total_ms": 2899,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

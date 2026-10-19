@@ -1,0 +1,60 @@
+{
+  "item_id": "R02-not-hr",
+  "run": 2,
+  "speaking_as": "E1001",
+  "session_id": "b654ca90091740e2ad5f799cce645fb0",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Sizing a steel beam is an engineering question, not an HR one, so I can't help with it here.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Please take this to a licensed engineer or your project lead, or use your team's engineering references and design tools."
+          },
+          {
+            "text": "I'm happy to help with HR topics such as PTO, benefits, remote work, expenses, or opening an HR ticket."
+          }
+        ],
+        "refusal": {
+          "reason": "not_hr",
+          "text": "Beam sizing is an engineering matter, not an HR question. Please ask a licensed engineer or your project lead."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 127,
+              "output_tokens": 212
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2021,
+            "started_at": "2026-10-19T23:28:06.520+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:28:06.520+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2021,
+          "total_ms": 2022,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

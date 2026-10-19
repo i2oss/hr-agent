@@ -1,0 +1,285 @@
+{
+  "item_id": "R04-contractor-pto",
+  "run": 3,
+  "speaking_as": "E1007",
+  "session_id": "9488baf58c5649028c78b3632789e801",
+  "responses": [
+    {
+      "answer": {
+        "lead": "As a contractor, you don't earn PTO under Ridgeline's policy, so there's no annual PTO allotment for you.",
+        "policy_facts": [
+          {
+            "text": "Your HR record lists your Employment Type as contractor.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Contractors do not earn PTO, and the PTO policy does not apply to them. Their time off is set by their contract or agency.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "1.2",
+                "snippet": "Contractors do not earn PTO and this policy does not apply to them: their time off is set by their contract or agency"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Ridgeline's other HR policies also don't apply to contractors. Contractors with questions about time off should contact their agency or Ridgeline contract manager.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "1.2",
+                "snippet": "Contractors with questions about those matters should contact their agency or Ridgeline contract manager."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Check your contract, or ask your agency or Ridgeline contract manager, about how much time off you get and how to request it."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's HR policies don't apply to contractors, so there's no PTO entitlement to quote for you. Please contact your agency or Ridgeline contract manager."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 119,
+              "output_tokens": 197
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2996,
+            "started_at": "2026-10-19T23:00:48.342+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO annual accrual days per year",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.2",
+                  "section_heading": "Part-time accrual",
+                  "text": "Part-time employees earn PTO pro rata. Take the full-time days for your service band, multiply by your scheduled weekly hours divided by 40, and round to the nearest half day. For example, a part-time employee scheduled for 24 hours a week in the 15-day band earns 9 days a year.\nIf your scheduled hours change during the year, your accrual changes from the next pay period. PTO already accrued is not recalculated. Part-time employees take PTO in the same half-day increments as everyone else, counted against their scheduled working days.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a72.2"
+            ],
+            "status": "ok",
+            "latency_ms": 49,
+            "started_at": "2026-10-19T23:00:48.392+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1007",
+              "requester_id": "E1007",
+              "session_id": "9488baf58c5649028c78b3632789e801"
+            },
+            "output": {
+              "employee_id": "E1007",
+              "name": "Sam Rivera",
+              "title": "Contract Inspector",
+              "department": "Construction Services",
+              "employment_type": "contractor",
+              "work_arrangement": "field_site",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1015",
+                "name": "Kofi Mensah"
+              },
+              "director": {
+                "id": "E1016",
+                "name": "Linda Novak"
+              },
+              "hire_date": "2026-03-02",
+              "weekly_hours": 40,
+              "work_email": "sam.rivera@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Sam Rivera, Contract Inspector, Austin; manager Kofi Mensah",
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:00:48.403+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1073,
+              "output_tokens": 208
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 1850,
+            "started_at": "2026-10-19T23:00:50.253+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "contractors not covered by HR policies",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.2",
+                  "section_heading": "Who is eligible",
+                  "text": "Full-time employees (exempt and non-exempt), part-time employees and interns earn PTO under this policy. Contractors do not earn PTO and this policy does not apply to them: their time off is set by their contract or agency, and questions go to their agency or Ridgeline contract manager (RSE-HB-01 \u00a71.2).\nEligibility is based on the Employment Type on your HR record. If your Employment Type changes during the year, for example from intern to full-time, your PTO from that date follows the rules for your new type.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "Paid time off (PTO) is time away from work, at full pay, for vacation and personal reasons. This policy explains how PTO is earned, used, requested and carried over. Sick time and other kinds of leave, such as parental, bereavement and jury duty leave, are not PTO; they are covered by the Leave of Absence Policy (RSE-LV-01).\nRidgeline wants everyone to take their PTO. Time away from project deadlines keeps people healthy and makes for better engineering, so managers are expected to encourage their teams to plan time off through the year rather than saving it all for December. Company holidays and floating holidays are separate from PTO and are covered by the Holiday Calendar & Observance policy (RSE-HOL-01).",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a71.2",
+              "RSE-PTO-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:00:50.275+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "contractor agency contract manager policies do not apply",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "1.2",
+                  "section_heading": "Who it applies to",
+                  "text": "This handbook applies to every Ridgeline employee: full-time, part-time and interns. Contractors are not employees. A contractor is bound only by the Code of Conduct (\u00a74), Health and Safety (\u00a75), Reporting Concerns (\u00a76) and the Information Security & Acceptable Use policy (RSE-SEC-01). Every other matter for a contractor, including time off, pay, benefits and working arrangements, is governed by their contract or agency. Contractors with questions about those matters should contact their agency or Ridgeline contract manager. Ridgeline's other HR policies do not apply to contractors. Managers who work with contractors should make sure the contractor knows which Ridgeline rules bind them: how to behave at work, how to stay safe on site, how to raise a concern and how to handle Ridgeline information and systems. Requests from contractors about anything else, such as taking time off or working from another location, are not decided by the contractor's Ridgeline manager under Ridgeline policy; they are settled under the contractor's own contract, through their agency or Ridgeline contract manager.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.2",
+                  "section_heading": "Who is eligible",
+                  "text": "Full-time employees (exempt and non-exempt), part-time employees and interns earn PTO under this policy. Contractors do not earn PTO and this policy does not apply to them: their time off is set by their contract or agency, and questions go to their agency or Ridgeline contract manager (RSE-HB-01 \u00a71.2).\nEligibility is based on the Employment Type on your HR record. If your Employment Type changes during the year, for example from intern to full-time, your PTO from that date follows the rules for your new type.",
+                  "score": 0.0323
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a71.2",
+              "RSE-PTO-01 \u00a71.2"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T23:00:50.290+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2556,
+              "output_tokens": 509
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4331,
+            "started_at": "2026-10-19T23:00:54.622+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:00:54.623+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 96,
+          "llm_calls": 3,
+          "llm_ms": 9177,
+          "total_ms": 9277,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

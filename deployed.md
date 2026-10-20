@@ -48,11 +48,11 @@ Names only; the values live in Render's dashboard. `.env.example` lists every on
 | `EVAL_BYPASS_KEY` (secret) | A request with the header `X-Eval-Bypass: <key>` skips the caps (latency runs, demo runner). |
 | `PORT` | Set by Render. |
 
-GitHub holds one secret, `RENDER_DEPLOY_HOOK_URL`, and two variables: `APP_URL` (read by the deploy and keep-alive jobs) and `KEEPALIVE`. CI itself uses no LLM key.
+GitHub holds one secret, `RENDER_DEPLOY_HOOK_URL`, and the variable `APP_URL` (read by the deploy and keep-alive jobs). The variable `KEEPALIVE` exists only while the keep-alive is switched on; unset means off (checked 2026-10-20: unset). CI itself uses no LLM key.
 
 ## Cold start
 
-The free service **sleeps after 15 minutes idle**. The next request wakes it, which takes **roughly 30–60 s** before the page loads (measured 2026-10-15: 43 s). The first chat after a wake can take ~20 s more, while the API prepares the strict tool schemas once; on 2026-10-15 it didn't (9.5 s), most likely because the API had already prepared the same schemas earlier that day. Measured cold and warm latencies for the Eval Set will be in `design-and-evaluation.md` (Evaluation).
+The free service **sleeps after 15 minutes idle**. The next request wakes it, which takes **roughly 30–60 s** before the page loads. Measured 2026-10-20 over 5 wakes, each after at least 20 minutes idle: **43.3–43.5 s** to the first `/health` (43 s on 2026-10-15 too). The first answer then took another **10.7–18.1 s** (p50 ≈ 16.6 s), so a visitor who reaches a sleeping instance waits about a minute for a first reply. Once awake, answers take p50 17.8 s and p95 27.2 s; the figures and their breakdown are in [design-and-evaluation.md](design-and-evaluation.md#evaluation) (Latency). The very first chat after a schema change can take ~20 s longer, while the API prepares the strict tool schemas once.
 
 **Keep-alive (opt-in):** `.github/workflows/keepalive.yml` pings `/health` every 10 minutes while the repo variable `KEEPALIVE` is `on`. It's **off by default**. Switch it on for the grading window with `gh variable set KEEPALIVE --body on`, and off afterwards with `--body off`. A ping costs no LLM tokens, but an always-awake service uses Render's monthly free instance hours, so check the allowance on the Render billing page before leaving it on for long.
 

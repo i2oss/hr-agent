@@ -11,47 +11,44 @@ How the Ridgeline HR Agent is built, why each choice was made, and how well it w
 ```mermaid
 flowchart TB
     user["Browser: chat page"]
-    llm["LLM provider: Anthropic API, Claude Sonnet 5.5 (swappable by LLM_PROVIDER)"]
+    llm["LLM: Claude Sonnet 5.5, swappable"]
 
-    subgraph render["Render free web service: one Docker container, one uvicorn worker"]
-        subgraph fastapi["FastAPI app (app/)"]
-            web["Web routes: /chat, /chat/actions, /health, /config and the page"]
-            loop["Agent loop + MCP client (app/agent/)"]
-            subgraph servers["MCP servers (mcp_servers/)"]
-                policy["policy server at /mcp/policy: 2 tools"]
-                hr["hr server at /mcp/hr: 7 tools"]
-            end
+    subgraph render["Render free service: 1 container, 1 worker"]
+        subgraph fastapi["FastAPI app: app/"]
+            web["/chat, /chat/actions, /health"]
+            loop["Agent loop + MCP client"]
+            policy["policy server, /mcp/policy"]
+            hr["hr server, /mcp/hr"]
         end
-        index[("SQLite index: Chunks, FTS5, vectors (index/)")]
-        embed["Local embedder: bge-small-en-v1.5 via fastembed (ONNX)"]
-        mock[("Mock Data JSON (mock_data/), read-only")]
-        store["Mock Action store, per session, in memory"]
+        index[("SQLite index")]
+        embed["bge-small embedder"]
+        mock[("mock_data/ JSON")]
+        store["Mock Action store"]
     end
 
-    user -- "HTTPS: JSON" --> web
-    web -- "in-process call" --> loop
-    loop -- "Streamable HTTP on localhost" --> policy
-    loop -- "Streamable HTTP on localhost" --> hr
-    loop -- "HTTPS: Messages API" --> llm
+    user -- "HTTPS" --> web
+    web -- "in-process" --> loop
+    loop -- "Streamable HTTP" --> policy
+    loop -- "Streamable HTTP" --> hr
+    loop -- "HTTPS API" --> llm
     policy -- "SQL" --> index
-    policy -- "in-process: embed the query" --> embed
-    hr -- "loaded at startup" --> mock
+    policy -- "in-process" --> embed
+    hr -- "file read" --> mock
     hr -- "in-process" --> store
 
-    subgraph build["Build and CI/CD (GitHub)"]
-        direction LR
-        corpus["corpus/: 12 Policy Documents in MD, HTML and PDF"]
-        ingest["ingest/: parse, chunk, embed (make index)"]
-        committed[("Committed index + manifest")]
-        test["GitHub Actions test job: lint, types, checks, pytest"]
-        deploy["deploy job: deploy hook, wait for /health, live smoke"]
+    subgraph build["Build and CI/CD: GitHub"]
+        corpus["corpus/: MD, HTML, PDF"]
+        ingest["ingest/: make index"]
+        committed[("Committed index")]
+        test["Actions: test job"]
+        deploy["deploy job + smoke"]
     end
 
     corpus -- "file read" --> ingest
     ingest -- "SQL" --> committed
     committed -- "git push" --> test
-    test -- "needs: test, main only" --> deploy
-    deploy -- "HTTPS: deploy hook API" --> render
+    test -- "needs: test" --> deploy
+    deploy -- "HTTPS deploy hook" --> render
 ```
 
 The diagram is the source of truth for the architecture; the video and the portfolio slide use GitHub's render of it.

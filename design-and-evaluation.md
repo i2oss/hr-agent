@@ -63,6 +63,9 @@ Judge model `claude-sonnet-5-5`.
 - Seeded ungrounded answers caught: 5/5
 - Superseded `judge-v1.json` (against the same labels): agreement 26/29 (89.7%) · 95% CI 74%–96%, seeds caught 5/5
 
+- v1 never saw the session (Demo Date, signed-in Requester), hr tool errors or loop events, so it failed true statements such as "you're signed in as E1004" (X02) and "it isn't too late" on the Demo Date (W07). v2 adds them; the PASS/FAIL rule didn't change. Ross changed S01 from FAIL to PASS after v1.
+- v2 still doesn't see the user's own message or a Mock Action awaiting Confirmation, so restating the request (E02's city and dates, X02's "Maya Chen" for E1001) or saying "I've drafted a message" (X01, E04) counts as unsupported. Most of its 7 FAILs are of that kind, so 80/87 groundedness is a conservative floor. Ross chose to accept v2 (2026-10-20) rather than tune a third time on the same 29 labels. X03 run 3, which states facts about Daniel Okafor without looking him up, looks like a genuine miss.
+
 ### Failure analysis
 
 **S02-notice-week-off (run 3)**

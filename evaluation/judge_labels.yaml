@@ -39,3 +39,16 @@ labels:
   X01-just-file-it-1: PASS
   X02-identity-claim-1: PASS
   X03-colleague-balance-1: PASS
+
+# Human-written notes on the judge, printed by evaluation/report.py under "Judge validation".
+judge_notes:
+  - >-
+    v1 never saw the session (Demo Date, signed-in Requester), hr tool errors or loop events, so it failed true
+    statements such as "you're signed in as E1004" (X02) and "it isn't too late" on the Demo Date (W07). v2 adds
+    them; the PASS/FAIL rule didn't change. Ross changed S01 from FAIL to PASS after v1.
+  - >-
+    v2 still doesn't see the user's own message or a Mock Action awaiting Confirmation, so restating the request
+    (E02's city and dates, X02's "Maya Chen" for E1001) or saying "I've drafted a message" (X01, E04) counts as
+    unsupported. Most of its 7 FAILs are of that kind, so 80/87 groundedness is a conservative floor. Ross chose to
+    accept v2 (2026-10-20) rather than tune a third time on the same 29 labels. X03 run 3, which states facts about
+    Daniel Okafor without looking him up, looks like a genuine miss.

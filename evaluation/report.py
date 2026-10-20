@@ -153,8 +153,8 @@ def judge_section(judge: dict[str, Any] | None, earlier: list[tuple[str, dict[st
     if not judge:
         return ["Not run yet: needs the baseline, Ross's labels in `evaluation/judge_labels.yaml` and "
                 "`python -m evaluation.judge --run-id baseline --seeded`."]
-    labels = ((yaml.safe_load(labels_path.read_text()) or {}).get("labels", {})
-              if labels_path.exists() else {})
+    labels_doc = (yaml.safe_load(labels_path.read_text()) or {}) if labels_path.exists() else {}
+    labels = labels_doc.get("labels", {})
 
     def lines(j: dict[str, Any]) -> tuple[str, str]:
         shared = [k for k in labels if k in j["items"]]
@@ -173,7 +173,8 @@ def judge_section(judge: dict[str, Any] | None, earlier: list[tuple[str, dict[st
     for name, j in earlier or []:
         agreement, seeds = lines(j)
         out.append(f"- Superseded `{name}` (against the same labels): agreement {agreement}, seeds caught {seeds}")
-    return out
+    notes = labels_doc.get("judge_notes") or []
+    return out + (["", *[f"- {n}" for n in notes]] if notes else [])
 
 
 def failures(items: dict[str, Any], recs: list[dict[str, Any]], baseline: str = "baseline") -> list[str]:

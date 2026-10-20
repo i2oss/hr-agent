@@ -170,3 +170,19 @@ def test_report_latency_shows_client_time_and_cold_wake():
     assert "| 1.0 s | 1.0 s | n/a | n/a | 0.3 s |" in warm_row  # older records have no client_ms
     assert "| 46.0 s | 46.9 s | 42.0 s |" in cold_row
     assert "not run yet" in empty_row
+
+
+def test_report_failure_notes_can_name_another_run(tmp_path, monkeypatch):
+    import json
+
+    from evaluation import report
+
+    rec = record({"lead": "x"}, item="R04-contractor-pto", run=2)
+    (tmp_path / "spare" / "traces").mkdir(parents=True)
+    (tmp_path / "spare" / "traces" / "R04-contractor-pto-2.json").write_text(json.dumps(rec))
+    (tmp_path / "failure_notes.yaml").write_text(
+        "- {item: R04-contractor-pto, run_id: spare, run: 2, cause: plain answer, fix: none}\n")
+    monkeypatch.setattr(report, "RESULTS", tmp_path)
+    out = "\n".join(report.failures(ITEMS, []))
+    assert "No failed items in the baseline." in out
+    assert "**R04-contractor-pto (spare, run 2)**" in out and "- Cause: plain answer" in out

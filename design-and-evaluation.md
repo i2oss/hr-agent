@@ -103,5 +103,22 @@ Not run yet: needs the baseline, Ross's labels in `evaluation/judge_labels.yaml`
 - Cause: A status check (is the enrollment window still open?). The model proposed create_mock_hr_ticket to help the Requester enrol, though the answer was simply "yes, until 2026-11-11".
 - Fix: Same prompt change: a status check gets no Mock Action, only an offer in recommendations. W07 passed tools 3/3 in the re-run.
 
+**R04-contractor-pto (spare-prompt-fix, run 1)**
+
+```
+ 2 tool           search_policy            5 passage(s)
+ 3 tool           lookup_employee_profile  Sam Rivera, Contract Inspector, Austin; manager Kofi Mensah
+ 4 tool           check_pto_balance        0.0 days available (as of 2026-11-02)
+ 6 tool           search_policy            5 passage(s)
+ 8 tool           search_policy            5 passage(s)
+10 tool           search_policy            5 passage(s)
+12 tool           get_policy_section       1 passage(s)
+14 tool           get_policy_section       1 passage(s)
+15 error                                   stopped early: 8 tool calls this turn
+17 citation_check                          4 citation(s) verified
+```
+- Cause: A contractor (Sam Rivera) asked how many PTO days they get. In all 3 spare runs (merged prompt) and all 3 vector runs (old prompt) the answer was right ("as a contractor, you don't earn PTO under Ridgeline's policy … set by your contract or agency") but came as a plain answer, with refusal left empty, where SPEC §3.11 asks for a not_covered Refusal. The baseline filled refusal in 3/3. The prompt fix didn't touch refusals and the old prompt misses it too under vector, so the model's choice of structure here is borderline, not a regression in content. Run 1 also hit the 8-call cap after four searches.
+- Fix: None (Ross's call, 2026-10-19): reported, not tuned. A fix would be a prompt line making a contractor's HR-policy question always a not_covered Refusal, followed by a re-run.
+
 
 <!-- eval:end -->

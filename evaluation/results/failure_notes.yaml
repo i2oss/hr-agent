@@ -33,3 +33,18 @@
   fix: >-
     Same prompt change: a status check gets no Mock Action, only an offer in recommendations. W07
     passed tools 3/3 in the re-run.
+
+# Not a baseline failure: seen in later runs, reported beside the baseline (run_id names the run).
+- item: R04-contractor-pto
+  run_id: spare-prompt-fix
+  run: 1
+  cause: >-
+    A contractor (Sam Rivera) asked how many PTO days they get. In all 3 spare runs (merged prompt) and
+    all 3 vector runs (old prompt) the answer was right ("as a contractor, you don't earn PTO under
+    Ridgeline's policy … set by your contract or agency") but came as a plain answer, with refusal left
+    empty, where SPEC §3.11 asks for a not_covered Refusal. The baseline filled refusal in 3/3. The prompt
+    fix didn't touch refusals and the old prompt misses it too under vector, so the model's choice of
+    structure here is borderline, not a regression in content. Run 1 also hit the 8-call cap after four searches.
+  fix: >-
+    None (Ross's call, 2026-10-19): reported, not tuned. A fix would be a prompt line making a
+    contractor's HR-policy question always a not_covered Refusal, followed by a re-run.

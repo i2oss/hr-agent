@@ -54,10 +54,12 @@ Behaviour confusion (rows expected, columns predicted):
 | | n | server p50 | server p95 | client p50 | client p95 | wake (/health) p50 | LLM p50 | tools p50 | retrieval p50 |
 |---|---|---|---|---|---|---|---|---|---|
 | warm | 29 | 17.8 s | 27.2 s | 17.0 s | 27.4 s | 53.6 s | 14.8 s | 2692 ms | 2420 ms |
-| cold | not run yet | | | | | | | | |
+| cold | 5 | 16.4 s | 17.5 s | 16.6 s | 17.9 s | 43.4 s | 12.9 s | 3122 ms | 2910 ms |
 
 - Deployed warm p95 misses the < 10 s target: 27.2 s, p50 17.8 s (29 items, one pass, server at ef45fa2, 2026-10-20). LLM time dominates (p50 14.8 s across several Sonnet 5.5 calls per question), and Render's 0.1 CPU adds query embedding to retrieval (p50 2.4 s). The local baseline's p50 was 12.9 s. Ross chose to report the miss rather than tune for it: a real fix means fewer LLM rounds per question, streaming the answer, a faster model or paid hosting, all beyond slice 7.
 - The warm pass began on a sleeping instance (its first /health took 53.6 s); that wake is excluded from the warm /chat timings because the runner calls /health before any /chat.
+- Cold: 5 first requests (S01) on 2026-10-20, each after at least 20 minutes idle, server at ef45fa2. Render's wake-up took 43.3–43.5 s (the first /health), then the first reply 10.7–18.1 s, so a visitor reaching a sleeping instance waits about 54–61 s (p50 ≈ 60 s) for a first answer. The first attempt at sample 1 came only 15 minutes after the warm pass, found the instance awake (/health 0.4 s) and was redone. This matches the 43 s wake recorded in deployed.md on 2026-10-15.
+- In cold samples 1 and 5 the model proposed draft_manager_message for S01, a general question; it stopped at Confirmation, so nothing ran. The 2026-10-16 prompt fix cut these unrequested proposals but hasn't eliminated them.
 
 ### Judge validation
 

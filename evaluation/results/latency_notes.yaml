@@ -8,3 +8,13 @@
 - >-
   The warm pass began on a sleeping instance (its first /health took 53.6 s); that wake is excluded from the
   warm /chat timings because the runner calls /health before any /chat.
+- >-
+  Cold: 5 first requests (S01) on 2026-10-20, each after at least 20 minutes idle, server at ef45fa2. Render's
+  wake-up took 43.3–43.5 s (the first /health), then the first reply 10.7–18.1 s, so a visitor reaching a
+  sleeping instance waits about 54–61 s (p50 ≈ 60 s) for a first answer. The first attempt at sample 1 came
+  only 15 minutes after the warm pass, found the instance awake (/health 0.4 s) and was redone.
+  This matches the 43 s wake recorded in deployed.md on 2026-10-15.
+- >-
+  In cold samples 1 and 5 the model proposed draft_manager_message for S01, a general question; it stopped at
+  Confirmation, so nothing ran. The 2026-10-16 prompt fix cut these unrequested proposals but hasn't
+  eliminated them.

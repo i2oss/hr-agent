@@ -39,6 +39,7 @@ flowchart TB
     hr -- "in-process" --> store
 
     subgraph build["Build and CI/CD (GitHub)"]
+        direction LR
         corpus["corpus/: 12 Policy Documents in MD, HTML and PDF"]
         ingest["ingest/: parse, chunk, embed (make index)"]
         committed[("Committed index + manifest")]

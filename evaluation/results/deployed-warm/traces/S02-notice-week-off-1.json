@@ -1,0 +1,459 @@
+{
+  "item_id": "S02-notice-week-off",
+  "run": 1,
+  "speaking_as": "E1008",
+  "session_id": "1760cfdf89654941baaf11706e23f3ff",
+  "client_ms": [
+    14609
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "For a week of vacation (more than 3 PTO days), you need at least 14 calendar days' notice before your first day off.",
+        "policy_facts": [
+          {
+            "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice before the first day off. Requests of 3 PTO days or fewer have no minimum notice.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Notice is counted from the day you submit the request to the first day off. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "A late request is not automatically declined, but your manager may decline it if the team can't cover your work."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "PTO requests of up to 10 consecutive days are approved by your manager. Longer requests go to the director.",
+            "citations": [
+              {
+                "doc_id": "RSE-APR-01",
+                "section": "2",
+                "snippet": "PTO up to 10 consecutive days | Manager"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The December 18\u201331 PTO blackout applies only to field/site-based employees. Your record shows an office-hybrid arrangement, so it doesn't apply to you.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.4",
+                "snippet": "The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Submit your request in the HR Portal at least 14 calendar days before your first day off. It helps to talk to Am\u00e9lie Roy, your manager, first if your dates are near a project deadline."
+          },
+          {
+            "text": "If you give me your exact dates, I can check them against your balance and the rules. I can also draft a message to your manager."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 229
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2977,
+            "started_at": "2026-10-20T18:24:05.081+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "vacation notice required advance request",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "6",
+                  "section_heading": "Questions",
+                  "text": "Questions about this policy go to the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.\nBefore you ask, check your balance and the status of your requests in HR Portal > Time Off; most questions about how many days you have, or whether a request has been approved, are answered there. Questions about a specific request, such as whether a particular set of dates meets the notice rule or who needs to approve it, are best raised with your manager first. Questions about how this policy applies in an unusual situation, such as a change of Employment Type during the year or PTO around a leave of absence, go to the HR Service Desk, which replies within 2 working days.",
+                  "score": 0.0305
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-PTO-01 \u00a73.3",
+              "RSE-PTO-01 \u00a76"
+            ],
+            "status": "ok",
+            "latency_ms": 1101,
+            "started_at": "2026-10-20T18:24:06.182+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request approval notice week or longer",
+              "doc_ids": [
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "2",
+                  "section_heading": "Time Off",
+                  "text": "Request | Approver\nPTO up to 10 consecutive days | Manager\nPTO over 10 consecutive days | Director\nField-role PTO in the December blackout | Director\nFloating holiday | Manager\nSick time | None (notify your manager)\nParental, bereavement, jury duty | HR (manager notified)\nUnpaid personal leave | HR\nThe rules behind these rows are in the Paid Time Off Policy (RSE-PTO-01), the Holiday Calendar & Observance policy (RSE-HOL-01) and the Leave of Absence Policy (RSE-LV-01). For example, a PTO request of 11 consecutive working days needs the director, while a request of 10 or fewer needs only the manager.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "5",
+                  "section_heading": "Benefits, Equipment and Other",
+                  "text": "Request | Approver\nHome-office stipend | Manager\nBenefits changes | None (self-service in the window); HR for exceptions",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "3",
+                  "section_heading": "Work Location and Travel",
+                  "text": "Request | Approver\nTemporary remote work, same state/province | None (tell your manager)\nTemporary remote work, other US state/province, up to 30 calendar days/year | Manager\nTemporary remote work, other US state/province, over 30 calendar days/year | HR\nWorking from another country (any length) | HR (Cross-Border Review)\nChange to remote-approved | Manager + HR\nBusiness travel | Manager\nThe rules behind these rows are in the Remote & Hybrid Work Policy (RSE-RW-01) and the Work Location, Travel & Cross-Border Work Guidelines (RSE-LOC-01). Requests to work from another country go to HR's Cross-Border Review through an HR ticket; a manager's support is welcome but is not an approval.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "1",
+                  "section_heading": "How to Read This Matrix",
+                  "text": "This matrix lists who approves each kind of request. \"Manager\" means your direct manager on the HR record. \"Director\" means your manager's director. \"HR\" means the HR Service Desk. \"VP Finance\" means the VP Finance, Tom Whitaker. Where a row says \"none\", no approval is needed, but you may still need to tell someone.\nApprovals are given in the HR Portal unless a policy says otherwise. If your approver is away, their own manager can approve in their place. An approver cannot approve their own request; it goes to the next level up. The policies listed in each row hold the full rule, and this matrix only summarises who decides.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "4",
+                  "section_heading": "Expenses",
+                  "text": "Request | Approver\nExpense claim up to $1,000 | Manager\nExpense claim $1,000.01\u2013$5,000 | Director\nExpense claim over $5,000 | VP Finance\nBusiness-class airfare | Director\nLate claim (over 60 days) | Director\nExpense approvals are by the total of the claim, not by individual item. The rules behind these rows are in the Travel & Expense Reimbursement policy (RSE-EXP-01).",
+                  "score": 0.0312
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-APR-01 \u00a72",
+              "RSE-APR-01 \u00a75",
+              "RSE-APR-01 \u00a73",
+              "RSE-APR-01 \u00a71",
+              "RSE-APR-01 \u00a74"
+            ],
+            "status": "ok",
+            "latency_ms": 1002,
+            "started_at": "2026-10-20T18:24:07.280+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2831,
+              "output_tokens": 92
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1271,
+            "started_at": "2026-10-20T18:24:08.552+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "December blackout field role PTO",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "1.1",
+                  "section_heading": "Purpose",
+                  "text": "Paid time off (PTO) is time away from work, at full pay, for vacation and personal reasons. This policy explains how PTO is earned, used, requested and carried over. Sick time and other kinds of leave, such as parental, bereavement and jury duty leave, are not PTO; they are covered by the Leave of Absence Policy (RSE-LV-01).\nRidgeline wants everyone to take their PTO. Time away from project deadlines keeps people healthy and makes for better engineering, so managers are expected to encourage their teams to plan time off through the year rather than saving it all for December. Company holidays and floating holidays are separate from PTO and are covered by the Holiday Calendar & Observance policy (RSE-HOL-01).",
+                  "score": 0.0308
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.3",
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a71.1"
+            ],
+            "status": "ok",
+            "latency_ms": 528,
+            "started_at": "2026-10-20T18:24:09.080+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4136,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1010,
+            "started_at": "2026-10-20T18:24:10.091+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1008",
+              "requester_id": "E1008",
+              "session_id": "1760cfdf89654941baaf11706e23f3ff"
+            },
+            "output": {
+              "employee_id": "E1008",
+              "name": "Chlo\u00e9 Tremblay",
+              "title": "Bridge Engineer",
+              "department": "Bridge Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "TOR",
+                "city": "Toronto",
+                "region": "ON",
+                "country": "CA",
+                "timezone": "America/Toronto"
+              },
+              "holiday_calendar": "CA",
+              "manager": {
+                "id": "E1019",
+                "name": "Am\u00e9lie Roy"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2020-05-04",
+              "weekly_hours": 40,
+              "work_email": "chloe.tremblay@ridgeline.example",
+              "work_region": "ON",
+              "work_country": "CA",
+              "employment_status": "active"
+            },
+            "summary": "Chlo\u00e9 Tremblay, Bridge Engineer, Toronto; manager Am\u00e9lie Roy",
+            "status": "ok",
+            "latency_ms": 193,
+            "started_at": "2026-10-20T18:24:10.284+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4485,
+              "output_tokens": 102
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1318,
+            "started_at": "2026-10-20T18:24:11.603+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1008",
+              "requester_id": "E1008",
+              "session_id": "1760cfdf89654941baaf11706e23f3ff"
+            },
+            "output": {
+              "employee_id": "E1008",
+              "name": "Chlo\u00e9 Tremblay",
+              "title": "Bridge Engineer",
+              "department": "Bridge Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "TOR",
+                "city": "Toronto",
+                "region": "ON",
+                "country": "CA",
+                "timezone": "America/Toronto"
+              },
+              "holiday_calendar": "CA",
+              "manager": {
+                "id": "E1019",
+                "name": "Am\u00e9lie Roy"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2020-05-04",
+              "weekly_hours": 40,
+              "work_email": "chloe.tremblay@ridgeline.example",
+              "work_region": "ON",
+              "work_country": "CA",
+              "employment_status": "active"
+            },
+            "summary": "Chlo\u00e9 Tremblay, Bridge Engineer, Toronto; manager Am\u00e9lie Roy",
+            "status": "ok",
+            "latency_ms": 177,
+            "started_at": "2026-10-20T18:24:11.780+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4834,
+              "output_tokens": 758
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4794,
+            "started_at": "2026-10-20T18:24:16.575+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T18:24:16.576+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 3001,
+          "llm_calls": 5,
+          "llm_ms": 11370,
+          "total_ms": 14473,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

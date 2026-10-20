@@ -199,3 +199,12 @@ def test_judge_evidence_includes_session_tool_errors_and_loop_events():
     assert e["hr_tool_errors"][0]["output"]["error"]["code"] == "NOT_PERMITTED"
     assert e["loop_events"] == ["stopped early: 8 tool calls this turn"] and e["hr_tool_outputs"] == []
     assert judge.evidence(record({"lead": "x"}, speaking_as=None), "2026-11-02")["session"]["requester"] == "(not set)"
+
+
+def test_report_prints_latency_notes(tmp_path, monkeypatch):
+    from evaluation import report
+
+    monkeypatch.setattr(report, "RESULTS", tmp_path)
+    assert report.latency_notes() == []
+    (tmp_path / "latency_notes.yaml").write_text("- Warm p95 misses the target.\n")
+    assert report.latency_notes() == ["- Warm p95 misses the target.", ""]

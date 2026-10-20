@@ -1,0 +1,465 @@
+{
+  "item_id": "W03-low-balance",
+  "run": 1,
+  "speaking_as": "E1004",
+  "session_id": "34f2442a05a34ff294fca9c0f161c780",
+  "client_ms": [
+    17012
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "Not as requested: Thursday 2026-11-12 and Friday 2026-11-13 would use 2 PTO days, and you have only 1.5 available.",
+        "policy_facts": [
+          {
+            "text": "Your available balance is 1.5 days (12.5 accrued, 10.0 used, 1.0 pending, 0 carried over). The Compliance Check found 2 PTO days needed and no company holidays in those dates.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              },
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "PTO can't go negative, and you can only take PTO you have already accrued. If a request is longer than your balance, you can shorten it or request unpaid personal leave for the rest.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "3.3",
+                "snippet": "Your PTO balance cannot go negative. You can only take PTO you have already accrued."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "A request of 3 PTO days or fewer has no minimum notice, so notice isn't an issue. Your manager, Ben Carter, would be the approver.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "PTO can be taken in whole or half days.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "3.1",
+                "snippet": "PTO is taken in whole or half days."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Unpaid personal leave is approved by HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-APR-01",
+                "section": "2",
+                "snippet": "Unpaid personal leave | HR"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I took \"next Thursday and Friday\" to mean Nov 12\u201313. If you meant this week (Nov 5\u20136), tell me and I'll re-check."
+          },
+          {
+            "text": "You could request 1.5 days instead, for example one full day plus a half day, which fits your balance. That request would go to Ben Carter for approval."
+          },
+          {
+            "text": "Or you could take the remaining half day as unpaid personal leave, which HR approves. Tell me if you'd like me to open an HR ticket for that."
+          },
+          {
+            "text": "If you'd rather wait until you've accrued more PTO, talk to Ben Carter about moving the dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 122,
+              "output_tokens": 387
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, check_pto_balance, search_policy",
+            "status": "ok",
+            "latency_ms": 3499,
+            "started_at": "2026-10-20T18:27:14.901+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1004",
+              "requester_id": "E1004",
+              "session_id": "34f2442a05a34ff294fca9c0f161c780"
+            },
+            "output": {
+              "employee_id": "E1004",
+              "name": "Priya Raman",
+              "title": "CAD Technician",
+              "department": "Design Technology",
+              "employment_type": "full_time_non_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2024-02-12",
+              "weekly_hours": 40,
+              "work_email": "priya.raman@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Priya Raman, CAD Technician, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 188,
+            "started_at": "2026-10-20T18:27:15.089+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1004",
+              "requester_id": "E1004",
+              "session_id": "34f2442a05a34ff294fca9c0f161c780"
+            },
+            "output": {
+              "employee_id": "E1004",
+              "accrued": 12.5,
+              "used": 10.0,
+              "pending": 1.0,
+              "carryover": 0.0,
+              "available": 1.5,
+              "as_of": "2026-11-02"
+            },
+            "summary": "1.5 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 201,
+            "started_at": "2026-10-20T18:27:15.291+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice manager approval",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.0313
+                },
+                {
+                  "doc_id": "RSE-APR-01",
+                  "title": "Approval Matrix",
+                  "section": "2",
+                  "section_heading": "Time Off",
+                  "text": "Request | Approver\nPTO up to 10 consecutive days | Manager\nPTO over 10 consecutive days | Director\nField-role PTO in the December blackout | Director\nFloating holiday | Manager\nSick time | None (notify your manager)\nParental, bereavement, jury duty | HR (manager notified)\nUnpaid personal leave | HR\nThe rules behind these rows are in the Paid Time Off Policy (RSE-PTO-01), the Holiday Calendar & Observance policy (RSE-HOL-01) and the Leave of Absence Policy (RSE-LV-01). For example, a PTO request of 11 consecutive working days needs the director, while a request of 10 or fewer needs only the manager.",
+                  "score": 0.031
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-APR-01 \u00a72"
+            ],
+            "status": "ok",
+            "latency_ms": 788,
+            "started_at": "2026-10-20T18:27:16.080+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1967,
+              "output_tokens": 372
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2903,
+            "started_at": "2026-10-20T18:27:18.983+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1004",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-12",
+                "end_date": "2026-11-13",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1004",
+              "session_id": "34f2442a05a34ff294fca9c0f161c780"
+            },
+            "output": {
+              "outcome": "not_allowed",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_non_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "2 PTO day(s); company holidays excluded: none.",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": false,
+                  "detail": "1.5 day(s) available vs 2 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "2 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "2 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 2,
+                "holidays_excluded": [],
+                "calendar": "US",
+                "available": 1.5,
+                "notice_calendar_days": 10,
+                "approver_name": "Ben Carter"
+              }
+            },
+            "summary": "not_allowed, approver manager, 2 working days",
+            "status": "ok",
+            "latency_ms": 199,
+            "started_at": "2026-10-20T18:27:19.183+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2674,
+              "output_tokens": 133
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1426,
+            "started_at": "2026-10-20T18:27:20.609+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-PTO-01",
+              "section": "3"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.1",
+                  "section_heading": "Increments",
+                  "text": "PTO is taken in whole or half days. The minimum increment is a half day (0.5 days).\nA half day is a morning or an afternoon of your normal working day. If you need a shorter absence, such as an hour for an appointment, agree it informally with your manager instead of booking PTO. When your available balance includes a half day, you can use it on its own, for example to take one full day and one half day.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.4",
+                  "section_heading": "Checking your balance",
+                  "text": "You can see your balance in HR Portal > Time Off. The balance shown is as of the last pay period, and it lists days accrued, days used, days pending approval and any days carried over from last year.\nYour available balance is days accrued plus days carried over, minus days used and days pending approval. Check it before you plan a longer break. If you think your balance is wrong, contact the HR Service Desk with the dates in question.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "4 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a73.1",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a73.3",
+              "RSE-PTO-01 \u00a73.4"
+            ],
+            "status": "ok",
+            "latency_ms": 83,
+            "started_at": "2026-10-20T18:27:20.693+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3705,
+              "output_tokens": 1083
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 7566,
+            "started_at": "2026-10-20T18:27:28.259+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "9 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T18:27:28.261+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 1459,
+          "llm_calls": 4,
+          "llm_ms": 15394,
+          "total_ms": 16860,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

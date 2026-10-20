@@ -1,0 +1,342 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 1,
+  "speaking_as": "E1005",
+  "session_id": "81bd930165c546e39a50800c58243699",
+  "client_ms": [
+    24580
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover tuition reimbursement, so I can't say whether a part-time master's degree would be reimbursed.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Ask the HR Service Desk whether Ridgeline offers any tuition or education assistance, and what the eligibility rules are, before you enroll."
+          },
+          {
+            "text": "I stopped searching early after hitting the tool limit. Several searches for tuition, education assistance and professional development returned nothing, so I'd treat this as unanswered, not as a no."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover this. I found no tuition or education reimbursement policy in the documents I searched. Please contact the HR Service Desk for an answer."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1657,
+            "started_at": "2026-10-20T18:30:14.966+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 914,
+            "started_at": "2026-10-20T18:30:15.880+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 80
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1770,
+            "started_at": "2026-10-20T18:30:17.651+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree training learning development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 1126,
+            "started_at": "2026-10-20T18:30:18.778+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 340,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1996,
+            "started_at": "2026-10-20T18:30:20.775+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reimbursable expenses education courses",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 1106,
+            "started_at": "2026-10-20T18:30:21.882+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 444,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2077,
+            "started_at": "2026-10-20T18:30:24.055+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "professional development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 833,
+            "started_at": "2026-10-20T18:30:24.888+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 540,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1406,
+            "started_at": "2026-10-20T18:30:26.295+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 1085,
+            "started_at": "2026-10-20T18:30:27.381+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 636,
+              "output_tokens": 85
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1377,
+            "started_at": "2026-10-20T18:30:28.758+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 718,
+            "started_at": "2026-10-20T18:30:29.477+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 742,
+              "output_tokens": 86
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1551,
+            "started_at": "2026-10-20T18:30:31.029+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": [
+                "RSE-EXP-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 951,
+            "started_at": "2026-10-20T18:30:31.980+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 849,
+              "output_tokens": 85
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2031,
+            "started_at": "2026-10-20T18:30:34.011+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 969,
+            "started_at": "2026-10-20T18:30:35.077+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T18:30:35.077+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1000,
+              "output_tokens": 278
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2658,
+            "started_at": "2026-10-20T18:30:37.736+00:00"
+          },
+          {
+            "n": 19,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T18:30:37.736+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 7702,
+          "llm_calls": 9,
+          "llm_ms": 16523,
+          "total_ms": 24428,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

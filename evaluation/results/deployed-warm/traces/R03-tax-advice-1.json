@@ -1,0 +1,329 @@
+{
+  "item_id": "R03-tax-advice",
+  "run": 1,
+  "speaking_as": "E1002",
+  "session_id": "0d5d1bc27cd945d0a835d0b6a124599f",
+  "client_ms": [
+    13371
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't tell you what you'd personally owe in Portuguese income tax. Ridgeline's HR review of working abroad covers tax questions like this, and six weeks in Lisbon would go over the annual cap.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline doesn't give personal tax, immigration or legal advice. HR's Cross-Border Review looks at tax, immigration, work authorization, insurance and payroll, and decides whether Ridgeline can support the request. HR does not tell you what you personally owe in tax.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "4.1",
+                "snippet": "Ridgeline does not give personal tax, immigration or legal advice"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Working from another country for your own reasons is always reviewed by HR, and your manager can't approve it alone.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.1",
+                "snippet": "is always reviewed by HR, whatever the length. Your manager cannot approve it alone."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "The annual cap is 20 working days per calendar year for working from another country. A six-week stay is around 30 working days, which is over the cap. HR would review it as an exception, and it may not be approved.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.2",
+                "snippet": "A stay of six weeks, for example, is around 30 working days and is over the cap."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You should request at least 28 calendar days before you plan to start.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "3.3",
+                "snippet": "Request work from another country at least 28 calendar days before you plan to start"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You must also notify IT Security at least 5 working days before you start working from another country.",
+            "citations": [
+              {
+                "doc_id": "RSE-SEC-01",
+                "section": "5.4",
+                "snippet": "Notify IT Security at least 5 working days before you start working from another country."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "For your personal tax position in Portugal, talk to your own tax adviser."
+          },
+          {
+            "text": "If you'd like to pursue this, I can open an HR ticket for a Cross-Border Review. Tell me your planned dates and I can include them. A shorter stay of 20 working days or fewer would fit within the cap."
+          }
+        ],
+        "refusal": {
+          "reason": "legal_tax_immigration",
+          "text": "I can't give personal tax advice, including whether you'd owe Portuguese income tax. Ridgeline's Cross-Border Review (RSE-LOC-01 \u00a74) is where HR checks the tax side of a request to work abroad. I can raise it with HR for you."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 135,
+              "output_tokens": 270
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2926,
+            "started_at": "2026-10-20T18:30:44.013+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Cross-Border Review working from another country tax",
+              "doc_ids": [
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.1",
+                  "section_heading": "What HR reviews",
+                  "text": "The Cross-Border Review is how HR checks a request to work from another country. HR looks at tax, immigration and work authorization, insurance, and payroll. Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions.\nThe review protects both you and Ridgeline: working in another country can create obligations that neither side intended. HR may approve a request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax or which visa you need.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.3",
+                  "section_heading": "Business travel vs temporary remote work",
+                  "text": "Travel to do Ridgeline work at a client, a project site or a Ridgeline office is business travel, not temporary remote work. A business trip of up to 14 calendar days needs no Cross-Border Review, even when it is to another country. Longer stays, or working from another country for your own reasons, follow \u00a73.\nFor example, a week at the Toronto office for project meetings is business travel for a Denver employee: the manager pre-approves it and no Cross-Border Review is needed. Spending several weeks working from a family home abroad is not business travel, even if you do your normal job while there.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.1",
+                  "section_heading": "Always reviewed by HR",
+                  "text": "Working from another country, other than on a short business trip (\u00a72.3), is always reviewed by HR, whatever the length. Your manager cannot approve it alone.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.3",
+                  "section_heading": "Request at least 28 calendar days ahead",
+                  "text": "Request work from another country at least 28 calendar days before you plan to start, so HR has time to complete the review.\nRequests made with less notice may still be reviewed, but HR may not be able to decide in time, and the request is more likely to be declined.",
+                  "score": 0.0317
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "3.2",
+                  "section_heading": "Annual cap",
+                  "text": "You may work from another country for up to 20 working days per calendar year. Your manager cannot approve anything over the cap; HR reviews it as an exception, and it may not be approved.\nWorking days are counted on your home office calendar, excluding weekends and your company holidays. The cap counts all working days from another country in the calendar year, across every request. A stay of six weeks, for example, is around 30 working days and is over the cap.",
+                  "score": 0.0303
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a74.1",
+              "RSE-LOC-01 \u00a72.3",
+              "RSE-LOC-01 \u00a73.1",
+              "RSE-LOC-01 \u00a73.3",
+              "RSE-LOC-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 1067,
+            "started_at": "2026-10-20T18:30:45.081+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "working from another country",
+              "doc_ids": [
+                "RSE-SEC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "5.4",
+                  "section_heading": "Working from another country",
+                  "text": "Notify IT Security at least 5 working days before you start working from another country. IT Security will check that your device and access are set up for the destination, and may issue a travel laptop for the trip. This applies in addition to the HR review in RSE-LOC-01 \u00a73.\nSome destinations have rules on encryption or on carrying certain data, and some client agreements forbid access from particular countries. IT Security checks these before you go. Don't take Client Restricted paper documents abroad, and keep your devices with you while travelling. Business trips abroad follow the same notification rule when you will work on Ridgeline systems while away.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "5.1",
+                  "section_heading": "VPN",
+                  "text": "Always connect through the Ridgeline VPN when working off-site, including at home, on project sites and when travelling.\nThe VPN protects project data on networks Ridgeline doesn't control. If the VPN won't connect, stop working with Confidential and Client Restricted data and contact IT. Don't use another person's hotspot or network to get around a VPN problem.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "5.3",
+                  "section_heading": "Printing at home",
+                  "text": "Never print Client Restricted documents at home.\nPrint other documents at home only when necessary, and shred them when you're done. Use Ridgeline offices for large-format printing of drawings.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "5.2",
+                  "section_heading": "Public Wi-Fi",
+                  "text": "Use public Wi-Fi, such as in airports, hotels and cafes, only with the VPN connected.\nPrefer your phone's hotspot to an open network where you can. Be aware of who can see your screen in public places, and avoid confidential calls where you can be overheard.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-SEC-01",
+                  "title": "Information Security & Acceptable Use",
+                  "section": "8",
+                  "section_heading": "Consequences",
+                  "text": "Breaking this policy can lead to removal of access to Ridgeline systems and to action under the HR process in the Employee Handbook (RSE-HB-01).\nFor contractors, a breach may also end their engagement under their contract. IT Security looks at what happened and why before deciding what to do; an honest mistake reported promptly is treated very differently from deliberate or repeated misuse.",
+                  "score": 0.0299
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-SEC-01 \u00a75.4",
+              "RSE-SEC-01 \u00a75.1",
+              "RSE-SEC-01 \u00a75.3",
+              "RSE-SEC-01 \u00a75.2",
+              "RSE-SEC-01 \u00a78"
+            ],
+            "status": "ok",
+            "latency_ms": 1396,
+            "started_at": "2026-10-20T18:30:46.478+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2407,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1289,
+            "started_at": "2026-10-20T18:30:47.767+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "0d5d1bc27cd945d0a835d0b6a124599f"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 115,
+            "started_at": "2026-10-20T18:30:47.883+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2741,
+              "output_tokens": 1012
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6301,
+            "started_at": "2026-10-20T18:30:54.184+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "5 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T18:30:54.185+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 2578,
+          "llm_calls": 3,
+          "llm_ms": 10516,
+          "total_ms": 13098,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

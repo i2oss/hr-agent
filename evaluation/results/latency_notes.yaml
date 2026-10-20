@@ -1,0 +1,10 @@
+# Human-written context for the latency section, printed by evaluation/report.py under the latency table.
+- >-
+  Deployed warm p95 misses the < 10 s target: 27.2 s, p50 17.8 s (29 items, one pass, server at ef45fa2,
+  2026-10-20). LLM time dominates (p50 14.8 s across several Sonnet 5.5 calls per question), and Render's
+  0.1 CPU adds query embedding to retrieval (p50 2.4 s). The local baseline's p50 was 12.9 s. Ross chose
+  to report the miss rather than tune for it: a real fix means fewer LLM rounds per question, streaming
+  the answer, a faster model or paid hosting, all beyond slice 7.
+- >-
+  The warm pass began on a sleeping instance (its first /health took 53.6 s); that wake is excluded from the
+  warm /chat timings because the runner calls /health before any /chat.

@@ -1,0 +1,856 @@
+{
+  "item_id": "W01-pto-demo",
+  "run": 3,
+  "speaking_as": "E1001",
+  "session_id": "d330650a757849958cb181f1f47cb00e",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes, Maya. Wednesday 2026-11-11 to Friday 2026-11-13 is allowed with your manager's approval. It would use 2 PTO days, because Wednesday is a company holiday.",
+        "policy_facts": [
+          {
+            "text": "The Compliance Check found 2 PTO days charged. Veterans Day (2026-11-11) is a company holiday and is excluded. You have 11.0 days available, so the request fits your balance.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              },
+              {
+                "tool": "check_pto_balance"
+              },
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Requests of 3 PTO days or fewer have no minimum notice. Only the PTO days charged count, not weekends or company holidays.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "Your manager approves your PTO. Only requests of more than 10 consecutive PTO days also need director approval. Your approver is Jordan Lee.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've drafted a message to Jordan Lee asking for approval. Please review it and press Confirm to save it. It hasn't been sent yet."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 300
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, check_pto_balance, search_policy",
+            "status": "ok",
+            "latency_ms": 2282,
+            "started_at": "2026-10-19T22:57:20.218+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T22:57:20.238+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 6,
+            "started_at": "2026-10-19T22:57:20.245+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice approval working days",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0315
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T22:57:20.261+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1262,
+              "output_tokens": 260
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2221,
+            "started_at": "2026-10-19T22:57:22.482+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-11",
+                "end_date": "2026-11-13",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "miles": null,
+                "people": null
+              },
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "2 PTO day(s); company holidays excluded: Veterans Day (2026-11-11).",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 2 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "2 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "2 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 2,
+                "holidays_excluded": [
+                  {
+                    "date": "2026-11-11",
+                    "name": "Veterans Day"
+                  }
+                ],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 9,
+                "approver_name": "Jordan Lee"
+              }
+            },
+            "summary": "allowed_with_approval, approver manager, 2 working days",
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T22:57:22.512+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2007,
+              "output_tokens": 398
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 3885,
+            "started_at": "2026-10-19T22:57:26.397+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 119,
+            "started_at": "2026-10-19T22:57:26.516+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2694,
+              "output_tokens": 569
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3809,
+            "started_at": "2026-10-19T22:57:30.325+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:57:30.326+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 70,
+          "llm_calls": 4,
+          "llm_ms": 12197,
+          "total_ms": 12390,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "57d2ba535b2e",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1012",
+            "name": "Jordan Lee",
+            "email": "jordan.lee@ridgeline.example"
+          },
+          "subject": "PTO request: Nov 11-13, 2026",
+          "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+          "citations": [
+            {
+              "doc_id": "RSE-PTO-01",
+              "section": "4.2"
+            },
+            {
+              "doc_id": "RSE-PTO-01",
+              "section": "4.3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Your PTO request message to Jordan Lee is saved as MSG-MOCK-0003. It's a mock, so nothing was actually sent.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Wait for Jordan's reply before you finalize your plans for 2026-11-11 to 2026-11-13."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 300
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, check_pto_balance, search_policy",
+            "status": "ok",
+            "latency_ms": 2282,
+            "started_at": "2026-10-19T22:57:20.218+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T22:57:20.238+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 6,
+            "started_at": "2026-10-19T22:57:20.245+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice approval working days",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.0315
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T22:57:20.261+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1262,
+              "output_tokens": 260
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 2221,
+            "started_at": "2026-10-19T22:57:22.482+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-11",
+                "end_date": "2026-11-13",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "miles": null,
+                "people": null
+              },
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "2 PTO day(s); company holidays excluded: Veterans Day (2026-11-11).",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 2 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "2 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "2 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 2,
+                "holidays_excluded": [
+                  {
+                    "date": "2026-11-11",
+                    "name": "Veterans Day"
+                  }
+                ],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 9,
+                "approver_name": "Jordan Lee"
+              }
+            },
+            "summary": "allowed_with_approval, approver manager, 2 working days",
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T22:57:22.512+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2007,
+              "output_tokens": 398
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 3885,
+            "started_at": "2026-10-19T22:57:26.397+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 119,
+            "started_at": "2026-10-19T22:57:26.516+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2694,
+              "output_tokens": 569
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3809,
+            "started_at": "2026-10-19T22:57:30.325+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:57:30.326+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "draft_manager_message",
+            "summary": "\u23f8 draft_manager_message confirmed by the user; executing",
+            "status": "confirmed",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:57:30.330+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "d330650a757849958cb181f1f47cb00e"
+            },
+            "output": {
+              "id": "MSG-MOCK-0003",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Nov 11-13, 2026",
+              "body": "Hi Jordan, I'd like to request time off from Wednesday 2026-11-11 to Friday 2026-11-13. Veterans Day (11-11) is a company holiday, so this would use 2 PTO days (11-12 and 11-13). I have 11.0 PTO days available. Please let me know if the team can cover, and I'm happy to hand off work beforehand. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                }
+              ]
+            },
+            "summary": "MSG-MOCK-0003 (mock)",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T22:57:30.351+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3664,
+              "output_tokens": 136
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1706,
+            "started_at": "2026-10-19T22:57:32.058+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:57:32.058+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 91,
+          "llm_calls": 5,
+          "llm_ms": 13903,
+          "total_ms": 14118,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "draft_manager_message",
+        "id": "MSG-MOCK-0003",
+        "mock": true,
+        "status": "confirmed"
+      }
+    }
+  ]
+}

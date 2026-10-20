@@ -1,0 +1,52 @@
+{
+  "item_id": "C02-vague-dates-field",
+  "run": 3,
+  "speaking_as": "E1003",
+  "session_id": "6f169c24447a467488e7c11cfa4f6068",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can check that once I know which dates you have in mind.",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Which dates in December do you want off (start and end date, e.g. December 14 to December 18)?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 117,
+              "output_tokens": 175
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2226,
+            "started_at": "2026-10-19T22:59:20.517+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:59:20.517+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2226,
+          "total_ms": 2226,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

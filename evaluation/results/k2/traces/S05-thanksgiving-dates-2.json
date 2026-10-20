@@ -1,0 +1,175 @@
+{
+  "item_id": "S05-thanksgiving-dates",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "c8f01719ff7a453a8b96d36f9729f5fe",
+  "responses": [
+    {
+      "answer": {
+        "lead": "For you (Austin, US calendar), Thanksgiving holidays in 2026 are Thursday, November 26 and Friday, November 27.",
+        "policy_facts": [
+          {
+            "text": "Thanksgiving Day is observed Thursday, November 26, 2026, and the Day after Thanksgiving is Friday, November 27, 2026.",
+            "citations": [
+              {
+                "doc_id": "RSE-HOL-01",
+                "section": "2",
+                "snippet": "Thanksgiving Day | Thursday, November 26, 2026"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your profile shows the Austin office and the US holiday calendar, so the US holidays apply to you.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If you plan to take extra days around the holiday, I can check a PTO request for you. Just give me the dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 125,
+              "output_tokens": 187
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): lookup_employee_profile, search_policy",
+            "status": "ok",
+            "latency_ms": 3341,
+            "started_at": "2026-10-19T22:50:26.813+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "c8f01719ff7a453a8b96d36f9729f5fe"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T22:50:26.836+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Thanksgiving holiday dates",
+              "doc_ids": [
+                "RSE-HOL-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "2",
+                  "section_heading": "US Company Holidays (Denver, Austin, Seattle)",
+                  "text": "These are the observed US company holidays. Where the holiday's actual date falls on a weekend, the actual date is shown in brackets.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nMemorial Day | Monday, May 25, 2026 | Monday, May 31, 2027\nJuneteenth | Friday, June 19, 2026 | Friday, June 18, 2027 (actual June 19)\nIndependence Day | Friday, July 3, 2026 (actual July 4) | Monday, July 5, 2027 (actual July 4)\nLabor Day | Monday, September 7, 2026 | Monday, September 6, 2027\nVeterans Day | Wednesday, November 11, 2026 | Thursday, November 11, 2027\nThanksgiving Day | Thursday, November 26, 2026 | Thursday, November 25, 2027\nDay after Thanksgiving | Friday, November 27, 2026 | Friday, November 26, 2027\nChristmas Day | Friday, December 25, 2026 | Friday, December 24, 2027 (actual December 25)\nUS offices are open on Martin Luther King Jr. Day, Presidents' Day and Columbus Day / Indigenous Peoples' Day; they are not US company holidays. Employees who want to mark them can use a floating holiday (\u00a74).",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "3",
+                  "section_heading": "Canada Company Holidays (Toronto)",
+                  "text": "These are the observed Canada company holidays for the Toronto office.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nFamily Day | Monday, February 16, 2026 | Monday, February 15, 2027\nGood Friday | Friday, April 3, 2026 | Friday, March 26, 2027\nVictoria Day | Monday, May 18, 2026 | Monday, May 24, 2027\nCanada Day | Wednesday, July 1, 2026 | Thursday, July 1, 2027\nCivic Holiday | Monday, August 3, 2026 | Monday, August 2, 2027\nLabour Day | Monday, September 7, 2026 | Monday, September 6, 2027\nThanksgiving | Monday, October 12, 2026 | Monday, October 11, 2027\nChristmas Day | Friday, December 25, 2026 | Monday, December 27, 2027 (actual December 25)\nBoxing Day | Monday, December 28, 2026 (actual December 26) | Tuesday, December 28, 2027 (actual December 26)",
+                  "score": 0.0323
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-HOL-01 \u00a72",
+              "RSE-HOL-01 \u00a73"
+            ],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T22:50:26.857+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1679,
+              "output_tokens": 323
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3541,
+            "started_at": "2026-10-19T22:50:30.399+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "2 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:50:30.399+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 43,
+          "llm_calls": 2,
+          "llm_ms": 6882,
+          "total_ms": 6927,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

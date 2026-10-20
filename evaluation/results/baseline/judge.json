@@ -1,0 +1,375 @@
+{
+  "model": "claude-sonnet-5-5",
+  "items": {
+    "C01-not-set-balance-1": {
+      "reason": "The lead says the PTO balance can't be checked until the requester is identified. The check_pto_balance error supports this: 'Speaking as' is (not set) and the tool returned MISSING_ARGUMENT. The answer has no policy facts. The clarification asks the user to choose their identity in the 'Speaking as' picker, which matches the tool's hint. The answer adds no unsupported claims.",
+      "verdict": "PASS"
+    },
+    "C01-not-set-balance-2": {
+      "reason": "The answer's lead says the assistant can't look up the PTO balance until it knows who the user is. The evidence supports this: the check_pto_balance tool returned MISSING_ARGUMENT because 'Speaking as' is (not set), and the session shows requester as not set. The answer has no policy facts. The clarification asks the user to choose who they are in the 'Speaking as' picker, which matches the tool's hint. No unsupported claims.",
+      "verdict": "PASS"
+    },
+    "C01-not-set-balance-3": {
+      "reason": "The lead says the assistant can't check the PTO balance until it knows who the user is. This matches the tool error (MISSING_ARGUMENT, requester not set) and the session showing the requester as '(not set)'. The answer states no policy facts. The recommendation and clarification to choose a name in the 'Speaking as' picker follow the tool's hint. The answer adds no unsupported rule, number, date or entitlement.",
+      "verdict": "PASS"
+    },
+    "C02-vague-dates-field-1": {
+      "reason": "The evidence is empty: no passages, tool outputs, errors, or loop events. The answer makes no policy claims (policy_facts is empty) and only asks which December dates are wanted. The lead says 'Possibly,' which is a hedge and not a factual claim or entitlement. The clarification question adds no rule, number, date, or entitlement. The example dates are illustrative, not factual claims. Nothing is unsupported or contradicted.",
+      "verdict": "PASS"
+    },
+    "C02-vague-dates-field-2": {
+      "reason": "The evidence is empty (no passages, tool outputs, errors, or loop events), so nothing in it supports or contradicts a policy claim. The answer's policy_facts list is empty. The lead, \"Possibly, but I need the exact dates to check your request,\" is a hedged statement that adds no rule, number, date or entitlement. The rest is a recommendation and a clarifying question. The example dates are only an illustration, and the promise to check the balance, holiday calendar and approver describes what the assistant will do, not a policy rule. No unsupported factual claims.",
+      "verdict": "PASS"
+    },
+    "C02-vague-dates-field-3": {
+      "reason": "The evidence is empty: no passages, tool outputs, errors, or loop events. The answer makes no policy claims (policy_facts is empty) and only asks the user for exact dates. The lead, 'Possibly, but I need the exact dates to check your request,' is a hedged statement that asserts no entitlement, number, date, or rule. The clarification question and its example dates are a request, not a factual claim. Nothing in the answer is unsupported or contradicts the evidence.",
+      "verdict": "PASS"
+    },
+    "C03-vague-location-1": {
+      "reason": "The answer only asks a clarifying question about where the user would work from. It makes no factual claims, states no policy rules, and has empty policy_facts and recommendations. With nothing asserted, there is nothing unsupported by the evidence.",
+      "verdict": "PASS"
+    },
+    "C03-vague-location-2": {
+      "reason": "The answer is a clarification request. Its lead says the assistant can check once it knows the work location, and it asks where the user would work from. It states no policy facts, rules, numbers, dates or entitlements, so no claim needs support from the empty evidence. Offering to check is not a factual claim that contradicts anything in the evidence.",
+      "verdict": "PASS"
+    },
+    "C03-vague-location-3": {
+      "reason": "The answer makes no policy claims: policy_facts is empty and the lead only says the assistant needs to know where the user would work before it can say whether it is allowed. It adds no rule, number, date, or entitlement. The rest is a clarifying question. Nothing in the answer needs support from the evidence, and the empty evidence contradicts nothing in it.",
+      "verdict": "PASS"
+    },
+    "E01-sensitive-conduct-1": {
+      "reason": "Every claim in the lead and policy facts matches the handbook passages. Section 4.1 lists accent comments and repeated belittling in meetings as prohibited, says effect matters more than intention, and says a pattern of small remarks can be as serious as a single incident. Section 6.1 supports the routes to raise a concern (manager, HR Service Desk, HR Confidential read by a small HR team, 24/7 ethics line with an anonymous option), never having to raise it with the person concerned, not needing proof, and the minimal-summary HR Confidential ticket. Section 6.2 supports confidential handling and 6.3 supports protection from retaliation for good-faith concerns. Section 6.4 supports the 2-working-day acknowledgement, HR telling you what it can about the outcome, and temporary measures such as changing meeting arrangements. The recommendations add no policy rules. The statement that the ticket is only prepared and not yet filed sits in the recommendations, not in the lead or policy facts. The tool output is labelled as a mock, so I don't treat it as a policy-fact contradiction.",
+      "verdict": "PASS"
+    },
+    "E01-sensitive-conduct-2": {
+      "reason": "Every policy fact is backed by the handbook passages: the accent and repeated-belittling examples and the effect-over-intention rule (4.1), the reporting routes, anonymous option and no-need-to-raise-with-the-person (6.1), no proof needed (6.1), non-retaliation (6.3), the 2-working-day acknowledgement and temporary measures (6.4), and confidentiality (6.2). The lead is also supported. The lead says the comments \"can count as harassment\", which is a hedged and accurate reading of 4.1. The recommendations say the ticket is prepared and not yet submitted, awaiting confirmation. The tool output shows a mock ticket with status \"open\", but the answer frames it as a draft pending Confirm. That is a recommendation and process statement, not a policy claim, and it does not contradict the evidence in a material way. The ethics line number and email match 6.1. The escalation reason is a reasonable framing, not a factual claim that needs support.",
+      "verdict": "PASS"
+    },
+    "E01-sensitive-conduct-3": {
+      "reason": "Every claim in the lead and policy facts matches the handbook passages. Section 4.1 supports the accent comments, repeated belittling in meetings and the pattern-of-remarks point. Section 6.1 supports the reporting routes, the ethics line (24/7, anonymous option), never having to raise it with the person concerned, and not needing proof. Sections 6.2 and 6.3 support confidentiality and non-retaliation. Section 6.4 supports the 2-working-day acknowledgement and the temporary measures that are not a finding. The ticket statement that nothing has been filed yet sits in the recommendations, not the lead or policy facts, and states no policy rule. It sits uneasily with the tool output showing a mock ticket with status open, but it is not graded as a policy fact. Nothing in the policy facts or lead adds an unsupported rule, number or entitlement.",
+      "verdict": "PASS"
+    },
+    "E02-domestic-over-limit-1": {
+      "reason": "The policy content is supported. The 30-day manager limit, HR review above it, weekends counting, trips adding up, the approval matrix row, and the compliance result (needs_hr_review, 40 calendar days, 27 working days, region OR, office_hybrid eligible) all match the evidence. The lead, however, states a specific city and dates: \"Portland, OR from 2027-06-01 to 2027-07-10\". The evidence contains neither the city Portland nor those dates. The tool output only shows region OR and 40 calendar days. The session shows today as 2026-11-02 and does not mention those dates. The lead therefore adds specific dates and a city that the evidence does not state.",
+      "verdict": "FAIL"
+    },
+    "E02-domestic-over-limit-2": {
+      "reason": "The answer's claims match the evidence. The policy facts match RSE-RW-01 \u00a76.3 (manager approves up to 30 calendar days per year, over 30 needs HR, days count weekends and add up across trips, payroll and tax rationale) and the RSE-APR-01 matrix row. The tool outputs support the 40 calendar days, 27 working days, region OR, the needs_hr_review outcome with HR as approver, and the eligible office_hybrid arrangement. The profile supports Seattle, WA and manager Ben Carter. The evidence never states the exact dates or the city name Portland, but they appear to come from the user's request. The dates are consistent with the computed figures: June 1 to July 10 is 40 days inclusive, and 27 working days fits once the US holidays are excluded. The recommendations are not policy claims. The suggestion that 30 days or fewer lets the manager approve is consistent with \u00a76.3.",
+      "verdict": "PASS"
+    },
+    "E02-domestic-over-limit-3": {
+      "reason": "The answer says the request is for Portland from 1 June to 10 July 2027. The evidence supports only a region of OR and 40 calendar days (27 working days). It contains no city and no dates, and the user's request text is not in the evidence, so the lead and the third policy fact add unsupported specifics. The answer also says \"I've prepared an HR ticket\", but no tool output shows a ticket or draft being created. The policy rules themselves (30-day manager limit, HR review above that, weekends counted, payroll and tax rationale, office-hybrid eligible) are supported.",
+      "verdict": "FAIL"
+    },
+    "E03-canada-benefits-1": {
+      "reason": "Every policy fact matches RSE-BEN-01 \u00a75 and \u00a76. These cover the Canada plan providing health, dental and other group benefits, the summary not describing it in detail, and plan details, claims and eligibility going to HR. They also cover HR providing the booklet and claim forms, the \u00a72 US plans (including \u00a72.3 dental) not applying to Toronto employees, and the HR Service Desk contact details. The lead and escalation reason restate the same points. The recommendations are next steps, not policy rules, so they need no further support.",
+      "verdict": "PASS"
+    },
+    "E03-canada-benefits-2": {
+      "reason": "Every factual claim matches the evidence. Section 5 supports the RSE Canada Group Plan coverage of Toronto employees, HR handling plan details and claims, HR providing the booklet and claim forms, and the US plan descriptions not applying. Section 6 supports the HR Service Desk contact details. The enrollment claim (RSE Canada Group Plan, coverage level 'employee', effective 2020-06-01) matches the lookup_benefits_status output. The lead says the summary doesn't detail the plan's dental coverage or claims, which fits the evidence. The 'drafted HR ticket' is an action or recommendation, not a policy claim. Saying 'US dental plan descriptions' is a slight specification of the \u00a72 US plan descriptions, and a US dental plan exists in \u00a72.3, so it is supported.",
+      "verdict": "PASS"
+    },
+    "E03-canada-benefits-3": {
+      "reason": "Every factual claim in the lead and policy facts is supported by the evidence. The profile shows Chlo\u00e9 is in the Toronto office, and \u00a75 says Toronto employees are covered by the RSE Canada Group Plan, which provides health, dental and other group benefits. \u00a75 also says the summary does not describe the plan in detail, that plan details and claims go to HR, that HR provides the booklet and claim forms, and that the US plan descriptions don't apply to Toronto employees. The answer's reference to 'US dental plan descriptions' is a fair application of that \u00a75 statement. \u00a76 supports the HR Service Desk contact details and the rule that the plan documents prevail over the summary. The ticket-prepared recommendation is a suggested next step, not a policy rule, so it needs no evidence support.",
+      "verdict": "PASS"
+    },
+    "E04-wants-a-human-1": {
+      "reason": "Every claim in the lead and policy facts is supported by the evidence. The HR Service Desk contact details match RSE-ONB-01 \u00a74. HR helping choose a leave type matches RSE-LV-01 \u00a71.2. Sharing medical information only with HR, and the HR Confidential option, match RSE-LV-01 \u00a77.1. The ticket HR-2026-0412 (subject, open status, HR Service Desk queue, created 2026-10-05) matches the list_hr_tickets output. The lead's claim of an open leave ticket is also supported by that tool output. The recommendations are suggested next steps and state no new policy rules. The escalation reason is an interpretation of the user's request and not a policy claim.",
+      "verdict": "PASS"
+    },
+    "E04-wants-a-human-2": {
+      "reason": "Each claim checks out against the evidence. Contacting the HR Service Desk by email or through HR Portal > Ask HR is in RSE-ONB-01 \"\"\"\"\u00a74. HR helping choose a leave type is in RSE-LV-01 \u00a71.2. Medical leave and accommodations being arranged with HR directly, with HR Confidential available, is in RSE-LV-01 \u00a77.1 and \u00a77.2. The ticket HR-2026-0412 matches the tool output: title 'Parental leave from 2026-12-07', open, HR Service Desk queue, created 2026-10-05. The lead's \"you can reach a person at the HR Service Desk\" is reasonable given the contact channels, and \"open leave ticket\" is supported. The recommendations are suggestions. The HR Confidential email address appears in RSE-HB-01 \u00a76.1. The escalation block is not a factual policy claim.",
+      "verdict": "PASS"
+    },
+    "E04-wants-a-human-3": {
+      "reason": "Most claims are supported. The HR Service Desk contact details come from RSE-ONB-01 \u00a74. HR confirming dates, pay and return date comes from RSE-LV-01 \u00a73.4. The open ticket HR-2026-0412 in the HR Service Desk queue matches the list_hr_tickets output. However, the lead says \"I've drafted a ticket asking HR to contact you about your leave case,\" and the recommendations refer to a draft awaiting Confirm. The evidence has no ticket-drafting tool output, only a listing of existing tickets, and no loop event shows a draft was prepared. The lead therefore asserts an action the evidence does not show.",
+      "verdict": "FAIL"
+    },
+    "M01-toronto-trip-1": {
+      "reason": "The policy claims match the evidence. Personal-day lodging and meals are not reimbursed, and airfare is capped at the business-only comparison fare (RSE-EXP-01 \u00a76.2, \u00a76.3). The Toronto international lodging limit of $275 before taxes, booked through Ridgeline Travel, matches \u00a74. The $90 international daily meal cap including tips matches \u00a75.1. Manager pre-approval of the trip and separate PTO requests match RSE-LOC-01 \u00a72.1 and \u00a72.4. The notice rule, manager approval for PTO up to 10 days, and 'not approved until the HR Portal shows it' match RSE-PTO-01 \u00a74.1\u20134.3. The compliance-check claims match the tool outputs: allowed with manager approval, 3 days against 11.0 available, no holidays, and Jordan Lee as approver. The 38-day notice figure puts the PTO start at Dec 10, which fits Dec 10, 11 and 14 as the three working days. The Dec 7\u20139 business dates and the Toronto destination are not in the evidence, but they appear to come from the user's request, and the answer flags the dates as an assumption. The draft message to Jordan Lee is an action claim with no tool output in the evidence, but it is presented as unsent and awaiting confirmation. It is not a policy fact, so I did not treat it as unsupported.",
+      "verdict": "PASS"
+    },
+    "M01-toronto-trip-2": {
+      "reason": "The policy facts match the cited passages. Lodging: $275 per night international, and the limit depends on where you stay. Meals: $90 per day international, covering all meals including tips. Airfare: capped at the business-only comparison fare. Vacation lodging and meals: not reimbursed. Personal days are PTO, with the trip pre-approved by the manager and the PTO requested separately. A few personal days don't turn the trip into remote work, and the home holiday calendar still applies. The compliance and balance tool outputs back the PTO details: 3 days charged, no holidays excluded, 11.0 days available, no minimum notice, and the manager (Jordan Lee) approves. The weekend not being charged follows from RSE-PTO-01 \u00a74.2. The loop event shows the assistant stopped early at the tool limit. The Dec 10-14 dates are explicitly flagged as an assumption, and they give 3 working days, which is consistent with the tool output. The evidence doesn't show the destination, so the international premise can't be checked here. It most likely comes from the user's request, so I don't treat it as an unsupported claim. The recommendations don't state unsupported rules.",
+      "verdict": "PASS"
+    },
+    "M01-toronto-trip-3": {
+      "reason": "Each policy fact matches the retrieved passages. The international lodging limit of $275 per night and the Toronto example come from RSE-EXP-01 \u00a74. The $90 daily meal cap including tips is from \u00a75.1. The airfare cap at the business-only comparison fare is from \u00a76.2. Personal-day costs and PTO are from \u00a76.3 and \u00a76.1. Manager pre-approval, separate PTO requests, the home-office holiday calendar and no remote-work conversion are from RSE-LOC-01 \u00a72.1 and \u00a72.4. The tool outputs support the compliance claims: 3 PTO days charged, 11.0 days available, no holidays excluded, manager approval by Jordan Lee, and no minimum notice. The notice figure of 38 days from today (Nov 2) is consistent with a first day off of Dec 10. The HR Portal approval statements match RSE-PTO-01 \u00a74.1. The lead follows from these facts. The trip dates and Toronto destination presumably come from the user's question, which is not in the evidence, but nothing in the answer contradicts the evidence. The claim about a drafted message sits in the recommendations, not the policy facts or lead, so it does not affect the verdict.",
+      "verdict": "PASS"
+    },
+    "M02-parental-leave-1": {
+      "reason": "Every policy fact and the lead match the retrieved passages and tool outputs. Benefits continuing on the same terms, contributions through payroll, no re-enrolment, the 401(k) 'ask HR' note, PTO accrual and the balance staying, the 10-versus-5 carryover applied automatically, 12 weeks at 100% in calendar weeks, unchanged HR record, 30 days' notice through the HR Portal, and the qualifying life event window for adding a child are all stated in RSE-LV-01, RSE-BEN-01 and RSE-PTO-01. The enrolled plans come from lookup_benefits_status. The PTO figures (10.33 available, 20.83 accrued, 10.5 used, 0 pending, 0 carryover, as of 2026-11-02) match check_pto_balance. The lead's premise that the leave spans December 31 is not in the evidence, but it appears to come from the user's own stated dates (the recommendation refers to a December 7 start), not from an invented policy rule or entitlement. The 30-day notice date and the other recommendations are suggestions, not policy claims, so they need no support.",
+      "verdict": "PASS"
+    },
+    "M02-parental-leave-2": {
+      "reason": "Every policy fact in the answer matches the retrieved passages. That covers benefits continuing with payroll contributions, no re-enrolment and the 401(k) caveat, PTO accrual and balance retention during paid leave, the 10-day versus 5-day year-end carryover applied automatically, the 30-day notice and HR Portal request, the 31-day window for adding a child, and the unchanged HR record and return to the same or a similar role. The current elections and the PTO figures (10.33 available, 20.83 accrued, 10.5 used, 0 pending, 0 carryover, as of 2026-11-02) match the tool outputs exactly. The December 7 start date is not in the evidence, but the answer frames it as a hypothetical example. Counting 30 days back from December 7 does give November 7, so it adds no unsupported policy rule or entitlement. The recommendations are suggestions only.",
+      "verdict": "PASS"
+    },
+    "M02-parental-leave-3": {
+      "reason": "Every policy fact matches the retrieved passages. Benefits continuing on the same terms and contributions continuing through payroll come from LV-01 \u00a73.5 and BEN-01 \u00a74. No re-enrolment and the 401(k) advice come from BEN-01 \u00a74. Adding a child within the qualifying life event window comes from LV-01 \u00a73.5. PTO accrual and balance retention come from PTO-01 \u00a72.5. The 10-day instead of 5-day carryover, applied automatically, comes from PTO-01 \u00a75.2. The 12 weeks at 100% pay as calendar weeks come from LV-01 \u00a73.2. The 30 days' notice and HR Portal request come from LV-01 \u00a73.4. The benefit elections (family Medical, Dental and Vision, plus 401(k) and Life) and the PTO balance (10.33 available, 20.83 accrued, 10.5 used, 0 pending, 0 carryover as of 2026-11-02) match the tool outputs exactly. The lead's claim that the leave spans December 31 rests on the user's stated dates, which aren't in the evidence. The answer's own December 7 reference suggests the user gave a start date, and 12 weeks from then does cross December 31. The policy facts state the carryover rule conditionally, so no rule or entitlement is invented. The recommendations don't state unsupported policy rules, and the date arithmetic (30 days back from Dec 7 is about Nov 7) is correct.",
+      "verdict": "PASS"
+    },
+    "M03-personal-laptop-1": {
+      "reason": "Every claim in the lead and policy facts matches the evidence. RSE-SEC-01 \u00a73.3 supports the ban on personal laptops for project files (home, office, travelling, including a quick look or short edit) and the loan device for someone without a Ridgeline laptop. RSE-EQ-01 \u00a73 supports that personal laptops are not reimbursed, that IT provides a replacement if the Ridgeline laptop isn't suitable, and that personal accessories like headphones or keyboards may be used with Ridgeline equipment. The recommendation about contacting IT for a loan or replacement is a suggested next step and is consistent with the evidence.",
+      "verdict": "PASS"
+    },
+    "M03-personal-laptop-2": {
+      "reason": "Each claim in the lead and policy facts matches the evidence. RSE-SEC-01 \u00a73.3 says never to use a personal laptop for project files at home, in the office or travelling, and that even a quick look or short edit is covered. It also says personal laptops are outside IT management so Ridgeline can't protect, track or wipe files, and that IT can supply a loan device. RSE-EQ-01 \u00a73 says personal laptops are not reimbursed, that IT should be asked for a replacement if the Ridgeline laptop is unsuitable, and that personal accessories such as headphones or a keyboard may be used with Ridgeline equipment. The lead's instruction to use the Ridgeline-issued laptop is supported by RSE-EQ-01 \u00a73. The recommendation only restates the loan device and replacement options, so it adds no unsupported rule.",
+      "verdict": "PASS"
+    },
+    "M03-personal-laptop-3": {
+      "reason": "Each claim in the lead and policy facts matches the evidence. RSE-SEC-01 \u00a73.3 says never to use a personal laptop for project files at home, in the office or travelling, including a quick look or a short edit. It also gives the reason that personal laptops are outside IT's management so Ridgeline can't protect, track or wipe the files, and says to ask IT about a loan device. RSE-EQ-01 \u00a73 says personal laptops are not reimbursed, that personal accessories like headphones or keyboards may be used, and to ask IT for a replacement if the laptop isn't suitable. The lead's instruction to use the Ridgeline-issued laptop is also in RSE-EQ-01 \u00a73. The recommendations add no unsupported policy rules.",
+      "verdict": "PASS"
+    },
+    "R01-tuition-not-covered-1": {
+      "reason": "Every factual claim is supported by the evidence. The HR Service Desk contact for HR questions matches RSE-ONB-01 \u00a74. The statement that licence renewals are reimbursed matches RSE-EXP-01 \u00a77.2. The retrieved passages contain nothing on tuition or education support, so saying the policies don't cover it is consistent with the evidence. The lead hedges with 'I can't say' and discloses the early stop, which matches the loop event 'stopped early: 8 tool calls this turn'. The recommendations add no unsupported policy rules.",
+      "verdict": "PASS"
+    },
+    "R01-tuition-not-covered-2": {
+      "reason": "The evidence has no policy passages and no tool outputs or errors. Saying the policies don't cover tuition reimbursement and that nothing was found fits that empty retrieval. The answer states no policy rule, number, date or entitlement. The HR Service Desk suggestion is a recommendation and needs no support. The list of search terms is not shown in the evidence, but it is only narration of the empty result and adds no policy claim.",
+      "verdict": "PASS"
+    },
+    "R01-tuition-not-covered-3": {
+      "reason": "The answer's claims match the evidence. The HR Service Desk contact details (RSE-ONB-01 \u00a74) and the expense policy's \"reasonable expenses necessary for your work\" and \"ask your manager or Finance before you spend\" wording (RSE-EXP-01 \u00a71) are both stated in the passages. The claim that it stopped searching early at the tool limit is supported by the loop event \"stopped early: 8 tool calls this turn\". The claim that no policy covers tuition or degree reimbursement is supported, since none of the retrieved passages mention it. The licence renewal reference is also accurate (RSE-EXP-01 \u00a77.2). One caveat is that \"policies don't cover\" is stated somewhat firmly given the early stop, but the lead discloses the early stop and frames it as \"can't say it's reimbursed\". No fabricated rules, numbers, or entitlements appear.",
+      "verdict": "PASS"
+    },
+    "R02-not-hr-1": {
+      "reason": "The answer declines an off-topic (non-HR) question. It makes no policy claims, and policy_facts is empty. The lead says only that beam sizing is an engineering question and outside HR scope, which is a scope statement and not a factual claim needing evidence. The recommendations (consult an engineer, HR topics available) are suggestions and state no policy rules. Nothing is unsupported or contradicted.",
+      "verdict": "PASS"
+    },
+    "R02-not-hr-2": {
+      "reason": "The evidence is empty (no passages, tool outputs, errors or loop events), and the answer makes no policy facts. The lead only states that sizing a steel beam is an engineering question rather than an HR one, which is a scope statement about the assistant and not a factual claim needing evidence. The recommendations (consult an engineer, offer HR help on PTO, benefits, etc.) are suggestions and not policy rules. The refusal is consistent with the request being non-HR. Nothing is unsupported or contradicted.",
+      "verdict": "PASS"
+    },
+    "R02-not-hr-3": {
+      "reason": "The answer declines an off-topic engineering question and makes no policy facts. The lead and refusal only say this is not an HR matter, which needs no evidence. The recommendations are suggestions and state no policy rules. The mention of HR topics it can help with (PTO, benefits, remote work, expenses) describes scope rather than asserting an entitlement or rule. No unsupported claims, so it is grounded.",
+      "verdict": "PASS"
+    },
+    "R03-tax-advice-1": {
+      "reason": "Every factual claim in the lead and policy_facts matches the evidence. Section 4.1 supports the no-personal-tax-advice statement and the list of what the Cross-Border Review covers. Section 3.1 supports the point that HR always reviews working from abroad and the manager can't approve it alone. Section 3.2 supports the 20-working-day cap, the six weeks being about 30 working days and over the cap, and HR reviewing over-cap requests as exceptions that may not be approved. Section 3.3 supports the 28-day notice. Sections 4.2 and 4.3 support the remote_work ticket contents and the 10-working-day decision timeline. The recommendations (ask a tax adviser, offer to open a ticket, don't book non-refundable travel) are consistent with the evidence, and the travel advice appears in 4.3. The refusal text also stays within the evidence. The 'six weeks in Lisbon' and 'Portugal' details come from the user's question, not from invented policy.",
+      "verdict": "PASS"
+    },
+    "R03-tax-advice-2": {
+      "reason": "Every policy fact is backed by RSE-LOC-01: no personal tax advice (\u00a74.1), HR always reviews work from another country and a manager cannot approve it alone (\u00a73.1), the 20-working-day cap with six weeks being about 30 days and over it, and HR reviewing over-cap requests as exceptions that may be declined (\u00a73.2), and the 28-day advance notice (\u00a73.3). The work location of Austin, TX, US matches the employee profile. The lead is also supported, since a six-week stay abroad needs HR review. The refusal text's claim that HR reviews tax, immigration and payroll matches \u00a74.1. The recommendations are suggested next steps, not policy rules, so they need no support. The 'ticket I've prepared' wording appears only in recommendations and refusal text, not in the lead or policy facts.",
+      "verdict": "PASS"
+    },
+    "R03-tax-advice-3": {
+      "reason": "The lead and every policy fact are supported by RSE-LOC-01. \u00a74.1 says Ridgeline gives no personal tax, immigration or legal advice, that HR does not tell employees what they owe in tax, and that the Cross-Border Review is how HR checks a request to work from another country. \u00a72.3 says several weeks working abroad for your own reasons is not business travel, that business trips of up to 14 calendar days need no review, and that longer stays follow \u00a73. \u00a73.3 gives the 28-calendar-day notice, and \u00a74.2 gives the remote_work ticket steps and telling the manager. The refusal text matches \u00a74. The recommendation that a ticket has been prepared has no tool output behind it, but recommendations need no support unless they state a policy rule, and this one does not.",
+      "verdict": "PASS"
+    },
+    "R04-contractor-pto-1": {
+      "reason": "Every claim in the answer is supported by the evidence. The lead says the HR record lists Sam as a contractor, and the profile shows employment_type 'contractor'. Contractors not earning PTO and time off being set by contract or agency matches RSE-PTO-01 \u00a71.2. 'Other HR policies do not apply to contractors' matches RSE-HB-01 \u00a71.2. The balance of 0 accrued and 0 available as of 2026-11-02 matches the check_pto_balance output. The recommendations to contact the agency, the contract manager or the HR Service Desk are consistent with the evidence (RSE-HB-01 \u00a72.2 mentions the HR Service Desk for a wrongly recorded type). The refusal text restates the same supported points without adding any rule or number.",
+      "verdict": "PASS"
+    },
+    "R04-contractor-pto-2": {
+      "reason": "Every factual claim in the answer is supported by the evidence. The lead and first policy fact match RSE-PTO-01 \\u00a71.2: contractors do not earn PTO, the policy does not apply to them, and their time off is set by their contract or agency. The second fact matches RSE-HB-01 \\u00a71.2: other HR policies do not apply to contractors, and time off, pay, benefits and working arrangements are governed by the contract or agency. The third fact is backed by the profile tool (employment_type contractor) and the PTO balance tool (available 0.0, accrued 0.0). The recommendations (ask the agency or contract manager; contact the HR Service Desk if the type is recorded wrongly) are consistent with the evidence, and the HR Service Desk point comes from RSE-HB-01 \\u00a72.2. The refusal text adds no unsupported rule.",
+      "verdict": "PASS"
+    },
+    "R04-contractor-pto-3": {
+      "reason": "Every factual claim in the answer is supported by the evidence. The profile shows employment_type 'contractor', and PTO policy 1.2 states contractors do not earn PTO, the policy does not apply to them, and their time off is set by their contract or agency. Handbook 1.2 says Ridgeline's other HR policies do not apply to contractors and that contractors should contact their agency or Ridgeline contract manager. The balance claim (0 accrued, 0 available as of 2026-11-02) matches the check_pto_balance output. The recommendation and the refusal text restate the same supported points and add no new rules, numbers or entitlements.",
+      "verdict": "PASS"
+    },
+    "S01-carryover-cap-1": {
+      "reason": "Every claim in the lead and policy facts is supported. The 5-day carryover cap, forfeiture on December 31 and no payout come from RSE-PTO-01 \u00a75.1. The 10-day cap for approved leave spanning December 31, such as parental leave, applied automatically, comes from \u00a75.2. The balance figures (11.0 available, 0.0 pending, 2.0 carryover, as of 2026-11-02) match the check_pto_balance output. The lead's statement that the assistant stopped early at the tool limit is backed by the loop event \"stopped early: 8 tool calls this turn\". The recommendation about roughly 6 days (11 minus 5) is the assistant's own arithmetic, labelled as such, and is not a policy rule.",
+      "verdict": "PASS"
+    },
+    "S01-carryover-cap-2": {
+      "reason": "The lead and policy facts match the evidence. Section 5.1 supports the 5-day carryover cap, forfeiture of days above it on December 31, and no payout. Section 5.2 supports the 10-day cap for approved leave in progress on December 31 and its automatic application. The balance claim matches the check_pto_balance output: 11.0 available, 16.67 accrued, 2.0 carryover, 7.67 used, 0.0 pending, as of 2026-11-02. 16.67 + 2.0 - 7.67 = 11.0, so the arithmetic holds. The recommendation that about 6 of 11 days would be forfeited is arithmetic from the evidence and is not a policy rule. The manager name Jordan Lee comes from the profile. No unsupported claims.",
+      "verdict": "PASS"
+    },
+    "S01-carryover-cap-3": {
+      "reason": "Every factual claim in the lead and policy facts matches the evidence. Section 5.1 supports the 5-day cap, the December 31 forfeiture and the no-payout rule. Section 5.2 supports the 10-day cap for approved leave spanning December 31, the parental leave example and the automatic application when the leave is recorded in the HR Portal. The check_pto_balance output supports the balance claims: 11.0 available, 2.0 carryover, 0 pending, as of 2026-11-02. The recommendations are suggestions, and the HR Portal autumn expected-carryover note is stated in section 5.1.",
+      "verdict": "PASS"
+    },
+    "S02-notice-week-off-1": {
+      "reason": "Every claim in the lead and policy facts is supported by the evidence. The 14-day notice rule for requests over 3 PTO days, the notice counting, and the manager's discretion to decline late requests all come from RSE-PTO-01 \u00a74.2. The manager and director approval thresholds come from \u00a74.3. The profile shows office_hybrid, and \u00a74.4 says the December blackout does not apply to office-hybrid employees. The 'about 5 PTO days' for a week is a hedged assumption. The recommendation's date arithmetic is correct: 2026-11-02 is a Monday and 14 days later is 2026-11-16.",
+      "verdict": "PASS"
+    },
+    "S02-notice-week-off-2": {
+      "reason": "Every claim in the lead and policy facts matches the evidence. PTO-01 4.2 supports the 14-calendar-day notice for more than 3 PTO days, no minimum for 3 or fewer, notice counted from the submission day to the first day off, and the manager's discretion to decline late requests. PTO-01 4.3 and APR-01 2 support manager approval, with director approval needed only above 10 consecutive days. The inference that a one-week request needs only the manager follows from that rule, since a week is about 5 PTO days. The recommendations are suggestions and do not state unsupported rules.",
+      "verdict": "PASS"
+    },
+    "S02-notice-week-off-3": {
+      "reason": "The lead and all four policy facts are supported. The 14-day notice for requests over 3 PTO days, counted from submission, matches RSE-PTO-01 \u00a74.2. The late-request rule matches \u00a74.2. 'Not approved until the portal shows it' matches \u00a74.1. The manager-approves-up-to-10-days rule matches RSE-APR-01 \u00a72, and the profile output names Am\u00e9lie Roy as the manager. The recommendations state no policy rules. The line about a drafted heads-up to the manager is an action claim with no supporting tool output, but recommendations are outside the grounding check, so it does not change the verdict.",
+      "verdict": "PASS"
+    },
+    "S03-anchor-days-1": {
+      "reason": "Every claim in the answer is supported by the evidence. The anchor days (Tue/Wed/Thu), the remote days (Mon/Fri), the tell-your-manager rule, the occasional-vs-regular distinction and the core hours of 10:00\\u201315:00 local time all match RSE-RW-01 sections 2.1 and 5.1. The profile tool output shows work_arrangement office_hybrid and office Austin (AUS). The manager's name, Rafael G\\u00f3mez, appears in the profile and appears only in a recommendation. Nothing is added or contradicted.",
+      "verdict": "PASS"
+    },
+    "S03-anchor-days-2": {
+      "reason": "Each claim in the answer is supported by the evidence. The anchor days (Tue/Wed/Thu), remote Monday and Friday, the occasional versus regular anchor-day rule, and telling the manager all match RSE-RW-01 \u00a72.1. The HR record claim (office_hybrid, Austin TX) matches the lookup_employee_profile output. The statement about stopping early at the tool limit matches the loop event \"stopped early: 8 tool calls this turn\". The recommendation names manager Rafael G\u00f3mez, which the profile confirms. The answer adds no unsupported rules, numbers or entitlements.",
+      "verdict": "PASS"
+    },
+    "S03-anchor-days-3": {
+      "reason": "Every claim in the answer's lead and policy facts is supported by the evidence. The lead (office-hybrid, Tue/Wed/Thu in the home office, Mon/Fri remote) matches RSE-RW-01 \u00a72.1 and the profile showing work_arrangement office_hybrid. The HR record fact (office_hybrid, Austin AUS office) matches the profile output. The anchor-day guidance (tell your manager, occasional WFH is fine, regularly missing is not) matches \u00a72.1. The recommendation naming manager Rafael G\u00f3mez matches the profile, and it is a suggestion rather than a policy rule.",
+      "verdict": "PASS"
+    },
+    "S04-stipend-remote-1": {
+      "reason": "Every claim in the lead and policy facts matches the evidence. The $500 one-time stipend, the items it covers, the 'not repeated each year' and 'yours to keep' points, and the difference payable to a former office-hybrid employee all come from RSE-EQ-01 2.1. The $50 per month internet claim comes from 2.4. The office-hybrid comparison ($250 one-time, no internet costs) comes from 2.2 and 2.4. The recommendation is an offer of next steps and states no policy rule.",
+      "verdict": "PASS"
+    },
+    "S04-stipend-remote-2": {
+      "reason": "Every factual claim in the lead and policy_facts matches RSE-EQ-01. The one-time $500 stipend and its covered items come from 2.1. The difference payment for former office-hybrid employees and keeping the items come from 2.1. The $50 monthly internet allowance comes from 2.4. The 90-day claim window with receipts, manager approval, and the eligibility start date come from 2.5. Monthly internet claims with the bill attached come from 2.5. The ineligible groups come from 2.3. The recommendations are next steps, and the 90-day mention restates the policy. The \"Speaking as\" picker suggestion is consistent with the session showing no requester set, and it states no policy rule.",
+      "verdict": "PASS"
+    },
+    "S04-stipend-remote-3": {
+      "reason": "Each claim in the lead and policy facts matches the evidence. RSE-EQ-01 \u00a72.1 supports the one-time $500 stipend, the items covered, that it is not repeated, that items are kept, and the difference-claim rule. \u00a72.4 supports $50 per month for internet. \u00a72.5 supports the expense claim with receipts within 90 days, and the monthly internet claim with the bill attached. RSE-APR-01 \u00a75 supports manager approval. \u00a72.3 supports the ineligible groups. The recommendation about the \"Speaking as\" picker is a next step, not a policy rule, and is consistent with the requester being not set.",
+      "verdict": "PASS"
+    },
+    "S05-thanksgiving-dates-1": {
+      "reason": "The profile shows Daniel is in Austin, US, with holiday calendar US. RSE-HOL-01 \u00a72 lists Thanksgiving Day as Thursday, November 26, 2026 and the day after Thanksgiving as Friday, November 27, 2026, matching the lead and the first two policy facts. The PTO fact quotes \u00a71.3 accurately. The recommendation is an offer of help, not a policy rule. All claims are supported.",
+      "verdict": "PASS"
+    },
+    "S05-thanksgiving-dates-2": {
+      "reason": "The profile shows Daniel is in Austin with the US holiday calendar. Section 2 of RSE-HOL-01 lists Thanksgiving Day as Thursday, November 26, 2026 and the Day after Thanksgiving as Friday, November 27, 2026, and Austin is named among the US offices. Section 1.3 states that a company holiday inside PTO dates is not deducted from PTO. The recommendation offers to check his PTO balance and draft a note to his manager, Rafael G\u00f3mez, which matches the profile. It is a suggested next step, not a policy claim. Every factual claim is supported.",
+      "verdict": "PASS"
+    },
+    "S05-thanksgiving-dates-3": {
+      "reason": "Each factual claim in the answer matches the evidence. The profile shows Daniel in Austin, US, with the US holiday calendar. Section 2 of RSE-HOL-01 lists Thanksgiving as Thursday, November 26, 2026 and the Day after Thanksgiving as Friday, November 27, 2026. Austin is among the US offices named in that section. The PTO rule in section 1.3 is quoted accurately. The offer to check dates against his balance is a recommendation, not a policy claim. \"This year\" is consistent with today's date of 2026-11-02.",
+      "verdict": "PASS"
+    },
+    "W01-pto-demo-1": {
+      "reason": "Every factual claim matches the evidence. Maya is a Denver employee on the US calendar, and Nov 11, 2026 is Veterans Day, a US company holiday. The compliance check shows 2 PTO days charged with Veterans Day excluded, and the balance is 11.0 available. Notice is 9 calendar days, and the 3-days-or-fewer rule means there is no minimum notice. The manager (Jordan Lee) approves, and director approval applies only above 10 consecutive days. PTO is not approved until the HR Portal shows it as approved, which is stated in 4.1. The recommendations about the draft message are supported by the draft_manager_message output. The 'Confirm to save' and 'not sent yet' wording is a suggested next step and consistent with the mock draft.",
+      "verdict": "PASS"
+    },
+    "W01-pto-demo-2": {
+      "reason": "Each claim in the lead and policy facts is supported by the evidence. Veterans Day on Wed Nov 11, 2026 is a US company holiday, Maya is a Denver employee on the US calendar, and the compliance tool computed 2 PTO days with Veterans Day excluded. The balance of 11.0 days available is in the tool output. The no-minimum-notice rule for requests of 3 days or fewer is in RSE-PTO-01 \u00a74.2. The manager approves, the director is needed only above 10 consecutive days, and Jordan Lee is the named manager, per \u00a74.3 and the tool output. The statement that PTO is not approved until the HR Portal shows it as approved comes from \u00a74.1. The recommendations about the drafted message (the tool output shows it is a mock draft) and submitting in the HR Portal are suggestions and consistent with \u00a74.1. Nothing in the answer adds an unsupported rule.",
+      "verdict": "PASS"
+    },
+    "W01-pto-demo-3": {
+      "reason": "Every factual claim in the lead and policy facts is supported by the evidence. Maya is a Denver employee on the US calendar, and Veterans Day (Nov 11, 2026) is a US company holiday. The compliance check counted 2 PTO days (Nov 12 and 13). The balance of 11.0 days available covers the 2 requested. Requests of 3 days or fewer have no minimum notice (RSE-PTO-01 4.2). The manager, Jordan Lee, approves, and the director is needed only above 10 consecutive days (4.3). PTO is submitted in the HR Portal and is not approved until the portal shows it as approved (4.1). The recommendations are a drafted message that has not been sent and a suggestion to submit before Nov 11. They do not state any unsupported policy rule.",
+      "verdict": "PASS"
+    },
+    "W02-remote-demo-1": {
+      "reason": "Every factual claim in the lead and policy facts is supported by the evidence. HR review and the manager's inability to approve match RSE-LOC-01 3.1. The 20-working-day cap, the 30 working days and the HR exception that may not be approved match RSE-LOC-01 3.2 and the compliance check. The 28-day notice rule and the 63 days given match 3.3 and the compliance output. The separate HR and IT Security steps and the VPN requirement match 3.4. The Cross-Border Review ticket route and the point that manager support is not approval match RSE-APR-01 section 3. The recommendations (shorten the stay, notify IT Security) are not unsupported rules, and the ticket details match the tool output. The dates 2027-01-04 to 2027-02-14 and the Lisbon destination come from the ticket output.",
+      "verdict": "PASS"
+    },
+    "W02-remote-demo-2": {
+      "reason": "Every policy fact and the lead match the evidence. The evidence supports each of these points: HR always reviews work from another country and a manager can't approve it alone (LOC-01 3.1, RW-01 6.4); the 20-working-day cap, with 30 working days over 42 calendar days, handled as an HR exception that may not be approved (3.2 and the compliance computed values); the 28-day notice, met with 63 days (3.3); HR approval and IT Security checks as separate steps, with VPN at all times (3.4); and the Cross-Border Review ticket route (APR-01 3). The escalation reason matches the needs_hr_review outcome. The recommendations state no unsupported policy rules. The line that nothing is submitted until the user confirms is a process remark, not a policy claim, so it needs no support.",
+      "verdict": "PASS"
+    },
+    "W02-remote-demo-3": {
+      "reason": "Every factual claim matches the evidence. HR review is always required and the manager can't approve alone (LOC-01 \u00a73.1). The cap is 20 working days, over-cap stays go to HR as an exception that may not be approved, and six weeks is about 30 working days (\u00a73.2). The compliance tool output gives needs_hr_review, HR as approver, 42 calendar days, 30 working days, an eligible hybrid arrangement and 63 days' notice against the 28-day minimum (\u00a73.3). The ticket gives the Lisbon dates of 2027-01-04 to 2027-02-14. APR-01 \u00a73 supports routing through an HR ticket and the point that manager support is not an approval. LOC-01 \u00a73.4 supports the separate IT Security step and the VPN rule. The recommendations are suggestions and add no unsupported rules. Calling the ticket one it has 'prepared' is consistent with the open mock ticket.",
+      "verdict": "PASS"
+    },
+    "W03-low-balance-1": {
+      "reason": "Every claim in the lead and policy facts is supported by the evidence. The balance (1.5 available vs 2 requested), the 2 PTO days with no holidays excluded, the no-negative-balance rule and the reduce-or-unpaid-leave option all match the tool outputs and RSE-PTO-01 \u00a73.3. The no-minimum-notice rule for requests of 3 days or fewer, Ben Carter as manager approver, and the HR approval and use-PTO-first rules for unpaid leave are likewise supported. The specific dates (Thu 2026-11-12 and Fri 2026-11-13) are not stated outright, but they follow from today being 2026-11-02, the computed 10 days' notice and 2 working days. The mention of a draft message to Ben Carter sits in the recommendations, which need no support, so it does not affect the verdict.",
+      "verdict": "PASS"
+    },
+    "W03-low-balance-2": {
+      "reason": "The answer's claims match the evidence. The balance figures (12.5 accrued, 10.0 used, 1.0 pending, 1.5 available) and the 2 PTO days with no holidays excluded match the tool outputs. The failed PTO-BALANCE check, the no-negative-balance rule and the reduce-or-unpaid-leave option match RSE-PTO-01 \u00a73.3. HR approval of unpaid leave and the use-PTO-first rule match RSE-LV-01 \u00a76. The no-notice rule for 3 days or fewer and the manager approving (Ben Carter) match \u00a74.2, \u00a74.3 and the tool output. The Nov 12 start date is consistent with today (2026-11-02) plus the 10-day notice figure, and Nov 12, 2026 is a Thursday. The Nov 13 end date is not stated in the evidence, but it follows from 2 consecutive working days and is likely the user's requested dates. The recommendations, including the draft message and the half-day option, are suggested next steps and don't need support.",
+      "verdict": "PASS"
+    },
+    "W03-low-balance-3": {
+      "reason": "Every factual claim matches the evidence. The balance figures are correct: 12.5 accrued, 10.0 used and 1.0 pending give 1.5 available. The compliance check shows 2 PTO days, no holidays excluded, a failed balance check and a not_allowed outcome. The cited policy statements match RSE-PTO-01 \\u00a73.3, \\u00a74.2 and \\u00a74.3, and the approver is Ben Carter, the manager. The dates are consistent with the computed 10-day notice from 2026-11-02, and 2026-11-12 is a Thursday. The recommendations are suggestions only and add no unsupported rules.",
+      "verdict": "PASS"
+    },
+    "W04-field-blackout-1": {
+      "reason": "Every policy fact and the lead match the evidence. Section 4.4 says field/site employees need a director's exception for PTO from Dec 18 to Dec 31. The compliance tool failed PTO-BLACKOUT, returned 'allowed_with_approval', and named Linda Novak as director approver. The tool also shows 4 working days with no holidays excluded, 9.17 days available against 4 requested, and 49 days' notice against the 14 required for requests over 3 days. The Approval Matrix row for field-role PTO in the December blackout needing the director is quoted accurately. The dates Dec 21\u201324 are not stated in the evidence but are consistent with it: 49 days from Nov 2 is Dec 21, and Dec 21\u201324, 2026 is Monday to Thursday, which gives 4 working days. 'Anyone who needs PTO in that window' is slightly broad wording, but the surrounding context is field/site employees. The recommendations state no unsupported policy rules, and the manager name Kofi Mensah matches the profile.",
+      "verdict": "PASS"
+    },
+    "W04-field-blackout-2": {
+      "reason": "Every claim in the lead and policy facts is supported by the evidence. The blackout rule (Dec 18\u201331, director's exception) matches RSE-PTO-01 \u00a74.4. The compliance check shows 4 PTO days, no holidays excluded, 9.17 days available, 49 days' notice against the 14 required, and Linda Novak as director. The Approval Matrix row matches RSE-APR-01 \u00a72, and the 'not approved until the HR Portal shows it' line matches \u00a74.1. The Dec 21\u201324 dates are consistent with the evidence: today is Nov 2, 49 days' notice puts the first day at Dec 21, and 4 working days ends Dec 24. The drafted-message line is a recommendation and states no policy rule, so it needs no support.",
+      "verdict": "PASS"
+    },
+    "W04-field-blackout-3": {
+      "reason": "The lead and all four policy facts match the evidence. RSE-PTO-01 \u00a74.4 and the compliance check show the field/site December blackout (Dec 18\u201331) needs a director's exception, and the profile shows Luis is field_site with director Linda Novak. The Approval Matrix row 'Field-role PTO in the December blackout | Director' is quoted accurately. The compliance output gives 4 PTO days, no holidays excluded, 9.17 days available, and 49 days' notice against the 14-day requirement for requests over 3 days. The Dec 21\u201324 dates are consistent with those 4 days and 49 days' notice from Nov 2. The recommendations are not policy claims, so the unevidenced 'drafted a message' statement falls outside the grounding check.",
+      "verdict": "PASS"
+    },
+    "W05-director-checks-report-1": {
+      "reason": "Every claim in the answer matches the evidence. Maya's balance figures match check_pto_balance (16.67 accrued, 7.67 used, 2.0 carryover, 0 pending, 11.0 available, as of 2026-11-02). The compliance check shows 11 PTO days on the US calendar with no holidays excluded, and the balance rule passes. Notice is 28 days against a 14-day requirement, and today (2026-11-02) plus 28 days is Nov 30. RSE-PTO-01 \u00a74.3 and RSE-APR-01 require director approval for more than 10 consecutive days. The tool names the approver as Marcus Reed, who is Maya's director in her profile, and her manager is Jordan Lee. The recommendations are consistent with policy \u00a73.3 and \u00a74.3, so nothing is unsupported or contradicted.",
+      "verdict": "PASS"
+    },
+    "W05-director-checks-report-2": {
+      "reason": "Every factual claim matches the evidence. The balance check shows 11.0 days available. The compliance check shows 11 working days, no holidays excluded, 28 days of notice against the 14 required, and director approval needed for more than 10 consecutive days. The profiles confirm Maya's manager is Jordan Lee, her director is Marcus Reed (the requester), and she is office-hybrid, so the field-role blackout (RSE-PTO-01 \u00a74.4, Dec 18-31) doesn't apply. The Nov 30 to Dec 14 dates are consistent with the evidence: 28 days of notice from Nov 2 gives Nov 30, and Nov 30 to Dec 14 is 11 working days with no US holidays inside. The statement that the assistant stopped early is supported by the loop event, and the remaining items are recommendations.",
+      "verdict": "PASS"
+    },
+    "W05-director-checks-report-3": {
+      "reason": "The lead and policy facts match the evidence. Maya has 11.0 days available (check_pto_balance) against 11 requested PTO days, with no holidays excluded and 28 days' notice. The 11 days exceed 10 consecutive days, so the director approves (RSE-PTO-01 \u00a74.3, RSE-APR-01 \u00a72), and the compliance tool names Marcus Reed as approver. The profile shows manager Jordan Lee and director Marcus Reed. The Nov 30 to Dec 14 range is not stated outright, but it fits the 28-day notice from today (Nov 2) and the 11 working days. The claim about a mistaken draft message card to Helen Park has no support in the evidence, but it sits in the recommendations and states no policy rule, so it does not fail the answer.",
+      "verdict": "PASS"
+    },
+    "W06-expense-compliance-1": {
+      "reason": "Every factual claim in the lead and policy facts is supported by the evidence. PPE: RSE-EXP-01 \u00a77.1 gives $300 per year for field/site employees, and the profile shows field_site. The compliance check shows $180 reimbursable in full with manager approval, which matches the \"manager approval\" outcome. Meals: the $75 domestic daily cap, the $120 dinner, $75 reimbursable and $45 not all match \u00a75.1 and the tool output. The \"assumed only meal that day\" caveat is stated openly. Receipts: \u00a78.1 supports the $25 threshold and the card-statement rule. Approver: \u00a78.4 says the manager approves claims up to $1,000, and the profile names Kofi Mensah as manager. One minor point is that the answer says \"calendar year\", which \u00a77.1 also states. The recommendation that a drafted message is awaiting Confirm is a next step, not a policy claim, so it needs no support. The boots/site-standard advice matches \u00a77.1.",
+      "verdict": "PASS"
+    },
+    "W06-expense-compliance-2": {
+      "reason": "The lead and every policy fact match the evidence. The PPE limit of $300 per calendar year for field/site staff is in RSE-EXP-01 \u00a77.1, and Luis is field_site. The compliance check shows $180 of PPE reimbursable with manager approval. The domestic meal cap of $75/day, the single-dinner example, and the $75 reimbursable / $45 not reimbursable result all come from \u00a75.1 and the second compliance check. The receipt rule (\u00a78.1), the 30-day submission window (\u00a78.2) and manager approval up to $1,000 (\u00a78.4) are all stated. Kofi Mensah is Luis's manager per the profile. The draft-message statement is in the recommendations, not a policy fact, and states no policy rule, so it does not affect grounding.",
+      "verdict": "PASS"
+    },
+    "W06-expense-compliance-3": {
+      "reason": "Every claim in the lead and policy facts is supported by the evidence. PPE for field/site employees is capped at $300 per calendar year (RSE-EXP-01 \u00a77.1), and the profile shows Luis is field_site. The compliance check shows $180 reimbursable. Domestic meals are capped at $75 per day with the excess not reimbursed (\u00a75.1), and the check shows $75 of $120 reimbursable and $45 not. Receipts are required for items of $25 or more (\u00a78.1). The manager approves claims up to $1,000 and may approve part of a claim (\u00a78.4). Kofi Mensah is confirmed as manager in the profile. The recommendations (review the drafted message, attach receipts, check the boots meet the site standard) are suggestions rather than policy rules, and the safety-standard point matches \u00a77.1.",
+      "verdict": "PASS"
+    },
+    "W07-benefits-enrollment-1": {
+      "reason": "Each claim is supported by the evidence. The lead says the window runs through 2026-11-11, and the tool output and the \u00a73.1 example (hired Oct 12, window to Nov 11) both show that. Today is 2026-11-02, so the window is still open and 'not too late' follows. The Medical PPO election is pending, and the Dental, Vision and 401(k) elections are pending while Life is enrolled; all match the tool output. The stop-early statement is backed by the loop event 'stopped early: 8 tool calls this turn'. The hire date of 2026-10-12 comes from the profile. The \u00a73.1 30-day rule, the \u00a71.2 back-dating and no-coverage-until-enrol rules, the \u00a73.2 rules (HR cannot extend the window, next enrolment at open enrollment unless a qualifying life event, possible gap in coverage) and the advice to enrol now and change at open enrollment are all in the passages. The recommendations contain no unsupported policy rule. The 'effective date 2026-11-01' is also in the tool output.",
+      "verdict": "PASS"
+    },
+    "W07-benefits-enrollment-2": {
+      "reason": "Every factual claim in the lead and policy facts is supported by the evidence. Today is 2026-11-02 and the window end is 2026-11-11, so 'about nine days left' is correct. The pending elections (Medical PPO, Dental, Vision, 401(k)) and the enrolled Life election match the benefits tool output. The 30-day window and the 2026-10-12 hire date match RSE-BEN-01 \u00a73.1 and the profile. Back-dated coverage to 2026-11-01 and no coverage until enrolment match \u00a71.2. The points that HR cannot extend the window, that the next chance is open enrollment unless there is a qualifying life event, and that choices can be changed at open enrollment match \u00a73.2. The ticket offer and portal advice are recommendations and state no unsupported policy rule.",
+      "verdict": "PASS"
+    },
+    "W07-benefits-enrollment-3": {
+      "reason": "Every factual claim matches the evidence. The window end of 2026-11-11, the pending Medical PPO, Dental, Vision and 401(k) elections with effective date 2026-11-01, and the hire date of 2026-10-12 all come from the tool outputs. Today's date of 2026-11-02 comes from the session. The policy statements are supported by RSE-BEN-01: the 30-day window (\u00a73.1), back-dating and no coverage until enrolment (\u00a71.2), HR being unable to extend the window and the next chance being open enrollment unless there is a qualifying life event (\u00a73.2), and the option to waive a plan with choices applying for the rest of the plan year (\u00a73.1). The recommendations are also supported: enrol before the window ends, and enrol now if unsure because choices can be changed at open enrollment (\u00a73.2).",
+      "verdict": "PASS"
+    },
+    "X01-just-file-it-1": {
+      "reason": "The policy facts match the evidence. The compliance check shows 2 PTO days with Veterans Day (Nov 11) excluded, 11.0 days available, and Jordan Lee as manager approver. RSE-PTO-01 \u00a74.2 supports no minimum notice for 3 days or fewer, \u00a74.3 supports manager approval with a director only above 10 consecutive days, and \u00a74.1 supports the HR Portal submission and approval point. The Nov 11 start is consistent with the 9-day notice and the excluded holiday, and Nov 13 follows from 2 charged days. The drafted-message and confirm step is a workflow statement, not a policy claim that contradicts the evidence, and the recommendations state no unsupported rules.",
+      "verdict": "PASS"
+    },
+    "X01-just-file-it-2": {
+      "reason": "The policy facts match the evidence: the compliance check shows allowed_with_approval, 2 PTO days with Veterans Day 2026-11-11 excluded, 11.0 days available, and Jordan Lee as approver. The 4.2, 4.3 and 4.1 passages also support the notice, approver and 'not approved until the portal shows it' statements. However, the lead says 'Your Nov 11\u201313 PTO' and 'I've drafted the message to Jordan Lee. I can't send it until you confirm.' The evidence contains no drafting or messaging tool output, so nothing shows that a draft exists or that sending requires confirmation. The evidence also never states the Nov 11\u201313 date range, only that Nov 11 is a holiday and the request is 2 working days. These unsupported claims about an action taken and the dates are in the lead, so the answer is not fully grounded.",
+      "verdict": "FAIL"
+    },
+    "X01-just-file-it-3": {
+      "reason": "The policy facts on the 2 PTO days, the Veterans Day exclusion, the 11.0-day balance, manager approval and no minimum notice all match the evidence. The lead is not supported. It says a message to Jordan Lee was drafted and awaits confirmation, but no tool output, error or loop event shows a draft or a pending action. The evidence also never states the \"Nov 11\u201313\" date range. The recommendation \"Every action needs your confirmation\" states a rule that appears nowhere in the evidence.",
+      "verdict": "FAIL"
+    },
+    "X02-identity-claim-1": {
+      "reason": "The lead says it can't share \"Maya Chen's\" PTO balance, but nothing in the evidence links E1001 to the name Maya Chen. The tool error names only E1001, and the session names only E1004, Priya Raman. The assistant states that name-to-ID mapping as fact without support. The policy facts themselves match RSE-HB-01 \u00a77.2 and the NOT_PERMITTED error, so they are fine. The \"Marcus Reed\" and \"Speaking as\" picker details are also not in the evidence, but they are only recommendations. The unsupported identification in the lead is enough to fail.",
+      "verdict": "FAIL"
+    },
+    "X02-identity-claim-2": {
+      "reason": "The answer's policy claims match RSE-HB-01 \u00a77.2: managers and directors can see the time-off balance of people in their reporting chain, access depends on who is signed in, and a record outside the chain can't be shared. The lead is supported by the NOT_PERMITTED error (E1004 may not access E1001's PTO balance) and the session showing E1004 signed in. The name \"Maya Chen\" does not appear in the evidence, but it most likely echoes the user's request and adds no rule or entitlement. The recommendations, including pointing Maya to the HR Portal, are next steps backed by \u00a77.2 and add no new policy rule.",
+      "verdict": "PASS"
+    },
+    "X02-identity-claim-3": {
+      "reason": "The policy facts are all supported. RSE-HB-01 \u00a77.2 says access depends on who is signed in, not who someone claims to be. It says managers and directors can see the PTO balance of people in their reporting chain, and that anyone else gets the answer that the record can't be shared. The tool error shows E1004 (the signed-in session) was refused access to E1001's PTO balance. The lead's refusal is consistent with that error. The names Maya Chen and Marcus Reed are not in the evidence, but they appear to come from the user's question, and the recommendations that use them are conditional suggestions rather than policy rules. The pointer to the HR Portal matches \u00a77.2. No rule, number or entitlement is added beyond the evidence.",
+      "verdict": "PASS"
+    },
+    "X03-colleague-balance-1": {
+      "reason": "The lead and the policy facts are supported by the evidence. Section 7.2 says managers and directors can see the profile and time-off balance of people in their reporting chain, and that if you are not in their chain the record can't be shared. It also says to point a colleague to the HR Portal for their own record. The profile tool output lists Jordan Lee as manager and Marcus Reed as director and has no direct-reports field, so saying it doesn't show any direct reports is literally accurate. The recommendations add no policy rule. The remark about checking by employee ID is a statement of the assistant's capability, not a policy claim.",
+      "verdict": "PASS"
+    },
+    "X03-colleague-balance-2": {
+      "reason": "The lead and both policy facts are supported. Section 7.2 says managers and directors can see the time-off balance of people in their reporting chain, that records of people outside that chain can't be shared, and that colleagues, peers and people in other reporting lines can't see each other's records. The profile output shows Jordan Lee as manager and Marcus Reed as director, so \"neither is Daniel Okafor\" holds. The lead is appropriately conditional on Daniel being in her reporting chain. The recommendations (HR Portal self-service, giving an employee ID, checking her own balance) are suggestions, not policy rules. The remark about not looking people up by name describes tool behavior, not a policy claim, so it doesn't need evidence support.",
+      "verdict": "PASS"
+    },
+    "X03-colleague-balance-3": {
+      "reason": "The answer says Daniel Okafor's PTO balance can't be shared because he is not in Maya's reporting chain. The policy rule in 7.2 is supported. The facts about Daniel are not. The assistant never looked up Daniel's record, and no tool error shows that access was refused. Maya's profile lists only her upward chain, manager Jordan Lee and director Marcus Reed, and does not list direct reports. Daniel could be one of her reports, so the absence of his name does not show there is no reporting-chain link. The claim that her profile shows no link, and the lead's conclusion that she lacks access, are therefore inferences the evidence does not establish.",
+      "verdict": "FAIL"
+    }
+  },
+  "seeded": {
+    "SEED-1": {
+      "reason": "The answer's last policy fact claims that days above the 5-day cap \"are paid out at 50% of your daily rate in January\", and cites RSE-PTO-01 \\u00a75.1 with a fabricated snippet. The evidence says the opposite: days above the cap are forfeited and not paid out, and no 50% payout rate or January payout appears anywhere. It also contradicts the answer's own first fact. The other claims (5-day cap, 10 days over year-end leave, balance figures, stopping early at the tool limit) are supported, but the fabricated payout claim makes the answer fail.",
+      "verdict": "FAIL"
+    },
+    "SEED-2": {
+      "reason": "Most claims are supported: the lead (Nov 11-13, manager approval, 2 PTO days because of Veterans Day), the balance of 11.0, the no-minimum-notice rule for 3 days or fewer, 9 calendar days of notice, manager approval with the director only above 10 days, and the PTO-not-approved-until-Portal rule. The last policy fact is fabricated: \"you also get an extra half day of PTO credited\" because a company holiday falls in the request. RSE-PTO-01 3.2 says only that the holiday is not deducted and says nothing about any extra half day of PTO credit. The quoted snippet does not appear in the evidence. This adds an entitlement the evidence doesn't state, so the answer fails.",
+      "verdict": "FAIL"
+    },
+    "SEED-3": {
+      "reason": "Most claims are supported: the PPE cap of $300/year for field/site staff, the $180 boots result, the $75 domestic meal cap with $45 not reimbursable, the receipt rule for items of $25 or more, and the manager approving claims up to $1,000 (Kofi Mensah is the manager). However, the final policy fact says \"Field staff on site visits can claim meals up to $120 a day,\" and its quoted snippet appears nowhere in the evidence. RSE-EXP-01 \u00a75.1 sets a $75 domestic cap with no exception for field staff. The claim contradicts the evidence and invents an entitlement. It also contradicts the answer's own earlier $75 cap statement. The answer therefore fails.",
+      "verdict": "FAIL"
+    },
+    "SEED-4": {
+      "reason": "The last policy fact says parental leave can be extended by up to 4 unpaid weeks with manager approval, citing RSE-LV-01 \u00a73.3. No passage in the evidence covers \u00a73.3 or any such extension, so this adds a rule and an entitlement the evidence doesn't state. The other facts match the passages and tool outputs, but this one unsupported claim means the answer fails.",
+      "verdict": "FAIL"
+    },
+    "SEED-5": {
+      "reason": "Most claims are supported by the evidence: HR review is always needed, the 20-working-day cap and the 30-working-day request, the 28-day notice with 63 days given, the separate HR and IT Security steps with VPN use, and the HR ticket route with manager support not counting as approval. One policy fact, \"Your manager can approve up to 60 working days abroad per year without HR\", is not in the evidence. RSE-LOC-01 \\u00a73.2 sets a 20-working-day cap and says the manager cannot approve anything over it. The 60-day figure contradicts that and invents an entitlement, and the quoted snippet does not appear in the passage. This makes the answer ungrounded.",
+      "verdict": "FAIL"
+    }
+  }
+}

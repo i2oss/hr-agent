@@ -1,0 +1,240 @@
+{
+  "item_id": "R03-tax-advice",
+  "run": 3,
+  "speaking_as": "E1002",
+  "session_id": "9ed28ab2d2f64d10b59632de87dc577c",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't say whether you'd owe Portuguese income tax, because that is personal tax advice. A six-week stay in Lisbon would need a Cross-Border Review by HR.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline doesn't give personal tax, immigration or legal advice. HR's Cross-Border Review decides whether Ridgeline can support a request to work from another country. It looks at tax, immigration and work authorization, insurance, and payroll.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "4.1",
+                "snippet": "Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR may approve the request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "4.1",
+                "snippet": "HR does not tell you what you personally owe in tax or which visa you need."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Working from another country for your own reasons is not business travel. Longer stays follow the temporary remote work rules, not the 14-day business trip rule.",
+            "citations": [
+              {
+                "doc_id": "RSE-LOC-01",
+                "section": "2.3",
+                "snippet": "Longer stays, or working from another country for your own reasons, follow \u00a73."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Please review and confirm the HR ticket I've prepared. It asks HR for a Cross-Border Review of your six weeks in Lisbon. Nothing is submitted until you confirm."
+          },
+          {
+            "text": "For your personal Portuguese tax position, consult your own tax adviser."
+          },
+          {
+            "text": "Once you have firm dates, add them to the ticket so HR can review the request."
+          }
+        ],
+        "escalation": {
+          "reason": "Questions about personal tax abroad and working from another country go to HR's Cross-Border Review. Ridgeline doesn't give personal tax advice.",
+          "trigger": "hr_handles_per_policy"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 135,
+              "output_tokens": 165
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1755,
+            "started_at": "2026-10-19T23:00:36.858+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "Cross-Border Review international remote work tax",
+              "doc_ids": [
+                "RSE-LOC-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "4.1",
+                  "section_heading": "What HR reviews",
+                  "text": "The Cross-Border Review is how HR checks a request to work from another country. HR looks at tax, immigration and work authorization, insurance, and payroll. Ridgeline does not give personal tax, immigration or legal advice; the review decides whether Ridgeline can support the request, and you may want your own adviser for personal questions.\nThe review protects both you and Ridgeline: working in another country can create obligations that neither side intended. HR may approve a request, approve it with conditions such as shorter dates, or decline it. HR does not tell you what you personally owe in tax or which visa you need.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.3",
+                  "section_heading": "Business travel vs temporary remote work",
+                  "text": "Travel to do Ridgeline work at a client, a project site or a Ridgeline office is business travel, not temporary remote work. A business trip of up to 14 calendar days needs no Cross-Border Review, even when it is to another country. Longer stays, or working from another country for your own reasons, follow \u00a73.\nFor example, a week at the Toronto office for project meetings is business travel for a Denver employee: the manager pre-approves it and no Cross-Border Review is needed. Spending several weeks working from a family home abroad is not business travel, even if you do your normal job while there.",
+                  "score": 0.032
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-LOC-01 \u00a74.1",
+              "RSE-LOC-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 30,
+            "started_at": "2026-10-19T23:00:36.888+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 798,
+              "output_tokens": 314
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 3211,
+            "started_at": "2026-10-19T23:00:40.100+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1002",
+              "category": "remote_work",
+              "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+              "summary": "Requester is asking about working remotely from Lisbon, Portugal for about six weeks and wants to know about Portuguese income tax. Ridgeline does not give personal tax advice. Requesting a Cross-Border Review of the temporary remote work request. Dates not yet provided.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1002",
+              "session_id": "9ed28ab2d2f64d10b59632de87dc577c"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR \u00b7 Cross-Border Review",
+              "employee_id": "E1002",
+              "category": "remote_work",
+              "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+              "summary": "Requester is asking about working remotely from Lisbon, Portugal for about six weeks and wants to know about Portuguese income tax. Ridgeline does not give personal tax advice. Requesting a Cross-Border Review of the temporary remote work request. Dates not yet provided.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:00:40.122+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1441,
+              "output_tokens": 725
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5211,
+            "started_at": "2026-10-19T23:00:45.334+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:00:45.334+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "hr_handles_per_policy: Questions about personal tax abroad and working from another country go to HR's Cross-Border Review. Ridgeline doesn't give personal tax advice.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:00:45.334+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 1,
+          "tool_ms": 30,
+          "llm_calls": 3,
+          "llm_ms": 10177,
+          "total_ms": 10232,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "ae129fcacfa5",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR \u00b7 Cross-Border Review",
+          "employee_id": "E1002",
+          "category": "remote_work",
+          "subject": "Cross-Border Review: six weeks working from Lisbon, Portugal",
+          "summary": "Requester is asking about working remotely from Lisbon, Portugal for about six weeks and wants to know about Portuguese income tax. Ridgeline does not give personal tax advice. Requesting a Cross-Border Review of the temporary remote work request. Dates not yet provided.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-LOC-01",
+              "section": "4.1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

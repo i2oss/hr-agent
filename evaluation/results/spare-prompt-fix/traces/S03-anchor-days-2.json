@@ -1,0 +1,273 @@
+{
+  "item_id": "S03-anchor-days",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "839c0630a91e4053afcdd918333778c1",
+  "client_ms": [
+    6353
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "You're expected in the office Tuesday, Wednesday and Thursday. Those are the anchor days, and you can work remotely on Monday and Friday.",
+        "policy_facts": [
+          {
+            "text": "Your HR record shows your Work Arrangement is office-hybrid, with Austin (AUS) as your home office.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you can't be in the office on an anchor day, tell your manager. Working from home on an occasional anchor day is fine, but regularly missing them is not.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Working from home on an occasional anchor day is fine; regularly missing them is not."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If a site visit or appointment will keep you out of the office on an anchor day, let your manager, Rafael G\u00f3mez, know ahead of time."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 129,
+              "output_tokens": 179
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2016,
+            "started_at": "2026-10-19T23:40:37.462+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "hybrid schedule office days expected",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "3.4",
+                  "section_heading": "Part-time schedules",
+                  "text": "A part-time employee's schedule is agreed in writing with the manager and recorded in the HR Portal. The agreed schedule sets your scheduled working days, which matter for holidays (RSE-HOL-01 \u00a71.4) and for pro-rated PTO and benefits.",
+                  "score": 0.0309
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.3",
+                  "section_heading": "Work Arrangements",
+                  "text": "Each employee has one Work Arrangement. Office-hybrid is the default: you work from your home office on set anchor days and remotely on the others. Remote-approved employees work remotely most of the time, with approval from their manager and HR. Field/site-based employees work at project sites and are not eligible for remote work. The Remote & Hybrid Work Policy (RSE-RW-01) sets out the rules for each arrangement. Your Work Arrangement is part of your HR record and is agreed when you join. It can change, for example when an office-hybrid employee is approved to become remote-approved, or when a field/ site-based employee moves into a design role. Changes are requested through the HR Portal and approved as set out in the Approval Matrix.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "6.2",
+                  "section_heading": "Within your state or province",
+                  "text": "Temporary remote work within the state or province of your usual work location is allowed. Tell your manager where you'll be working.\nNo approval is needed, but you must still meet core hours and, if you are office-hybrid, plan around your anchor days. For example, an Austin employee spending a week working from family in another Texas city just tells their manager.",
+                  "score": 0.0292
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-HB-01 \u00a73.4",
+              "RSE-HB-01 \u00a72.3",
+              "RSE-RW-01 \u00a76.2"
+            ],
+            "status": "ok",
+            "latency_ms": 32,
+            "started_at": "2026-10-19T23:40:37.495+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "839c0630a91e4053afcdd918333778c1"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:40:37.509+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1703,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 924,
+            "started_at": "2026-10-19T23:40:38.434+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "839c0630a91e4053afcdd918333778c1"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:40:38.458+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2037,
+              "output_tokens": 508
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3336,
+            "started_at": "2026-10-19T23:40:41.795+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:40:41.795+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 70,
+          "llm_calls": 3,
+          "llm_ms": 6276,
+          "total_ms": 6349,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

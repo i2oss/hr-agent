@@ -1,0 +1,411 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 1,
+  "speaking_as": "E1005",
+  "session_id": "ceeb292d62e3483399ba24e48858df95",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover tuition reimbursement, so I can't say whether a part-time master's would be reimbursed.",
+        "policy_facts": [
+          {
+            "text": "For HR questions, the HR Service Desk is the contact point.",
+            "citations": [
+              {
+                "doc_id": "RSE-ONB-01",
+                "section": "4",
+                "snippet": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I stopped searching early because I hit the tool limit for this turn. Several searches (tuition, education, training and development) found nothing on degree or tuition support. The only reimbursement passages that came up were for expenses like professional licence renewals and client entertainment."
+          },
+          {
+            "text": "Ask the HR Service Desk whether any tuition or education support exists. Email hr@ridgeline.example or use HR Portal > Ask HR."
+          },
+          {
+            "text": "Hold off on enrolling in the expectation of reimbursement until you have an answer in writing."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover this. I found nothing on tuition or degree reimbursement. Please check with the HR Service Desk."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1453,
+            "started_at": "2026-10-19T22:48:03.011+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T22:48:03.035+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 85
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1443,
+            "started_at": "2026-10-19T22:48:04.478+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree training professional development reimbursement",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.2",
+                  "section_heading": "Professional licence renewals",
+                  "text": "Professional engineering licence renewals are reimbursed. Claim the renewal fee with the receipt. Fees for licences in additional jurisdictions are reimbursed when your manager agrees they are needed for your projects.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.0311
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a77.2",
+              "RSE-EXP-01 \u00a75.2"
+            ],
+            "status": "ok",
+            "latency_ms": 25,
+            "started_at": "2026-10-19T22:48:04.503+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 684,
+              "output_tokens": 100
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1798,
+            "started_at": "2026-10-19T22:48:06.302+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition degree study leave",
+              "doc_ids": [
+                "RSE-HB-01",
+                "RSE-BEN-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T22:48:06.332+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 806,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1265,
+            "started_at": "2026-10-19T22:48:07.597+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T22:48:07.627+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 902,
+              "output_tokens": 76
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1400,
+            "started_at": "2026-10-19T22:48:09.028+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "education courses university",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 35,
+            "started_at": "2026-10-19T22:48:09.063+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 999,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 3271,
+            "started_at": "2026-10-19T22:48:12.335+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "training and development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 39,
+            "started_at": "2026-10-19T22:48:12.375+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1095,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1493,
+            "started_at": "2026-10-19T22:48:13.868+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "ask HR Service Desk contact",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "7.3",
+                  "section_heading": "Asking for your data",
+                  "text": "You can ask for a copy of the personal data HR holds about you, or ask for a correction, through the HR Service Desk. Most of your information can be checked and updated yourself in the HR Portal, such as your contact details and emergency contacts. For anything you can't change yourself, HR will respond to your request as soon as it can and tell you if any information has to be withheld to protect someone else's privacy.",
+                  "score": 0.0323
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a77.3"
+            ],
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-19T22:48:13.896+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1633,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1353,
+            "started_at": "2026-10-19T22:48:15.250+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "7.3",
+                  "section_heading": "Asking for your data",
+                  "text": "You can ask for a copy of the personal data HR holds about you, or ask for a correction, through the HR Service Desk. Most of your information can be checked and updated yourself in the HR Portal, such as your contact details and emergency contacts. For anything you can't change yourself, HR will respond to your request as soon as it can and tell you if any information has to be withheld to protect someone else's privacy.",
+                  "score": 0.0315
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a77.3"
+            ],
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-19T22:48:15.277+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:48:15.277+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2214,
+              "output_tokens": 437
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4454,
+            "started_at": "2026-10-19T22:48:19.740+00:00"
+          },
+          {
+            "n": 19,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "1 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:48:19.741+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 234,
+          "llm_calls": 9,
+          "llm_ms": 17930,
+          "total_ms": 18175,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

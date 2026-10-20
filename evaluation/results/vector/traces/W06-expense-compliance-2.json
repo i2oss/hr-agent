@@ -1,0 +1,734 @@
+{
+  "item_id": "W06-expense-compliance",
+  "run": 2,
+  "speaking_as": "E1003",
+  "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af",
+  "responses": [
+    {
+      "answer": {
+        "lead": "The boots are reimbursable in full ($180), but the dinner is capped at $75 of the $120, so you'd cover $45.",
+        "policy_facts": [
+          {
+            "text": "As a field/site-based employee, you can claim PPE such as safety boots up to $300 per calendar year. The Compliance Check found the $180 boots fully reimbursable ($180 reimbursable, $0 not), with your manager approving.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "7.1",
+                "snippet": "Field/site-based employees can claim safety equipment (PPE), such as safety boots, safety glasses and high-visibility clothing, up to $300 per year."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              },
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          },
+          {
+            "text": "Domestic meals are reimbursed up to $75 per day, and anything over the cap is not reimbursed. A single dinner over the cap on a site visit is reimbursed only up to the cap. The check found $75 of the $120 dinner reimbursable and $45 not.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "5.1",
+                "snippet": "a single dinner costing more than the domestic daily cap on a site visit is reimbursed only up to the cap, and you pay the difference"
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "Each item of $25 or more needs an itemised receipt. A card statement is not a receipt.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "8.1",
+                "snippet": "Attach an itemised receipt for every item of $25 or more."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Claims should be submitted within 30 days of the expense.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "8.2",
+                "snippet": "Submit claims within 30 days of the expense."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your manager approves claims up to $1,000. Your manager is Kofi Mensah.",
+            "citations": [
+              {
+                "doc_id": "RSE-EXP-01",
+                "section": "8.4",
+                "snippet": "Your manager approves claims up to $1,000."
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Review the draft message to Kofi Mensah asking for approval of both items, then press Confirm to save it. Nothing is sent until you confirm."
+          },
+          {
+            "text": "Attach itemised receipts for both the boots and the dinner when you submit the claim in the HR Portal."
+          },
+          {
+            "text": "Submit within 30 days of the expense."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 141,
+              "output_tokens": 279
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, search_policy, search_policy",
+            "status": "ok",
+            "latency_ms": 2454,
+            "started_at": "2026-10-19T23:26:34.985+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1003",
+              "requester_id": "E1003",
+              "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af"
+            },
+            "output": {
+              "employee_id": "E1003",
+              "name": "Luis Ortega",
+              "title": "Site Engineer",
+              "department": "Construction Services",
+              "employment_type": "full_time_non_exempt",
+              "work_arrangement": "field_site",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1015",
+                "name": "Kofi Mensah"
+              },
+              "director": {
+                "id": "E1016",
+                "name": "Linda Novak"
+              },
+              "hire_date": "2022-04-18",
+              "weekly_hours": 40,
+              "work_email": "luis.ortega@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Luis Ortega, Site Engineer, Denver; manager Kofi Mensah",
+            "status": "ok",
+            "latency_ms": 27,
+            "started_at": "2026-10-19T23:26:35.012+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PPE steel-toe boots reimbursement",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.1",
+                  "section_heading": "Safety equipment (PPE)",
+                  "text": "Field/site-based employees can claim safety equipment (PPE), such as safety boots, safety glasses and high-visibility clothing, up to $300 per year. Other roles cannot claim PPE; site visitors use the site's equipment. The yearly limit is per calendar year and covers all PPE you claim that year. Claim PPE like any other expense, with the receipt. Equipment must meet the safety standard the site requires; the site safety lead can advise.",
+                  "score": 0.7833
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "5.1",
+                  "section_heading": "Site safety and PPE",
+                  "text": "Personal protective equipment (PPE) is required on every project site: safety boots, hard hat, high-visibility clothing and safety glasses as the site requires. Follow the site's safety plan and the instructions of the site safety lead. Field/site-based employees can be reimbursed for PPE under RSE-EXP-01 \u00a77.1. Office staff who visit a site for a meeting or inspection must also wear the PPE the site requires; site teams keep spare equipment for visitors. You may stop work at any time if you believe it is unsafe, and you will never be penalised for doing so in good faith. Tell the site safety lead and your manager straight away so the hazard can be dealt with.",
+                  "score": 0.7249
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "1",
+                  "section_heading": "Principles and Scope",
+                  "text": "Ridgeline reimburses reasonable expenses that are necessary for your work. Choose the cheapest practical option that gets the job done, and spend Ridgeline's money as you would your own. This policy applies to all employees. Limits are per person. Expenses must be for Ridgeline business, supported by receipts where required, and claimed promptly. Project-related costs should be charged to the right project so they can be billed to the client where the contract allows. If you are unsure whether something is reimbursable, ask your manager or Finance before you spend the money, not after.",
+                  "score": 0.6778
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.6658
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "3",
+                  "section_heading": "Personal Equipment",
+                  "text": "Personal laptops are not reimbursed, and they may not hold Ridgeline project files (RSE-SEC-01 \u00a73.3). Use the Ridgeline laptop you were issued for all project work.\nPersonal accessories such as your own headphones or keyboard may be used with Ridgeline equipment, but they are not reimbursed outside the stipend in \u00a72. If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine.",
+                  "score": 0.6554
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a77.1",
+              "RSE-HB-01 \u00a75.1",
+              "RSE-EXP-01 \u00a71",
+              "RSE-EXP-01 \u00a76.3",
+              "RSE-EQ-01 \u00a73"
+            ],
+            "status": "ok",
+            "latency_ms": 16,
+            "started_at": "2026-10-19T23:26:35.029+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "meals per diem limit travel dinner",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.1",
+                  "section_heading": "Meals",
+                  "text": "While travelling on business, meals are reimbursed up to $75 per day for domestic travel and up to $90 per day for international travel. Any amount over the daily cap is not reimbursed. The daily cap covers all your meals that day together, including tips. Domestic means travel within your own country; international means travel outside it. For example, a single dinner costing more than the domestic daily cap on a site visit is reimbursed only up to the cap, and you pay the difference. Meals provided by a client or included in a conference fee are not claimed again.",
+                  "score": 0.7743
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.6747
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.6702
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "4",
+                  "section_heading": "Lodging",
+                  "text": "Hotel lodging is reimbursed up to $250 per night in the US and up to $275 per night outside the US (international), before taxes. Book through Ridgeline Travel. The nightly limit depends on where you stay, not where you are from: a Denver employee staying in Toronto uses the international limit. If no reasonable hotel is available within the limit, for example during a major event, ask your manager to approve the higher rate before booking and note the approval on your claim. Room service, minibar and in-room entertainment are personal costs.",
+                  "score": 0.6535
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "2.1",
+                  "section_heading": "Pre-approval",
+                  "text": "Your manager pre-approves every business trip before you book it (RSE-LOC-01 \u00a72.1).",
+                  "score": 0.6368
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a75.1",
+              "RSE-EXP-01 \u00a76.3",
+              "RSE-EXP-01 \u00a75.2",
+              "RSE-EXP-01 \u00a74",
+              "RSE-EXP-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:26:35.043+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2938,
+              "output_tokens": 418
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): check_policy_compliance, check_policy_compliance",
+            "status": "ok",
+            "latency_ms": 3282,
+            "started_at": "2026-10-19T23:26:38.326+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1003",
+              "request_type": "expense_item",
+              "details": {
+                "start_date": null,
+                "end_date": null,
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": "ppe",
+                "amount": 180,
+                "currency": "USD",
+                "description": "Steel-toe boots",
+                "international": false,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1003",
+              "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "EXP-PPE",
+                  "passed": true,
+                  "detail": "PPE up to $300/year for field/site roles; $180 claimed.",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "7.1"
+                  }
+                },
+                {
+                  "rule": "EXP-RECEIPT",
+                  "passed": true,
+                  "detail": "Receipt required (items of $25 or more).",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "8.1"
+                  }
+                },
+                {
+                  "rule": "EXP-APPROVER",
+                  "passed": true,
+                  "detail": "Claim of $180 is approved by the manager.",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "8.4"
+                  }
+                }
+              ],
+              "computed": {
+                "category": "ppe",
+                "amount": 180.0,
+                "currency": "USD",
+                "reimbursable": 180.0,
+                "not_reimbursable": 0.0
+              }
+            },
+            "summary": "allowed_with_approval, approver manager",
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:26:38.345+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1003",
+              "request_type": "expense_item",
+              "details": {
+                "start_date": null,
+                "end_date": null,
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": "meals",
+                "amount": 120,
+                "currency": "USD",
+                "description": "Dinner on Pueblo site visit",
+                "international": false,
+                "nights": null,
+                "days": 1,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1003",
+              "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af"
+            },
+            "output": {
+              "outcome": "not_allowed",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "EXP-MEALS",
+                  "passed": false,
+                  "detail": "Meals cap $75/day (domestic); $120 over 1 day(s): $75 reimbursable, $45 not.",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "5.1"
+                  }
+                },
+                {
+                  "rule": "EXP-RECEIPT",
+                  "passed": true,
+                  "detail": "Receipt required (items of $25 or more).",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "8.1"
+                  }
+                },
+                {
+                  "rule": "EXP-APPROVER",
+                  "passed": true,
+                  "detail": "Claim of $75 is approved by the manager.",
+                  "citation": {
+                    "doc_id": "RSE-EXP-01",
+                    "section": "8.4"
+                  }
+                }
+              ],
+              "computed": {
+                "category": "meals",
+                "amount": 120.0,
+                "currency": "USD",
+                "reimbursable": 75,
+                "not_reimbursable": 45.0
+              }
+            },
+            "summary": "not_allowed, approver manager",
+            "status": "ok",
+            "latency_ms": 8,
+            "started_at": "2026-10-19T23:26:38.354+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4053,
+              "output_tokens": 109
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1538,
+            "started_at": "2026-10-19T23:26:39.893+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-EXP-01",
+              "section": "8"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.1",
+                  "section_heading": "Receipts",
+                  "text": "Attach an itemised receipt for every item of $25 or more. A card statement is not a receipt. Photograph paper receipts and attach them to your claim in the HR Portal. If a receipt is lost, explain on the claim; your manager decides whether to approve it.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.2",
+                  "section_heading": "Deadlines",
+                  "text": "Submit claims within 30 days of the expense. Claims older than 60 days are not reimbursed without a director exception. Submitting promptly helps projects bill clients accurately and helps Finance close each month. For a long trip, you may submit claims as you go rather than waiting until you return.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.3",
+                  "section_heading": "Currency",
+                  "text": "All limits in this policy are in USD. Claims in other currencies are compared with the limits at the card rate or Finance's rate on the expense date. Enter the amount in the currency you paid, and the HR Portal converts it. Card fees for foreign transactions on a personal card are reimbursed if you show them on your statement.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.4",
+                  "section_heading": "Who approves",
+                  "text": "Expense claims are approved by claim total. Your manager approves claims up to $1,000. Your director approves claims up to $5,000. The VP Finance approves claims above $5,000. See also the Approval Matrix (RSE-APR-01 \u00a74). Questions go to Finance at expenses@ridgeline.example. Approvers check that each item is a genuine business expense, within the limits in this policy and supported by receipts. An approver may approve part of a claim and decline the rest; you will be told which items and why.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "4 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a78.1",
+              "RSE-EXP-01 \u00a78.2",
+              "RSE-EXP-01 \u00a78.3",
+              "RSE-EXP-01 \u00a78.4"
+            ],
+            "status": "ok",
+            "latency_ms": 16,
+            "started_at": "2026-10-19T23:26:39.909+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4867,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1157,
+            "started_at": "2026-10-19T23:26:41.067+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1003",
+              "requester_id": "E1003",
+              "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af"
+            },
+            "output": {
+              "employee_id": "E1003",
+              "name": "Luis Ortega",
+              "title": "Site Engineer",
+              "department": "Construction Services",
+              "employment_type": "full_time_non_exempt",
+              "work_arrangement": "field_site",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1015",
+                "name": "Kofi Mensah"
+              },
+              "director": {
+                "id": "E1016",
+                "name": "Linda Novak"
+              },
+              "hire_date": "2022-04-18",
+              "weekly_hours": 40,
+              "work_email": "luis.ortega@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Luis Ortega, Site Engineer, Denver; manager Kofi Mensah",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:26:41.089+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5190,
+              "output_tokens": 534
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 3669,
+            "started_at": "2026-10-19T23:26:44.759+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1003",
+              "subject": "Expense approval: steel-toe boots and Pueblo site visit dinner",
+              "body": "Hi Kofi,\n\nI'd like to submit two expense items for your approval:\n\n1. Steel-toe boots (PPE): $180.00. This is within the $300 per calendar year PPE limit for field/site-based employees.\n2. Dinner on the Pueblo site visit: $120.00 actual cost. The domestic meals cap is $75 per day, so I understand only $75.00 is reimbursable and I will cover the remaining $45.00.\n\nI'll attach itemised receipts for both items in the HR Portal and submit within 30 days of the expense.\n\nThanks,\nLuis",
+              "citations": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "7.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "5.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.2"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.4"
+                }
+              ],
+              "requester_id": "E1003",
+              "session_id": "551dcb6e3f0d4b1fbc65a53e69d471af"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1015",
+                "name": "Kofi Mensah",
+                "email": "kofi.mensah@ridgeline.example"
+              },
+              "subject": "Expense approval: steel-toe boots and Pueblo site visit dinner",
+              "body": "Hi Kofi,\n\nI'd like to submit two expense items for your approval:\n\n1. Steel-toe boots (PPE): $180.00. This is within the $300 per calendar year PPE limit for field/site-based employees.\n2. Dinner on the Pueblo site visit: $120.00 actual cost. The domestic meals cap is $75 per day, so I understand only $75.00 is reimbursable and I will cover the remaining $45.00.\n\nI'll attach itemised receipts for both items in the HR Portal and submit within 30 days of the expense.\n\nThanks,\nLuis",
+              "citations": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "7.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "5.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.1"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.2"
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "section": "8.4"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:26:44.777+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6196,
+              "output_tokens": 905
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5578,
+            "started_at": "2026-10-19T23:26:50.355+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "9 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:26:50.357+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 7,
+          "tool_ms": 121,
+          "llm_calls": 6,
+          "llm_ms": 17678,
+          "total_ms": 17825,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "65d62ed255f7",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1015",
+            "name": "Kofi Mensah",
+            "email": "kofi.mensah@ridgeline.example"
+          },
+          "subject": "Expense approval: steel-toe boots and Pueblo site visit dinner",
+          "body": "Hi Kofi,\n\nI'd like to submit two expense items for your approval:\n\n1. Steel-toe boots (PPE): $180.00. This is within the $300 per calendar year PPE limit for field/site-based employees.\n2. Dinner on the Pueblo site visit: $120.00 actual cost. The domestic meals cap is $75 per day, so I understand only $75.00 is reimbursable and I will cover the remaining $45.00.\n\nI'll attach itemised receipts for both items in the HR Portal and submit within 30 days of the expense.\n\nThanks,\nLuis",
+          "citations": [
+            {
+              "doc_id": "RSE-EXP-01",
+              "section": "7.1"
+            },
+            {
+              "doc_id": "RSE-EXP-01",
+              "section": "5.1"
+            },
+            {
+              "doc_id": "RSE-EXP-01",
+              "section": "8.1"
+            },
+            {
+              "doc_id": "RSE-EXP-01",
+              "section": "8.2"
+            },
+            {
+              "doc_id": "RSE-EXP-01",
+              "section": "8.4"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

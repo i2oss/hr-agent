@@ -1,0 +1,288 @@
+{
+  "item_id": "S02-notice-week-off",
+  "run": 3,
+  "speaking_as": "E1008",
+  "session_id": "00641756a0bb4e7da754753ba51ca3f7",
+  "responses": [
+    {
+      "answer": {
+        "lead": "For a week of vacation (more than 3 PTO days), you need at least 14 calendar days' notice before your first day off.",
+        "policy_facts": [
+          {
+            "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice before the first day off. Requests of 3 PTO days or fewer have no minimum notice.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Notice is counted from the day you submit the request to the first day off. Only the PTO days actually charged count toward the 3-day threshold, not weekends or company holidays.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Notice is counted from the day you submit the request to the first day off."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Count only the PTO days charged, not weekends or company holidays."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "A late request isn't automatically declined, but your manager may decline it if the team can't cover your work.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "A late request is not automatically declined, but your manager may decline it if the team can't cover your work."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your manager approves your PTO. PTO is not approved until the HR Portal shows it as approved.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.1",
+                "snippet": "PTO is not approved until the HR Portal shows it as approved."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Submit the request in the HR Portal at least two weeks before your first day off. Today is 2026-11-02, so the earliest start date that meets the notice rule is 2026-11-16."
+          },
+          {
+            "text": "If you have specific dates in mind, tell me and I can check them against your balance and the rules, then draft a message to your manager."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 141
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2647,
+            "started_at": "2026-10-19T23:29:15.442+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO notice required advance request vacation",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.7829
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.7655
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.7473
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.7471
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.7462
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a74.5"
+            ],
+            "status": "ok",
+            "latency_ms": 26,
+            "started_at": "2026-10-19T23:29:15.469+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1294,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 830,
+            "started_at": "2026-10-19T23:29:16.300+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1008",
+              "requester_id": "E1008",
+              "session_id": "00641756a0bb4e7da754753ba51ca3f7"
+            },
+            "output": {
+              "employee_id": "E1008",
+              "name": "Chlo\u00e9 Tremblay",
+              "title": "Bridge Engineer",
+              "department": "Bridge Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "TOR",
+                "city": "Toronto",
+                "region": "ON",
+                "country": "CA",
+                "timezone": "America/Toronto"
+              },
+              "holiday_calendar": "CA",
+              "manager": {
+                "id": "E1019",
+                "name": "Am\u00e9lie Roy"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2020-05-04",
+              "weekly_hours": 40,
+              "work_email": "chloe.tremblay@ridgeline.example",
+              "work_region": "ON",
+              "work_country": "CA",
+              "employment_status": "active"
+            },
+            "summary": "Chlo\u00e9 Tremblay, Bridge Engineer, Toronto; manager Am\u00e9lie Roy",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:29:16.322+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1643,
+              "output_tokens": 102
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1239,
+            "started_at": "2026-10-19T23:29:17.561+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": null,
+              "requester_id": "E1008",
+              "session_id": "00641756a0bb4e7da754753ba51ca3f7"
+            },
+            "output": {
+              "error": {
+                "code": "MISSING_ARGUMENT",
+                "message": "employee_id is required.",
+                "hint": "Use the Requester's own ID (E1008) unless asking about someone in their reporting chain."
+              }
+            },
+            "summary": "MISSING_ARGUMENT: employee_id is required.",
+            "status": "error",
+            "latency_ms": 8,
+            "started_at": "2026-10-19T23:29:17.570+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1781,
+              "output_tokens": 838
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4896,
+            "started_at": "2026-10-19T23:29:22.467+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "6 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:29:22.468+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 56,
+          "llm_calls": 4,
+          "llm_ms": 9612,
+          "total_ms": 9672,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

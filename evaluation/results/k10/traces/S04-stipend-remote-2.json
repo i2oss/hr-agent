@@ -1,0 +1,478 @@
+{
+  "item_id": "S04-stipend-remote",
+  "run": 2,
+  "speaking_as": null,
+  "session_id": "a0c6d7edd415479cba6e2626dd0bb037",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Remote-approved employees can claim a one-time $500 home-office stipend, plus $50 a month toward home internet.",
+        "policy_facts": [
+          {
+            "text": "Remote-approved employees can claim a one-time $500 stipend for a desk, chair, lighting or similar items for their home workspace. It is not repeated each year, and items bought with it are yours to keep.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.1",
+                "snippet": "Remote-approved employees can claim a one-time home-office stipend of $500 toward a desk, chair, lighting or similar items for their home workspace."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "An employee who already received the office-hybrid stipend and later becomes remote-approved can claim the difference between the two amounts. The office-hybrid stipend is $250.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.1",
+                "snippet": "can claim the difference between the two amounts"
+              },
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.2",
+                "snippet": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Remote-approved employees can also claim $50 per month toward home internet.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.4",
+                "snippet": "Remote-approved employees can also claim $50 per month toward home internet."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts. Your manager approves the claim. You become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.5",
+                "snippet": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts."
+              },
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.5",
+                "snippet": "You become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Field/site-based employees, interns and contractors are not eligible for a home-office stipend.",
+            "citations": [
+              {
+                "doc_id": "RSE-EQ-01",
+                "section": "2.3",
+                "snippet": "Field/site-based employees, interns and contractors are not eligible for a home-office stipend."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Keep your receipts and submit the expense claim within 90 days of your remote-approved start date."
+          },
+          {
+            "text": "If you'd like to check your own eligibility or start date, choose who you are in the \"Speaking as\" picker and I can look at your record."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2192,
+            "started_at": "2026-10-19T23:07:23.052+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "home office stipend remote employees",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.1",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees can claim a one-time home-office stipend of $500 toward a desk, chair, lighting or similar items for their home workspace.\nThe stipend is one-time: it is not repeated each year. An employee who already received the office-hybrid stipend and later becomes remote-approved can claim the difference between the two amounts. Items bought with the stipend are yours to keep.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.4",
+                  "section_heading": "Internet",
+                  "text": "Remote-approved employees can also claim $50 per month toward home internet. Office-hybrid employees cannot claim internet costs.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.0317
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.2",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees work remotely most of the time. The arrangement must be approved by both the manager and HR. Remote-approved employees spend at least one week per quarter at their home office.",
+                  "score": 0.0305
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.3",
+                  "section_heading": "Equipment",
+                  "text": "Ridgeline provides your equipment and, where eligible, a home-office stipend; see the Equipment & Home-Office Stipend policy (RSE-EQ-01).",
+                  "score": 0.0305
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.3",
+                  "section_heading": "Not eligible",
+                  "text": "Field/site-based employees, interns and contractors are not eligible for a home-office stipend.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.4",
+                  "section_heading": "Office visits for remote-approved staff",
+                  "text": "Remote-approved employees spend at least one week per quarter at their home office, planned with their manager.\nVisits are timed to be useful: project kick-offs, design reviews and team planning are good times. A visit week is a normal working week in the office and is not counted as business travel for cross-border purposes when the home office is in your own country. Travel for these visits is business travel and follows RSE-LOC-01 \u00a72 and RSE-EXP-01.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.5",
+                  "section_heading": "How to claim",
+                  "text": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts. Your manager approves the claim (RSE-APR-01 \u00a75).\nYou become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement. The internet allowance is claimed monthly as an expense, with the bill attached.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.3",
+                  "section_heading": "Work Arrangements",
+                  "text": "Each employee has one Work Arrangement. Office-hybrid is the default: you work from your home office on set anchor days and remotely on the others. Remote-approved employees work remotely most of the time, with approval from their manager and HR. Field/site-based employees work at project sites and are not eligible for remote work. The Remote & Hybrid Work Policy (RSE-RW-01) sets out the rules for each arrangement. Your Work Arrangement is part of your HR record and is agreed when you join. It can change, for example when an office-hybrid employee is approved to become remote-approved, or when a field/ site-based employee moves into a design role. Changes are requested through the HR Portal and approved as set out in the Approval Matrix.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.028
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-EQ-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.4",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-RW-01 \u00a72.2",
+              "RSE-RW-01 \u00a75.3",
+              "RSE-EQ-01 \u00a72.3",
+              "RSE-RW-01 \u00a75.4",
+              "RSE-EQ-01 \u00a72.5",
+              "RSE-HB-01 \u00a72.3",
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:07:23.073+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2052,
+              "output_tokens": 82
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1081,
+            "started_at": "2026-10-19T23:07:24.154+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-EQ-01",
+              "section": "2"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.1",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees can claim a one-time home-office stipend of $500 toward a desk, chair, lighting or similar items for their home workspace.\nThe stipend is one-time: it is not repeated each year. An employee who already received the office-hybrid stipend and later becomes remote-approved can claim the difference between the two amounts. Items bought with the stipend are yours to keep.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.3",
+                  "section_heading": "Not eligible",
+                  "text": "Field/site-based employees, interns and contractors are not eligible for a home-office stipend.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.4",
+                  "section_heading": "Internet",
+                  "text": "Remote-approved employees can also claim $50 per month toward home internet. Office-hybrid employees cannot claim internet costs.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.5",
+                  "section_heading": "How to claim",
+                  "text": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts. Your manager approves the claim (RSE-APR-01 \u00a75).\nYou become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement. The internet allowance is claimed monthly as an expense, with the bill attached.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-EQ-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-EQ-01 \u00a72.3",
+              "RSE-EQ-01 \u00a72.4",
+              "RSE-EQ-01 \u00a72.5"
+            ],
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:07:24.174+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2910,
+              "output_tokens": 88
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1024,
+            "started_at": "2026-10-19T23:07:25.199+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "home office stipend",
+              "doc_ids": [
+                "RSE-EQ-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.1",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees can claim a one-time home-office stipend of $500 toward a desk, chair, lighting or similar items for their home workspace.\nThe stipend is one-time: it is not repeated each year. An employee who already received the office-hybrid stipend and later becomes remote-approved can claim the difference between the two amounts. Items bought with the stipend are yours to keep.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.3",
+                  "section_heading": "Not eligible",
+                  "text": "Field/site-based employees, interns and contractors are not eligible for a home-office stipend.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.4",
+                  "section_heading": "Internet",
+                  "text": "Remote-approved employees can also claim $50 per month toward home internet. Office-hybrid employees cannot claim internet costs.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.5",
+                  "section_heading": "How to claim",
+                  "text": "Claim the stipend through an expense claim within 90 days of becoming eligible, with receipts. Your manager approves the claim (RSE-APR-01 \u00a75).\nYou become eligible on the day your Work Arrangement starts, or on your hire date if you join with that arrangement. The internet allowance is claimed monthly as an expense, with the bill attached.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "1",
+                  "section_heading": "Standard Equipment",
+                  "text": "Every employee gets a standard kit from IT: a laptop, two monitors and a headset. Field/site-based employees also get a rugged tablet for site work. IT has your equipment ready before your first day (RSE-ONB-01 \u00a71). Interns receive the standard kit for the length of their internship.\nThe kit is set up by IT with the software and security settings you need. Office-hybrid employees keep their laptop with them and use shared monitors on their anchor days; ask IT if you need monitors at home too. Specialist equipment, such as a high-performance workstation for analysis or modelling, is arranged through your manager and IT.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "3",
+                  "section_heading": "Personal Equipment",
+                  "text": "Personal laptops are not reimbursed, and they may not hold Ridgeline project files (RSE-SEC-01 \u00a73.3). Use the Ridgeline laptop you were issued for all project work.\nPersonal accessories such as your own headphones or keyboard may be used with Ridgeline equipment, but they are not reimbursed outside the stipend in \u00a72. If your Ridgeline laptop isn't suitable for your work, ask IT for a replacement rather than using a personal machine.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "4",
+                  "section_heading": "Care, Loss and Return",
+                  "text": "Look after Ridgeline equipment as if it were your own. Report a lost or stolen device as set out in RSE-SEC-01 \u00a73.4. When you leave Ridgeline, or at the end of an internship, return all equipment to IT.\nReport damage to IT promptly so it can be repaired or replaced. Accidental damage is not charged to you. Remote-approved employees can return equipment by courier, arranged by IT. Don't wipe or reset a Ridgeline device yourself; IT does this so that project data is handled correctly.",
+                  "score": 0.0294
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "8 passage(s)",
+            "sources": [
+              "RSE-EQ-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.3",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-EQ-01 \u00a72.4",
+              "RSE-EQ-01 \u00a72.5",
+              "RSE-EQ-01 \u00a71",
+              "RSE-EQ-01 \u00a73",
+              "RSE-EQ-01 \u00a74"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:07:25.227+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4553,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1008,
+            "started_at": "2026-10-19T23:07:26.236+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-EQ-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.1",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees can claim a one-time home-office stipend of $500 toward a desk, chair, lighting or similar items for their home workspace.\nThe stipend is one-time: it is not repeated each year. An employee who already received the office-hybrid stipend and later becomes remote-approved can claim the difference between the two amounts. Items bought with the stipend are yours to keep.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-EQ-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:07:26.254+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4846,
+              "output_tokens": 943
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5411,
+            "started_at": "2026-10-19T23:07:31.666+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:07:31.667+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 4,
+          "tool_ms": 86,
+          "llm_calls": 5,
+          "llm_ms": 10716,
+          "total_ms": 10807,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

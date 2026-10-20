@@ -1,0 +1,56 @@
+{
+  "item_id": "C03-vague-location",
+  "run": 2,
+  "speaking_as": "E1002",
+  "session_id": "e3a76b4a4b154428932b169d24563ffd",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can check this for you, but I first need to know where you'd be working.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "After you answer, share the rough dates too. For example, say March 2 to March 20. Then I can run the check and tell you who approves."
+          }
+        ],
+        "clarification": {
+          "question": "Where would you work from: your home state or province, a different state or province in your own country, or another country?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 130,
+              "output_tokens": 256
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3189,
+            "started_at": "2026-10-19T22:53:29.682+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:53:29.683+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 3189,
+          "total_ms": 3189,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

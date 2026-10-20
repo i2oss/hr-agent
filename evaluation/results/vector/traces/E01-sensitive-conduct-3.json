@@ -1,0 +1,621 @@
+{
+  "item_id": "E01-sensitive-conduct",
+  "run": 3,
+  "speaking_as": "E1004",
+  "session_id": "ffe9dfdc55e441a78b4bf4c47f2f5cb1",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I'm sorry you're dealing with this. Repeated comments about your accent are the kind of conduct Ridgeline's policy prohibits, and you have several ways to raise it.",
+        "policy_facts": [
+          {
+            "text": "Ridgeline prohibits harassment, discrimination and bullying. Its examples include unwelcome comments about a person's accent and repeated belittling in meetings.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "4.1",
+                "snippet": "unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "What matters is the effect of the conduct, not the intention. A remark meant as a joke can still be harassment, and a pattern of small remarks can be as serious as a single incident.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "4.1",
+                "snippet": "a pattern of small remarks can be as serious as a single incident"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You can raise a concern with your manager, the HR Service Desk, or HR Confidential (for sensitive matters). You can also call the 24/7 ethics line, which has an anonymous option. You never have to raise it with the person it is about.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You never have to raise a concern with the person it is about."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You don't need proof. A genuine concern is enough. It helps to say what happened, when and where, who was involved and whether anyone else saw it.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.1",
+                "snippet": "You don't need proof, and you don't need to be certain that a rule was broken"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Concerns are handled confidentially, and Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.2",
+                "snippet": "Concerns are handled confidentially."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.3",
+                "snippet": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "HR acknowledges every concern within 2 working days. While it looks into the concern, it may put temporary measures in place, such as changing meeting arrangements. These measures are not a finding against anyone.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.4",
+                "snippet": "HR acknowledges every concern within 2 working days."
+              },
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "6.4",
+                "snippet": "such as changing meeting arrangements or reporting lines"
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "I've prepared an HR Confidential ticket with a minimal summary, so HR can contact you privately. Please review it and press Confirm if you'd like it raised. Nothing has been submitted yet."
+          },
+          {
+            "text": "You can also email hr-confidential@ridgeline.example or call the ethics line on +1 555 0100 (24/7, anonymous option) if you'd prefer."
+          },
+          {
+            "text": "Jot down dates, meetings and who was present for each comment. You don't need this to report, but it makes the details easier to share."
+          }
+        ],
+        "escalation": {
+          "reason": "Repeated comments about your accent could be harassment or discrimination, which is a sensitive matter for HR Confidential. I'm not judging or investigating it.",
+          "trigger": "sensitive_matter"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1396,
+            "started_at": "2026-10-19T23:32:14.693+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.8177
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.7773
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.7545
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.7452
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.7117
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.4"
+            ],
+            "status": "ok",
+            "latency_ms": 37,
+            "started_at": "2026-10-19T23:32:14.731+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1630,
+              "output_tokens": 276
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 1973,
+            "started_at": "2026-10-19T23:32:16.704+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "ffe9dfdc55e441a78b4bf4c47f2f5cb1"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:32:16.727+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2191,
+              "output_tokens": 1299
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 7766,
+            "started_at": "2026-10-19T23:32:24.495+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "9 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:24.496+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "sensitive_matter: Repeated comments about your accent could be harassment or discrimination, which is a sensitive matter for HR Confidential. I'm not judging or investigating it.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:24.496+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 1,
+          "tool_ms": 37,
+          "llm_calls": 3,
+          "llm_ms": 11135,
+          "total_ms": 11199,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "7b1989250635",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR Confidential",
+          "employee_id": "E1004",
+          "category": "conduct",
+          "subject": "Concern about repeated comments in meetings",
+          "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-HB-01",
+              "section": "6.1"
+            },
+            {
+              "doc_id": "RSE-HB-01",
+              "section": "4.1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Your HR Confidential ticket HR-MOCK-0005 has been created.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "The ticket is open in the HR Confidential queue, and only a minimal summary is recorded. HR will contact you privately to discuss the details."
+          },
+          {
+            "text": "If anything else happens before then, you can still email hr-confidential@ridgeline.example or call the ethics line on +1 555 0100."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 105
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1396,
+            "started_at": "2026-10-19T23:32:14.693+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reporting concerns harassment discrimination HR Confidential ethics line",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.1",
+                  "section_heading": "How to report",
+                  "text": "If you have a concern about harassment, discrimination, retaliation, safety or any other breach of this handbook, you can raise it in whichever way you are most comfortable with. You can talk to your manager. You can contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For sensitive matters, contact HR Confidential at hr-confidential@ridgeline.example, which only a small HR team can read. You can also call the ethics line on +1 555 0100, available 24/7, with an anonymous option. You never have to raise a concern with the person it is about. When you raise a concern, say what happened, when and where, who was involved and whether anyone else saw it. You don't need proof, and you don't need to be certain that a rule was broken; it is enough that you have a genuine concern. If you prefer, HR can open an HR ticket for you in the HR Confidential queue, with only a minimal summary recorded, and contact you to discuss the details privately.",
+                  "score": 0.8177
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.2",
+                  "section_heading": "Confidentiality",
+                  "text": "Concerns are handled confidentially. Information is shared only with the people who need it to look into and resolve the concern, and HR tells you who that is where it can.",
+                  "score": 0.7773
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.3",
+                  "section_heading": "Non-retaliation",
+                  "text": "Ridgeline does not tolerate retaliation against anyone who raises a concern in good faith or takes part in an investigation. Retaliation is itself a breach of this handbook and is dealt with through the HR process. If you think you are being treated badly because you raised a concern, report it through any route in \u00a76.1.",
+                  "score": 0.7545
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.1",
+                  "section_heading": "Respect and anti-harassment",
+                  "text": "Ridgeline prohibits harassment, discrimination and bullying of any kind. Examples of prohibited conduct include unwelcome comments or jokes about a person's accent, ethnicity, religion, gender, age, disability or appearance; repeated belittling in meetings; unwanted physical contact; and offensive messages or images. This applies in the office, on project sites, at client premises, at work events and online. If you experience or witness conduct like this, you can raise it through any route in \u00a76, and you will be protected from retaliation (\u00a76.3). What matters is the effect of the conduct, not the intention behind it. A remark meant as a joke can still be harassment if it is unwelcome and demeaning, and a pattern of small remarks can be as serious as a single incident. Everyone at Ridgeline is expected to treat colleagues, clients and site workers with respect, to speak up when they see behaviour that crosses the line, and to support colleagues who raise a concern. Managers who become aware of possible harassment must make sure HR knows about it, even if the person affected has not made a formal report.",
+                  "score": 0.7452
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "6.4",
+                  "section_heading": "What happens next",
+                  "text": "HR acknowledges every concern within 2 working days. HR then looks into it, which may include talking to you, to witnesses and to the person concerned. When the review is finished, HR closes the loop with you and tells you what it can about the outcome. While a concern is being looked into, HR may put temporary measures in place, such as changing meeting arrangements or reporting lines, to protect the people involved. These measures are not a finding against anyone. Some details of the outcome may stay confidential to protect the privacy of others, but HR will always tell you when the matter is closed and what you can do if a problem happens again.",
+                  "score": 0.7117
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a76.1",
+              "RSE-HB-01 \u00a76.2",
+              "RSE-HB-01 \u00a76.3",
+              "RSE-HB-01 \u00a74.1",
+              "RSE-HB-01 \u00a76.4"
+            ],
+            "status": "ok",
+            "latency_ms": 37,
+            "started_at": "2026-10-19T23:32:14.731+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1630,
+              "output_tokens": 276
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 1973,
+            "started_at": "2026-10-19T23:32:16.704+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "ffe9dfdc55e441a78b4bf4c47f2f5cb1"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:32:16.727+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2191,
+              "output_tokens": 1299
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 7766,
+            "started_at": "2026-10-19T23:32:24.495+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "9 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:24.496+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "sensitive_matter: Repeated comments about your accent could be harassment or discrimination, which is a sensitive matter for HR Confidential. I'm not judging or investigating it.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:24.496+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "create_mock_hr_ticket",
+            "summary": "\u23f8 create_mock_hr_ticket confirmed by the user; executing",
+            "status": "confirmed",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:24.499+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ],
+              "requester_id": "E1004",
+              "session_id": "ffe9dfdc55e441a78b4bf4c47f2f5cb1"
+            },
+            "output": {
+              "id": "HR-MOCK-0005",
+              "mock": true,
+              "queue": "HR Confidential",
+              "employee_id": "E1004",
+              "category": "conduct",
+              "subject": "Concern about repeated comments in meetings",
+              "summary": "Employee reports a coworker repeatedly making comments about their accent in meetings. Requests HR contact them privately to discuss details.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "6.1"
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "section": "4.1"
+                }
+              ]
+            },
+            "summary": "HR-MOCK-0005 (mock)",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:32:24.520+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3812,
+              "output_tokens": 172
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1848,
+            "started_at": "2026-10-19T23:32:26.368+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:32:26.369+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 57,
+          "llm_calls": 4,
+          "llm_ms": 12983,
+          "total_ms": 13068,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "create_mock_hr_ticket",
+        "id": "HR-MOCK-0005",
+        "mock": true,
+        "status": "confirmed"
+      }
+    }
+  ]
+}

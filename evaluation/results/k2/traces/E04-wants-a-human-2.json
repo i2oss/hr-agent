@@ -1,0 +1,266 @@
+{
+  "item_id": "E04-wants-a-human",
+  "run": 2,
+  "speaking_as": "E1010",
+  "session_id": "5fe2ae5ee6214c87b94c199b4d5feff7",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes, you can reach a real person through the HR Service Desk. I've prepared a ticket asking HR to contact you about your leave case.",
+        "policy_facts": [
+          {
+            "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR.",
+            "citations": [
+              {
+                "doc_id": "RSE-ONB-01",
+                "section": "4",
+                "snippet": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "You already have an open ticket, HR-2026-0412 (\"Parental leave from 2026-12-07\"), in the HR Service Desk queue.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "list_hr_tickets"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Please review the draft HR ticket and press Confirm if you'd like HR to contact you about HR-2026-0412. Nothing has been sent yet."
+          },
+          {
+            "text": "You can also email hr@ridgeline.example or use HR Portal > Ask HR directly."
+          }
+        ],
+        "escalation": {
+          "reason": "You asked to speak with a person in HR about your leave case.",
+          "trigger": "user_requested_human"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 126,
+              "output_tokens": 249
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, list_hr_tickets",
+            "status": "ok",
+            "latency_ms": 3146,
+            "started_at": "2026-10-19T22:54:18.617+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "HR Service Desk contact",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "4",
+                  "section_heading": "Who to Contact",
+                  "text": "For HR questions, contact the HR Service Desk at hr@ridgeline.example or through HR Portal > Ask HR. For equipment and access problems, contact IT. For day-to-day questions about your work, start with your manager.\nFor sensitive concerns, use HR Confidential (RSE-HB-01 \u00a76.1). For security incidents, contact IT Security straight away (RSE-SEC-01 \u00a77.1). Your onboarding buddy can help you find your way around tools, teams and offices.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "7.3",
+                  "section_heading": "Asking for your data",
+                  "text": "You can ask for a copy of the personal data HR holds about you, or ask for a correction, through the HR Service Desk. Most of your information can be checked and updated yourself in the HR Portal, such as your contact details and emergency contacts. For anything you can't change yourself, HR will respond to your request as soon as it can and tell you if any information has to be withheld to protect someone else's privacy.",
+                  "score": 0.0315
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "2 passage(s)",
+            "sources": [
+              "RSE-ONB-01 \u00a74",
+              "RSE-HB-01 \u00a77.3"
+            ],
+            "status": "ok",
+            "latency_ms": 32,
+            "started_at": "2026-10-19T22:54:18.649+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "list_hr_tickets",
+            "args": {
+              "employee_id": "E1010",
+              "status": null,
+              "requester_id": "E1010",
+              "session_id": "5fe2ae5ee6214c87b94c199b4d5feff7"
+            },
+            "output": {
+              "employee_id": "E1010",
+              "tickets": [
+                {
+                  "id": "HR-2026-0412",
+                  "employee_id": "E1010",
+                  "category": "other",
+                  "subject": "Parental leave from 2026-12-07",
+                  "summary": "Plan 12 weeks of parental leave starting 2026-12-07; confirm benefits during leave and return date.",
+                  "status": "open",
+                  "priority": "normal",
+                  "created": "2026-10-05",
+                  "assigned_queue": "HR Service Desk",
+                  "citations": [
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.2"
+                    },
+                    {
+                      "doc_id": "RSE-LV-01",
+                      "section": "3.4"
+                    }
+                  ],
+                  "mock": false
+                }
+              ]
+            },
+            "summary": "1 ticket(s)",
+            "status": "ok",
+            "latency_ms": 10,
+            "started_at": "2026-10-19T22:54:18.660+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1014,
+              "output_tokens": 270
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): create_mock_hr_ticket",
+            "status": "ok",
+            "latency_ms": 2843,
+            "started_at": "2026-10-19T22:54:21.504+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "create_mock_hr_ticket",
+            "args": {
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with HR about parental leave case HR-2026-0412",
+              "summary": "Employee asks to speak with a person in HR about their leave case (existing ticket HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+              "priority": "normal",
+              "citations": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                }
+              ],
+              "requester_id": "E1010",
+              "session_id": "5fe2ae5ee6214c87b94c199b4d5feff7"
+            },
+            "output": {
+              "id": "HR-MOCK-(on confirm)",
+              "mock": true,
+              "queue": "HR Service Desk",
+              "employee_id": "E1010",
+              "category": "other",
+              "subject": "Request to speak with HR about parental leave case HR-2026-0412",
+              "summary": "Employee asks to speak with a person in HR about their leave case (existing ticket HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+              "priority": "normal",
+              "status": "open",
+              "created": "2026-11-02",
+              "citations": [
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "section": "4"
+                }
+              ]
+            },
+            "summary": "\u23f8 create_mock_hr_ticket awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T22:54:21.524+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1560,
+              "output_tokens": 433
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 3491,
+            "started_at": "2026-10-19T22:54:25.015+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "2 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:25.016+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "escalation",
+            "summary": "user_requested_human: You asked to speak with a person in HR about your leave case.",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T22:54:25.016+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 42,
+          "llm_calls": 3,
+          "llm_ms": 9480,
+          "total_ms": 9545,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "90d8ce6fb82e",
+        "tool": "create_mock_hr_ticket",
+        "preview": {
+          "id": "HR-MOCK-(on confirm)",
+          "mock": true,
+          "queue": "HR Service Desk",
+          "employee_id": "E1010",
+          "category": "other",
+          "subject": "Request to speak with HR about parental leave case HR-2026-0412",
+          "summary": "Employee asks to speak with a person in HR about their leave case (existing ticket HR-2026-0412, parental leave from 2026-12-07). Please contact them directly.",
+          "priority": "normal",
+          "status": "open",
+          "created": "2026-11-02",
+          "citations": [
+            {
+              "doc_id": "RSE-ONB-01",
+              "section": "4"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "item_id": "S01-carryover-cap",
+  "run": 2,
+  "speaking_as": "E1001",
+  "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914",
+  "client_ms": [
+    16091
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "You can carry over up to 5 unused PTO days into next year. Any days above that are forfeited on December 31.",
+        "policy_facts": [
+          {
+            "text": "The standard cap is 5 unused PTO days carried into the next calendar year. Unused days above the cap are forfeited on December 31.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "You can carry over up to 5 unused PTO days into the next calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Forfeited days are not paid out. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "Forfeited days are not paid out."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you are on approved leave that spans December 31, such as parental leave, the cap is 10 days instead of 5. It is applied automatically.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "As of 2026-11-02 you have 11.0 PTO days available. That is 16.67 accrued plus 2.0 carried over, minus 7.67 used, with 0.0 pending.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If you took no more PTO and accrued nothing further, you would be about 6 days over the 5-day cap. Plan to use those days before December 31."
+          },
+          {
+            "text": "Check your expected carryover in the HR Portal, which shows it from autumn onwards."
+          },
+          {
+            "text": "I can check specific dates against your balance and draft a request to your manager, Jordan Lee, if you'd like."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 306
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): search_policy, lookup_employee_profile, check_pto_balance",
+            "status": "ok",
+            "latency_ms": 2705,
+            "started_at": "2026-10-19T23:40:15.389+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days next year",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0296
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0294
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a75.3",
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T23:40:15.419+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 10,
+            "started_at": "2026-10-19T23:40:15.430+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 7,
+            "started_at": "2026-10-19T23:40:15.438+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1857,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1215,
+            "started_at": "2026-10-19T23:40:16.653+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 23,
+            "started_at": "2026-10-19T23:40:16.676+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2183,
+              "output_tokens": 82
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1481,
+            "started_at": "2026-10-19T23:40:18.158+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-PTO-01",
+              "section": "5"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "3 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a75.3"
+            ],
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-19T23:40:18.171+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2840,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1115,
+            "started_at": "2026-10-19T23:40:19.287+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:40:19.311+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3166,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 2703,
+            "started_at": "2026-10-19T23:40:22.014+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "b0ac013ae22c4826a5a0dbb8f7bf5914"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:40:22.039+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3492,
+              "output_tokens": 829
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 6731,
+            "started_at": "2026-10-19T23:40:28.770+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "4 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:40:28.771+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 7,
+          "tool_ms": 130,
+          "llm_calls": 6,
+          "llm_ms": 15950,
+          "total_ms": 16087,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

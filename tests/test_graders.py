@@ -156,3 +156,46 @@ def test_latency_pass_k_and_wilson():
     lo, hi = g.wilson(29, 29)
     assert hi == 1.0 and 0.85 < lo < 0.9
     assert g.wilson(0, 0) == (0.0, 0.0)
+
+
+def test_report_latency_shows_client_time_and_cold_wake():
+    from evaluation import report
+
+    rec = record({"lead": "x"}, [step(1, "tool", "search_policy", ms=40)])
+    cold = [{**rec, "run": n, "client_ms": [44_000 + n * 1000]} for n in (1, 2, 3)]
+    rows = report.latency_section({"warm": ([rec], [{"health_ms": 300}]),
+                                   "cold": (cold, [{"health_ms": 41_000}, {"health_ms": 43_000}]),
+                                   "spare": ([], [])})
+    warm_row, cold_row, empty_row = rows[2:]
+    assert "| 1.0 s | 1.0 s | n/a | n/a | 0.3 s |" in warm_row  # older records have no client_ms
+    assert "| 46.0 s | 46.9 s | 42.0 s |" in cold_row
+    assert "not run yet" in empty_row
+
+
+def test_report_failure_notes_can_name_another_run(tmp_path, monkeypatch):
+    import json
+
+    from evaluation import report
+
+    rec = record({"lead": "x"}, item="R04-contractor-pto", run=2)
+    (tmp_path / "spare" / "traces").mkdir(parents=True)
+    (tmp_path / "spare" / "traces" / "R04-contractor-pto-2.json").write_text(json.dumps(rec))
+    (tmp_path / "failure_notes.yaml").write_text(
+        "- {item: R04-contractor-pto, run_id: spare, run: 2, cause: plain answer, fix: none}\n")
+    monkeypatch.setattr(report, "RESULTS", tmp_path)
+    out = "\n".join(report.failures(ITEMS, []))
+    assert "No failed items in the baseline." in out
+    assert "**R04-contractor-pto (spare, run 2)**" in out and "- Cause: plain answer" in out
+
+
+def test_judge_evidence_includes_session_tool_errors_and_loop_events():
+    from evaluation import judge
+
+    denied = step(1, "tool", "check_pto_balance", status="error", server="hr",
+                  output={"error": {"code": "NOT_PERMITTED", "message": "E1004 may not access E1001's pto balance."}})
+    stopped = {**step(2, "error", status="error"), "summary": "stopped early: 8 tool calls this turn"}
+    e = judge.evidence(record({"lead": "x"}, [denied, stopped], speaking_as="E1004"), "2026-11-02")
+    assert e["session"] == {"today": "2026-11-02", "requester": {"id": "E1004", "name": "Priya Raman"}}
+    assert e["hr_tool_errors"][0]["output"]["error"]["code"] == "NOT_PERMITTED"
+    assert e["loop_events"] == ["stopped early: 8 tool calls this turn"] and e["hr_tool_outputs"] == []
+    assert judge.evidence(record({"lead": "x"}, speaking_as=None), "2026-11-02")["session"]["requester"] == "(not set)"

@@ -1,0 +1,222 @@
+{
+  "item_id": "C01-not-set-balance",
+  "run": 1,
+  "speaking_as": null,
+  "session_id": "e5fa7b97590c4e36aff086a4c108a887",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I can't see your PTO balance yet because I don't know who you are in this session.",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Could you choose who you are in the \"Speaking as\" picker so I can look up your PTO balance?"
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 118,
+              "output_tokens": 80
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1294,
+            "started_at": "2026-10-19T23:04:55.881+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO balance accrual",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.4",
+                  "section_heading": "When PTO accrues",
+                  "text": "PTO accrues each semi-monthly pay period, 24 periods a year. Each period you earn your annual days divided by 24. You can use PTO as soon as it has accrued.\nThis means your balance grows steadily through the year rather than arriving all at once on January 1. A new employee can take PTO early in their employment, but only the days already accrued; plan longer breaks for later in the year, when more PTO is available. Your available balance in the HR Portal already allows for days that are pending approval.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.5",
+                  "section_heading": "Accrual during leave",
+                  "text": "PTO keeps accruing while you are on paid leave, such as paid parental leave. PTO does not accrue during unpaid leave, such as unpaid personal leave (RSE-LV-01 \u00a76).\nPTO accrued before and during paid leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval. If your leave crosses the end of the year, see \u00a75.2 for the higher carryover cap.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.3",
+                  "section_heading": "Your balance",
+                  "text": "Your PTO balance cannot go negative. You can only take PTO you have already accrued. If your request is longer than your available balance, you can reduce the request, or request unpaid personal leave for the remainder (RSE-LV-01 \u00a76).\nThe HR Portal will not let you submit a request that takes your balance below zero. Managers cannot approve PTO that hasn't accrued yet, and Ridgeline does not advance PTO from future pay periods. If you are short of PTO for an important reason, talk to your manager and HR early; unpaid personal leave is approved by HR.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.2",
+                  "section_heading": "Part-time accrual",
+                  "text": "Part-time employees earn PTO pro rata. Take the full-time days for your service band, multiply by your scheduled weekly hours divided by 40, and round to the nearest half day. For example, a part-time employee scheduled for 24 hours a week in the 15-day band earns 9 days a year.\nIf your scheduled hours change during the year, your accrual changes from the next pay period. PTO already accrued is not recalculated. Part-time employees take PTO in the same half-day increments as everyone else, counted against their scheduled working days.",
+                  "score": 0.0315
+                },
+                {
+                  "doc_id": "RSE-ONB-01",
+                  "title": "Onboarding Procedures",
+                  "section": "3.3",
+                  "section_heading": "Using PTO",
+                  "text": "You can use PTO as soon as it has accrued, including during your first 90 days. Request it in the HR Portal as usual.\nBecause PTO accrues each pay period, your balance in your first weeks is small. If you already have time off booked when you join, for example a holiday arranged before your offer, tell your manager and HR before your start date so it can be agreed; HR can discuss unpaid personal leave if your balance won't cover it.",
+                  "score": 0.0303
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.1",
+                  "section_heading": "Full-time accrual",
+                  "text": "Full-time employees earn PTO according to their completed years of service, counted on January 1 (or from the hire date in the first year). With 0\u20132 completed years you earn 15 days a year. With 3\u20135 completed years you earn 20 days a year. With 6 or more completed years you earn 25 days a year. The higher rate starts in the calendar year after you reach the new band.\nFor example, an engineer who joined Ridgeline four years ago has 4 completed years of service and earns 20 days a year. An engineer who completes their sixth year of service during the year moves to 25 days a year from the following January 1. Service is counted from your hire date on your HR record, and periods of unpaid leave do not reduce it.",
+                  "score": 0.0299
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.3",
+                  "section_heading": "Interns",
+                  "text": "Interns earn 5 days of PTO per internship, whatever its length. Unused intern PTO is not carried over or paid out.\nInterns request PTO in the HR Portal like everyone else, and the notice and approval rules in \u00a74 apply. An intern who later joins Ridgeline as a full-time or part-time employee starts accruing under \u00a72.1 or \u00a72.2 from their new hire date.",
+                  "score": 0.0297
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.1",
+                  "section_heading": "Increments",
+                  "text": "PTO is taken in whole or half days. The minimum increment is a half day (0.5 days).\nA half day is a morning or an afternoon of your normal working day. If you need a shorter absence, such as an hour for an appointment, agree it informally with your manager instead of booking PTO. When your available balance includes a half day, you can use it on its own, for example to take one full day and one half day.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.4",
+                  "section_heading": "Checking your balance",
+                  "text": "You can see your balance in HR Portal > Time Off. The balance shown is as of the last pay period, and it lists days accrued, days used, days pending approval and any days carried over from last year.\nYour available balance is days accrued plus days carried over, minus days used and days pending approval. Check it before you plan a longer break. If you think your balance is wrong, contact the HR Service Desk with the dates in question.",
+                  "score": 0.0281
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a72.4",
+              "RSE-PTO-01 \u00a72.5",
+              "RSE-PTO-01 \u00a73.3",
+              "RSE-PTO-01 \u00a72.2",
+              "RSE-ONB-01 \u00a73.3",
+              "RSE-PTO-01 \u00a72.1",
+              "RSE-PTO-01 \u00a72.3",
+              "RSE-PTO-01 \u00a73.1",
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a73.4"
+            ],
+            "status": "ok",
+            "latency_ms": 25,
+            "started_at": "2026-10-19T23:04:55.907+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2464,
+              "output_tokens": 54
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_pto_balance",
+            "status": "ok",
+            "latency_ms": 1131,
+            "started_at": "2026-10-19T23:04:57.038+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": null,
+              "requester_id": null,
+              "session_id": "e5fa7b97590c4e36aff086a4c108a887"
+            },
+            "output": {
+              "error": {
+                "code": "MISSING_ARGUMENT",
+                "message": "No Requester: 'Speaking as' is (not set).",
+                "hint": "Ask the user to choose who they are in the 'Speaking as' picker; an ID typed in chat doesn't count."
+              }
+            },
+            "summary": "MISSING_ARGUMENT: No Requester: 'Speaking as' is (not set).",
+            "status": "error",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:04:57.050+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "clarification",
+            "summary": "forced: Requester (not set) + MISSING_ARGUMENT",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:04:57.050+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2697,
+              "output_tokens": 108
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1492,
+            "started_at": "2026-10-19T23:04:58.542+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:04:58.543+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 36,
+          "llm_calls": 3,
+          "llm_ms": 3917,
+          "total_ms": 3957,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

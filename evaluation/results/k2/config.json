@@ -1,0 +1,20 @@
+{
+  "run_id": "k2",
+  "date": "2026-10-19T22:41:33+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "runs": 3,
+  "git_sha": "b9ee2fbbe18b9a33a0fbc74688e619e5d901a824",
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5"
+  },
+  "index": {
+    "chunks": 173,
+    "corpus_hash": "969260450fa04d95f8c7236bd7429741e42e05e7a9afaa0a70d1b63d601185c0"
+  },
+  "demo_today": "2026-11-02",
+  "retrieval": {
+    "top_k": "2",
+    "mode": "hybrid"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "item_id": "C03-vague-location",
+  "run": 1,
+  "speaking_as": "E1002",
+  "session_id": "97cf4e69337c412e96ce68a600cd02a8",
+  "responses": [
+    {
+      "answer": {
+        "lead": "I need one detail first: where would you work from?",
+        "policy_facts": [],
+        "recommendations": [],
+        "clarification": {
+          "question": "Where would you be working from: your home state or province, a different state or province in your own country, or another country? If you have dates in mind, please include them."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 130,
+              "output_tokens": 193
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2344,
+            "started_at": "2026-10-16T00:57:16.131+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-16T00:57:16.131+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "llm_calls": 1,
+          "llm_ms": 2344,
+          "total_ms": 2344,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

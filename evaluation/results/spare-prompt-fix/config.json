@@ -1,0 +1,22 @@
+{
+  "run_id": "spare-prompt-fix",
+  "date": "2026-10-19T23:34:23+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "runs": 3,
+  "git_sha": "2e4e73ce2cbe05c4bf256e1ac6f24bba899b018d",
+  "server_version": "dev",
+  "health_ms": 9,
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5"
+  },
+  "index": {
+    "chunks": 173,
+    "corpus_hash": "969260450fa04d95f8c7236bd7429741e42e05e7a9afaa0a70d1b63d601185c0"
+  },
+  "demo_today": "2026-11-02",
+  "retrieval": {
+    "top_k": "5",
+    "mode": "hybrid"
+  }
+}

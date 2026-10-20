@@ -1,0 +1,537 @@
+{
+  "item_id": "S03-anchor-days",
+  "run": 1,
+  "speaking_as": "E1002",
+  "session_id": "34204d4e8bf645edb0a05f9d79cbc78b",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Daniel, you're office-hybrid, so you're expected in the Austin office on Tuesday, Wednesday and Thursday. Monday and Friday can be remote days.",
+        "policy_facts": [
+          {
+            "text": "Office-hybrid employees work from their home office on 3 anchor days a week: Tuesday, Wednesday and Thursday. They may work remotely on Monday and Friday.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you can't be in the office on an anchor day, tell your manager. Working from home on an occasional anchor day is fine, but regularly missing them is not.",
+            "citations": [
+              {
+                "doc_id": "RSE-RW-01",
+                "section": "2.1",
+                "snippet": "Working from home on an occasional anchor day is fine; regularly missing them is not."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Core hours are 10:00\u201315:00 in your local time zone. They apply whether you are in the office or working remotely.",
+            "citations": [
+              {
+                "doc_id": "RSE-HB-01",
+                "section": "3.2",
+                "snippet": "Core hours apply whether you are in the office or working remotely."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your HR record shows your Work Arrangement as office-hybrid, with Austin (TX) as your home office.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "lookup_employee_profile"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "If a site visit or appointment keeps you out of the office on a Tuesday, Wednesday or Thursday, tell your manager, Rafael G\u00f3mez."
+          },
+          {
+            "text": "I stopped early because I hit the tool limit for this turn. The answer above covers your question. Ask me again if you want me to check anything else, such as temporary remote work."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 129,
+              "output_tokens": 182
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): search_policy, lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1631,
+            "started_at": "2026-10-19T23:18:47.796+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "hybrid schedule office days expected",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 0.8231
+                },
+                {
+                  "doc_id": "RSE-EQ-01",
+                  "title": "Equipment & Home-Office Stipend",
+                  "section": "2.2",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid employees can claim a one-time home-office stipend of $250 for their remote days.\nSuitable items include a desk chair, a monitor arm, a desk lamp or a keyboard. The stipend can't be used for furniture unrelated to work or for general household items.",
+                  "score": 0.7136
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.1",
+                  "section_heading": "Core hours",
+                  "text": "When working remotely, be available during core hours, 10:00\u201315:00 in your local time zone, as in the office (RSE-HB-01 \u00a73.2).",
+                  "score": 0.7066
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.4",
+                  "section_heading": "Adding personal days to a trip",
+                  "text": "You may add personal days to a business trip. Personal days are taken as PTO under the Paid Time Off Policy (RSE-PTO-01), and the costs of the personal days are yours (RSE-EXP-01 \u00a76).\nRequest the PTO in the usual way, with the usual notice and approval. Your holiday calendar is still your home office's calendar while you travel. Adding a few personal days doesn't turn a business trip into temporary remote work, provided you don't work on those days.",
+                  "score": 0.7053
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.3",
+                  "section_heading": "Work Arrangements",
+                  "text": "Each employee has one Work Arrangement. Office-hybrid is the default: you work from your home office on set anchor days and remotely on the others. Remote-approved employees work remotely most of the time, with approval from their manager and HR. Field/site-based employees work at project sites and are not eligible for remote work. The Remote & Hybrid Work Policy (RSE-RW-01) sets out the rules for each arrangement. Your Work Arrangement is part of your HR record and is agreed when you join. It can change, for example when an office-hybrid employee is approved to become remote-approved, or when a field/ site-based employee moves into a design role. Changes are requested through the HR Portal and approved as set out in the Approval Matrix.",
+                  "score": 0.7043
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-EQ-01 \u00a72.2",
+              "RSE-RW-01 \u00a75.1",
+              "RSE-LOC-01 \u00a72.4",
+              "RSE-HB-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 33,
+            "started_at": "2026-10-19T23:18:47.830+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1002",
+              "requester_id": "E1002",
+              "session_id": "34204d4e8bf645edb0a05f9d79cbc78b"
+            },
+            "output": {
+              "employee_id": "E1002",
+              "name": "Daniel Okafor",
+              "title": "Project Engineer",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "AUS",
+                "city": "Austin",
+                "region": "TX",
+                "country": "US",
+                "timezone": "America/Chicago"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1014",
+                "name": "Rafael G\u00f3mez"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2023-03-06",
+              "weekly_hours": 40,
+              "work_email": "daniel.okafor@ridgeline.example",
+              "work_region": "TX",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Daniel Okafor, Project Engineer, Austin; manager Rafael G\u00f3mez",
+            "status": "ok",
+            "latency_ms": 13,
+            "started_at": "2026-10-19T23:18:47.844+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1728,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1257,
+            "started_at": "2026-10-19T23:18:49.102+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1"
+            ],
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:18:49.113+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2091,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1378,
+            "started_at": "2026-10-19T23:18:50.492+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "5.1"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.1",
+                  "section_heading": "Core hours",
+                  "text": "When working remotely, be available during core hours, 10:00\u201315:00 in your local time zone, as in the office (RSE-HB-01 \u00a73.2).",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a75.1"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:18:50.509+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2309,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1368,
+            "started_at": "2026-10-19T23:18:51.879+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-HB-01",
+              "section": "2.3"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "2.3",
+                  "section_heading": "Work Arrangements",
+                  "text": "Each employee has one Work Arrangement. Office-hybrid is the default: you work from your home office on set anchor days and remotely on the others. Remote-approved employees work remotely most of the time, with approval from their manager and HR. Field/site-based employees work at project sites and are not eligible for remote work. The Remote & Hybrid Work Policy (RSE-RW-01) sets out the rules for each arrangement. Your Work Arrangement is part of your HR record and is agreed when you join. It can change, for example when an office-hybrid employee is approved to become remote-approved, or when a field/ site-based employee moves into a design role. Changes are requested through the HR Portal and approved as set out in the Approval Matrix.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T23:18:51.894+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2712,
+              "output_tokens": 83
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1071,
+            "started_at": "2026-10-19T23:18:52.966+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-HB-01",
+              "section": "3.2"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "3.2",
+                  "section_heading": "Core hours",
+                  "text": "Everyone is expected to be available during core hours, 10:00\u201315:00 in their local time zone, so that teams across our offices can meet. Outside core hours you may arrange your day with your manager and team. Core hours apply whether you are in the office or working remotely. Because our offices span several time zones, a meeting inside core hours in Toronto may be early in Seattle. Teams that work across offices should agree meeting times that fall within everyone's core hours where possible, and rotate inconvenient times fairly when they can't.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "1 passage(s)",
+            "sources": [
+              "RSE-HB-01 \u00a73.2"
+            ],
+            "status": "ok",
+            "latency_ms": 10,
+            "started_at": "2026-10-19T23:18:52.976+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3044,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1141,
+            "started_at": "2026-10-19T23:18:54.118+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "2"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.1",
+                  "section_heading": "Office-hybrid",
+                  "text": "Office-hybrid is the default Work Arrangement. Office-hybrid employees work from their home office on 3 anchor days a week, Tuesday, Wednesday and Thursday, and may work remotely on Monday and Friday. Teams plan meetings and collaboration for the anchor days.\nAnchor days keep teams together for design reviews, coordination with other disciplines and mentoring of junior engineers. If you can't be in the office on an anchor day, for example because of a site visit or an appointment, tell your manager. Working from home on an occasional anchor day is fine; regularly missing them is not.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.2",
+                  "section_heading": "Remote-approved",
+                  "text": "Remote-approved employees work remotely most of the time. The arrangement must be approved by both the manager and HR. Remote-approved employees spend at least one week per quarter at their home office.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "2.3",
+                  "section_heading": "Field/site-based",
+                  "text": "Field/site-based employees work at project sites. Their roles cannot be done remotely, so they are not eligible for remote-approved status or for temporary remote work.\nField/site-based employees may still do some office-based tasks, such as writing reports, at a Ridgeline office when their manager agrees. If a field/site-based employee moves into an office-based role, their Work Arrangement changes with the role.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "3 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a72.1",
+              "RSE-RW-01 \u00a72.2",
+              "RSE-RW-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:18:54.139+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 3733,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): get_policy_section",
+            "status": "ok",
+            "latency_ms": 1196,
+            "started_at": "2026-10-19T23:18:55.335+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "get_policy_section",
+            "args": {
+              "doc_id": "RSE-RW-01",
+              "section": "5"
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.1",
+                  "section_heading": "Core hours",
+                  "text": "When working remotely, be available during core hours, 10:00\u201315:00 in your local time zone, as in the office (RSE-HB-01 \u00a73.2).",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.2",
+                  "section_heading": "Workspace and security",
+                  "text": "Your remote workspace must meet the security requirements in RSE-SEC-01 \u00a75: use the VPN, keep screens private and never print Client Restricted documents at home.\nWork in a space where others can't overhear confidential calls or see your screen, and lock your device when you step away. Use only company-managed devices for project work.",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.3",
+                  "section_heading": "Equipment",
+                  "text": "Ridgeline provides your equipment and, where eligible, a home-office stipend; see the Equipment & Home-Office Stipend policy (RSE-EQ-01).",
+                  "score": 1.0
+                },
+                {
+                  "doc_id": "RSE-RW-01",
+                  "title": "Remote & Hybrid Work Policy",
+                  "section": "5.4",
+                  "section_heading": "Office visits for remote-approved staff",
+                  "text": "Remote-approved employees spend at least one week per quarter at their home office, planned with their manager.\nVisits are timed to be useful: project kick-offs, design reviews and team planning are good times. A visit week is a normal working week in the office and is not counted as business travel for cross-border purposes when the home office is in your own country. Travel for these visits is business travel and follows RSE-LOC-01 \u00a72 and RSE-EXP-01.",
+                  "score": 1.0
+                }
+              ]
+            },
+            "summary": "4 passage(s)",
+            "sources": [
+              "RSE-RW-01 \u00a75.1",
+              "RSE-RW-01 \u00a75.2",
+              "RSE-RW-01 \u00a75.3",
+              "RSE-RW-01 \u00a75.4"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:18:55.353+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "error",
+            "summary": "stopped early: 8 tool calls this turn",
+            "status": "error",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:18:55.353+00:00"
+          },
+          {
+            "n": 17,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4518,
+              "output_tokens": 684
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4073,
+            "started_at": "2026-10-19T23:18:59.427+00:00"
+          },
+          {
+            "n": 18,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "4 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:18:59.428+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 8,
+          "tool_ms": 136,
+          "llm_calls": 8,
+          "llm_ms": 13115,
+          "total_ms": 13262,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

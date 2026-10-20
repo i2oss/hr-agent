@@ -1,0 +1,506 @@
+{
+  "item_id": "R01-tuition-not-covered",
+  "run": 1,
+  "speaking_as": "E1005",
+  "session_id": "42e515620cfd4f7ca899da8808c6667e",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Ridgeline's policies don't cover this. I couldn't find any tuition or education reimbursement policy for a part-time master's degree.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Ask the HR Service Desk whether any tuition or education support exists, and how to request it, before you enroll or pay any fees."
+          },
+          {
+            "text": "I can open an HR ticket with your question if you'd like. Just say so and I'll prepare it for you to confirm."
+          }
+        ],
+        "refusal": {
+          "reason": "not_covered",
+          "text": "Ridgeline's policies don't cover tuition or degree reimbursement. Please contact the HR Service Desk for next steps."
+        }
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 134,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1130,
+            "started_at": "2026-10-19T23:05:46.738+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition reimbursement education assistance",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T23:05:46.768+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 239,
+              "output_tokens": 84
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1205,
+            "started_at": "2026-10-19T23:05:47.973+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "master's degree study benefit training professional development",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 29,
+            "started_at": "2026-10-19T23:05:48.002+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 344,
+              "output_tokens": 75
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1369,
+            "started_at": "2026-10-19T23:05:49.372+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "tuition",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:05:49.391+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 440,
+              "output_tokens": 101
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2619,
+            "started_at": "2026-10-19T23:05:52.011+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "reimbursement of education courses",
+              "doc_ids": [
+                "RSE-HB-01",
+                "RSE-EXP-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.3",
+                  "section_heading": "Alcohol",
+                  "text": "Alcohol is reimbursed only as part of pre-approved client entertainment.",
+                  "score": 0.0325
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.2",
+                  "section_heading": "Professional licence renewals",
+                  "text": "Professional engineering licence renewals are reimbursed. Claim the renewal fee with the receipt. Fees for licences in additional jurisdictions are reimbursed when your manager agrees they are needed for your projects.",
+                  "score": 0.0318
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.3",
+                  "section_heading": "Not reimbursable",
+                  "text": "These are not reimbursed: personal travel costs, traffic or parking fines, upgrades without approval, family travel, and personal entertainment. Personal entertainment includes in-flight films, hotel films, gym fees and sightseeing. Family travel includes the costs of a partner or family members travelling with you, even when they share your room or car.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.03
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.2",
+                  "section_heading": "Deadlines",
+                  "text": "Submit claims within 30 days of the expense. Claims older than 60 days are not reimbursed without a director exception. Submitting promptly helps projects bill clients accurately and helps Finance close each month. For a long trip, you may submit claims as you go rather than waiting until you return.",
+                  "score": 0.0296
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "2.1",
+                  "section_heading": "Pre-approval",
+                  "text": "Your manager pre-approves every business trip before you book it (RSE-LOC-01 \u00a72.1).",
+                  "score": 0.0295
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.2",
+                  "section_heading": "Airfare",
+                  "text": "When you combine business and personal travel, airfare is reimbursed up to the business-only comparison fare, which Ridgeline Travel quotes at booking for the dates the business trip alone would need.",
+                  "score": 0.0292
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.0291
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "3.1",
+                  "section_heading": "Airfare",
+                  "text": "Book economy class for flights of up to 6 hours. For flights of more than 6 hours you may book premium economy. Business class needs director approval before booking. Flight time is the scheduled time of the longest flight segment, not the whole journey. Book early where you can, and choose the lowest reasonable fare for your route and times. Seat upgrades, extra legroom and lounge passes paid for without approval are not reimbursed (\u00a77.3).",
+                  "score": 0.0282
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "8.1",
+                  "section_heading": "Receipts",
+                  "text": "Attach an itemised receipt for every item of $25 or more. A card statement is not a receipt. Photograph paper receipts and attach them to your claim in the HR Portal. If a receipt is lost, explain on the claim; your manager decides whether to approve it.",
+                  "score": 0.0281
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a75.3",
+              "RSE-EXP-01 \u00a77.2",
+              "RSE-EXP-01 \u00a77.3",
+              "RSE-EXP-01 \u00a75.2",
+              "RSE-EXP-01 \u00a78.2",
+              "RSE-EXP-01 \u00a72.1",
+              "RSE-EXP-01 \u00a76.2",
+              "RSE-EXP-01 \u00a76.3",
+              "RSE-EXP-01 \u00a73.1",
+              "RSE-EXP-01 \u00a78.1"
+            ],
+            "status": "ok",
+            "latency_ms": 28,
+            "started_at": "2026-10-19T23:05:52.039+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2157,
+              "output_tokens": 92
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1302,
+            "started_at": "2026-10-19T23:05:53.342+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "benefits overview learning development degree",
+              "doc_ids": [
+                "RSE-HB-01"
+              ]
+            },
+            "output": {
+              "passages": [],
+              "evidence": "none"
+            },
+            "summary": "no evidence in the corpus (evidence: none)",
+            "sources": [],
+            "status": "ok",
+            "latency_ms": 24,
+            "started_at": "2026-10-19T23:05:53.366+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2270,
+              "output_tokens": 81
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 1538,
+            "started_at": "2026-10-19T23:05:54.905+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "licence and training reimbursement",
+              "doc_ids": null
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.2",
+                  "section_heading": "Professional licence renewals",
+                  "text": "Professional engineering licence renewals are reimbursed. Claim the renewal fee with the receipt. Fees for licences in additional jurisdictions are reimbursed when your manager agrees they are needed for your projects.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-HB-01",
+                  "title": "Employee Handbook & Code of Conduct",
+                  "section": "4.5",
+                  "section_heading": "Professional licensure",
+                  "text": "Only licensed professional engineers may seal or sign engineering drawings and calculations, and only for work they have personally reviewed. Never use another engineer's seal or signature. Keep your own licence current; licence renewals are reimbursed under RSE-EXP-01 \u00a77.2. Engineers working toward licensure should work under the supervision of a licensed engineer and keep a record of their experience. Tell your manager straight away if your licence lapses or is restricted, so project responsibilities can be adjusted.",
+                  "score": 0.0317
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.3",
+                  "section_heading": "Alcohol",
+                  "text": "Alcohol is reimbursed only as part of pre-approved client entertainment.",
+                  "score": 0.0301
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.2",
+                  "section_heading": "Airfare",
+                  "text": "When you combine business and personal travel, airfare is reimbursed up to the business-only comparison fare, which Ridgeline Travel quotes at booking for the dates the business trip alone would need.",
+                  "score": 0.0297
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "7.3",
+                  "section_heading": "Not reimbursable",
+                  "text": "These are not reimbursed: personal travel costs, traffic or parking fines, upgrades without approval, family travel, and personal entertainment. Personal entertainment includes in-flight films, hotel films, gym fees and sightseeing. Family travel includes the costs of a partner or family members travelling with you, even when they share your room or car.",
+                  "score": 0.0293
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "3.3",
+                  "section_heading": "Ground transport",
+                  "text": "Taxis, ride-share and public buses or trains are reimbursed for business journeys. Rental cars should be compact or intermediate size unless the work needs a larger vehicle. Decline optional extras such as satellite navigation upgrades, and refuel the car before returning it. Ridgeline's travel insurance covers rental cars booked through Ridgeline Travel, so extra insurance from the rental company isn't needed. Share taxis and cars with colleagues travelling to the same place where practical.",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-LOC-01",
+                  "title": "Work Location, Travel & Cross-Border Work Guidelines",
+                  "section": "2.2",
+                  "section_heading": "Booking",
+                  "text": "Book flights, hotels and rental cars through Ridgeline Travel, the internal booking portal. Travel costs are reimbursed under the Travel & Expense Reimbursement policy (RSE-EXP-01).",
+                  "score": 0.0288
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "5.2",
+                  "section_heading": "Client entertainment",
+                  "text": "Client entertainment, such as a meal with a client, is reimbursed up to $100 per person and needs your manager's pre-approval. On your claim, list the people attended, their organisations and the business purpose. Entertainment for public officials needs extra care; check with your manager first. Gifts and hospitality you receive from others are covered by RSE-HB-01 \u00a74.3.",
+                  "score": 0.0283
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "2.1",
+                  "section_heading": "Pre-approval",
+                  "text": "Your manager pre-approves every business trip before you book it (RSE-LOC-01 \u00a72.1).",
+                  "score": 0.028
+                },
+                {
+                  "doc_id": "RSE-EXP-01",
+                  "title": "Travel & Expense Reimbursement",
+                  "section": "6.3",
+                  "section_heading": "Personal-day costs",
+                  "text": "Lodging and meals on personal days are not reimbursed. For example, if you attend meetings at another office for three days and stay on for a few days of vacation, Ridgeline reimburses lodging and meals for the business days within the limits in \u00a74 and \u00a75.1, and airfare up to the business-only comparison fare. Lodging and meals for the vacation days are yours, and the vacation days are PTO.",
+                  "score": 0.0275
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "10 passage(s)",
+            "sources": [
+              "RSE-EXP-01 \u00a77.2",
+              "RSE-HB-01 \u00a74.5",
+              "RSE-EXP-01 \u00a75.3",
+              "RSE-EXP-01 \u00a76.2",
+              "RSE-EXP-01 \u00a77.3",
+              "RSE-EXP-01 \u00a73.3",
+              "RSE-LOC-01 \u00a72.2",
+              "RSE-EXP-01 \u00a75.2",
+              "RSE-EXP-01 \u00a72.1",
+              "RSE-EXP-01 \u00a76.3"
+            ],
+            "status": "ok",
+            "latency_ms": 18,
+            "started_at": "2026-10-19T23:05:54.924+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4056,
+              "output_tokens": 97
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1462,
+            "started_at": "2026-10-19T23:05:56.387+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1005",
+              "requester_id": "E1005",
+              "session_id": "42e515620cfd4f7ca899da8808c6667e"
+            },
+            "output": {
+              "employee_id": "E1005",
+              "name": "Grace Liu",
+              "title": "Drafter",
+              "department": "Design Technology",
+              "employment_type": "part_time",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "SEA",
+                "city": "Seattle",
+                "region": "WA",
+                "country": "US",
+                "timezone": "America/Los_Angeles"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1017",
+                "name": "Ben Carter"
+              },
+              "director": {
+                "id": "E1018",
+                "name": "Sofia Rossi"
+              },
+              "hire_date": "2025-01-06",
+              "weekly_hours": 24,
+              "work_email": "grace.liu@ridgeline.example",
+              "work_region": "WA",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Grace Liu, Drafter, Seattle; manager Ben Carter",
+            "status": "ok",
+            "latency_ms": 22,
+            "started_at": "2026-10-19T23:05:56.410+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4377,
+              "output_tokens": 302
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 2882,
+            "started_at": "2026-10-19T23:05:59.293+00:00"
+          },
+          {
+            "n": 16,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:05:59.294+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 7,
+          "tool_ms": 168,
+          "llm_calls": 8,
+          "llm_ms": 13507,
+          "total_ms": 13686,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

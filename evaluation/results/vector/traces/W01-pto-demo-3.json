@@ -1,0 +1,1094 @@
+{
+  "item_id": "W01-pto-demo",
+  "run": 3,
+  "speaking_as": "E1001",
+  "session_id": "f4ff529e9c7f453bbed9b07019833d6d",
+  "responses": [
+    {
+      "answer": {
+        "lead": "Yes, Maya. Wednesday Nov 11 to Friday Nov 13 is allowed with your manager's approval. It would cost 2 PTO days, because Nov 11 is a company holiday.",
+        "policy_facts": [
+          {
+            "text": "The Compliance Check allows this request with manager approval. It charges 2 PTO days, because Veterans Day (2026-11-11) is excluded. Jordan Lee approves.",
+            "citations": [
+              {
+                "doc_id": "RSE-HOL-01",
+                "section": "2",
+                "snippet": "Veterans Day | Wednesday, November 11, 2026"
+              }
+            ],
+            "data_sources": [
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "You have 11.0 PTO days available, which covers the 2 days requested.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              },
+              {
+                "tool": "check_policy_compliance"
+              }
+            ]
+          },
+          {
+            "text": "Requests of 3 PTO days or fewer have no minimum notice.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.2",
+                "snippet": "Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Your manager approves PTO requests. A director's approval is only needed for more than 10 consecutive PTO days.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.3",
+                "snippet": "Your manager approves your PTO requests."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "PTO must be submitted in the HR Portal before the first day off. It isn't approved until the portal shows it as approved.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "4.1",
+                "snippet": "PTO is not approved until the HR Portal shows it as approved."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Review the drafted message to Jordan Lee and press Confirm if you'd like it saved. It isn't sent until you confirm."
+          },
+          {
+            "text": "Submit the request in the HR Portal before Wednesday, Nov 11."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 304
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, check_pto_balance, search_policy",
+            "status": "ok",
+            "latency_ms": 2408,
+            "started_at": "2026-10-19T23:30:29.719+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:30:29.740+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:30:29.751+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice approval",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.7894
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.7775
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.7689
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.7357
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.7239
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.4"
+            ],
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:30:29.766+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1903,
+              "output_tokens": 347
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): check_policy_compliance, search_policy",
+            "status": "ok",
+            "latency_ms": 2377,
+            "started_at": "2026-10-19T23:30:32.144+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-11",
+                "end_date": "2026-11-13",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "2 PTO day(s); company holidays excluded: Veterans Day (2026-11-11).",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 2 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "2 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "2 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 2,
+                "holidays_excluded": [
+                  {
+                    "date": "2026-11-11",
+                    "name": "Veterans Day"
+                  }
+                ],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 9,
+                "approver_name": "Jordan Lee"
+              }
+            },
+            "summary": "allowed_with_approval, approver manager, 2 working days",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:30:32.165+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "company holidays US calendar November",
+              "doc_ids": [
+                "RSE-HOL-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "2",
+                  "section_heading": "US Company Holidays (Denver, Austin, Seattle)",
+                  "text": "These are the observed US company holidays. Where the holiday's actual date falls on a weekend, the actual date is shown in brackets.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nMemorial Day | Monday, May 25, 2026 | Monday, May 31, 2027\nJuneteenth | Friday, June 19, 2026 | Friday, June 18, 2027 (actual June 19)\nIndependence Day | Friday, July 3, 2026 (actual July 4) | Monday, July 5, 2027 (actual July 4)\nLabor Day | Monday, September 7, 2026 | Monday, September 6, 2027\nVeterans Day | Wednesday, November 11, 2026 | Thursday, November 11, 2027\nThanksgiving Day | Thursday, November 26, 2026 | Thursday, November 25, 2027\nDay after Thanksgiving | Friday, November 27, 2026 | Friday, November 26, 2027\nChristmas Day | Friday, December 25, 2026 | Friday, December 24, 2027 (actual December 25)\nUS offices are open on Martin Luther King Jr. Day, Presidents' Day and Columbus Day / Indigenous Peoples' Day; they are not US company holidays. Employees who want to mark them can use a floating holiday (\u00a74).",
+                  "score": 0.7928
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "5.1",
+                  "section_heading": "Remembrance Day (Toronto)",
+                  "text": "On November 11 the Toronto office observes two minutes of silence at 11:00. Remembrance Day is a regular working day for the Toronto office, not a company holiday, so a Toronto employee taking PTO on November 11 is charged a PTO day for it. (For the US offices, November 11 is Veterans Day, a company holiday; see \u00a72.)\nToronto colleagues working with US teams that week should expect the US offices to be closed on November 11, and US staff should not assume their Toronto colleagues are off. Staff of any office who wish to join the Toronto observance remotely are welcome to do so.",
+                  "score": 0.7307
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "3",
+                  "section_heading": "Canada Company Holidays (Toronto)",
+                  "text": "These are the observed Canada company holidays for the Toronto office.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nFamily Day | Monday, February 16, 2026 | Monday, February 15, 2027\nGood Friday | Friday, April 3, 2026 | Friday, March 26, 2027\nVictoria Day | Monday, May 18, 2026 | Monday, May 24, 2027\nCanada Day | Wednesday, July 1, 2026 | Thursday, July 1, 2027\nCivic Holiday | Monday, August 3, 2026 | Monday, August 2, 2027\nLabour Day | Monday, September 7, 2026 | Monday, September 6, 2027\nThanksgiving | Monday, October 12, 2026 | Monday, October 11, 2027\nChristmas Day | Friday, December 25, 2026 | Monday, December 27, 2027 (actual December 25)\nBoxing Day | Monday, December 28, 2026 (actual December 26) | Tuesday, December 28, 2027 (actual December 26)",
+                  "score": 0.7241
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "1.1",
+                  "section_heading": "Your calendar follows your home office",
+                  "text": "Your company holidays follow the calendar of your home office, the office on your HR record, not the place where you are working or travelling. Employees of the Denver, Austin and Seattle offices follow the US calendar (\u00a72). Employees of the Toronto office follow the Canada calendar (\u00a73). An Austin employee working in Toronto for a week still follows the US calendar, and a Toronto employee visiting Denver still follows the Canada calendar.",
+                  "score": 0.6935
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "1.4",
+                  "section_heading": "Part-time and field staff",
+                  "text": "Part-time employees are paid for a company holiday if it falls on one of their scheduled working days. Field/site-based employees who are asked to work on a company holiday get a substitute day off within 30 calendar days, agreed with their manager.\nA part-time employee whose scheduled days don't include the holiday is not given another day off in its place. Substitute days for field staff are recorded in the HR Portal and are not deducted from PTO; if the substitute day isn't taken within the window, talk to your manager and HR.",
+                  "score": 0.6803
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-HOL-01 \u00a72",
+              "RSE-HOL-01 \u00a75.1",
+              "RSE-HOL-01 \u00a73",
+              "RSE-HOL-01 \u00a71.1",
+              "RSE-HOL-01 \u00a71.4"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:30:32.183+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4597,
+              "output_tokens": 358
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 2675,
+            "started_at": "2026-10-19T23:30:34.858+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:30:34.878+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5370,
+              "output_tokens": 727
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4687,
+            "started_at": "2026-10-19T23:30:39.566+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:30:39.567+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 5,
+          "tool_ms": 83,
+          "llm_calls": 4,
+          "llm_ms": 12147,
+          "total_ms": 12255,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "43cbbc61dc68",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1012",
+            "name": "Jordan Lee",
+            "email": "jordan.lee@ridgeline.example"
+          },
+          "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+          "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+          "citations": [
+            {
+              "doc_id": "RSE-PTO-01",
+              "section": "4.3"
+            },
+            {
+              "doc_id": "RSE-PTO-01",
+              "section": "4.2"
+            },
+            {
+              "doc_id": "RSE-HOL-01",
+              "section": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "answer": {
+        "lead": "Your message to Jordan Lee is saved as MSG-MOCK-0003. It's a mock, so nothing was actually sent.",
+        "policy_facts": [],
+        "recommendations": [
+          {
+            "text": "Submit the PTO request in the HR Portal before Wednesday, Nov 11. It isn't approved until the portal shows it as approved."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 304
+            },
+            "summary": "claude-sonnet-5-5 \u2192 3 tool call(s): lookup_employee_profile, check_pto_balance, search_policy",
+            "status": "ok",
+            "latency_ms": 2408,
+            "started_at": "2026-10-19T23:30:29.719+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:30:29.740+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 11,
+            "started_at": "2026-10-19T23:30:29.751+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO request notice approval",
+              "doc_ids": [
+                "RSE-PTO-01",
+                "RSE-HOL-01",
+                "RSE-APR-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.3",
+                  "section_heading": "Who approves",
+                  "text": "Your manager approves your PTO requests. A request for more than 10 consecutive PTO days must also be approved by your director. See the Approval Matrix (RSE-APR-01 \u00a72).\nConsecutive PTO days are counted as PTO days charged in one continuous absence; weekends and company holidays inside the absence don't count toward the total but don't break it either. Approvers consider project needs and team cover, and they should respond promptly so you can make plans.",
+                  "score": 0.7894
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.1",
+                  "section_heading": "How to request",
+                  "text": "Submit every PTO request in the HR Portal before the first day off. Tell your team and update your calendar once it is approved.\nIt helps to talk to your manager before submitting a longer request, especially around project deadlines or site milestones. Your request shows your dates, the PTO days charged and your remaining balance. Your manager is notified and approves or declines it in the HR Portal; you are notified of the decision. PTO is not approved until the HR Portal shows it as approved.",
+                  "score": 0.7775
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.5",
+                  "section_heading": "Changing or cancelling PTO",
+                  "text": "You can cancel or change a request in the HR Portal. Approved PTO that you cancel before it starts is restored to your balance.\nTo extend approved PTO, submit a new request for the extra days; the notice and approval rules apply to the whole absence. If you need to come back early, tell your manager and change the request so the unused days are restored.",
+                  "score": 0.7689
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.2",
+                  "section_heading": "Notice",
+                  "text": "Requests for more than 3 PTO days need at least 14 calendar days' notice (two weeks) before the first day off. Requests of 3 PTO days or fewer have no minimum notice: submit them as early as practical. Count only the PTO days charged, not weekends or company holidays.\nNotice is counted from the day you submit the request to the first day off. For example, a request submitted on a Monday for a full working week off starting two Mondays later meets the notice rule; the same request submitted the Friday before does not. A late request is not automatically declined, but your manager may decline it if the team can't cover your work.",
+                  "score": 0.7357
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.7239
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a74.3",
+              "RSE-PTO-01 \u00a74.1",
+              "RSE-PTO-01 \u00a74.5",
+              "RSE-PTO-01 \u00a74.2",
+              "RSE-PTO-01 \u00a74.4"
+            ],
+            "status": "ok",
+            "latency_ms": 14,
+            "started_at": "2026-10-19T23:30:29.766+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1903,
+              "output_tokens": 347
+            },
+            "summary": "claude-sonnet-5-5 \u2192 2 tool call(s): check_policy_compliance, search_policy",
+            "status": "ok",
+            "latency_ms": 2377,
+            "started_at": "2026-10-19T23:30:32.144+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_policy_compliance",
+            "args": {
+              "employee_id": "E1001",
+              "request_type": "pto_request",
+              "details": {
+                "start_date": "2026-11-11",
+                "end_date": "2026-11-13",
+                "country": null,
+                "region": null,
+                "working_days": null,
+                "category": null,
+                "amount": null,
+                "currency": null,
+                "description": null,
+                "international": null,
+                "nights": null,
+                "days": null,
+                "people": null,
+                "miles": null
+              },
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "outcome": "allowed_with_approval",
+              "approver": "manager",
+              "checks": [
+                {
+                  "rule": "PTO-ELIGIBLE",
+                  "passed": true,
+                  "detail": "full_time_exempt earns PTO.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "1.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DAYS",
+                  "passed": true,
+                  "detail": "2 PTO day(s); company holidays excluded: Veterans Day (2026-11-11).",
+                  "citation": {
+                    "doc_id": "RSE-HOL-01",
+                    "section": "1.3"
+                  }
+                },
+                {
+                  "rule": "PTO-BALANCE",
+                  "passed": true,
+                  "detail": "11.0 day(s) available vs 2 requested; no negative balance.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "3.3"
+                  }
+                },
+                {
+                  "rule": "PTO-NOTICE",
+                  "passed": true,
+                  "detail": "2 days \u2264 3: no minimum notice (as early as practical).",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.2"
+                  }
+                },
+                {
+                  "rule": "PTO-DIRECTOR",
+                  "passed": true,
+                  "detail": "2 consecutive PTO days \u2264 10: manager approves.",
+                  "citation": {
+                    "doc_id": "RSE-PTO-01",
+                    "section": "4.3"
+                  }
+                }
+              ],
+              "computed": {
+                "working_days": 2,
+                "holidays_excluded": [
+                  {
+                    "date": "2026-11-11",
+                    "name": "Veterans Day"
+                  }
+                ],
+                "calendar": "US",
+                "available": 11.0,
+                "notice_calendar_days": 9,
+                "approver_name": "Jordan Lee"
+              }
+            },
+            "summary": "allowed_with_approval, approver manager, 2 working days",
+            "status": "ok",
+            "latency_ms": 21,
+            "started_at": "2026-10-19T23:30:32.165+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "company holidays US calendar November",
+              "doc_ids": [
+                "RSE-HOL-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "2",
+                  "section_heading": "US Company Holidays (Denver, Austin, Seattle)",
+                  "text": "These are the observed US company holidays. Where the holiday's actual date falls on a weekend, the actual date is shown in brackets.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nMemorial Day | Monday, May 25, 2026 | Monday, May 31, 2027\nJuneteenth | Friday, June 19, 2026 | Friday, June 18, 2027 (actual June 19)\nIndependence Day | Friday, July 3, 2026 (actual July 4) | Monday, July 5, 2027 (actual July 4)\nLabor Day | Monday, September 7, 2026 | Monday, September 6, 2027\nVeterans Day | Wednesday, November 11, 2026 | Thursday, November 11, 2027\nThanksgiving Day | Thursday, November 26, 2026 | Thursday, November 25, 2027\nDay after Thanksgiving | Friday, November 27, 2026 | Friday, November 26, 2027\nChristmas Day | Friday, December 25, 2026 | Friday, December 24, 2027 (actual December 25)\nUS offices are open on Martin Luther King Jr. Day, Presidents' Day and Columbus Day / Indigenous Peoples' Day; they are not US company holidays. Employees who want to mark them can use a floating holiday (\u00a74).",
+                  "score": 0.7928
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "5.1",
+                  "section_heading": "Remembrance Day (Toronto)",
+                  "text": "On November 11 the Toronto office observes two minutes of silence at 11:00. Remembrance Day is a regular working day for the Toronto office, not a company holiday, so a Toronto employee taking PTO on November 11 is charged a PTO day for it. (For the US offices, November 11 is Veterans Day, a company holiday; see \u00a72.)\nToronto colleagues working with US teams that week should expect the US offices to be closed on November 11, and US staff should not assume their Toronto colleagues are off. Staff of any office who wish to join the Toronto observance remotely are welcome to do so.",
+                  "score": 0.7307
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "3",
+                  "section_heading": "Canada Company Holidays (Toronto)",
+                  "text": "These are the observed Canada company holidays for the Toronto office.\nHoliday | 2026 (observed) | 2027 (observed)\nNew Year's Day | Thursday, January 1, 2026 | Friday, January 1, 2027\nFamily Day | Monday, February 16, 2026 | Monday, February 15, 2027\nGood Friday | Friday, April 3, 2026 | Friday, March 26, 2027\nVictoria Day | Monday, May 18, 2026 | Monday, May 24, 2027\nCanada Day | Wednesday, July 1, 2026 | Thursday, July 1, 2027\nCivic Holiday | Monday, August 3, 2026 | Monday, August 2, 2027\nLabour Day | Monday, September 7, 2026 | Monday, September 6, 2027\nThanksgiving | Monday, October 12, 2026 | Monday, October 11, 2027\nChristmas Day | Friday, December 25, 2026 | Monday, December 27, 2027 (actual December 25)\nBoxing Day | Monday, December 28, 2026 (actual December 26) | Tuesday, December 28, 2027 (actual December 26)",
+                  "score": 0.7241
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "1.1",
+                  "section_heading": "Your calendar follows your home office",
+                  "text": "Your company holidays follow the calendar of your home office, the office on your HR record, not the place where you are working or travelling. Employees of the Denver, Austin and Seattle offices follow the US calendar (\u00a72). Employees of the Toronto office follow the Canada calendar (\u00a73). An Austin employee working in Toronto for a week still follows the US calendar, and a Toronto employee visiting Denver still follows the Canada calendar.",
+                  "score": 0.6935
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "title": "Holiday Calendar & Observance",
+                  "section": "1.4",
+                  "section_heading": "Part-time and field staff",
+                  "text": "Part-time employees are paid for a company holiday if it falls on one of their scheduled working days. Field/site-based employees who are asked to work on a company holiday get a substitute day off within 30 calendar days, agreed with their manager.\nA part-time employee whose scheduled days don't include the holiday is not given another day off in its place. Substitute days for field staff are recorded in the HR Portal and are not deducted from PTO; if the substitute day isn't taken within the window, talk to your manager and HR.",
+                  "score": 0.6803
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-HOL-01 \u00a72",
+              "RSE-HOL-01 \u00a75.1",
+              "RSE-HOL-01 \u00a73",
+              "RSE-HOL-01 \u00a71.1",
+              "RSE-HOL-01 \u00a71.4"
+            ],
+            "status": "ok",
+            "latency_ms": 17,
+            "started_at": "2026-10-19T23:30:32.183+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 4597,
+              "output_tokens": 358
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 2675,
+            "started_at": "2026-10-19T23:30:34.858+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ]
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 20,
+            "started_at": "2026-10-19T23:30:34.878+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 5370,
+              "output_tokens": 727
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4687,
+            "started_at": "2026-10-19T23:30:39.566+00:00"
+          },
+          {
+            "n": 11,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "7 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:30:39.567+00:00"
+          },
+          {
+            "n": 12,
+            "turn": 1,
+            "kind": "confirmation",
+            "tool": "draft_manager_message",
+            "summary": "\u23f8 draft_manager_message confirmed by the user; executing",
+            "status": "confirmed",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:30:39.571+00:00"
+          },
+          {
+            "n": 13,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ],
+              "requester_id": "E1001",
+              "session_id": "f4ff529e9c7f453bbed9b07019833d6d"
+            },
+            "output": {
+              "id": "MSG-MOCK-0003",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "PTO request: Wednesday Nov 11 \u2013 Friday Nov 13, 2026",
+              "body": "Hi Jordan, I'd like to take PTO from Wednesday, November 11 to Friday, November 13, 2026. November 11 is Veterans Day (a company holiday), so this would be 2 PTO days charged (Nov 12 and 13). I have 11.0 days available. I'll submit the request in the HR Portal; please let me know if there are any project or coverage concerns. Thanks, Maya",
+              "citations": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.3"
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "section": "4.2"
+                },
+                {
+                  "doc_id": "RSE-HOL-01",
+                  "section": "2"
+                }
+              ]
+            },
+            "summary": "MSG-MOCK-0003 (mock)",
+            "status": "ok",
+            "latency_ms": 15,
+            "started_at": "2026-10-19T23:30:39.586+00:00"
+          },
+          {
+            "n": 14,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 6543,
+              "output_tokens": 140
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 1588,
+            "started_at": "2026-10-19T23:30:41.174+00:00"
+          },
+          {
+            "n": 15,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "0 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-19T23:30:41.175+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 6,
+          "tool_ms": 98,
+          "llm_calls": 5,
+          "llm_ms": 13735,
+          "total_ms": 13859,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "action_result": {
+        "tool": "draft_manager_message",
+        "id": "MSG-MOCK-0003",
+        "mock": true,
+        "status": "confirmed"
+      }
+    }
+  ]
+}

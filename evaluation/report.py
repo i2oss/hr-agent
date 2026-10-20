@@ -4,7 +4,7 @@ Everything between <!-- eval:begin --> and <!-- eval:end --> is rebuilt from the
 evaluation/results/. Runs that don't exist yet are reported as "not run yet", never invented.
 
   uv run python -m evaluation.report [--baseline baseline] [--ablations k2 k10 vector]
-                                     [--warm deployed-warm] [--cold deployed-cold]
+                                     [--spare spare-prompt-fix] [--warm deployed-warm] [--cold deployed-cold]
 
 Failure analysis causes and fixes are human-written in evaluation/results/failure_notes.yaml:
   - {item: W03-low-balance, run: 2, cause: "...", fix: "..."}
@@ -36,6 +36,12 @@ BEHAVIOUR_CATS = {"clarify", "escalate", "refuse"}
 def load_run(run_id: str) -> list[dict[str, Any]]:
     d = RESULTS / run_id / "traces"
     return [json.loads(p.read_text()) for p in sorted(d.glob("*.json"))] if d.is_dir() else []
+
+
+def load_configs(run_id: str) -> list[dict[str, Any]]:
+    """config.json, or one config-<N>.json per cold sample (evaluation.run --sample N)."""
+    d = RESULTS / run_id
+    return [json.loads(p.read_text()) for p in sorted(d.glob("config*.json"))] if d.is_dir() else []
 
 
 def fmt(x: int, n: int) -> str:
@@ -121,53 +127,77 @@ def ablation(items: dict[str, Any], runs: dict[str, list[dict[str, Any]]]) -> li
     return out
 
 
-def latency_section(warm: list[dict[str, Any]], cold: list[dict[str, Any]]) -> list[str]:
-    out = ["| | n | p50 | p95 | LLM p50 | tools p50 | retrieval p50 |", "|---|---|---|---|---|---|---|"]
-    for name, recs in (("warm", warm), ("cold", cold)):
+def latency_section(runs: dict[str, tuple[list[dict[str, Any]], list[dict[str, Any]]]]) -> list[str]:
+    """Server time is the Trace total for the first reply; client time is the runner's wall clock for it; wake is
+    the first /health of each runner invocation, which absorbs a cold start before any /chat is sent."""
+    out = ["| | n | server p50 | server p95 | client p50 | client p95 | wake (/health) p50 | LLM p50 | tools p50 | "
+           "retrieval p50 |", "|---|---|---|---|---|---|---|---|---|---|"]
+    for name, (recs, configs) in runs.items():
         if not recs:
-            out.append(f"| {name} | not run yet | | | | | |")
+            out.append(f"| {name} | not run yet | | | | | | | | |")
             continue
         lat = g.latency(recs)
-        out.append(f"| {name} | {lat['n']} | {lat['p50_ms'] / 1000:.1f} s | {lat['p95_ms'] / 1000:.1f} s | "
+        client = [r["client_ms"][0] for r in recs if r.get("client_ms")]
+        wake = [c["health_ms"] for c in configs if "health_ms" in c]
+        cl = (f"{g.percentile(client, 50) / 1000:.1f} s | {g.percentile(client, 95) / 1000:.1f} s" if client
+              else "n/a | n/a")
+        wk = f"{g.percentile(wake, 50) / 1000:.1f} s" if wake else "n/a"
+        out.append(f"| {name} | {lat['n']} | {lat['p50_ms'] / 1000:.1f} s | {lat['p95_ms'] / 1000:.1f} s | {cl} | {wk} | "
                    f"{lat['llm_p50_ms'] / 1000:.1f} s | {lat['tools_p50_ms']:.0f} ms | {lat['retrieval_p50_ms']:.0f} ms |")
     return out
 
 
-def judge_section(judge: dict[str, Any] | None) -> list[str]:
+def judge_section(judge: dict[str, Any] | None, earlier: list[tuple[str, dict[str, Any]]] | None = None) -> list[str]:
+    """earlier: superseded judge results (judge-v1.json, ...) kept beside judge.json, reported for honesty."""
     labels_path = ROOT / "evaluation" / "judge_labels.yaml"
     if not judge:
         return ["Not run yet: needs the baseline, Ross's labels in `evaluation/judge_labels.yaml` and "
                 "`python -m evaluation.judge --run-id baseline --seeded`."]
-    out = [f"Judge model `{judge.get('model')}`."]
-    if labels_path.exists():
-        labels = (yaml.safe_load(labels_path.read_text()) or {}).get("labels", {})
-        shared = [k for k in labels if k in judge["items"]]
-        agree = sum(labels[k] == judge["items"][k]["verdict"] for k in shared)
-        out.append(f"- Agreement with human labels: {fmt(agree, len(shared))}")
-    else:
-        out.append("- Agreement with human labels: labels not committed yet.")
-    seeded = judge.get("seeded") or {}
-    caught = sum(v["verdict"] == "FAIL" for v in seeded.values())
-    out.append(f"- Seeded ungrounded answers caught: {caught}/{len(seeded)}" if seeded else
-               "- Seeded ungrounded answers: not run yet.")
-    return out
+    labels_doc = (yaml.safe_load(labels_path.read_text()) or {}) if labels_path.exists() else {}
+    labels = labels_doc.get("labels", {})
+
+    def lines(j: dict[str, Any]) -> tuple[str, str]:
+        shared = [k for k in labels if k in j["items"]]
+        agree = sum(labels[k] == j["items"][k]["verdict"] for k in shared)
+        seeded = j.get("seeded") or {}
+        caught = sum(v["verdict"] == "FAIL" for v in seeded.values())
+        # one decimal: 26/29 is 89.7%, and a rounded "90%" would hide that it misses the 90% bar
+        lo, hi = g.wilson(agree, len(shared))
+        return (f"{agree}/{len(shared)} ({agree / len(shared):.1%}) · 95% CI {lo:.0%}–{hi:.0%}" if shared
+                else "labels not committed yet",
+                f"{caught}/{len(seeded)}" if seeded else "not run yet")
+
+    agreement, seeds = lines(judge)
+    out = [f"Judge model `{judge.get('model')}`.", f"- Agreement with human labels: {agreement}",
+           f"- Seeded ungrounded answers caught: {seeds}"]
+    for name, j in earlier or []:
+        agreement, seeds = lines(j)
+        out.append(f"- Superseded `{name}` (against the same labels): agreement {agreement}, seeds caught {seeds}")
+    notes = labels_doc.get("judge_notes") or []
+    return out + (["", *[f"- {n}" for n in notes]] if notes else [])
 
 
-def failures(items: dict[str, Any], recs: list[dict[str, Any]]) -> list[str]:
+def failures(items: dict[str, Any], recs: list[dict[str, Any]], baseline: str = "baseline") -> list[str]:
+    """The baseline's first 3 failed records, then any record from another run that has a note with that
+    run_id (e.g. a regression seen only in the spare run)."""
     notes_path = RESULTS / "failure_notes.yaml"
-    notes = {(n["item"], n.get("run", 1)): n for n in (yaml.safe_load(notes_path.read_text()) or [])} \
-        if notes_path.exists() else {}
+    entries = (yaml.safe_load(notes_path.read_text()) or []) if notes_path.exists() else []
+    notes = {(n.get("run_id", baseline), n["item"], n.get("run", 1)): n for n in entries}
     failed = [r for r in recs if not (lambda x: x["behavior"] and x["tools"]["correct"] and x["safe"])(
         g.grade(items[r["item_id"]], r))]
-    if not failed:
-        return ["No failed items in the baseline."]
-    out = []
-    for r in failed[:3]:
+    out = [] if failed else ["No failed items in the baseline.", ""]
+    shown = [(baseline, r) for r in failed[:3]]
+    for run_id, item, n in notes:
+        path = RESULTS / run_id / "traces" / f"{item}-{n}.json"
+        if run_id != baseline and path.exists():
+            shown.append((run_id, json.loads(path.read_text())))
+    for run_id, r in shown:
         steps = g.steps(r)
         excerpt = "\n".join(f"{s['n']:>2} {s['kind']:<14} {s.get('tool') or '':<24} {s['summary'][:80]}"
                             for s in steps if s["kind"] != "llm")[:1500]
-        note = notes.get((r["item_id"], r["run"]), {})
-        out += [f"**{r['item_id']} (run {r['run']})**", "", "```", excerpt, "```",
+        note = notes.get((run_id, r["item_id"], r["run"]), {})
+        label = f"run {r['run']}" if run_id == baseline else f"{run_id}, run {r['run']}"
+        out += [f"**{r['item_id']} ({label})**", "", "```", excerpt, "```",
                 f"- Cause: {note.get('cause', '_to be written_')}", f"- Fix: {note.get('fix', '_to be written_')}", ""]
     return out
 
@@ -177,6 +207,7 @@ def build(args: argparse.Namespace) -> str:
     base = load_run(args.baseline)
     judge_path = RESULTS / args.baseline / "judge.json"
     judge = json.loads(judge_path.read_text()) if judge_path.exists() else None
+    earlier = [(p.name, json.loads(p.read_text())) for p in sorted((RESULTS / args.baseline).glob("judge-v*.json"))]
     warm, cold = load_run(args.warm), load_run(args.cold)
     if not base:
         body = [f"_No baseline run yet. Run `python -m evaluation.run --run-id {args.baseline}` and then this report._"]
@@ -185,10 +216,13 @@ def build(args: argparse.Namespace) -> str:
         body = ["### Headline", "", "| Metric | Result | Target | Met? |", "|---|---|---|---|", *rows, "",
                 "### Per category", "", *per_category(items, base), "",
                 "### Ablation (local)", "", *ablation(items, {"baseline (k=5, hybrid)": base,
-                                                             **{a: load_run(a) for a in args.ablations}}), "",
-                "### Latency", "", *latency_section(warm, cold), "",
-                "### Judge validation", "", *judge_section(judge), "",
-                "### Failure analysis", "", *failures(items, base)]
+                                                             **{a: load_run(a) for a in args.ablations},
+                                                             f"{args.spare} (merged prompt, k=5, hybrid)":
+                                                                 load_run(args.spare)}), "",
+                "### Latency", "", *latency_section({"warm": (warm, load_configs(args.warm)),
+                                                     "cold": (cold, load_configs(args.cold))}), "",
+                "### Judge validation", "", *judge_section(judge, earlier), "",
+                "### Failure analysis", "", *failures(items, base, args.baseline)]
     return "\n".join([BEGIN, "", "_Generated by `evaluation/report.py` from `evaluation/results/`; don't edit by hand._",
                       "", *body, "", END])
 
@@ -197,6 +231,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--baseline", default="baseline")
     ap.add_argument("--ablations", nargs="*", default=["k2", "k10", "vector"])
+    ap.add_argument("--spare", default="spare-prompt-fix")
     ap.add_argument("--warm", default="deployed-warm")
     ap.add_argument("--cold", default="deployed-cold")
     section = build(ap.parse_args())

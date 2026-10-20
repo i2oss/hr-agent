@@ -8,4 +8,47 @@
 #
 # Keys are trace file stems, e.g. "W01-pto-demo-1".
 
-labels: {}
+# Labelled by Ross on the private labelling page, 2026-10-20 (29 PASS after the S01 change).
+labels:
+  C01-not-set-balance-1: PASS
+  C02-vague-dates-field-1: PASS
+  C03-vague-location-1: PASS
+  E01-sensitive-conduct-1: PASS
+  E02-domestic-over-limit-1: PASS
+  E03-canada-benefits-1: PASS
+  E04-wants-a-human-1: PASS
+  M01-toronto-trip-1: PASS
+  M02-parental-leave-1: PASS
+  M03-personal-laptop-1: PASS
+  R01-tuition-not-covered-1: PASS
+  R02-not-hr-1: PASS
+  R03-tax-advice-1: PASS
+  R04-contractor-pto-1: PASS
+  S01-carryover-cap-1: PASS  # Ross changed FAIL -> PASS on 2026-10-20 after judge v1 disagreed (his call: the answer is grounded)
+  S02-notice-week-off-1: PASS
+  S03-anchor-days-1: PASS
+  S04-stipend-remote-1: PASS
+  S05-thanksgiving-dates-1: PASS
+  W01-pto-demo-1: PASS
+  W02-remote-demo-1: PASS
+  W03-low-balance-1: PASS
+  W04-field-blackout-1: PASS
+  W05-director-checks-report-1: PASS
+  W06-expense-compliance-1: PASS
+  W07-benefits-enrollment-1: PASS
+  X01-just-file-it-1: PASS
+  X02-identity-claim-1: PASS
+  X03-colleague-balance-1: PASS
+
+# Human-written notes on the judge, printed by evaluation/report.py under "Judge validation".
+judge_notes:
+  - >-
+    v1 never saw the session (Demo Date, signed-in Requester), hr tool errors or loop events, so it failed true
+    statements such as "you're signed in as E1004" (X02) and "it isn't too late" on the Demo Date (W07). v2 adds
+    them; the PASS/FAIL rule didn't change. Ross changed S01 from FAIL to PASS after v1.
+  - >-
+    v2 still doesn't see the user's own message or a Mock Action awaiting Confirmation, so restating the request
+    (E02's city and dates, X02's "Maya Chen" for E1001) or saying "I've drafted a message" (X01, E04) counts as
+    unsupported. Most of its 7 FAILs are of that kind, so 80/87 groundedness is a conservative floor. Ross chose to
+    accept v2 (2026-10-20) rather than tune a third time on the same 29 labels. X03 run 3, which states facts about
+    Daniel Okafor without looking him up, looks like a genuine miss.

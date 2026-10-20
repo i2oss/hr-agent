@@ -1,0 +1,22 @@
+{
+  "run_id": "deployed-cold",
+  "date": "2026-10-20T20:18:57+00:00",
+  "base_url": "https://ridgeline-hr-agent.onrender.com",
+  "runs": 1,
+  "git_sha": "ef45fa24a62fc56358b5dcd56e971e41be7f5455",
+  "server_version": "ef45fa24a62fc56358b5dcd56e971e41be7f5455",
+  "health_ms": 43430,
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5"
+  },
+  "index": {
+    "chunks": 173,
+    "corpus_hash": "969260450fa04d95f8c7236bd7429741e42e05e7a9afaa0a70d1b63d601185c0"
+  },
+  "demo_today": "2026-11-02",
+  "retrieval": {
+    "top_k": "5",
+    "mode": "hybrid"
+  }
+}

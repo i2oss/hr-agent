@@ -1,0 +1,330 @@
+{
+  "item_id": "S01-carryover-cap",
+  "run": 1,
+  "speaking_as": "E1001",
+  "session_id": "fbb4c5e3c1f7497780b7ee7a42e6d079",
+  "client_ms": [
+    16738
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "You can carry over up to 5 unused PTO days into next year. Any days above that are forfeited on December 31.",
+        "policy_facts": [
+          {
+            "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the cap are forfeited, and forfeited days are not paid out.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "You can carry over up to 5 unused PTO days into the next calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you are on approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31, the cap is 10 days instead of 5. This is applied automatically.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "you can carry over up to 10 unused PTO days instead of 5"
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "As of 2026-11-02 you have 11.0 PTO days available. That is above the 5-day cap.",
+            "citations": [],
+            "data_sources": [
+              {
+                "tool": "check_pto_balance"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Plan to use your remaining PTO before December 31. At your current balance, about 6 days would be forfeited if you took none, so book time off with your manager, Jordan Lee."
+          },
+          {
+            "text": "Ignore the pending \"placeholder\" message to Jordan Lee on the Confirm card and don't confirm it. I created it by mistake. Cancel it, and nothing will be sent or changed. If you'd like a real PTO request drafted, tell me the dates."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 199
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 3398,
+            "started_at": "2026-10-20T21:18:53.332+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days year end",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.0323
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "4.4",
+                  "section_heading": "Field-role December blackout",
+                  "text": "Field/site-based employees may not take PTO during the last two weeks of December, from December 18 to December 31, because of year-end site work. A field/site-based employee who needs PTO in that window must get a director's exception; the request goes to the director for approval.\nCompany holidays in the window, such as Christmas Day, are still company holidays. The blackout does not apply to office-hybrid or remote-approved employees, whose December PTO follows the normal rules. Field/site-based employees planning December time off should talk to their manager and director early in the autumn.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.5",
+                  "section_heading": "Accrual during leave",
+                  "text": "PTO keeps accruing while you are on paid leave, such as paid parental leave. PTO does not accrue during unpaid leave, such as unpaid personal leave (RSE-LV-01 \u00a76).\nPTO accrued before and during paid leave stays in your balance, and you can use it when you return or add it to the end of your leave with the usual approval. If your leave crosses the end of the year, see \u00a75.2 for the higher carryover cap.",
+                  "score": 0.0296
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a75.3",
+              "RSE-PTO-01 \u00a74.4",
+              "RSE-PTO-01 \u00a72.5"
+            ],
+            "status": "ok",
+            "latency_ms": 1612,
+            "started_at": "2026-10-20T21:18:54.945+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1269,
+              "output_tokens": 56
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): check_pto_balance",
+            "status": "ok",
+            "latency_ms": 1225,
+            "started_at": "2026-10-20T21:18:56.170+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "check_pto_balance",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "fbb4c5e3c1f7497780b7ee7a42e6d079"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "accrued": 16.67,
+              "used": 7.67,
+              "pending": 0.0,
+              "carryover": 2.0,
+              "available": 11.0,
+              "as_of": "2026-11-02"
+            },
+            "summary": "11.0 days available (as of 2026-11-02)",
+            "status": "ok",
+            "latency_ms": 62,
+            "started_at": "2026-10-20T21:18:56.233+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1401,
+              "output_tokens": 58
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): lookup_employee_profile",
+            "status": "ok",
+            "latency_ms": 1096,
+            "started_at": "2026-10-20T21:18:57.330+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "tool",
+            "server": "hr",
+            "tool": "lookup_employee_profile",
+            "args": {
+              "employee_id": "E1001",
+              "requester_id": "E1001",
+              "session_id": "fbb4c5e3c1f7497780b7ee7a42e6d079"
+            },
+            "output": {
+              "employee_id": "E1001",
+              "name": "Maya Chen",
+              "title": "Structural Engineer II",
+              "department": "Structural Engineering",
+              "employment_type": "full_time_exempt",
+              "work_arrangement": "office_hybrid",
+              "office": {
+                "id": "DEN",
+                "city": "Denver",
+                "region": "CO",
+                "country": "US",
+                "timezone": "America/Denver"
+              },
+              "holiday_calendar": "US",
+              "manager": {
+                "id": "E1012",
+                "name": "Jordan Lee"
+              },
+              "director": {
+                "id": "E1009",
+                "name": "Marcus Reed"
+              },
+              "hire_date": "2021-09-13",
+              "weekly_hours": 40,
+              "work_email": "maya.chen@ridgeline.example",
+              "work_region": "CO",
+              "work_country": "US",
+              "employment_status": "active"
+            },
+            "summary": "Maya Chen, Structural Engineer II, Denver; manager Jordan Lee",
+            "status": "ok",
+            "latency_ms": 201,
+            "started_at": "2026-10-20T21:18:57.531+00:00"
+          },
+          {
+            "n": 7,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1727,
+              "output_tokens": 287
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): draft_manager_message",
+            "status": "ok",
+            "latency_ms": 2780,
+            "started_at": "2026-10-20T21:19:00.312+00:00"
+          },
+          {
+            "n": 8,
+            "turn": 1,
+            "kind": "confirmation",
+            "server": "hr",
+            "tool": "draft_manager_message",
+            "args": {
+              "employee_id": "E1001",
+              "subject": "placeholder",
+              "body": "placeholder",
+              "citations": [],
+              "requester_id": "E1001",
+              "session_id": "fbb4c5e3c1f7497780b7ee7a42e6d079"
+            },
+            "output": {
+              "id": "MSG-MOCK-(on confirm)",
+              "mock": true,
+              "to": {
+                "id": "E1012",
+                "name": "Jordan Lee",
+                "email": "jordan.lee@ridgeline.example"
+              },
+              "subject": "placeholder",
+              "body": "placeholder",
+              "citations": []
+            },
+            "summary": "\u23f8 draft_manager_message awaiting the user's Confirmation (not executed)",
+            "status": "ok",
+            "latency_ms": 116,
+            "started_at": "2026-10-20T21:19:00.428+00:00"
+          },
+          {
+            "n": 9,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2025,
+              "output_tokens": 753
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 5950,
+            "started_at": "2026-10-20T21:19:06.379+00:00"
+          },
+          {
+            "n": 10,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "3 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T21:19:06.379+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 3,
+          "tool_ms": 1875,
+          "llm_calls": 5,
+          "llm_ms": 14449,
+          "total_ms": 16445,
+          "model": "claude-sonnet-5-5"
+        }
+      },
+      "pending_action": {
+        "action_id": "fd8ce7589fa1",
+        "tool": "draft_manager_message",
+        "preview": {
+          "id": "MSG-MOCK-(on confirm)",
+          "mock": true,
+          "to": {
+            "id": "E1012",
+            "name": "Jordan Lee",
+            "email": "jordan.lee@ridgeline.example"
+          },
+          "subject": "placeholder",
+          "body": "placeholder",
+          "citations": []
+        }
+      }
+    }
+  ]
+}

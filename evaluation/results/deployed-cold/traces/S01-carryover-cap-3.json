@@ -1,0 +1,262 @@
+{
+  "item_id": "S01-carryover-cap",
+  "run": 3,
+  "speaking_as": "E1001",
+  "session_id": "2b55e5009950414b80ff1a6cdfe4b2ff",
+  "client_ms": [
+    12940
+  ],
+  "responses": [
+    {
+      "answer": {
+        "lead": "You can carry over up to 5 unused PTO days into next year. The limit is 10 days if you're on approved leave that spans December 31.",
+        "policy_facts": [
+          {
+            "text": "You can carry over up to 5 unused PTO days into the next calendar year. Any unused days above the cap are forfeited on December 31, and forfeited days are not paid out.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "You can carry over up to 5 unused PTO days into the next calendar year."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "If you are on approved leave under the Leave of Absence Policy (such as parental leave) that is in progress on December 31, the cap is 10 unused days instead of 5. This is applied automatically when your leave is recorded in the HR Portal.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.2",
+                "snippet": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5."
+              }
+            ],
+            "data_sources": []
+          },
+          {
+            "text": "Carried-over days appear in your balance on January 1. Interns can't carry over unused PTO.",
+            "citations": [
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "5.1",
+                "snippet": "Carried-over days appear in your balance on January 1 and are used like any other PTO."
+              },
+              {
+                "doc_id": "RSE-PTO-01",
+                "section": "2.3",
+                "snippet": "Unused intern PTO is not carried over or paid out."
+              }
+            ],
+            "data_sources": []
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Check your expected carryover in the HR Portal. It shows this from the autumn onwards, so you can plan to use any days above the cap before December 31."
+          },
+          {
+            "text": "I can check your current PTO balance to show how many days you might lose if you'd like."
+          }
+        ]
+      },
+      "trace": {
+        "steps": [
+          {
+            "n": 1,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 124,
+              "output_tokens": 155
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2899,
+            "started_at": "2026-10-20T19:32:04.307+00:00"
+          },
+          {
+            "n": 2,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.3",
+                  "section_heading": "Interns",
+                  "text": "Interns earn 5 days of PTO per internship, whatever its length. Unused intern PTO is not carried over or paid out.\nInterns request PTO in the HR Portal like everyone else, and the notice and approval rules in \u00a74 apply. An intern who later joins Ridgeline as a full-time or part-time employee starts accruing under \u00a72.1 or \u00a72.2 from their new hire date.",
+                  "score": 0.0297
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a75.3",
+              "RSE-PTO-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 1807,
+            "started_at": "2026-10-20T19:32:06.115+00:00"
+          },
+          {
+            "n": 3,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 1301,
+              "output_tokens": 149
+            },
+            "summary": "claude-sonnet-5-5 \u2192 1 tool call(s): search_policy",
+            "status": "ok",
+            "latency_ms": 2071,
+            "started_at": "2026-10-20T19:32:08.186+00:00"
+          },
+          {
+            "n": 4,
+            "turn": 1,
+            "kind": "tool",
+            "server": "policy",
+            "tool": "search_policy",
+            "args": {
+              "query": "PTO carryover unused days",
+              "doc_ids": [
+                "RSE-PTO-01"
+              ]
+            },
+            "output": {
+              "passages": [
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.1",
+                  "section_heading": "Carryover cap",
+                  "text": "You can carry over up to 5 unused PTO days into the next calendar year. On December 31, any unused days above the 5-day cap are forfeited.\nForfeited days are not paid out. The HR Portal shows your expected carryover from the autumn onwards, so you can plan to use the rest of your PTO before the end of the year. Carried-over days appear in your balance on January 1 and are used like any other PTO.",
+                  "score": 0.0328
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.2",
+                  "section_heading": "Leave over year-end",
+                  "text": "If you are on approved leave that spans December 31, you can carry over up to 10 unused PTO days instead of 5.\nThis applies to approved leave under the Leave of Absence Policy, such as parental leave, that is in progress on December 31. It is applied automatically when your leave is recorded in the HR Portal; you don't need to request it.",
+                  "score": 0.032
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "3.2",
+                  "section_heading": "Company holidays inside PTO",
+                  "text": "A company holiday that falls inside your PTO dates is not deducted from your PTO balance. Only your scheduled working days are charged. Which days are company holidays depends on your home office calendar; see the Holiday Calendar & Observance policy (RSE-HOL-01 \u00a71.3).\nWhen you enter dates in the HR Portal, it works out the PTO days for you using your home office's calendar. For example, for an employee of a US office, a request for Wednesday to Friday in a week where Wednesday is a US company holiday is charged as 2 PTO days. The same request from an employee of the Toronto office may be charged differently, because the Toronto office follows the Canada calendar.",
+                  "score": 0.0308
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "5.3",
+                  "section_heading": "Leaving Ridgeline",
+                  "text": "If you leave Ridgeline, any payout of unused PTO is handled by HR at separation.\nPlan your remaining PTO with your manager once you have given notice; approved PTO in your notice period is taken as normal. HR confirms your final balance and how it is handled in your final pay. Questions about your own situation go to the HR Service Desk.",
+                  "score": 0.0306
+                },
+                {
+                  "doc_id": "RSE-PTO-01",
+                  "title": "Paid Time Off Policy",
+                  "section": "2.3",
+                  "section_heading": "Interns",
+                  "text": "Interns earn 5 days of PTO per internship, whatever its length. Unused intern PTO is not carried over or paid out.\nInterns request PTO in the HR Portal like everyone else, and the notice and approval rules in \u00a74 apply. An intern who later joins Ridgeline as a full-time or part-time employee starts accruing under \u00a72.1 or \u00a72.2 from their new hire date.",
+                  "score": 0.0297
+                }
+              ],
+              "evidence": "ok"
+            },
+            "summary": "5 passage(s)",
+            "sources": [
+              "RSE-PTO-01 \u00a75.1",
+              "RSE-PTO-01 \u00a75.2",
+              "RSE-PTO-01 \u00a73.2",
+              "RSE-PTO-01 \u00a75.3",
+              "RSE-PTO-01 \u00a72.3"
+            ],
+            "status": "ok",
+            "latency_ms": 1315,
+            "started_at": "2026-10-20T19:32:09.502+00:00"
+          },
+          {
+            "n": 5,
+            "turn": 1,
+            "kind": "llm",
+            "output": {
+              "input_tokens": 2478,
+              "output_tokens": 658
+            },
+            "summary": "claude-sonnet-5-5 \u2192 answer",
+            "status": "ok",
+            "latency_ms": 4517,
+            "started_at": "2026-10-20T19:32:14.020+00:00"
+          },
+          {
+            "n": 6,
+            "turn": 1,
+            "kind": "citation_check",
+            "summary": "4 citation(s) verified",
+            "status": "ok",
+            "latency_ms": 0,
+            "started_at": "2026-10-20T19:32:14.021+00:00"
+          }
+        ],
+        "totals": {
+          "tool_calls": 2,
+          "tool_ms": 3122,
+          "llm_calls": 3,
+          "llm_ms": 9487,
+          "total_ms": 12612,
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

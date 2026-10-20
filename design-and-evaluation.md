@@ -9,7 +9,7 @@ How the Ridgeline HR Agent is built, why each choice was made, and how well it w
 **Decision:** one Docker container on Render's free tier holds the web app, a hand-rolled agent loop, and two MCP servers (`policy` and `hr`) mounted inside the same FastAPI app. The agent reaches them only as an MCP client over Streamable HTTP on localhost.
 
 ```mermaid
-flowchart LR
+flowchart TB
     user["Browser: chat page"]
     llm["LLM provider: Anthropic API, Claude Sonnet 5.5 (swappable by LLM_PROVIDER)"]
 

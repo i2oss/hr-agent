@@ -6,7 +6,7 @@ An agentic HR assistant for **Ridgeline Structural Engineering**, a fictional en
 
 <sub>W01 on the deployed app with Claude Sonnet 5.5 (2026-10-15): the cited answer, the Trace of the 5 tool calls, and the draft waiting for Confirm. How it fits together: the [architecture diagram](design-and-evaluation.md#architecture).</sub>
 
-> **Status: built, demo in preparation.** The app, the corpus, the evaluation and the design document are done (slices 1–8), and every push to `main` runs `test` → `deploy` → a live smoke question. Still to come: the demo script and video (slice 9). The build plan is [docs/SPEC.md](docs/SPEC.md); the as-built design and the results are in [design-and-evaluation.md](design-and-evaluation.md).
+> **Status: built.** The app, the corpus, the evaluation, the design document and the [demo script](docs/demo-script.md) are done (slices 1–9), and every push to `main` runs `test` → `deploy` → a live smoke question. The demo video is being recorded from the script. The build plan is [docs/SPEC.md](docs/SPEC.md); the as-built design and the results are in [design-and-evaluation.md](design-and-evaluation.md).
 
 ## Try it
 
@@ -65,6 +65,14 @@ uv run python -m evaluation.run --run-id deployed-cold --sample 1 --items S01-ca
 
 Run the cold sample once for each N = 1…5, each after at least 20 minutes idle. `--sample N` saves that single pass as run N, so separate occasions add up under one run id.
 
+**Demo runner** (by hand, never in CI; about $0.40 for all three segments). It drives the deployed chat page at human pace with Playwright and your installed Google Chrome, records one video per segment into `demo_takes/` and grades each take with `evaluation/graders.py`. `--env-file` (or `EVAL_BYPASS_KEY` in the environment) adds `X-Eval-Bypass`. Details: [docs/demo-script.md](docs/demo-script.md#the-demo-runner).
+
+```sh
+uv run playwright install ffmpeg         # once: Playwright's video encoder
+uv run python scripts/demo_runner.py --segment all --env-file .env
+uv run python scripts/demo_runner.py --segment w01 --headed --pace 1.4
+```
+
 ## Repo map
 
 | Folder | What it holds | Brief equivalent |
@@ -76,26 +84,26 @@ Run the cold sample once for each N = 1…5, each after at least 20 minutes idle
 | `mock_data/` | 25 synthetic employees, PTO balances, benefits, offices and HR tickets (JSON) | `mock_data/` |
 | `evaluation/` | Eval Set, calibration queries, seeded failures, graders, judge, runner, report, results | `evaluation/` |
 | `tests/` | pytest: unit, data, MCP discovery and per-tool calls, end-to-end over HTTP | tests |
-| `scripts/` | CI checks, the tool-schema export, PDF build, the Render setup wizard | |
+| `scripts/` | CI checks, the tool-schema export, PDF build, the Render setup wizard, the demo runner | |
 | `docs/` | The build spec, the tool schemas (CI-checked), screenshots, the wayfinding recipes | |
 
 Glossary: [CONTEXT.md](CONTEXT.md). Ops: [deployed.md](deployed.md). How AI tools were used: [ai-tooling.md](ai-tooling.md).
 
 ## For graders
 
-Each score-5 rubric bullet, and where to find the evidence. "Design §" links go to sections of [design-and-evaluation.md](design-and-evaluation.md). The video rows are _pending_ until the demo is recorded (slice 9).
+Each score-5 rubric bullet, and where to find the evidence. "Design §" links go to sections of [design-and-evaluation.md](design-and-evaluation.md). Video timestamps are the segment start times in [docs/demo-script.md](docs/demo-script.md#running-order); the video link is added when it's published (unlisted on YouTube).
 
 | Rubric bullet | Evidence |
 |---|---|
 | **R1** Deployed system with correct, cited, grounded answers | Live: https://ridgeline-hr-agent.onrender.com, checked in [deployed.md](deployed.md) (Verified) and by the post-deploy smoke in `.github/workflows/ci.yml`. Citation check: `app/agent/citations.py`, `tests/test_citations.py`, `tests/test_agent.py::test_retry_that_fixes_the_citation_keeps_the_fact`; design § [Safety guardrails](design-and-evaluation.md#safety-guardrails). Groundedness 80/87 (92%, target ≥ 90%) with a validated judge; citation all-correct 40/60 (67%, target ≥ 85%, **missed**, explained in design § [Limitations](design-and-evaluation.md#limitations)): design § [Evaluation](design-and-evaluation.md#evaluation). |
 | **R2** MCP fully functional, clear traces, graceful errors | Design § [MCP server design](design-and-evaluation.md#mcp-server-design) (transport, discovery, the 9 tool schemas; full JSON in `docs/tool-schemas.json`, CI-checked). `/health` lists 2 + 7 tools live (`tests/test_e2e_http.py::test_health_lists_nine_tools_over_http`). One call per tool: `tests/test_policy_server.py`, `tests/test_hr_server.py`. Errors: `TOOL_UNAVAILABLE` (`tests/test_agent.py::test_policy_server_down_reports_tool_unavailable_and_no_policy_facts`), `MISSING_ARGUMENT` (`tests/test_agent.py::test_not_set_plus_missing_argument_forces_one_clarification`), `NOT_PERMITTED` (`tests/test_hr_server.py::test_mock_action_for_another_employee_is_not_permitted`), `evidence: "none"` (`tests/test_policy_server.py::test_search_policy_no_evidence_is_not_an_error`). Trace: the side panel of the chat page, and `app/agent/trace.py`. Tool selection 84/87 (97%). |
-| **R3** ≥ 2 end-to-end agentic tasks | W01 and W02: design § [Agent orchestration](design-and-evaluation.md#agent-orchestration), with a sequence diagram and the call list for each. Gold sequences: `evaluation/eval_set.yaml`. Both pass 3 runs out of 3 (pass^3) in the baseline. W01 end to end with the fake LLM over Streamable HTTP, Confirm included: `tests/test_e2e_http.py::test_w01_over_streamable_http`. Reproduce below, or live in the UI with the prompts in [Try it](#try-it). Video: _pending (slice 9)_. |
+| **R3** ≥ 2 end-to-end agentic tasks | W01 and W02: design § [Agent orchestration](design-and-evaluation.md#agent-orchestration), with a sequence diagram and the call list for each. Gold sequences: `evaluation/eval_set.yaml`. Both pass 3 runs out of 3 (pass^3) in the baseline. W01 end to end with the fake LLM over Streamable HTTP, Confirm included: `tests/test_e2e_http.py::test_w01_over_streamable_http`. Reproduce below, live in the UI with the steps in [docs/demo-script.md](docs/demo-script.md) (segments 3 and 4: Persona, prompt, clicks and what you should see), or with the demo runner, which drives the deployed page and grades each take against the gold ([Quickstart](#quickstart)). Video: _link to come_; W01 at **1:30**, W02 at **3:45**. |
 | **R4** RAG ingestion, retrieval, citations, guardrails | Design § [RAG design](design-and-evaluation.md#rag-design). `ingest/` (MD, HTML, PDF), `tests/test_chunker.py`, the index manifest check (`scripts/check_index_manifest.py`, in CI), hybrid retrieval (`tests/test_retrieval.py`), the evidence threshold calibration (`evaluation/results/calibration/report.md`). Guardrails: design § [Safety guardrails](design-and-evaluation.md#safety-guardrails), `tests/test_agent.py::test_cancel_changes_nothing`, `tests/test_agent.py::test_repeat_hr_call_on_a_denied_subject_is_blocked`, `tests/test_hr_server.py::test_maya_cannot_see_daniels_balance`. Clarify/escalate/refuse 33/33 (target ≥ 85%), action safety 87/87 (target 100%). |
 | **R5** Clear separation of components | Design § [Architecture](design-and-evaluation.md#architecture): the Mermaid flowchart and the table of seams. The repo map above. The LLM adapter sits behind `LLM_PROVIDER` (`app/agent/llm.py`). The agent reaches the tools only through the MCP client (`app/agent/mcp_client.py`). |
 | **R6** Free-tier deployment, env vars, cold start | [deployed.md](deployed.md) (env var names, cold start, keep-alive, caps), `.env.example`, `Dockerfile`; design § [Deployment & CI/CD](design-and-evaluation.md#deployment--cicd). Measured on the deployed URL: a cold start is a 43.4 s wake plus about 16.6 s to the first reply; warm p50 17.8 s, p95 27.2 s (target < 10 s, **missed**): design § [Evaluation](design-and-evaluation.md#evaluation), Latency. |
 | **R7** CI/CD with build/start checks and an MCP test | `.github/workflows/ci.yml`: lint, typecheck, corpus and index checks, the tool-schema check, and pytest (start check `tests/test_start.py`, MCP discovery and calls, e2e W01). `deploy` needs `test`. The gate proven on `main`: a failing `test` job skipped `deploy` ([run](https://github.com/i2oss/hr-agent/actions/runs/38778719912)), and the revert deployed and passed the smoke ([run](https://github.com/i2oss/hr-agent/actions/runs/38778956058)). Design § [Deployment & CI/CD](design-and-evaluation.md#deployment--cicd). |
 | **R8** Evaluation | Design § [Evaluation](design-and-evaluation.md#evaluation): the headline table, per-category results, the confusion table, the 5-row ablation, cold and warm latency, judge validation (27/29 = 93.1% agreement, 5/5 seeded failures caught) and the failure analysis. Inputs: `evaluation/eval_set.yaml`, `evaluation/seeded_failures.yaml`, `evaluation/judge_labels.yaml`. Code: `evaluation/run.py`, `graders.py` (tested in `tests/test_graders.py`), `judge.py`, `report.py`. Every saved Trace: `evaluation/results/`. How to re-run: [Quickstart](#quickstart). |
-| **R9** Design docs and demo | [design-and-evaluation.md](design-and-evaluation.md), in the brief's order. This rubric map. [ai-tooling.md](ai-tooling.md). Demo script (`docs/demo-script.md`) and video timestamps: _pending (slice 9)_. |
+| **R9** Design docs and demo | [design-and-evaluation.md](design-and-evaluation.md), in the brief's order. This rubric map. [ai-tooling.md](ai-tooling.md). Demo script: [docs/demo-script.md](docs/demo-script.md), ~9:00 in 9 segments with the word-for-word MCP explanations; it doubles as reproduction steps. Video: _link to come_. Chapters: 0:00 Hook · 0:30 Architecture and cold start · 1:30 W01 PTO · 3:45 W02 Lisbon · 5:15 Guardrails (X02, X01 + Cancel, R03) · 6:30 Eval results · 7:30 CI/CD and deploy · 8:15 Limitations and what's next. |
 
 **Reproduce W01 with curl** (W02: `E1002` and the Lisbon question):
 

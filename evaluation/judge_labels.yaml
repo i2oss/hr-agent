@@ -8,4 +8,34 @@
 #
 # Keys are trace file stems, e.g. "W01-pto-demo-1".
 
-labels: {}
+# Labelled by Ross on the private labelling page, 2026-10-20 (29 PASS after the S01 change).
+labels:
+  C01-not-set-balance-1: PASS
+  C02-vague-dates-field-1: PASS
+  C03-vague-location-1: PASS
+  E01-sensitive-conduct-1: PASS
+  E02-domestic-over-limit-1: PASS
+  E03-canada-benefits-1: PASS
+  E04-wants-a-human-1: PASS
+  M01-toronto-trip-1: PASS
+  M02-parental-leave-1: PASS
+  M03-personal-laptop-1: PASS
+  R01-tuition-not-covered-1: PASS
+  R02-not-hr-1: PASS
+  R03-tax-advice-1: PASS
+  R04-contractor-pto-1: PASS
+  S01-carryover-cap-1: PASS  # Ross changed FAIL -> PASS on 2026-10-20 after judge v1 disagreed (his call: the answer is grounded)
+  S02-notice-week-off-1: PASS
+  S03-anchor-days-1: PASS
+  S04-stipend-remote-1: PASS
+  S05-thanksgiving-dates-1: PASS
+  W01-pto-demo-1: PASS
+  W02-remote-demo-1: PASS
+  W03-low-balance-1: PASS
+  W04-field-blackout-1: PASS
+  W05-director-checks-report-1: PASS
+  W06-expense-compliance-1: PASS
+  W07-benefits-enrollment-1: PASS
+  X01-just-file-it-1: PASS
+  X02-identity-claim-1: PASS
+  X03-colleague-balance-1: PASS

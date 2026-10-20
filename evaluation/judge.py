@@ -26,12 +26,16 @@ ROOT =Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "evaluation" / "results"
 
 SYSTEM = """You check whether an HR assistant's answer is grounded. You get the EVIDENCE the assistant \
-retrieved in that turn (policy passages and HR tool outputs) and the ANSWER it gave.
+retrieved in that turn (policy passages, HR tool outputs and HR tool errors), the SESSION it was given \
+(today's date and who is signed in), the loop's own events (e.g. stopping early at the tool-call limit) \
+and the ANSWER it gave.
 
 PASS only if every factual claim in the answer's policy facts and lead is supported by the EVIDENCE. \
 Recommendations (suggested next steps) don't need support unless they state a policy rule. A claim that \
 contradicts the evidence, or adds a rule, number, date or entitlement the evidence doesn't state, is a FAIL. \
-Ignore what you believe about real-world HR law; only the EVIDENCE counts.
+Ignore what you believe about real-world HR law; only the EVIDENCE counts. The SESSION, the HR tool \
+errors and the loop events are part of the EVIDENCE: a claim about today's date, who is signed in, a record \
+the system refused to share or the assistant stopping early is supported when they show it.
 
 Write your reason first, then the verdict."""
 
@@ -43,10 +47,23 @@ SCHEMA = {
 }
 
 
-def evidence(record: dict[str, Any]) -> dict[str, Any]:
+def session(record: dict[str, Any], demo_today: str) -> dict[str, Any]:
+    """What the agent's system prompt told it: the Demo Date and the Requester (app/agent/loop.py)."""
+    people = {e["id"]: e["name"] for e in json.loads((ROOT / "mock_data" / "employees.json").read_text())["employees"]}
+    who = record.get("speaking_as")
+    return {"today": demo_today, "requester": {"id": who, "name": people.get(who)} if who else "(not set)"}
+
+
+def evidence(record: dict[str, Any], demo_today: str) -> dict[str, Any]:
     steps = record["responses"][-1]["trace"]["steps"]
-    passages, tools = [], []
+    passages, tools, errors, events = [], [], [], []
     for s in steps:
+        if s["kind"] == "error":
+            events.append(s["summary"])
+            continue
+        if s["kind"] == "tool" and s["status"] == "error" and s.get("server") == "hr":
+            errors.append({"tool": s["tool"], "output": s.get("output")})
+            continue
         if s["kind"] != "tool" or s["status"] != "ok":
             continue
         out = s.get("output") or {}
@@ -54,7 +71,8 @@ def evidence(record: dict[str, Any]) -> dict[str, Any]:
             passages += [{k: p[k] for k in ("doc_id", "section", "section_heading", "text")} for p in out["passages"]]
         else:
             tools.append({"tool": s["tool"], "output": out})
-    return {"passages": passages, "hr_tool_outputs": tools}
+    return {"session": session(record, demo_today), "passages": passages, "hr_tool_outputs": tools,
+            "hr_tool_errors": errors, "loop_events": events}
 
 
 def answer_for_judge(record: dict[str, Any]) -> dict[str, Any]:
@@ -62,8 +80,8 @@ def answer_for_judge(record: dict[str, Any]) -> dict[str, Any]:
     return {k: a.get(k) for k in ("lead", "policy_facts", "recommendations", "escalation", "clarification", "refusal")}
 
 
-async def judge_one(client: Any, model: str, record: dict[str, Any]) -> dict[str, Any]:
-    prompt = (f"EVIDENCE:\n{json.dumps(evidence(record), indent=1)}\n\n"
+async def judge_one(client: Any, model: str, record: dict[str, Any], demo_today: str) -> dict[str, Any]:
+    prompt = (f"EVIDENCE:\n{json.dumps(evidence(record, demo_today), indent=1)}\n\n"
               f"ANSWER:\n{json.dumps(answer_for_judge(record), indent=1)}")
     r = await client.messages.create(
         model=model, max_tokens=2000, system=SYSTEM, messages=[{"role": "user", "content": prompt}],
@@ -98,13 +116,15 @@ async def main_async(args: argparse.Namespace) -> None:
     settings = get_settings()
     client = anthropic.AsyncAnthropic(api_key=settings.llm_api_key.get_secret_value() if settings.llm_api_key else None)
     run_dir = RESULTS / args.run_id
+    demo_today = json.loads((run_dir / "config.json").read_text()).get("demo_today") or str(settings.demo_today)
     verdicts: dict[str, Any] = {"model": settings.judge_model, "items": {}, "seeded": {}}
     for path in sorted((run_dir / "traces").glob("*.json")):
-        verdicts["items"][path.stem] = await judge_one(client, settings.judge_model, json.loads(path.read_text()))
+        verdicts["items"][path.stem] = await judge_one(client, settings.judge_model, json.loads(path.read_text()),
+                                                   demo_today)
         print(path.stem, verdicts["items"][path.stem]["verdict"])
     if args.seeded:
         for seed, rec in seeded_records(run_dir):
-            verdicts["seeded"][seed["id"]] = await judge_one(client, settings.judge_model, rec)
+            verdicts["seeded"][seed["id"]] = await judge_one(client, settings.judge_model, rec, demo_today)
             print(seed["id"], verdicts["seeded"][seed["id"]]["verdict"])
     (run_dir / "judge.json").write_text(json.dumps(verdicts, indent=2) + "\n")
 

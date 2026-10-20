@@ -186,3 +186,16 @@ def test_report_failure_notes_can_name_another_run(tmp_path, monkeypatch):
     out = "\n".join(report.failures(ITEMS, []))
     assert "No failed items in the baseline." in out
     assert "**R04-contractor-pto (spare, run 2)**" in out and "- Cause: plain answer" in out
+
+
+def test_judge_evidence_includes_session_tool_errors_and_loop_events():
+    from evaluation import judge
+
+    denied = step(1, "tool", "check_pto_balance", status="error", server="hr",
+                  output={"error": {"code": "NOT_PERMITTED", "message": "E1004 may not access E1001's pto balance."}})
+    stopped = {**step(2, "error", status="error"), "summary": "stopped early: 8 tool calls this turn"}
+    e = judge.evidence(record({"lead": "x"}, [denied, stopped], speaking_as="E1004"), "2026-11-02")
+    assert e["session"] == {"today": "2026-11-02", "requester": {"id": "E1004", "name": "Priya Raman"}}
+    assert e["hr_tool_errors"][0]["output"]["error"]["code"] == "NOT_PERMITTED"
+    assert e["loop_events"] == ["stopped early: 8 tool calls this turn"] and e["hr_tool_outputs"] == []
+    assert judge.evidence(record({"lead": "x"}, speaking_as=None), "2026-11-02")["session"]["requester"] == "(not set)"

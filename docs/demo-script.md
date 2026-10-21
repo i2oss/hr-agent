@@ -33,7 +33,7 @@ Do this within 10 minutes of recording (the free service sleeps after 15 minutes
 - [ ] **Fresh counters:** if you want `MSG-MOCK-0001` and `HR-MOCK-0001` on screen, record W01 and W02 right after a wake or deploy (a small `uptime_s` in `/health`). The counters are process-wide and only reset on a restart.
 - [ ] **The daily cap has headroom:** the site allows 100 messages per UTC day. A full set of takes is 6 messages plus 2 Confirm/Cancel clicks; the runner's `X-Eval-Bypass` header skips the caps entirely.
 - [ ] **Start a fresh session** for each segment: reload the page, or change "Speaking as" (that starts a new session too).
-- [ ] **LLM credit:** if a question comes back as a bare "Request failed (500)" while `/health` is green, the Anthropic credit has probably run out. Check Render's logs before recording again.
+- [ ] **LLM credit:** if a question comes back with "The assistant can't reach its language model right now" while `/health` is green, the provider failed, usually because the Anthropic credit ran out. Search Render's logs for `LLM unavailable` for the cause before recording again.
 - [ ] Browser at 100% zoom, window ~1600×900, bookmarks bar hidden, notifications off.
 
 ## 1. Hook (0:30)

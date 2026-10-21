@@ -54,7 +54,7 @@ The useful record is less what the AI wrote than what was caught afterwards, and
 **By a human:**
 - Ross's labels for the judge, his sign-off on the corpus, and his calls on strict citation grading and on reporting the two missed targets.
 - The auto-mode safety classifier blocked a probe that would have touched the API key in `.env`. It was right to.
-- Twice the app returned a bare HTTP 500 in production when the API credit ran out. Rather than guess, Claude Code asked for Render's logs, which named the cause. A friendly error message is still an open follow-up.
+- Twice the app returned a bare HTTP 500 in production when the API credit ran out. Rather than guess, Claude Code asked for Render's logs, which named the cause. On 2026-10-21 provider errors became a 503 with a plain message and an `LLM unavailable` log line, checked end to end against the real API with a deliberately invalid key (a 401 costs nothing).
 
 ## Writing the docs
 
@@ -84,3 +84,4 @@ Claude Code wrote the demo script (`docs/demo-script.md`) and the demo runner (`
 | 2026-10-20 | Deployed latency | Warm p95 27.2 s (missed, reported); cold 43.4 s wake + ≈ 16.6 s |
 | 2026-10-20 | Docs (slice 8) | `design-and-evaluation.md` written around the generated section; README grader map, `deployed.md`, this file |
 | 2026-10-20 | Demo (slice 9) | `docs/demo-script.md` and `scripts/demo_runner.py`; good takes of W01, W02 and the guardrails on the deployed URL (≈ $0.52) |
+| 2026-10-21 | Follow-up (e) | LLM provider errors → 503 with a plain message and an `LLM unavailable` log line; checked with an invalid key |

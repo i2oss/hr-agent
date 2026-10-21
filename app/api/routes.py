@@ -1,17 +1,21 @@
 """HTTP API (SPEC §3.8): /chat, /chat/actions/{action_id}, /config. (/health lives in app/main.py.)
 
 Identity comes only from speaking_as. A changed speaking_as on an existing session_id is a 409:
-the page starts a new session whenever the picker changes.
+the page starts a new session whenever the picker changes. When the LLM provider can't answer (no
+credit, an outage), the turn is rolled back and the visitor gets a 503 with a plain message, while the
+provider's error goes to the log ("LLM unavailable: …"); /health never calls the LLM, so it stays green.
 """
 
 from __future__ import annotations
 
+import logging
 from typing import Any, Literal
 
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 
 from app.agent.answer import FinalAnswer
+from app.agent.llm import LLMUnavailable
 from app.agent.loop import AgentLoop, TurnResult
 from app.agent.sessions import SessionConflict, SessionStore
 from app.agent.trace import Trace
@@ -19,6 +23,13 @@ from app.api.limits import Limits
 from mcp_servers.hr.models import MockData
 
 PERSONAS = [f"E10{n:02d}" for n in range(1, 12)]
+LLM_UNAVAILABLE = "The assistant can't reach its language model right now. Please try again in a few minutes."
+log = logging.getLogger("uvicorn.error")  # Render's log stream, formatted like the server's own lines
+
+
+def unavailable(e: LLMUnavailable) -> HTTPException:
+    log.error("LLM unavailable: %s", e)
+    return HTTPException(503, LLM_UNAVAILABLE)
 
 
 class ChatRequest(BaseModel):
@@ -55,7 +66,10 @@ def build_router(loop: AgentLoop, sessions: SessionStore, limits: Limits, data: 
             raise HTTPException(409, "speaking_as changed: start a new session.") from None
         limits.check_message(request, body.message, session.turns)
         async with session.lock:
-            result = await loop.chat(session, body.message)
+            try:
+                result = await loop.chat(session, body.message)
+            except LLMUnavailable as e:
+                raise unavailable(e) from None
             return respond(result, session.trace)
 
     @router.post("/chat/actions/{action_id}", response_model=ChatResponse, response_model_exclude_none=True)
@@ -66,7 +80,10 @@ def build_router(loop: AgentLoop, sessions: SessionStore, limits: Limits, data: 
         async with session.lock:
             if not session.pending or session.pending.action_id != action_id:
                 raise HTTPException(404, "No pending action with that ID (it may have been cancelled).")
-            result = await loop.decide(session, body.decision)
+            try:
+                result = await loop.decide(session, body.decision)
+            except LLMUnavailable as e:
+                raise unavailable(e) from None
             return respond(result, session.trace)
 
     @router.get("/config")

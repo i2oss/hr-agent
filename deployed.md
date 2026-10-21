@@ -69,6 +69,10 @@ Every cap returns HTTP 429 with "Demo limit reached, please try again later."
 
 They protect the LLM budget (`docs/SPEC.md` §3.2, LLM budget). The Anthropic console also has a monthly spend limit as a hard stop.
 
+## When the LLM is unavailable
+
+`/health` never calls the LLM, so it stays green when the provider fails (no credit, a bad key, an outage). The chat then answers HTTP 503 and the page shows "The assistant can't reach its language model right now. Please try again in a few minutes." The cause is in Render's logs as `ERROR: LLM unavailable: …`, with the provider's error and request ID (never the key). The turn is rolled back, so the same conversation works once the provider is back.
+
 ## State resets on restart
 
 Chat sessions, the Trace and the **Mock Action store** (drafted manager messages, created HR tickets) live **in memory** in the one worker. A cold start, a restart or a deploy clears them, so IDs start again at `MSG-MOCK-0001` and `HR-MOCK-0001`. The seed Mock Data (`mock_data/*.json`) and the policy index are read-only and baked into the image. Nothing is ever really sent or filed.

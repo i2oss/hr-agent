@@ -32,6 +32,11 @@ MAX_STRICT_UNIONS = 16
 NON_STRICT_TOOLS = frozenset({"check_policy_compliance"})
 
 
+class LLMUnavailable(Exception):
+    """The provider couldn't answer: an outage, a timeout, a bad key, no credit left. The message (the
+    provider's error, never the key) is for the logs; visitors get a plain 503."""
+
+
 @dataclass
 class ToolCall:
     id: str
@@ -91,16 +96,24 @@ class AnthropicLLM:
         if self._structured:
             kwargs["output_config"] = {"format": {"type": "json_schema", "schema": answer_schema}}
         try:
-            r = await self._client.messages.create(**kwargs)
+            r = await self._create(kwargs)
+        except anthropic.APIError as e:  # includes the 400 "credit balance is too low"
+            raise LLMUnavailable(f"{type(e).__name__}: {e}") from e
+        text = "".join(b.text for b in r.content if b.type == "text")
+        calls = [ToolCall(b.id, b.name, dict(b.input)) for b in r.content if b.type == "tool_use"]
+        return LLMResponse(text, calls, r.usage.input_tokens, r.usage.output_tokens)
+
+    async def _create(self, kwargs: dict[str, Any]) -> Any:
+        import anthropic
+
+        try:
+            return await self._client.messages.create(**kwargs)
         except anthropic.BadRequestError as e:
             if not self._structured or "output_config" not in str(e):
                 raise
             self._structured = False  # model doesn't take structured output: parse JSON instead
             kwargs.pop("output_config")
-            r = await self._client.messages.create(**kwargs)
-        text = "".join(b.text for b in r.content if b.type == "text")
-        calls = [ToolCall(b.id, b.name, dict(b.input)) for b in r.content if b.type == "tool_use"]
-        return LLMResponse(text, calls, r.usage.input_tokens, r.usage.output_tokens)
+            return await self._client.messages.create(**kwargs)
 
 
 # ---------------------------------------------------------------- OpenAI-compatible
@@ -156,7 +169,12 @@ class OpenAICompatLLM:
                                                                  "parameters": t.input_schema}} for t in tools]
             if not allow_tool_calls:
                 kwargs["tool_choice"] = "none"
-        r = await self._client.chat.completions.create(**kwargs)
+        import openai
+
+        try:
+            r = await self._client.chat.completions.create(**kwargs)
+        except openai.APIError as e:
+            raise LLMUnavailable(f"{type(e).__name__}: {e}") from e
         msg = r.choices[0].message
         calls = [self._call(c.id, c.function.name, c.function.arguments)
                  for c in (msg.tool_calls or []) if c.type == "function"]

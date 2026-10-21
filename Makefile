@@ -12,7 +12,7 @@ lint:
 	uv run ruff check .
 
 typecheck:
-	uv run mypy app mcp_servers ingest evaluation scripts/export_tool_schemas.py
+	uv run mypy app mcp_servers ingest evaluation scripts/export_tool_schemas.py scripts/demo_runner.py
 
 # Planning-artifact checks (facts vs outlines, Eval Set) and the corpus check.
 check:

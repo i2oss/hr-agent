@@ -1,5 +1,7 @@
 # SPEC: Ridgeline HR Agent (MSAIE Project 3)
 
+> **Build spec as planned, frozen at build start.** The build ended on 2026-10-20 with slice 9. This file is kept as the plan the build worked from, with its amendments up to then; it is no longer updated. What was actually built, where it differs from this plan and the results are in [design-and-evaluation.md](../design-and-evaluation.md), the living as-built document.
+
 > **Build spec.** It was compiled from the closed tickets of the wayfinder map [HR agent (MSAIE Project 3): chart the way to a build-ready spec][map]. Every decision is restated here as a build instruction, with its later amendments already folded in, and links back to the ticket that holds its reasoning ("why: …"). **A build session reads only §1–§3 plus its own slice section. It never needs to open a ticket.** The tickets stay frozen as the reasoning record.
 >
 > Moved from the repo root to `docs/SPEC.md` on 2026-10-14 (slice 8). It stays the working plan until the build ends; then it is marked "build spec as planned, frozen at build start", and `design-and-evaluation.md` becomes the living, as-built document ([why: Deliverable docs][t23]).
